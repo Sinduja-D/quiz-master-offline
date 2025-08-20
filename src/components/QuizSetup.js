@@ -1,87 +1,74 @@
-/* src/components/QuizSetup.css */
-.quiz-setup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  flex: 1;
-}
+// src/components/QuizSetup.js
+import React, { useState } from 'react';
+import './QuizSetup.css';
 
-.quiz-setup-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
-}
+const QuizSetup = ({ language, level, onStartQuiz }) => {
+  const [numberOfQuestions, setNumberOfQuestions] = useState(10);
 
-.quiz-setup-card h2 {
-  color: #1a2a6c;
-  margin-bottom: 25px;
-  text-align: center;
-  font-size: 2rem;
-}
+  const handleStartQuiz = () => {
+    onStartQuiz(numberOfQuestions);
+  };
 
-.setup-info {
-  margin-bottom: 30px;
-}
+  const levelNames = {
+    English: {
+      Beginner: 'Beginner',
+      Intermediate: 'Intermediate',
+      Advanced: 'Advanced'
+    },
+    Tamil: {
+      Beginner: 'தொடக்க',
+      Intermediate: 'இடைநிலை',
+      Advanced: 'மேம்பட்ட'
+    }
+  };
 
-.info-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
+  return (
+    <div className="quiz-setup-container">
+      <div className="quiz-setup-card">
+        <h2>
+          {language === 'English' ? 'Quiz Setup' : 'வினா அமைப்பு'}
+        </h2>
+        
+        <div className="setup-info">
+          <div className="info-item">
+            <span className="info-label">
+              {language === 'English' ? 'Language:' : 'மொழி:'}
+            </span>
+            <span className="info-value">{language}</span>
+          </div>
+          
+          <div className="info-item">
+            <span className="info-label">
+              {language === 'English' ? 'Difficulty Level:' : 'சிரம நிலை:'}
+            </span>
+            <span className="info-value">{levelNames[language][level]}</span>
+          </div>
+        </div>
+        
+        <div className="question-selector">
+          <label htmlFor="questionCount">
+            {language === 'English' 
+              ? 'Number of Questions (1-50):' 
+              : 'கேள்விகளின் எண்ணிக்கை (1-50):'}
+          </label>
+          <input
+            type="range"
+            id="questionCount"
+            min="1"
+            max="50"
+            value={numberOfQuestions}
+            onChange={(e) => setNumberOfQuestions(parseInt(e.target.value))}
+            className="question-slider"
+          />
+          <div className="question-count-display">{numberOfQuestions}</div>
+        </div>
+        
+        <button className="start-quiz-button" onClick={handleStartQuiz}>
+          {language === 'English' ? 'Start Quiz' : 'வினாத்திட்டத்தைத் தொடங்கு'}
+        </button>
+      </div>
+    </div>
+  );
+};
 
-.info-label {
-  font-weight: bold;
-  color: #555;
-}
-
-.info-value {
-  color: #1a2a6c;
-  font-weight: 500;
-}
-
-.question-selector {
-  margin-bottom: 30px;
-}
-
-.question-selector label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #555;
-}
-
-.question-slider {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.question-count-display {
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1a2a6c;
-}
-
-.start-quiz-button {
-  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.start-quiz-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
-}
+export default QuizSetup;
