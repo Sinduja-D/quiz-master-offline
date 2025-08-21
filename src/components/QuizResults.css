@@ -1,0 +1,109 @@
+/* src/components/QuizResults.css */
+.results-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex: 1;
+}
+
+.results-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.results-card h2 {
+  color: #1a2a6c;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.performance-message {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #555;
+  font-weight: 500;
+}
+
+.score-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 30px;
+  box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
+}
+
+.score-percentage {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.results-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stat-item.correct .stat-value {
+  color: #4CAF50;
+}
+
+.stat-item.wrong .stat-value {
+  color: #F44336;
+}
+
+.stat-label {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.results-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.action-button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.action-button.restart {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+}
+
+.action-button.home {
+  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  color: white;
+}
+
+.action-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
