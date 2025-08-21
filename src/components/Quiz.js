@@ -89,12 +89,12 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete, onBack }) =>
     setShowFeedback(true);
     
     // Update results
-    setResults(prev => ({
-      ...prev,
-      correctAnswers: correct ? prev.correctAnswers + 1 : prev.correctAnswers,
-      wrongAnswers: !correct ? prev.wrongAnswers + 1 : prev.wrongAnswers
-    }));
-    
+     const updatedResults = {
+    ...results,
+    correctAnswers: correct ? results.correctAnswers + 1 : results.correctAnswers,
+    wrongAnswers: !correct ? results.wrongAnswers + 1 : results.wrongAnswers,
+    totalQuestions: quizQuestions.length
+  };
     // Handle consecutive correct answers
     if (correct) {
       const newCount = consecutiveCorrect + 1;
@@ -125,18 +125,20 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete, onBack }) =>
   })}
 </div>
 // ...existing code...
-    
-    // Move to next question after delay
-    setTimeout(() => {
-      if (currentQuestionIndex < quizQuestions.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedOption(null);
-        setShowFeedback(false);
-      } else {
-        // Quiz completed
-        onQuizComplete(results);
-      }
-    }, 1500);
+      setTimeout(() => {
+    if (currentQuestionIndex < quizQuestions.length - 1) {
+      setResults(updatedResults);
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedOption(null);
+      setShowFeedback(false);
+    } else {
+      setResults(updatedResults);
+      onQuizComplete(updatedResults);
+    }
+  }, 1500);
+
+
+// ...existing code...
   };
 
   const getOptionClass = (option) => {
