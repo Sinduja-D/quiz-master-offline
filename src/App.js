@@ -74,6 +74,15 @@ function App() {
     setQuizResults(null);
   };
 
+  const handleFeatureCardClick = (feature) => {
+    // Handle feature card clicks
+    if (feature === 'profile') {
+      setActivePage('profile');
+    } else if (feature === 'help') {
+      setActivePage('help');
+    }
+  };
+
   useEffect(() => {
     document.title = language === 'English' ? 'Quiz Master' : 'வினா மாஸ்டர்';
   }, [language]);
@@ -107,17 +116,17 @@ function App() {
             </div>
             
             <div className="features">
-              <div className="feature-card">
+              <div className="feature-card" onClick={() => handleFeatureCardClick('profile')}>
                 <div className="icon">🏆</div>
                 <h3>{language === 'English' ? 'Earn Points' : 'புள்ளிகள் பெறுங்கள்'}</h3>
                 <p>{language === 'English' ? 'Track your progress' : 'உங்கள் முன்னேற்றத்தைக் கண்காணிக்கவும்'}</p>
               </div>
-              <div className="feature-card">
+              <div className="feature-card" onClick={() => handleFeatureCardClick('help')}>
                 <div className="icon">🌍</div>
                 <h3>{language === 'English' ? 'Bilingual Support' : 'இருமொழி ஆதரவு'}</h3>
                 <p>{language === 'English' ? 'Seamless language switching' : 'சீரான மொழி மாற்றம்'}</p>
               </div>
-              <div className="feature-card">
+              <div className="feature-card" onClick={() => handleFeatureCardClick('profile')}>
                 <div className="icon">📊</div>
                 <h3>{language === 'English' ? 'Progress Tracking' : 'முன்னேற்றக் கண்காணிப்பு'}</h3>
                 <p>{language === 'English' ? 'Monitor your improvement' : 'உங்கள் முன்னேற்றத்தைக் கண்காணிக்கவும்'}</p>
@@ -215,6 +224,7 @@ function App() {
             language={language}
             level={selectedLevel.id}
             onStartQuiz={handleStartQuiz}
+            onBack={handleBackToHome}
           />
         );
       case 'quiz':
@@ -224,6 +234,7 @@ function App() {
             level={quizSettings.level}
             numberOfQuestions={quizSettings.numberOfQuestions}
             onQuizComplete={handleQuizComplete}
+            onBack={handleBackToHome}
           />
         );
       case 'results':

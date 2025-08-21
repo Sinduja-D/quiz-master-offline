@@ -8,10 +8,10 @@ import {
   questions_english_beginner,
   questions_english_intermediate,
   questions_english_advanced
-} from '../data';
+} from '../data/index.js';
 import './Quiz.css';
 
-const Quiz = ({ language, level, numberOfQuestions, onQuizComplete }) => {
+const Quiz = ({ language, level, numberOfQuestions, onQuizComplete, onBack }) => {
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -31,16 +31,16 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete }) => {
   const getQuestionSet = () => {
     if (language === 'Tamil') {
       switch(level) {
-        case 'Beginner': return questions_tamil_beginner;
-        case 'Intermediate': return questions_tamil_intermediate;
-        case 'Advanced': return questions_tamil_advanced;
+        case 'beginner': return questions_tamil_beginner;
+        case 'intermediate': return questions_tamil_intermediate;
+        case 'advanced': return questions_tamil_advanced;
         default: return questions_tamil_beginner;
       }
     } else {
       switch(level) {
-        case 'Beginner': return questions_english_beginner;
-        case 'Intermediate': return questions_english_intermediate;
-        case 'Advanced': return questions_english_advanced;
+        case 'beginner': return questions_english_beginner;
+        case 'intermediate': return questions_english_intermediate;
+        case 'advanced': return questions_english_advanced;
         default: return questions_english_beginner;
       }
     }
@@ -107,6 +107,24 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete }) => {
     } else {
       setConsecutiveCorrect(0);
     }
+    // ...existing code...
+<div className="options-container">
+  {["option1", "option2", "option3", "option4"].map((key, idx) => {
+    const isSelected = selectedOption === (idx + 1).toString();
+    const isCorrect = currentQuestion.correctOption === (idx + 1).toString();
+    return (
+      <div
+        key={key}
+        className={`option${isSelected ? " selected" : ""}${showFeedback && isCorrect ? " correct" : ""}${showFeedback && isSelected && !isCorrect ? " wrong" : ""}`}
+        onClick={() => !showFeedback && setSelectedOption((idx + 1).toString())}
+      >
+        <span className="option-label">{String.fromCharCode(65 + idx)}</span>
+        <span className="option-text">{currentQuestion[key]}</span>
+      </div>
+    );
+  })}
+</div>
+// ...existing code...
     
     // Move to next question after delay
     setTimeout(() => {
@@ -142,7 +160,13 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete }) => {
   if (quizQuestions.length === 0) {
     return (
       <div className="quiz-loading">
-        {language === 'English' ? 'Loading questions...' : 'கேள்விகள் ஏற்றப்படுகின்றன...'}
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>{language === 'English' ? 'Loading questions...' : 'கேள்விகள் ஏற்றப்படுகின்றன...'}</p>
+          <button className="back-button" onClick={onBack}>
+            {language === 'English' ? 'Back to Home' : 'முகப்பிற்குச் செல்ல'}
+          </button>
+        </div>
       </div>
     );
   }
@@ -170,14 +194,17 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete }) => {
       )}
       
       <div className="quiz-header">
+        <button className="back-button" onClick={onBack}>
+          ← {language === 'English' ? 'Back' : 'திரும்ப'}
+        </button>
         <div className="quiz-progress">
           {language === 'English' ? 'Question' : 'கேள்வி'} {currentQuestionIndex + 1} {language === 'English' ? 'of' : 'மொத்தம்'} {quizQuestions.length}
         </div>
         <div className="quiz-level">
-          {level === 'Beginner' && '🟢'}
-          {level === 'Intermediate' && '🟡'}
-          {level === 'Advanced' && '🔴'}
-          {level}
+          {level === 'beginner' && '🟢'}
+          {level === 'intermediate' && '🟡'}
+          {level === 'advanced' && '🔴'}
+          {level.charAt(0).toUpperCase() + level.slice(1)}
         </div>
       </div>
       
@@ -185,38 +212,23 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete }) => {
         <h2 className="question-text">{currentQuestion.question}</h2>
         
         <div className="options-container">
-          <div 
-            className={`option ${getOptionClass(1)}`}
-            onClick={() => handleOptionSelect(1)}
-          >
-            <span className="option-label">A</span>
-            <span className="option-text">{currentQuestion.option1}</span>
-          </div>
-          
-          <div 
-            className={`option ${getOptionClass(2)}`}
-            onClick={() => handleOptionSelect(2)}
-          >
-            <span className="option-label">B</span>
-            <span className="option-text">{currentQuestion.option2}</span>
-          </div>
-          
-          <div 
-            className={`option ${getOptionClass(3)}`}
-            onClick={() => handleOptionSelect(3)}
-          >
-            <span className="option-label">C</span>
-            <span className="option-text">{currentQuestion.option3}</span>
-          </div>
-          
-          <div 
-            className={`option ${getOptionClass(4)}`}
-            onClick={() => handleOptionSelect(4)}
-          >
-            <span className="option-label">D</span>
-            <span className="option-text">{currentQuestion.option4}</span>
-          </div>
-        </div>
+         
+  {["option1", "option2", "option3", "option4"].map((key, idx) => {
+    const isSelected = selectedOption === (idx + 1).toString();
+    const isCorrect = currentQuestion.correctOption === (idx + 1).toString();
+    return (
+      <div
+        key={key}
+        className={`option${isSelected ? " selected" : ""}${showFeedback && isCorrect ? " correct" : ""}${showFeedback && isSelected && !isCorrect ? " wrong" : ""}`}
+        onClick={() => !showFeedback && setSelectedOption((idx + 1).toString())}
+      >
+        <span className="option-label">{String.fromCharCode(65 + idx)}</span>
+        <span className="option-text">{currentQuestion[key]}</span>
+      </div>
+    );
+  })}
+</div>
+        
         
         <button 
           className="submit-button" 

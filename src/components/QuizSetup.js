@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './QuizSetup.css';
 
-const QuizSetup = ({ language, level, onStartQuiz }) => {
+const QuizSetup = ({ language, level, onStartQuiz, onBack }) => {
   const [numberOfQuestions, setNumberOfQuestions] = useState(10);
 
   const handleStartQuiz = () => {
@@ -25,9 +25,14 @@ const QuizSetup = ({ language, level, onStartQuiz }) => {
   return (
     <div className="quiz-setup-container">
       <div className="quiz-setup-card">
-        <h2>
-          {language === 'English' ? 'Quiz Setup' : 'வினா அமைப்பு'}
-        </h2>
+        <div className="setup-header">
+          <button className="back-button" onClick={onBack}>
+            ← {language === 'English' ? 'Back' : 'திரும்ப'}
+          </button>
+          <h2>
+            {language === 'English' ? 'Quiz Setup' : 'வினா அமைப்பு'}
+          </h2>
+        </div>
         
         <div className="setup-info">
           <div className="info-item">

@@ -23,9 +23,14 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
   return (
     <div className="results-container">
       <div className="results-card">
-        <h2>
-          {language === 'English' ? 'Quiz Results' : 'வினா முடிவுகள்'}
-        </h2>
+        <div className="results-header">
+          <button className="back-button" onClick={onHome}>
+            ← {language === 'English' ? 'Back to Home' : 'முகப்பிற்குச் செல்ல'}
+          </button>
+          <h2>
+            {language === 'English' ? 'Quiz Results' : 'வினா முடிவுகள்'}
+          </h2>
+        </div>
         
         <div className="performance-message">
           {performanceMessage}
