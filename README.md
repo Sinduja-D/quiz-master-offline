@@ -3,6 +3,8 @@
 *Quiz Master* is an interactive quiz application built with *React*.  
 It allows users to attempt multiple-choice questions, track scores, and get instant feedback — designed to work *offline on desktop (.exe) and Android (ViewBoard)*.
 
+App Link:https://rococo-unicorn-025d89.netlify.app/
+
 
 ## 🌟 Our Innovative Solution
 Quiz Master is a *bilingual quiz application* designed to overcome learning challenges, offering a *dynamic and personalized experience* for students.
