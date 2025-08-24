@@ -25,11 +25,34 @@ function App() {
     setLanguage(language === 'English' ? 'Tamil' : 'English');
   };
 
-  const levels = [
+  {/*const levels = [
     { id: 'beginner', name: { English: 'Beginner', Tamil: 'தொடக்க' }, color: '#4CAF50', icon: '🌱', grade: 'Grades 6-7' },
     { id: 'intermediate', name: { English: 'Intermediate', Tamil: 'இடைநிலை' }, color: '#2196F3', icon: '🚀', grade: 'Grades 8-10' },
     { id: 'advanced', name: { English: 'Advanced', Tamil: 'மேம்பட்ட' }, color: '#9C27B0', icon: '🏆', grade: 'Grades 11-12' }
-  ];
+  ];*/}
+  const levels = [
+  {
+    id: 'beginner',
+    name: { English: 'Beginner', Tamil: 'தொடக்க' },
+    color: '#4CAF50',
+    icon: '🌱',
+    grade: { English: 'Grades 6-7', Tamil: '6-7ஆம் வகுப்பு' }
+  },
+  {
+    id: 'intermediate',
+    name: { English: 'Intermediate', Tamil: 'இடைநிலை' },
+    color: '#2196F3',
+    icon: '🚀',
+    grade: { English: 'Grades 8-10', Tamil: '8-10ஆம் வகுப்பு' }
+  },
+  {
+    id: 'advanced',
+    name: { English: 'Advanced', Tamil: 'மேம்பட்ட' },
+    color: '#9C27B0',
+    icon: '🏆',
+    grade: { English: 'Grades 11-12', Tamil: '11-12ஆம் வகுப்பு' }
+  }
+];
 
   const handleLevelSelect = (level) => {
     setSelectedLevel(level);
@@ -41,10 +64,12 @@ function App() {
     setActivePage('quizSetup');
   };
 
-  const handleStartQuiz = (numberOfQuestions) => {
+  const handleStartQuiz = (numberOfQuestions,subject,grade) => {
     setQuizSettings({
       ...quizSettings,
-      numberOfQuestions
+      numberOfQuestions,
+      subject,
+      grade
     });
     setActivePage('quiz');
   };
@@ -109,13 +134,13 @@ function App() {
                   >
                     <span className="level-icon">{level.icon}</span>
                     <span className="level-name">{level.name[language]}</span>
-                    <span className="level-grade">{level.grade}</span>
+                    <span className="level-grade">{level.grade[language]}</span>
                   </button>
                 ))}
               </div>
             </div>
             
-            <div className="features">
+           {/*} <div className="features">
               <div className="feature-card" onClick={() => handleFeatureCardClick('profile')}>
                 <div className="icon">🏆</div>
                 <h3>{language === 'English' ? 'Earn Points' : 'புள்ளிகள் பெறுங்கள்'}</h3>
@@ -131,7 +156,7 @@ function App() {
                 <h3>{language === 'English' ? 'Progress Tracking' : 'முன்னேற்றக் கண்காணிப்பு'}</h3>
                 <p>{language === 'English' ? 'Monitor your improvement' : 'உங்கள் முன்னேற்றத்தைக் கண்காணிக்கவும்'}</p>
               </div>
-            </div>
+            </div>*/}
           </>
         );
       case 'about':
@@ -140,8 +165,8 @@ function App() {
             <h2>{language === 'English' ? 'About Us' : 'எங்களைப் பற்றி'}</h2>
             <p>
               {language === 'English' 
-                ? 'Quiz Master is an innovative educational platform designed to make learning fun and engaging through interactive quizzes. Our mission is to provide accessible learning resources in multiple languages to help users expand their knowledge and skills.'
-                : 'வினா மாஸ்டர் என்பது ஊடாடும் வினாத்திட்டங்கள் மூலம் கற்றலை சுவாரஸ்யமாகவும் ஈர்க்கக்கூடியதாகவும் மாற்றுவதற்காக வடிவமைக்கப்பட்ட ஒரு புதுமையான கல்வி தளமாகும். பயனர்கள் தங்கள் அறிவையும் திறன்களையும் விரிவுபடுத்த உதவுவதற்காக பல மொழிகளில் அணுகக்கூடிய கற்றல் வளங்களை வழங்குவதே எங்கள் நோக்கம்.'}
+                ? '🚀 Quiz Master makes learning fun! We bring science alive through interactive quizzes in Tamil & English, helping every student learn with joy and confidence.'
+                : '🚀வினா மாஸ்டர் கற்றலை சுவாரஸ்யமாக்குகிறது! அறிவியலை தமிழ் & ஆங்கிலம் வழியாக விளையாட்டுப் பாணியில் கற்றுத்தருகிறது, ஒவ்வொரு மாணவரும் மகிழ்ச்சியுடன் நம்பிக்கையுடன் கற்க உதவுகிறது.'}
             </p>
           </div>
         );
@@ -151,18 +176,18 @@ function App() {
             <h2>{language === 'English' ? 'Contact Us' : 'எங்களை தொடர்பு கொள்ள'}</h2>
             <p>
               {language === 'English' 
-                ? 'Email: support@quizmaster.com'
-                : 'மின்னஞ்சல்: support@quizmaster.com'}
+                ? 'Email: science@quizmaster.com'
+                : 'மின்னஞ்சல்: science@quizmaster.com'}
             </p>
             <p>
               {language === 'English' 
-                ? 'Phone: +1 (555) 123-4567'
-                : 'தொலைபேசி: +1 (555) 123-4567'}
+                ? 'Phone: 91+ 7823047037'
+                : 'தொலைபேசி:  91+ 7823047037'}
             </p>
             <p>
               {language === 'English' 
-                ? 'Address: 123 Learning Street, Education City'
-                : 'முகவரி: 123 கற்றல் தெரு, கல்வி நகரம்'}
+                ? 'Address:R.M.K. ENGINEERING COLLEGE'
+                : 'முகவரி: ஆர்.எம்.கே. பொறியியல் கல்லூரி'}
             </p>
           </div>
         );
@@ -232,6 +257,8 @@ function App() {
           <Quiz 
             language={quizSettings.language}
             level={quizSettings.level}
+            subject={quizSettings.subject}
+            grade={quizSettings.grade}
             numberOfQuestions={quizSettings.numberOfQuestions}
             onQuizComplete={handleQuizComplete}
             onBack={handleBackToHome}
@@ -256,9 +283,9 @@ function App() {
       <nav className="navbar">
         <div className="nav-brand">
           <span className="brand-icon">🧠</span>
-          <span className="brand-name">Quiz Master</span>
+          <span className="brand-name">  {language === 'English' ? 'Quiz Master' : 'வினா மாஸ்டர்'}</span>
         </div>
-        
+
         <div className="nav-links">
           <button 
             className={`nav-link ${activePage === 'home' ? 'active' : ''}`}

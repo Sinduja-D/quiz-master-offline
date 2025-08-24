@@ -1,19 +1,20 @@
 {
-<<<<<<< HEAD
-  "devDependencies": {
-    "electron-packager": "^17.1.2"
-=======
   "name": "quiz-master",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
+  "homepage": "./",
   "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.7.0",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,6 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
->>>>>>> 9f7507f7c8649c1bb83ba4a6861f1539a5e78921
   }
 }
