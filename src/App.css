@@ -109,6 +109,48 @@ body {
   font-size: 1.2rem;
 }
 
+.extra-features {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.feature-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  color: blue;
+  flex-wrap: wrap;
+}
+
+.feature-btn {
+  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.feature-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(26,42,108,0.3);
+}
+
+.fun-fact-box {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1a2a6c;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
 /* Main Content */
 .main-content {
   flex: 1;

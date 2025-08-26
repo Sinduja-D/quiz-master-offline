@@ -14,4 +14,6 @@ const Popup = ({ message, onClose, timer }) => {
   );
 };
 
+
+
 export default Popup;

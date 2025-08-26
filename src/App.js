@@ -1,3 +1,4 @@
+
 // src/App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
@@ -5,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import QuizSetup from './components/QuizSetup';
 import Quiz from './components/Quiz';
 import QuizResults from './components/QuizResults';
+import FunFacts from './components/FunFacts';
+
+
 
 function App() {
   const [language, setLanguage] = useState('English');
@@ -157,6 +161,17 @@ function App() {
                 <p>{language === 'English' ? 'Monitor your improvement' : 'உங்கள் முன்னேற்றத்தைக் கண்காணிக்கவும்'}</p>
               </div>
             </div>*/}
+
+           <div className="extra-features">
+  <h2>{language === 'English' ? 'More Features' : 'கூடுதல் அம்சங்கள்'}</h2>
+  <div className="feature-buttons">
+    <button onClick={() => setActivePage('achievements')} className="feature-btn">🏅 {language === 'English' ? 'Achievements' : 'சாதனைகள்'}</button>
+    <button onClick={() => setActivePage('leaderboard')} className="feature-btn">📊 {language === 'English' ? 'Leaderboard' : 'முன்னணி பட்டியல்'}</button>
+    <button onClick={() => setActivePage('funFacts')} className="feature-btn">💡 {language === 'English' ? 'Fun Facts' : 'சுவாரஸ்யங்கள்'}</button>
+
+  </div>
+</div>
+
           </>
         );
       case 'about':
@@ -243,6 +258,53 @@ function App() {
             </div>
           </div>
         );
+              case 'profile':
+        return (
+          <div className="page-content">
+            ...
+          </div>
+        );
+
+      // ⬇️ Paste here
+      case 'achievements':
+        return (
+          <div className="page-content">
+            <h2>{language === 'English' ? 'Achievements' : 'சாதனைகள்'}</h2>
+            <ul>
+              <li>🏆 {language === 'English' ? 'First Quiz Completed' : 'முதல் வினா முடிக்கப்பட்டது'}</li>
+              <li>🔥 {language === 'English' ? '3 Correct Answers in a Row' : 'மூன்று தொடர்ச்சியான சரியான பதில்கள்'}</li>
+              <li>💯 {language === 'English' ? '100 Points Earned' : '100 புள்ளிகள் பெற்றது'}</li>
+            </ul>
+          </div>
+        );
+
+      case 'leaderboard':
+        return (
+          <div className="page-content">
+            <h2>{language === 'English' ? 'Leaderboard' : 'முன்னணி பட்டியல்'}</h2>
+            <ol>
+              <li>👑 User1 – 2500 pts</li>
+              <li>🥈 User2 – 2000 pts</li>
+              <li>🥉 User3 – 1800 pts</li>
+            </ol>
+          </div>
+        );
+
+     /*case 'funFacts':
+  return (
+    <div className="page-content">
+      <h2>{language === 'English' ? 'Fun Science Facts' : 'அறிவியல் சுவாரஸ்யங்கள்'}</h2>
+      <ul>
+        <li>🌍 {language === 'English' ? 'Bananas are berries, but strawberries are not!' : 'வாழைப்பழம் பேரிக்காய், ஆனால் ஸ்ட்ராபெரி அல்ல!'}</li>
+        <li>⚡ {language === 'English' ? 'Lightning is five times hotter than the Sun’s surface.' : 'மின்னல் சூரியன் மேற்பரப்பை விட ஐந்து மடங்கு சூடானது.'}</li>
+        <li>🧬 {language === 'English' ? 'Your DNA could stretch from the Earth to the Sun and back 600 times!' : 'உங்கள் டி.என்.ஏ. பூமியிலிருந்து சூரியன் வரை சென்று 600 முறை திரும்ப முடியும்!'}</li>
+      </ul>
+    </div>
+  );*/
+case 'funFacts':
+  return <FunFacts language={language} />;
+
+
       case 'quizSetup':
         return (
           <QuizSetup 

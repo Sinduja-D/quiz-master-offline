@@ -11,6 +11,7 @@ import {
 } from '../data/index.js';
 import './Quiz.css';
 
+
 const Quiz = ({ language, level, numberOfQuestions, onQuizComplete, onBack }) => {
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -156,6 +157,7 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete, onBack }) =>
             : `வாழ்த்துக்கள்! தொடர்ச்சியாக ${consecutiveCorrect} சரியான பதில்கள்!`}
         </div>
       )}
+
 
       <div className="quiz-header">
         <button className="back-button" onClick={onBack}>
