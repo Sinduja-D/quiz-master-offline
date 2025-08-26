@@ -1,0 +1,351 @@
+id,level,standard,subject,Language,question,option1,option2,option3,option4,correct option,concept,hint
+1,beg,6,phy,english,Which instrument is used to measure length accurately?,Ruler,Thermometer,Spring Balance,Compass,1,Measurement,Used in geometry and length measurements
+2,beg,6,phy,english,1 metre is equal to how many centimetres?,10,100,1000,10000,2,Measurement,1 m = 100 cm
+3,beg,6,phy,english,Assertion (A): Force can change the direction of motion. Reason (R): A moving ball can be deflected by kicking.,"A and R true, R explains A","A true, R false","A false, R true",Both false,1,Force & Motion,Think about football kick
+4,beg,6,phy,english,Which one is not a state of matter?,Solid,Liquid,Gas,Light,4,Matter,Only three common states
+5,beg,6,phy,english,Match the following: (a) Spring balance – (b) Thermometer – (c) Magnet – (d) Compass,"(a)Force, (b)Temp, (c)Magnetic force, (d)Direction","(a)Length, (b)Heat, (c)Force, (d)Current","(a)Mass, (b)Temp, (c)Gas, (d)Weight","(a)Direction, (b)Force, (c)Temp, (d)Gas",1,Measurement,Think about uses of instruments
+6,beg,6,phy,english,"Odd one out: Kilogram, Metre, Litre, Degree Celsius",Kilogram,Metre,Litre,Degree Celsius,4,Measurement,It measures temperature
+7,beg,6,phy,english,How many seconds are there in 1 hour?,60,360,3600,600,3,Measurement,60 × 60
+8,beg,6,phy,english,Which of the following is a contact force?,Friction,Magnetic,Gravitational,Electrostatic,1,Force,Acts only when surfaces touch
+9,beg,6,phy,english,Which motion is periodic?,Car moving,Swinging pendulum,Walking,Cycling,2,Motion,Repeats at regular intervals
+10,beg,6,phy,english,Water changes into ice by,Melting,Freezing,Evaporation,Condensation,2,Matter,Opposite of melting
+11,beg,6,phy,english,Assertion: Heat flows from hot body to cold body. Reason: Heat always flows opposite to temperature difference.,"A true, R false","A true, R explains A","A false, R true",Both false,1,Heat,Second part is wrong
+12,beg,6,phy,english,Which of the following is an insulator?,Copper,Aluminium,Rubber,Iron,3,Electricity,Used in covering wires
+13,beg,6,phy,english,Which of these is a primary cell?,Dry cell,Car battery,Inverter battery,Rechargeable battery,1,Electricity,Cannot be recharged
+14,beg,6,phy,english,Match: (a) Melting – (b) Evaporation – (c) Freezing – (d) Condensation,"(a)Solid→Liquid, (b)Liquid→Gas, (c)Liquid→Solid, (d)Gas→Liquid","(a)Liquid→Gas, (b)Solid→Liquid, (c)Liquid→Gas, (d)Gas→Solid","(a)Gas→Solid, (b)Liquid→Solid, (c)Liquid→Gas, (d)Solid→Liquid","(a)Solid→Gas, (b)Liquid→Solid, (c)Gas→Liquid, (d)Liquid→Gas",1,Matter,Phase changes
+15,beg,6,phy,english,Which of these is a chemical change?,Melting of ice,Rusting of iron,Boiling water,Dissolving sugar,2,Changes,New substance formed
+16,beg,6,phy,english,"Odd one out: Heating, Freezing, Melting, Rusting",Heating,Freezing,Melting,Rusting,4,Changes,Irreversible
+17,beg,6,phy,english,Which unit is used to measure temperature?,Newton,Celsius,Litre,Metre,2,Heat,Thermometer scale
+18,beg,6,phy,english,Which is a magnetic material?,Plastic,Wood,Iron,Rubber,3,Magnetism,Attracted by magnets
+19,beg,6,phy,english,A freely suspended magnet always points towards,East-West,North-South,Up-Down,Random,2,Magnetism,Compass working
+20,beg,6,phy,english,Assertion: Earth behaves like a magnet. Reason: It has North and South poles.,"A true, R explains A","A true, R false","A false, R true",Both false,1,Magnetism,Compass works because of Earth
+21,beg,6,phy,english,Which of these is a good conductor?,Plastic,Glass,Copper,Rubber,3,Electricity,Used in wires
+22,beg,6,phy,english,The SI unit of force is,Kilogram,Newton,Joule,Watt,2,Force,Named after a scientist
+23,beg,6,phy,english,How many minutes are there in a day?,60,600,1440,2400,3,Measurement,24 × 60
+24,beg,6,phy,english,Match: (a) Compass – (b) Dry cell – (c) Ruler – (d) Thermometer,"(a)Direction, (b)Electricity, (c)Length, (d)Temperature","(a)Length, (b)Force, (c)Heat, (d)Current","(a)Mass, (b)Force, (c)Gas, (d)Weight","(a)Direction, (b)Heat, (c)Gas, (d)Current",1,Measurement,Think of device usage
+25,beg,6,phy,english,Which is a reversible change?,Burning of paper,Rusting of iron,Freezing of water,Cooking rice,3,Changes,Ice ↔ water
+26,beg,6,phy,english,Which of the following is NOT a source of heat?,Sun,Fire,Electricity,Magnet,4,Heat,Magnet gives no heat
+27,beg,6,phy,english,"Odd one out: Magnet, Iron, Nickel, Plastic",Magnet,Iron,Nickel,Plastic,4,Magnetism,Not magnetic
+28,beg,6,phy,english,Which is a unit of mass?,Metre,Kilogram,Litre,Joule,2,Measurement,Used to measure weight
+29,beg,6,phy,english,"Assertion: Friction is always helpful. Reason: Without friction, we cannot walk.","A true, R explains A","A true, R false","A false, R true",Both false,3,Force,Sometimes friction is harmful
+30,beg,6,phy,english,The process of water changing into vapour is,Condensation,Freezing,Evaporation,Melting,3,Matter,Happens when drying clothes
+31,beg,6,phy,english,Which of these is a man-made source of heat?,Sun,Candle,Volcano,Stars,2,Heat,Not natural
+32,beg,6,phy,english,Which gas is essential for burning?,Oxygen,Nitrogen,Carbon dioxide,Hydrogen,1,Heat,Supports combustion
+33,beg,6,phy,english,Match: (a) North pole – (b) South pole – (c) Repulsion – (d) Attraction,"(a)Repels N, (b)Repels S, (c)Like poles, (d)Unlike poles","(a)Like poles, (b)Unlike poles, (c)North-South, (d)Magnet–Iron","(a)North–South, (b)South–North, (c)Attraction, (d)Repulsion","(a)Random, (b)Random, (c)Opposite, (d)Like",1,Magnetism,Like poles repel
+34,beg,6,phy,english,Which of these is a physical change?,Burning wood,Melting ice,Rusting iron,Cooking food,2,Changes,No new substance formed
+35,beg,6,phy,english,Assertion: Water is called a universal solvent. Reason: It dissolves most substances.,"A true, R explains A","A true, R false","A false, R true",Both false,1,Water,"Think about sugar, salt"
+36,beg,6,phy,english,"Odd one out: Oxygen, Nitrogen, Carbon dioxide, Stone",Oxygen,Nitrogen,Carbon dioxide,Stone,4,Matter,Not a gas
+37,beg,6,phy,english,What is the boiling point of water?,0°C,50°C,100°C,212°C,3,Heat,Standard value
+38,beg,6,phy,english,SI unit of time is,Second,Minute,Hour,Day,1,Measurement,Smallest standard unit
+39,beg,6,phy,english,Which of these is NOT an environmental problem?,Pollution,Deforestation,Magnetism,Global warming,3,Environment,Physics property
+40,beg,6,phy,english,Which of these changes is irreversible?,Freezing,Melting,Evaporation,Burning,4,Changes,Cannot be undone
+41,beg,6,phy,english,Match: (a) Freezing – (b) Melting – (c) Boiling – (d) Condensation,"(a)Liquid→Solid, (b)Solid→Liquid, (c)Liquid→Gas, (d)Gas→Liquid","(a)Gas→Liquid, (b)Solid→Gas, (c)Gas→Solid, (d)Liquid→Solid","(a)Solid→Gas, (b)Liquid→Gas, (c)Gas→Liquid, (d)Solid→Liquid","(a)Liquid→Gas, (b)Gas→Solid, (c)Solid→Liquid, (d)Liquid→Solid",1,Matter,Think about phase changes
+42,beg,6,phy,english,"Assertion: Current flows only in a closed circuit. Reason: In open circuit, electrons cannot move.","A true, R explains A","A true, R false","A false, R true",Both false,1,Electricity,Torch example
+43,beg,6,phy,english,Which of these is used to measure temperature?,Barometer,Hygrometer,Thermometer,Ammeter,3,Heat,Measures hotness
+44,beg,6,phy,english,The instrument to measure force is,Spring balance,Thermometer,Ruler,Stopwatch,1,Force,Used in labs
+45,beg,6,phy,english,Which one is a periodic motion?,Heartbeat,Car,Falling stone,Walking,1,Motion,Repeats regularly
+46,beg,6,phy,english,How many states of matter are commonly seen in daily life?,2,3,4,5,2,Matter,"Solid, liquid, gas"
+47,beg,6,phy,english,"Odd one out: Forest, Air, Water, Friction",Forest,Air,Water,Friction,4,Environment,Not a resource
+48,beg,6,phy,english,Which energy is used in an electric bulb?,Light only,Heat only,Electrical → Light,Electrical → Sound,3,Electricity,Input → Output
+49,beg,6,phy,english,Which is an example of physical change?,Cutting paper,Burning candle,Rusting iron,Cooking egg,1,Changes,Shape only
+50,beg,6,phy,english,Assertion: Water expands on freezing. Reason: Ice is less dense than water.,"A true, R explains A","A true, R false","A false, R true",Both false,1,Water,Think about floating ice
+51,beg,7,phy,english,Which of the following is a fundamental unit of measurement?,Kilogram,Newton,Joule,Watt,1,Measurements,SI base unit for mass is kilogram.
+52,beg,7,phy,english,"Assertion: Work is said to be done when a force is applied and displacement occurs. Reason: If there is no displacement, work done is zero.","Both A and R are true, and R explains A","Both A and R are true, but R does not explain A","A is true, R is false","A is false, R is true",1,Work,Work needs both force and displacement.
+53,beg,7,phy,english,Match the following: A) Watt B) Joule C) Newton D) Ampere,"A-Work, B-Power, C-Current, D-Force","A-Power, B-Work, C-Force, D-Current","A-Force, B-Power, C-Work, D-Current","A-Current, B-Joule, C-Force, D-Power",2,"Work, Power, Energy",Recall SI units.
+54,beg,7,phy,english,Which one is the odd one out?,Kelvin,Celsius,Fahrenheit,Newton,4,Heat,Newton is not a temperature scale.
+55,beg,7,phy,english,Which property of light is used in the working of a pinhole camera?,Diffraction,Reflection,Rectilinear propagation,Dispersion,3,Light,Light travels in straight lines.
+56,beg,7,phy,english,Which of the following is NOT a luminous object?,Sun,Candle,Moon,Electric bulb,3,Light,Moon reflects sunlight.
+57,beg,7,phy,english,How many statements are true? (i) Heat is a form of energy. (ii) Temperature measures degree of hotness. (iii) Kelvin is an SI unit of temperature. (iv) Fahrenheit is used in India.,1,2,3,4,3,Heat,First three are correct.
+58,beg,7,phy,english,In which device does dispersion of light take place?,Plane mirror,Prism,Pinhole camera,Lens,2,Light,White light splits into seven colours.
+59,beg,7,phy,english,Which unit is used to measure electrical current?,Volt,Coulomb,Ampere,Ohm,3,Electricity,SI unit of current is Ampere.
+60,beg,7,phy,english,Assertion: Satellites revolve around planets due to gravitational force. Reason: The centrifugal force balances gravity.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Universe,Gravity holds satellites in orbit.
+61,beg,7,phy,english,Which of the following is used to measure small lengths like thickness of paper?,Ruler,Vernier caliper,Measuring tape,Screw gauge,4,Measurements,Screw gauge is most precise.
+62,beg,7,phy,english,Work is defined as the product of ___ and ___.,Force and time,Mass and distance,Force and displacement,Pressure and area,3,Work,Work = Force × Displacement.
+63,beg,7,phy,english,Which of the following is an artificial satellite of Earth?,Moon,Mars,INSAT,Sun,3,Universe,INSAT is launched by ISRO.
+64,beg,7,phy,english,Odd one out:,ISRO,NASA,ESA,Milky Way,4,Universe,Milky Way is a galaxy.
+65,beg,7,phy,english,Which device is used to measure body temperature?,Hygrometer,Thermometer,Barometer,Galvanometer,2,Heat,Clinical thermometer is used.
+66,beg,7,phy,english,Which of the following is NOT a conductor?,Copper,Aluminium,Plastic,Iron,3,Electricity,Plastic is an insulator.
+67,beg,7,phy,english,How many statements are true? (i) Heat flows from hot to cold. (ii) Temperature is measured in Kelvin. (iii) Work = Force × Time. (iv) Energy is the capacity to do work.,2,3,4,1,2,"Heat, Work",Only (i) and (iv) are correct.
+68,beg,7,phy,english,Which of these is the SI unit of power?,Joule,Watt,Volt,Ohm,2,Power,Power = Work / Time.
+69,beg,7,phy,english,Which scientist discovered that white light is made up of seven colours?,Newton,Galileo,Einstein,Faraday,1,Light,Newton’s disc proves this.
+70,beg,7,phy,english,Match the following: A) Barometer B) Ammeter C) Hygrometer D) Thermometer,"A-Pressure, B-Current, C-Humidity, D-Temperature","A-Humidity, B-Pressure, C-Temperature, D-Current","A-Current, B-Humidity, C-Pressure, D-Temperature","A-Temperature, B-Humidity, C-Pressure, D-Current",1,Measurements,Recall instrument uses.
+71,beg,7,phy,english,Assertion: A plane mirror always forms virtual images. Reason: Light rays appear to come from behind the mirror.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Light,Virtual image is formed in mirror.
+72,beg,7,phy,english,Odd one out:,X-rays,Microwaves,Infrared rays,Newton’s disc,4,Light,Disc is not an EM wave.
+73,beg,7,phy,english,Which one produces a shadow?,Transparent object,Opaque object,Translucent object,Both (2) and (3),2,Light,Opaque blocks light fully.
+74,beg,7,phy,english,In which scale is the boiling point of water 373?,Celsius,Fahrenheit,Kelvin,Rankine,3,Heat,100°C = 373 K.
+75,beg,7,phy,english,What is the power if 100 J of work is done in 20 seconds?,2 W,5 W,10 W,20 W,2,Power,Power = Work / Time.
+76,beg,7,phy,english,Which of the following is a natural source of light?,Tube light,Candle,Sun,Torch,3,Light,Sun is natural source.
+77,beg,7,phy,english,How many planets are in our solar system?,7,8,9,10,2,Universe,Pluto is a dwarf planet.
+78,beg,7,phy,english,Match the following: A) Joule B) Newton C) Watt D) Kelvin,"A-Work, B-Force, C-Power, D-Temperature","A-Force, B-Work, C-Power, D-Temperature","A-Power, B-Temperature, C-Work, D-Force","A-Work, B-Power, C-Force, D-Current",1,Measurements,Recall SI units.
+79,beg,7,phy,english,Assertion: Energy can neither be created nor destroyed. Reason: Energy can be transformed from one form to another.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Energy,Law of conservation of energy.
+80,beg,7,phy,english,Which type of mirror is used in vehicles as rear-view mirror?,Plane,Concave,Convex,None,3,Light,Convex mirror gives wide view.
+81,beg,7,phy,english,Odd one out:,Satellite,Galaxy,Planet,Electron,4,Universe,Electron is not a celestial body.
+82,beg,7,phy,english,Which instrument is used to measure electric potential difference?,Ammeter,Voltmeter,Galvanometer,Ohmmeter,2,Electricity,Volt = Joule per Coulomb.
+83,beg,7,phy,english,How many true statements? (i) Electricity produces heat. (ii) Electricity produces magnetic effect. (iii) Electricity produces light. (iv) Electricity cannot produce sound.,1,2,3,4,3,Electricity,First three are true.
+84,beg,7,phy,english,Which of these is NOT a galaxy?,Andromeda,Milky Way,Orion,Whirlpool,3,Universe,Orion is a constellation.
+85,beg,7,phy,english,Assertion: Dispersion occurs when white light passes through a prism. Reason: Different colours have different speeds in glass.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Light,VIBGYOR forms due to refraction.
+86,beg,7,phy,english,What is the SI unit of energy?,Joule,Watt,Volt,Newton,1,Energy,Energy measured in Joules.
+87,beg,7,phy,english,Match the following: A) Sun B) Moon C) Earth D) INSAT,"A-Star, B-Natural satellite, C-Planet, D-Artificial satellite","A-Planet, B-Star, C-Natural satellite, D-Galaxy","A-Satellite, B-Planet, C-Star, D-Asteroid","A-Galaxy, B-Satellite, C-Planet, D-Star",1,Universe,Recall celestial objects.
+88,beg,7,phy,english,Odd one out:,Ohm,Joule,Watt,Pascal,4,Measurements,Pascal is unit of pressure.
+89,beg,7,phy,english,Which of the following is an insulator?,Copper,Aluminium,Rubber,Silver,3,Electricity,Rubber resists current.
+90,beg,7,phy,english,Which scientist gave the three laws of motion?,Newton,Galileo,Kepler,Faraday,1,Work & Motion,Newton gave laws of motion.
+91,beg,7,phy,english,What is the speed of light in vacuum (approx)?,3 × 10^8 m/s,3 × 10^6 m/s,3 × 10^5 m/s,3 × 10^4 m/s,1,Light,Constant speed in vacuum.
+92,beg,7,phy,english,How many statements are true? (i) Sound travels faster than light. (ii) Earth is in Milky Way. (iii) Power = Work/Time. (iv) Moon has its own light.,1,2,3,4,2,Mixed,(ii) and (iii) are true.
+93,beg,7,phy,english,Which is used to measure atmospheric pressure?,Barometer,Ammeter,Hygrometer,Manometer,1,Measurements,Barometer measures pressure.
+94,beg,7,phy,english,Which one is the SI unit of electric resistance?,Volt,Ohm,Ampere,Joule,2,Electricity,Ohm’s law defines resistance.
+95,beg,7,phy,english,Assertion: Shadows are always black. Reason: No light passes through opaque objects.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Light,Shadows form due to blocking.
+96,beg,7,phy,english,Which of these is an example of potential energy?,Running boy,Moving car,Water stored in a dam,Blowing wind,3,Energy,Stored energy = potential.
+97,beg,7,phy,english,Match the following: A) Ampere B) Ohm C) Volt D) Watt,"A-Current, B-Resistance, C-Potential difference, D-Power","A-Resistance, B-Current, C-Power, D-Voltage","A-Power, B-Volt, C-Current, D-Resistance","A-Current, B-Work, C-Energy, D-Force",1,Electricity,Recall SI units.
+98,beg,7,phy,english,Which planet is known as the Red Planet?,Venus,Mars,Jupiter,Saturn,2,Universe,Mars looks red due to iron oxide.
+99,beg,7,phy,english,Which scale is used in scientific research as the absolute temperature scale?,Celsius,Kelvin,Fahrenheit,Rankine,2,Heat,Kelvin = SI unit.
+100,beg,7,phy,english,Which type of mirror is used by dentists to examine teeth?,Plane,Convex,Concave,Cylindrical,3,Light,Concave mirror gives magnified view.
+101,inter,8,phy,english,Which of the following is a contact force?,Gravitational force,Magnetic force,Friction,Electrostatic force,3,Forces,Friction requires surfaces in contact.
+102,inter,8,phy,english,Assertion: Pressure increases as area decreases. Reason: Pressure = Force / Area.,"Both A and R are true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Pressure,Inverse relation between area & pressure.
+103,inter,8,phy,english,Match the following: A) Pascal B) Newton C) Decibel D) Hertz,"A-Pressure, B-Force, C-Sound level, D-Frequency","A-Force, B-Pressure, C-Frequency, D-Sound level","A-Frequency, B-Force, C-Pressure, D-Sound","A-Sound, B-Pressure, C-Force, D-Frequency",1,Units,Recall SI units.
+104,inter,8,phy,english,Odd one out:,Friction,Air resistance,Gravitational force,Sliding force,3,Forces,Gravity is a non-contact force.
+105,inter,8,phy,english,Which of these increases friction?,Oil,Water,Sand on road,Grease,3,Friction,Rough surfaces increase friction.
+106,inter,8,phy,english,The pitch of a sound depends on its:,Amplitude,Frequency,Speed,Medium,2,Sound,Higher frequency = higher pitch.
+107,inter,8,phy,english,How many statements are true? (i) Lightning is an electric discharge. (ii) Friction can produce heat. (iii) Sound cannot travel in vacuum. (iv) Pressure is independent of area.,1,2,3,4,3,Mixed,First three are correct.
+108,inter,8,phy,english,Which gas is released during electrolysis of water at the cathode?,Oxygen,Hydrogen,Carbon dioxide,Nitrogen,2,Chemical effects of current,Hydrogen collects at cathode.
+109,inter,8,phy,english,Which mirror is used in torches?,Plane,Concave,Convex,Cylindrical,2,Light,Concave mirror focuses light.
+110,inter,8,phy,english,Assertion: Lightning conductors protect buildings. Reason: They safely transfer electric charge to the ground.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Natural phenomena,Lightning rods ground charges.
+111,inter,8,phy,english,Which of these is NOT a celestial body?,Star,Asteroid,River,Planet,3,Solar system,"River is on Earth, not space."
+112,inter,8,phy,english,Force is measured in:,Pascal,Newton,Joule,Watt,2,Forces,SI unit of force is Newton.
+113,inter,8,phy,english,Which reduces friction?,Ball bearings,Sand,Rough surface,Nails,1,Friction,Bearings make rolling friction.
+114,inter,8,phy,english,Odd one out:,Sound,Light,Heat,Pressure,4,Mixed,Pressure is not a form of energy.
+115,inter,8,phy,english,What is the speed of sound in air approximately?,330 m/s,3 × 10^8 m/s,3000 m/s,500 m/s,1,Sound,In dry air at 20°C.
+116,inter,8,phy,english,How many true statements? (i) Sound travels faster in solids. (ii) Echo is due to reflection. (iii) Frequency is measured in decibel. (iv) Lightning is static discharge.,2,3,4,1,2,"Sound, Lightning",(i) and (ii) true.
+117,inter,8,phy,english,Which instrument is used to measure sound level?,Thermometer,Barometer,Hygrometer,Sound level meter,4,Sound,Sound level in decibels.
+118,inter,8,phy,english,Which of these is an effect of electric current?,Magnetic,Heating,Chemical,All of these,4,Electricity,Current has multiple effects.
+119,inter,8,phy,english,Match the following: A) Concave mirror B) Convex mirror C) Prism D) Lens,"A-Torch, B-Rear-view, C-Dispersion, D-Refraction","A-Rear view, B-Torch, C-Lens, D-Prism","A-Refraction, B-Torch, C-Rear view, D-Dispersion","A-Prism, B-Lens, C-Torch, D-Refraction",1,Light,Recall uses.
+120,inter,8,phy,english,Assertion: Friction is a necessary evil. Reason: Friction causes wear and tear.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Friction,Friction is both useful & harmful.
+121,inter,8,phy,english,Which of the following is NOT an example of force?,Push,Pull,Pressure,Light,4,Forces,Light is not force.
+122,inter,8,phy,english,Which property of sound determines loudness?,Frequency,Amplitude,Speed,Pitch,2,Sound,Larger amplitude = louder.
+123,inter,8,phy,english,Which effect of electric current is used in electroplating?,Heating,Magnetic,Chemical,Optical,3,Chemical effects,Electroplating = chemical effect.
+124,inter,8,phy,english,In which mirror does the image always appear smaller?,Concave,Convex,Plane,None,2,Light,Convex mirror gives diminished image.
+125,inter,8,phy,english,Which planet is called the ‘Morning Star’?,Mars,Venus,Jupiter,Saturn,2,Solar system,Venus visible at dawn.
+126,inter,8,phy,english,How many true statements? (i) Pressure = Force / Area. (ii) Pressure is higher at sea level. (iii) A nail has less pressure than a shoe. (iv) Pressure decreases with height.,1,2,3,4,2,Pressure,Only (i) and (iv).
+127,inter,8,phy,english,Which is NOT a way to reduce friction?,Lubrication,Ball bearings,Making surface rough,Streamlining,3,Friction,Roughness increases friction.
+128,inter,8,phy,english,Which wave is sound?,Transverse,Longitudinal,Electromagnetic,None,2,Sound,Sound travels as compressions.
+129,inter,8,phy,english,Assertion: Lightning is a natural phenomenon. Reason: It occurs due to discharge between clouds and earth.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Lightning,Static discharge.
+130,inter,8,phy,english,Which of these is the odd one out?,Mars,Earth,Moon,Jupiter,3,Solar system,Moon is a satellite.
+131,inter,8,phy,english,Match the following: A) Hertz B) Decibel C) Newton D) Joule,"A-Frequency, B-Sound level, C-Force, D-Work","A-Sound, B-Frequency, C-Work, D-Force","A-Force, B-Work, C-Frequency, D-Sound","A-Power, B-Resistance, C-Sound, D-Heat",1,Units,Recall SI units.
+132,inter,8,phy,english,Which phenomenon causes echo?,Refraction,Reflection,Diffraction,Absorption,2,Sound,Echo = reflected sound.
+133,inter,8,phy,english,Electroplating is used for:,Decoration,Protection from rust,Both,None,3,Chemical effects,Gold/silver plating.
+134,inter,8,phy,english,Which of the following cannot travel through vacuum?,Light,Sound,Heat radiation,EM waves,2,Sound,Needs medium.
+135,inter,8,phy,english,Assertion: Stars appear to twinkle at night. Reason: Refraction of starlight by earth’s atmosphere.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Natural phenomena,Atmospheric refraction.
+136,inter,8,phy,english,Which of these is a natural satellite?,Moon,Mars,INSAT,Sun,1,Solar system,Moon orbits Earth.
+137,inter,8,phy,english,Which law explains why we slip on a wet floor?,Reflection law,Refraction law,Reduced friction,Conservation of energy,3,Friction,Smooth = less grip.
+138,inter,8,phy,english,Which mirror is used as a rear-view mirror in vehicles?,Plane,Concave,Convex,Cylindrical,3,Light,Convex gives wide view.
+139,inter,8,phy,english,How many true statements? (i) The moon is a star. (ii) Sound cannot travel in vacuum. (iii) Lightning is dangerous. (iv) Electrolysis splits water.,2,3,4,1,2,Mixed,"(ii), (iii), (iv) correct."
+140,inter,8,phy,english,Which of these is used to store charge?,Battery,Capacitor,Transformer,Generator,2,Electricity,Capacitors store charge.
+141,inter,8,phy,english,Which colour of light bends the most in a prism?,Red,Blue,Violet,Green,3,Light,Violet refracts most.
+142,inter,8,phy,english,Which is not a dwarf planet?,Pluto,Ceres,Eris,Neptune,4,Solar system,Neptune is a planet.
+143,inter,8,phy,english,Assertion: Lightning can cause fires. Reason: It carries high energy.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Lightning,Lightning carries huge energy.
+144,inter,8,phy,english,Unit of pressure is:,Newton,Pascal,Watt,Joule,2,Pressure,Pressure = N/m² = Pascal.
+145,inter,8,phy,english,Which surface has least friction?,Rough road,Polished ice,Sandpaper,Carpet,2,Friction,Ice is smooth.
+146,inter,8,phy,english,Which wave property determines pitch?,Wavelength,Frequency,Amplitude,Velocity,2,Sound,High frequency = high pitch.
+147,inter,8,phy,english,Which chemical effect is used in batteries?,Electroplating,Electrolysis,Heating,Magnetism,2,Chemical effects,Battery uses electrolysis.
+148,inter,8,phy,english,Match the following: A) Star B) Planet C) Satellite D) Galaxy,"A-Sun, B-Earth, C-Moon, D-Milky Way","A-Moon, B-Sun, C-Galaxy, D-Earth","A-Earth, B-Moon, C-Sun, D-Mars","A-Milky Way, B-Moon, C-Sun, D-Saturn",1,Solar system,Recall space objects.
+149,inter,8,phy,english,Odd one out:,Lightning,Rain,Sound,Earthquake,3,Natural phenomena,Sound is not weather-related.
+150,inter,8,phy,english,Which planet is largest in solar system?,Earth,Saturn,Jupiter,Neptune,3,Solar system,Jupiter is the biggest.
+151,inter,9,phy,english,The SI unit of velocity is:,m/s,m,s,km,1,Measurement,Velocity = distance/time
+152,inter,9,phy,english,Assertion (A): Area is a derived quantity. Reason (R): It is obtained by multiplying two lengths.,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Measurement,Area = length × breadth
+153,inter,9,phy,english,"Match the following: (a) Density, (b) Momentum, (c) Pressure","(a) kg/m³, (b) kg·m/s, (c) N/m²","(a) N, (b) m/s, (c) kg","(a) m³, (b) N·s, (c) J","(a) s, (b) N/m², (c) m/s",1,Measurement,Recall SI units
+154,inter,9,phy,english,Odd one out:,Area,Volume,Mass,Velocity,4,Measurement,"Velocity is vector, others are scalar"
+155,inter,9,phy,english,"If a car moves 120 km in 2 hours, its average speed is:",30 km/h,40 km/h,60 km/h,120 km/h,3,Motion,Speed = distance/time
+156,inter,9,phy,english,"How many of the following are vectors? (Force, Speed, Velocity, Momentum)",1,2,3,4,3,Motion,"Force, velocity, momentum are vectors"
+157,inter,9,phy,english,The rate of change of momentum is:,Work,Energy,Force,Power,3,Motion,Newton’s 2nd law
+158,inter,9,phy,english,Assertion (A): A body at rest has zero velocity. Reason (R): Displacement per unit time is zero.,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Motion,Velocity = displacement/time
+159,inter,9,phy,english,SI unit of pressure is:,Pascal,Joule,Newton,Watt,1,Forces & Gravitation,1 Pa = 1 N/m²
+160,inter,9,phy,english,Odd one out:,Force,Mass,Weight,Momentum,2,Forces & Gravitation,"Mass is scalar, others vectors"
+161,inter,9,phy,english,Archimedes’ principle is related to:,Pressure,Buoyancy,Gravity,Momentum,2,Gravitation,Explains flotation
+162,inter,9,phy,english,A liquid exerts pressure:,Only downwards,In all directions,Only upwards,No pressure,2,Pascal’s Law,Pressure acts equally in all directions
+163,inter,9,phy,english,"Match the following: (a) Pascal’s Law, (b) Archimedes’ Principle, (c) Gravitation","(a) Hydraulic lift, (b) Buoyancy, (c) Falling objects","(a) Flotation, (b) Pressure, (c) Work","(a) Energy, (b) Mass, (c) Volume","(a) Sound, (b) Density, (c) Force",1,Forces,Recall applications
+164,inter,9,phy,english,Assertion (A): A heavier body falls faster than a lighter one. Reason (R): Gravity depends on mass.,"A true, R true","A true, R false","A false, R true","A false, R false",2,Gravitation,g is same for all bodies
+165,inter,9,phy,english,Pressure in a fluid increases with:,Decreasing depth,Increasing depth,Same at all depths,Zero,2,Pascal’s Law,Pressure = hρg
+166,inter,9,phy,english,Work is said to be done only if:,Force is applied,Displacement occurs,Both force and displacement,None,3,Work,W = F × d
+167,inter,9,phy,english,Energy possessed by a moving body is:,Potential energy,Kinetic energy,Heat energy,Sound energy,2,Energy,KE = ½ mv²
+168,inter,9,phy,english,Odd one out:,Joule,Watt,Newton,Pascal,2,Work & Energy,Watt = power unit
+169,inter,9,phy,english,Assertion (A): A body lifted up has potential energy. Reason (R): Work is done against gravity.,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Energy,PE = mgh
+170,inter,9,phy,english,Which is not a form of mechanical energy?,Kinetic energy,Potential energy,Heat energy,Both 1 & 2,3,Energy,Heat is not mechanical
+171,inter,9,phy,english,"Match the following: (a) Joule, (b) Watt, (c) Newton","(a) Energy, (b) Power, (c) Force","(a) Force, (b) Work, (c) Power","(a) Work, (b) Energy, (c) Mass","(a) Power, (b) Force, (c) Energy",1,Units,Recall SI units
+172,inter,9,phy,english,"Number of true statements: (i) Work = Force × distance, (ii) KE = mv², (iii) PE = mgh",1,2,3,0,2,Work & Energy,KE = ½ mv²
+173,inter,9,phy,english,SI unit of frequency is:,Hertz,Newton,Pascal,Watt,1,Sound,1 Hz = 1 cycle/sec
+174,inter,9,phy,english,Speed of sound is maximum in:,Air,Water,Vacuum,Steel,4,Sound,Faster in solids
+175,inter,9,phy,english,Assertion (A): Sound needs a medium to travel. Reason (R): Sound is a mechanical wave.,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Sound,Cannot travel in vacuum
+176,inter,9,phy,english,Odd one out:,Loudness,Pitch,Quality,Mass,4,Sound,Mass is not sound property
+177,inter,9,phy,english,The unit of loudness is:,Watt,Decibel,Joule,Hertz,2,Sound,Measured in dB
+178,inter,9,phy,english,"Match the following: (a) Frequency, (b) Amplitude, (c) Speed","(a) Pitch, (b) Loudness, (c) Wavelength × frequency","(a) Loudness, (b) Pitch, (c) Energy","(a) Speed, (b) Pitch, (c) Power","(a) Energy, (b) Speed, (c) Loudness",1,Sound,Recall properties
+179,inter,9,phy,english,Assertion (A): Higher amplitude means louder sound. Reason (R): Loudness ∝ amplitude².,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Sound,Loudness depends on amplitude
+180,inter,9,phy,english,"Number of true statements: (i) Pitch depends on frequency, (ii) Speed depends on medium, (iii) Loudness depends on amplitude",1,2,3,0,3,Sound,All are true
+181,inter,9,phy,english,Matter is made up of:,Molecules,Atoms,Both atoms & molecules,None,3,Matter,Fundamental concept
+182,inter,9,phy,english,Odd one out:,Proton,Neutron,Electron,Photon,4,Matter,Photon = light particle
+183,inter,9,phy,english,Assertion (A): Atoms are indivisible. Reason (R): They cannot be broken down.,"A true, R true","A true, R false","A false, R true","A false, R false",2,Matter,"Atoms divisible → protons, neutrons"
+184,inter,9,phy,english,SI unit of density is:,kg/m³,g/cm³,N/m²,J,1,Measurement,Density = mass/volume
+185,inter,9,phy,english,Mass of an electron is:,9.1 × 10⁻³¹ kg,1.67 × 10⁻²⁷ kg,1.67 × 10⁻²⁴ g,Zero,1,Matter,Recall electron mass
+186,inter,9,phy,english,"Match the following: (a) Electron, (b) Proton, (c) Neutron","(a) Negative, (b) Positive, (c) Neutral","(a) Positive, (b) Neutral, (c) Negative","(a) Neutral, (b) Positive, (c) Negative","(a) Negative, (b) Neutral, (c) Positive",1,Atoms,Recall charges
+187,inter,9,phy,english,Assertion (A): Molecules of gas move freely. Reason (R): Intermolecular force is weak.,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Matter,Gas molecules have weak force
+188,inter,9,phy,english,Odd one out:,Solid,Liquid,Gas,Energy,4,Matter,Energy is not a state
+189,inter,9,phy,english,Bond formed by sharing of electrons:,Ionic,Covalent,Metallic,Hydrogen,2,Chemical Bonding,Shared electrons
+190,inter,9,phy,english,Bond formed by transfer of electrons:,Covalent,Ionic,Metallic,Hydrogen,2,Chemical Bonding,Sodium chloride
+191,inter,9,phy,english,"Match the following: (a) Ionic bond, (b) Covalent bond, (c) Metallic bond","(a) NaCl, (b) H₂O, (c) Cu","(a) H₂, (b) NaCl, (c) Ag","(a) Cu, (b) NaCl, (c) O₂","(a) H₂O, (b) Cu, (c) NaCl",1,Bonding,Recall examples
+192,inter,9,phy,english,"Number of true statements: (i) Proton is positive, (ii) Neutron has mass but no charge, (iii) Electron is positive",1,2,3,0,2,Matter,Electron is negative
+193,inter,9,phy,english,SI unit of force is:,Newton,Pascal,Joule,Watt,1,Forces,F = ma
+194,inter,9,phy,english,Work done is zero when:,Force is applied,Displacement = 0,Force and displacement same direction,Both 2 & 3,2,Work,No displacement → no work
+195,inter,9,phy,english,Assertion (A): Pressure = Force/Area. Reason (R): Increasing area decreases pressure.,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Pressure,Larger area → less pressure
+196,inter,9,phy,english,Odd one out:,Newton,Pascal,Joule,Mole,4,Units,Mole is chemistry unit
+197,inter,9,phy,english,"Match the following: (a) Work, (b) Power, (c) Energy","(a) Joule, (b) Watt, (c) Joule","(a) Newton, (b) Joule, (c) Watt","(a) Pascal, (b) Joule, (c) Newton","(a) Watt, (b) Newton, (c) Pascal",1,Work & Energy,Recall SI units
+198,inter,9,phy,english,Kinetic energy depends on:,Mass only,Velocity only,Both mass and velocity,None,3,Energy,KE = ½ mv²
+199,inter,9,phy,english,Assertion (A): Metals conduct electricity. Reason (R): Free electrons are present.,"A true, R true and R explains A","A true, R true but R doesn’t explain A","A true, R false","A false, R true",1,Matter,Free electrons allow conduction
+200,inter,9,phy,english,"Number of true statements: (i) Sound travels in solids, (ii) Vacuum allows sound, (iii) Frequency measured in Hz",1,2,3,0,2,Sound,Sound cannot travel in vacuum
+201,inter,10,phy,english,Which law of motion explains why passengers jerk forward when a moving bus suddenly stops?,Newton’s First Law,Newton’s Second Law,Newton’s Third Law,Law of Gravitation,1,Laws of Motion,Inertia causes the body to remain in motion.
+202,inter,10,phy,english,Assertion: A man jumping out of a boat pushes the boat backward. Reason: Action and reaction are equal and opposite.,"Both Assertion and Reason are true, Reason explains Assertion","Both are true, Reason does not explain Assertion","Assertion true, Reason false","Assertion false, Reason true",1,Newton’s Third Law,Action–reaction pairs act on different bodies.
+203,inter,10,phy,english,Match the following: (a) Mass (b) Weight (c) Inertia (d) Momentum → (i) Force × time (ii) Resistance to change (iii) Force due to gravity (iv) Quantity of matter,"a-iv, b-iii, c-ii, d-i","a-ii, b-iv, c-i, d-iii","a-iii, b-ii, c-iv, d-i","a-iv, b-ii, c-iii, d-i",1,Laws of Motion,Recall correct definitions.
+204,inter,10,phy,english,How is weight different from mass?,Weight is constant everywhere,Mass depends on gravity,Weight depends on gravity,"Weight is scalar, Mass is vector",3,Mass vs Weight,"Mass is constant, weight varies with g."
+205,inter,10,phy,english,Which of the following quantities is conserved in all types of collisions?,Force,Momentum,Velocity,Energy only in elastic,2,Momentum Conservation,Momentum is always conserved.
+206,inter,10,phy,english,Which of these is not related to Newton’s laws?,Inertia,Force = ma,Action–reaction,Heat conduction,4,Laws of Motion,"Heat conduction is thermal, not mechanics."
+207,inter,10,phy,english,A ball of mass 2 kg moving at 3 m/s hits another ball and stops. Momentum transferred?,6 kg m/s,3 kg m/s,2 kg m/s,0,1,Momentum,p = mv.
+208,inter,10,phy,english,Odd one out:,Lens,Mirror,Prism,Ammeter,4,Optics,Ammeter belongs to electricity.
+209,inter,10,phy,english,The speed of light is maximum in,Glass,Water,Diamond,Air,4,Refraction,Light slows in denser medium.
+210,inter,10,phy,english,Which lens is used to correct Myopia?,Convex lens,Concave lens,Plano-convex lens,Bifocal lens,2,Human Eye,Myopia corrected with diverging lens.
+211,inter,10,phy,english,Assertion: A convex lens can form both real and virtual images. Reason: It can converge or diverge light rays.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",2,Optics,Convex lens always converges rays.
+212,inter,10,phy,english,Which defect of vision is corrected by cylindrical lenses?,Myopia,Hypermetropia,Astigmatism,Presbyopia,3,Eye Defects,Astigmatism caused by irregular cornea.
+213,inter,10,phy,english,Match: (a) Retina (b) Cornea (c) Iris (d) Pupil → (i) Controls light entry (ii) Transparent covering (iii) Screen of eye (iv) Colored part,"a-iii, b-ii, c-iv, d-i","a-ii, b-iii, c-i, d-iv","a-iv, b-i, c-ii, d-iii","a-i, b-iv, c-iii, d-ii",1,Eye Structure,"Retina is screen, cornea is transparent."
+214,inter,10,phy,english,"In refraction, which remains unchanged?",Wavelength,Frequency,Speed,Direction,2,Refraction,Frequency does not change.
+215,inter,10,phy,english,A concave mirror is used in,Street lamps,Car headlights,Plane mirrors,Projectors,2,Reflection,Concave focuses light.
+216,inter,10,phy,english,Odd one out:,Boyle’s Law,Charles’ Law,Newton’s Law,Avogadro’s Law,3,Thermal Physics,"Newton’s law is mechanics, not gas law."
+217,inter,10,phy,english,Boyle’s Law states,PV = constant,V/T = constant,P/T = constant,n/V = constant,1,Gas Laws,Boyle’s law: P inversely proportional to V.
+218,inter,10,phy,english,Charles’ Law involves,Pressure constant,Volume constant,Mass constant,Temperature constant,1,Gas Laws,V ∝ T at constant pressure.
+219,inter,10,phy,english,Which is true for ideal gas?,No intermolecular force,Infinite mass,Non-compressible,Strong bonding,1,Gas Laws,Ideal gas has no intermolecular attraction.
+220,inter,10,phy,english,Assertion: Temperature is a measure of average kinetic energy. Reason: Hotter body has faster molecules.,"Both A and R true, R explains A","Both A and R true, R doesn’t explain A","A true, R false","A false, R true",1,Thermal Physics,Temperature relates to molecular kinetic energy.
+221,inter,10,phy,english,Which is not a unit of temperature?,Celsius,Kelvin,Fahrenheit,Joule,4,Thermal Physics,Joule is energy unit.
+222,inter,10,phy,english,Match: (a) Boyle’s law (b) Charles’ law (c) Avogadro’s law (d) Gay-Lussac’s law → (i) V ∝ T,"a-PV const, b-V∝T, c-V∝n, d-P∝T","a-V∝n, b-P∝T, c-V∝T, d-PV const","a-P∝T, b-V∝n, c-V∝T, d-V∝P","a-P∝V, b-V∝T, c-P∝T, d-V∝n",1,Gas Laws,Correct definitions of gas laws.
+223,inter,10,phy,english,Electricity flows due to,Voltage,Resistance,Current,Capacitance,1,Electricity,Potential difference causes current.
+224,inter,10,phy,english,Ohm’s Law is,V = IR,P = VI,E = mc²,V = Q/C,1,Electricity,"Ohm’s law relates V, I, R."
+225,inter,10,phy,english,Which material has least resistivity?,Silver,Copper,Nichrome,Aluminium,1,Resistivity,Silver best conductor.
+226,inter,10,phy,english,Resistance of a conductor depends on,Length,Area,Material,All of these,4,Resistance,R = ρL/A.
+227,inter,10,phy,english,Assertion: Current produces heating. Reason: Electrical energy converted to heat.,"Both true, Reason explains","Both true, Reason doesn’t explain","A true, R false","A false, R true",1,Heating Effect,Joule heating: I²Rt.
+228,inter,10,phy,english,Electric power is given by,VI,IR,V/R,QV,1,Power,P = VI.
+229,inter,10,phy,english,Odd one out:,Ampere,Ohm,Volt,Pascal,4,Units,Pascal is pressure unit.
+230,inter,10,phy,english,Household circuits use,Series connection,Parallel connection,Both,None,2,Electricity,Devices connected parallel.
+231,inter,10,phy,english,Sound cannot travel through,Solids,Liquids,Gases,Vacuum,4,Sound,Medium required.
+232,inter,10,phy,english,Which has maximum speed of sound?,Air,Water,Iron,Vacuum,3,Sound,Sound fastest in solids.
+233,inter,10,phy,english,Echo can be heard only if distance is at least,5 m,10 m,17 m,50 m,3,Echo,Speed of sound × 0.1 s = 17 m.
+234,inter,10,phy,english,Assertion: Sound is a mechanical wave. Reason: It requires a medium.,"Both true, R explains","Both true, R doesn’t explain","A true, R false","A false, R true",1,Sound,Sound cannot travel in vacuum.
+235,inter,10,phy,english,Match: (a) Pitch (b) Loudness (c) Quality (d) Frequency → (i) Timbre (ii) Amplitude (iii) Frequency (iv) Ear sensation,"a-iii, b-ii, c-i, d-iv","a-ii, b-i, c-iii, d-iv","a-i, b-iv, c-ii, d-iii","a-iv, b-iii, c-ii, d-i",1,Sound Characteristics,"Pitch ~ frequency, loudness ~ amplitude."
+236,inter,10,phy,english,Odd one out:,Radioactivity,Alpha rays,Beta rays,Echo,4,Nuclear Physics,Echo belongs to sound.
+237,inter,10,phy,english,Radioactivity was discovered by,Rutherford,Becquerel,Curie,Einstein,2,Nuclear Physics,Henri Becquerel discovered radioactivity.
+238,inter,10,phy,english,Which particle has highest penetration?,Alpha,Beta,Gamma,Neutron,3,Nuclear Radiation,Gamma penetrates deeply.
+239,inter,10,phy,english,Which particle has maximum mass?,Alpha,Beta,Gamma,Neutrino,1,Nuclear Radiation,Alpha is helium nucleus.
+240,inter,10,phy,english,Assertion: Radioactive decay is spontaneous. Reason: It does not depend on temperature or pressure.,"Both true, R explains","Both true, R doesn’t explain","A true, R false","A false, R true",1,Radioactivity,Decay independent of external factors.
+241,inter,10,phy,english,Nuclear fission is splitting of,Light nucleus,Heavy nucleus,Proton,Neutron,2,Nuclear Physics,Heavy nuclei split.
+242,inter,10,phy,english,Which of these is used in nuclear fusion?,Uranium,Plutonium,Deuterium,Thorium,3,Fusion,Fusion uses isotopes of hydrogen.
+243,inter,10,phy,english,Match: (a) X-rays (b) Gamma rays (c) Alpha rays (d) Beta rays → (i) +2 charge,"a-light, b-high penetration, c-+2, d-electron","a-electron, b-+2, c-light, d-photon","a-photon, b-electron, c-light, d+2","a-+2, b-light, c-electron, d-photon",1,Radiation,"Alpha is +2, beta electron, gamma photon."
+244,inter,10,phy,english,Which radiation has lowest ionizing power?,Alpha,Beta,Gamma,X-ray,3,Radiation,"Gamma has high penetration, low ionization."
+245,inter,10,phy,english,Odd one out:,Fission,Fusion,Radioactivity,Reflection,4,Nuclear Physics,Reflection is optics.
+246,inter,10,phy,english,The SI unit of radioactivity is,Curie,Becquerel,Rutherford,Tesla,2,Radioactivity,1 Bq = 1 disintegration/sec.
+247,inter,10,phy,english,Which of these is not a nuclear application?,Cancer treatment,Power generation,Echo testing,Food preservation,3,Nuclear Applications,Echo belongs to sound.
+248,inter,10,phy,english,Half-life means,Time for complete decay,Time for half atoms to decay,Time for activity to vanish,Time = n × log2,2,Half-life,Half of nuclei decay.
+249,inter,10,phy,english,Assertion: Energy released in nuclear reaction is due to mass defect. Reason: E = mc².,"Both true, R explains","Both true, R doesn’t explain","A true, R false","A false, R true",1,Nuclear Physics,Mass converts to energy.
+250,inter,10,phy,english,Which force keeps planets in orbit?,Magnetic force,Nuclear force,Gravitational force,Electric force,3,Gravitation,Gravity provides centripetal force.
+251,advan,11,phy,english,Which of the following is a fundamental quantity?,Velocity,Force,Length,Work,3,Physical Quantities,Fundamental quantities are independent.
+252,advan,11,phy,english,Assertion (A): A light year is a unit of time. Reason (R): Light travels with constant velocity.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",4,Units & Measurements,"Light year measures distance, not time."
+253,advan,11,phy,english,Match the following: (a) Parsec (b) Angstrom (c) Fermi (d) Astronomical Unit with (i) 10^-15 m (ii) 3.26 light years (iii) 1.496 × 10^11 m (iv) 10^-10 m,"a-ii, b-iv, c-i, d-iii","a-iii, b-ii, c-iv, d-i","a-ii, b-i, c-iii, d-iv","a-iv, b-iii, c-ii, d-i",1,Units,Match based on magnitude.
+254,advan,11,phy,english,Which one is a scalar quantity?,Displacement,Work,Momentum,Velocity,2,Scalars & Vectors,Scalar has magnitude only.
+255,advan,11,phy,english,Which of the following graphs represents uniform acceleration?,Straight line through origin (v vs t),Curve in v vs t,Horizontal line in v vs t,Zig-zag line,1,Kinematics,Uniform acceleration → v vs t straight line.
+256,advan,11,phy,english,"If a body is moving with constant velocity, its acceleration is",Constant,Zero,Increasing,Decreasing,2,Kinematics,No change in velocity means zero acceleration.
+257,advan,11,phy,english,The slope of a displacement-time graph gives,Velocity,Acceleration,Distance,Momentum,1,Graphical Kinematics,Derivative of displacement w.r.t time is velocity.
+258,advan,11,phy,english,Odd one out:,Distance,Speed,Velocity,Displacement,2,Scalars & Vectors,"Speed is scalar, others are vector or displacement."
+259,advan,11,phy,english,"Assertion (A): Inertia depends on mass. Reason (R): Greater the mass, greater the inertia.","A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Laws of Motion,Inertia is proportional to mass.
+260,advan,11,phy,english,Newton’s third law states,F = ma,Action = Reaction,F = -kx,dp/dt = F,2,Laws of Motion,Equal and opposite reaction law.
+261,advan,11,phy,english,A passenger moves forward when a bus suddenly stops. Which law explains this?,First law,Second law,Third law,Gravitation law,1,Laws of Motion,Inertia of motion resists stop.
+262,advan,11,phy,english,Match the following: (a) Friction (b) Centripetal force (c) Normal reaction (d) Tension with (i) Road curve (ii) Opposes motion (iii) Rope pulling (iv) Vertical support,"a-ii, b-i, c-iv, d-iii","a-i, b-iii, c-ii, d-iv","a-iv, b-ii, c-iii, d-i","a-ii, b-iv, c-i, d-iii",1,Forces,Map by usage.
+263,advan,11,phy,english,A body continues in its state of rest unless acted upon by external force. This is,Law of inertia,Law of gravitation,Law of momentum,Hooke’s law,1,Newton’s Laws,Newton’s first law.
+264,advan,11,phy,english,Work done by force is zero when,Force and displacement are parallel,Force and displacement are perpendicular,Force acts in same direction,Displacement is along force,2,Work,Cos 90° = 0.
+265,advan,11,phy,english,Unit of power is,Joule,Newton,Watt,Erg,3,"Work, Power",Power = Work/time.
+266,advan,11,phy,english,Assertion (A): Potential energy depends on height. Reason (R): PE = mgh.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Energy,Height increases → PE increases.
+267,advan,11,phy,english,Which is conserved in elastic collision?,Kinetic energy only,Momentum only,Both momentum & KE,Neither,3,Collisions,Elastic → both conserved.
+268,advan,11,phy,english,Centre of mass of a uniform rod lies at,One end,Midpoint,Quarter length,None,2,System of Particles,For uniform body → midpoint.
+269,advan,11,phy,english,Odd one out:,Torque,Force × distance,Angular momentum,Linear velocity,4,Rotational Motion,Others are rotational.
+270,advan,11,phy,english,Assertion (A): Torque is vector. Reason (R): Torque = r × F.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Rotational Dynamics,Cross product gives vector.
+271,advan,11,phy,english,Kepler’s first law states,Planets move in circle,Planets move in ellipse,Planets move randomly,Planets move in straight line,2,Gravitation,Sun at one focus of ellipse.
+272,advan,11,phy,english,Value of g decreases with,Height,Depth,Latitude,All the above,4,Gravitation,g varies in all cases.
+273,advan,11,phy,english,Escape velocity of Earth is nearly,7 km/s,11.2 km/s,5 km/s,20 km/s,2,Gravitation,Formula √(2gR).
+274,advan,11,phy,english,Match the following: (a) Satellite in orbit (b) g at poles (c) g at equator (d) Free fall with (i) Reduced g (ii) Weightlessness (iii) Maximum g (iv) Acceleration due to gravity,"a-ii, b-iii, c-i, d-iv","a-iv, b-ii, c-iii, d-i","a-i, b-iii, c-iv, d-ii","a-iii, b-i, c-ii, d-iv",1,Gravitation,Pair them correctly.
+275,advan,11,phy,english,Surface tension is due to,Adhesive force,Cohesive force,Friction,Pressure,2,Properties of Matter,Molecules attract inside.
+276,advan,11,phy,english,Which liquid rises highest in capillary tube?,Alcohol,Water,Mercury,Kerosene,2,Capillarity,Water wets glass strongly.
+277,advan,11,phy,english,Assertion (A): Viscosity decreases with increase in temperature for liquids. Reason (R): Intermolecular forces reduce with heat.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Viscosity,Heat weakens bonds.
+278,advan,11,phy,english,Young’s modulus measures,Stress/strain,Strain/stress,Force/area,Pressure,1,Elasticity,Y = Stress/Strain.
+279,advan,11,phy,english,Odd one out:,Elastic limit,Hooke’s law,Pascal’s law,Stress-strain curve,3,Elasticity,Pascal is fluid pressure law.
+280,advan,11,phy,english,Heat is a form of,Energy,Force,Work,Pressure,1,Thermodynamics,Heat is energy transfer.
+281,advan,11,phy,english,Unit of specific heat is,J/kgK,J/kg,J/mol,J/m²,1,Heat Capacity,Formula Q = mcΔT.
+282,advan,11,phy,english,Assertion (A): Entropy of universe always increases. Reason (R): 2nd law of thermodynamics.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Thermodynamics,Natural processes irreversible.
+283,advan,11,phy,english,Match the following: (a) Isothermal (b) Adiabatic (c) Isochoric (d) Isobaric with (i) ΔU=0 (ii) Q=0 (iii) ΔV=0 (iv) ΔP=0,"a-i, b-ii, c-iii, d-iv","a-ii, b-i, c-iv, d-iii","a-i, b-iii, c-ii, d-iv","a-iv, b-iii, c-i, d-ii",1,Thermodynamic Processes,Identify condition.
+284,advan,11,phy,english,Pressure of ideal gas depends on,Volume,Temperature,Mass,Shape of container,2,Kinetic Theory,P ∝ T.
+285,advan,11,phy,english,RMS speed of gas molecules depends on,Mass,Volume,Temperature,Pressure,3,Kinetic Theory,Higher T → faster molecules.
+286,advan,11,phy,english,Assertion (A): Pressure of gas is due to collisions. Reason (R): Molecules strike container walls.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Kinetic Theory,Pressure arises from collisions.
+287,advan,11,phy,english,Degree of freedom of monoatomic gas is,1,2,3,5,3,Kinetic Theory,f = 3 for translational motion.
+288,advan,11,phy,english,Odd one out:,Boyle’s law,Charles’ law,Avogadro’s law,Ohm’s law,4,Gas Laws,Ohm’s law is electrical.
+289,advan,11,phy,english,Time period of simple pendulum depends on,Length,Mass,Amplitude,Density,1,Oscillations,T = 2π√(L/g).
+290,advan,11,phy,english,Which oscillation is un-damped?,Free,Damped,Forced,Resonance,1,Oscillations,Free motion without friction.
+291,advan,11,phy,english,Assertion (A): Resonance occurs when natural frequency = driving frequency. Reason (R): Maximum amplitude obtained.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Oscillations,Resonance amplifies oscillation.
+292,advan,11,phy,english,Which is SHM?,Uniform circular motion,Random motion,Projectile,Frictional sliding,1,SHM,Projection of UCM gives SHM.
+293,advan,11,phy,english,Match the following: (a) Amplitude (b) Frequency (c) Period (d) Wavelength with (i) Time for one cycle (ii) Height of wave,"a-ii, b-i, c-iii, d-iv","a-ii, b-iii, c-i, d-iv","a-iii, b-ii, c-i, d-iv","a-ii, b-iv, c-iii, d-i",2,Waves,Relate terms.
+294,advan,11,phy,english,Speed of wave on stretched string depends on,Mass of string,Tension & mass/unit length,Length of string,Frequency,2,Waves,v = √(T/μ).
+295,advan,11,phy,english,Sound waves are,Longitudinal,Transverse,Both,Neither,1,Waves,Compression-rarefaction = longitudinal.
+296,advan,11,phy,english,Assertion (A): Light is transverse wave. Reason (R): Electric & magnetic fields vibrate perpendicular.,"A true, R true, R explains A","A true, R true, R not explains A","A true, R false","A false, R true",1,Waves,EM waves are transverse.
+297,advan,11,phy,english,In which medium sound travels fastest?,Air,Water,Steel,Vacuum,3,Sound Waves,Speed ∝ rigidity/density.
+298,advan,11,phy,english,Odd one out:,Diffraction,Reflection,Refraction,Conduction,4,Wave Phenomena,Conduction is heat transfer.
+299,advan,11,phy,english,Which property is same for all electromagnetic waves?,Velocity,Wavelength,Frequency,Amplitude,1,EM Waves,All travel at c in vacuum.
+300,advan,11,phy,english,Doppler effect refers to change in,Frequency,Velocity,Wavelength,Amplitude,1,Waves,Apparent frequency shift.
+301,advan,12,phy,english,Which of the following is a good conductor of electricity?,Rubber,Copper,Wood,Plastic,2,Current Electricity,Metals allow free movement of electrons.
+302,advan,12,phy,english,Assertion (A): A magnet attracts iron. Reason (R): Iron is a magnetic material.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Magnetism,Magnetic materials like iron are attracted by magnets.
+303,advan,12,phy,english,Which of the following is NOT an insulator?,Glass,Paper,Silver,Rubber,3,Current Electricity,Silver conducts electricity well.
+304,advan,12,phy,english,"Match the following: (a) North Pole, (b) South Pole, (c) Compass needle, (d) Iron nail → (i) Points North, (ii) Attracts South, (iii) Attracts North, (iv) Becomes magnet","a-ii, b-iii, c-i, d-iv","a-iii, b-ii, c-iv, d-i","a-i, b-ii, c-iii, d-iv","a-iv, b-i, c-ii, d-iii",1,Magnetism,Match poles and materials correctly.
+305,advan,12,phy,english,Which quantity is measured in volts?,Current,Resistance,Potential difference,Power,3,Electrostatics,Volts measure potential difference.
+306,advan,12,phy,english,Which of the following is the SI unit of resistance?,Ohm,Ampere,Volt,Watt,1,Current Electricity,Resistance is measured in Ohms (Ω).
+307,advan,12,phy,english,Odd one out:,LED,Resistor,Battery,Magnet,4,Semiconductor Devices,Magnet is not an electronic component.
+308,advan,12,phy,english,Which law states that current is directly proportional to voltage?,Newton’s law,Ohm’s law,Faraday’s law,Lenz’s law,2,Current Electricity,V = IR defines this law.
+309,advan,12,phy,english,Which instrument is used to measure electric current?,Voltmeter,Ammeter,Galvanometer,Wattmeter,2,Current Electricity,Current is measured using Ammeter.
+310,advan,12,phy,english,"How many of the following are insulators? Wood, Plastic, Glass, Iron",2,3,4,1,2,Current Electricity,"Iron is conductor, others are insulators."
+311,advan,12,phy,english,Which device works on the principle of electromagnetic induction?,Electric bulb,Heater,Generator,Battery,3,Electromagnetic Induction,Generators induce current using magnets.
+312,advan,12,phy,english,Assertion: A current-carrying wire produces a magnetic field. Reason: Moving charges create a magnetic effect.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Magnetic Effects of Current,Current in wire creates magnetic field.
+313,advan,12,phy,english,"Match: (a) Convex lens, (b) Concave lens, (c) Microscope, (d) Telescope → (i) Diverging, (ii) Converging, (iii) Distant objects, (iv) Small objects","a-ii, b-i, c-iv, d-iii","a-i, b-ii, c-iii, d-iv","a-iv, b-i, c-ii, d-iii","a-iii, b-iv, c-ii, d-i",1,Optics,Lenses and instruments must match correctly.
+314,advan,12,phy,english,Which of the following is NOT a magnetic material?,Iron,Nickel,Copper,Cobalt,3,Magnetism,Copper is non-magnetic.
+315,advan,12,phy,english,Unit of electric power is:,Joule,Watt,Volt,Coulomb,2,Current Electricity,"Power = VI, measured in Watts."
+316,advan,12,phy,english,Which is used in photoelectric effect?,Light,Heat,Sound,Magnet,1,Dual Nature,Light releases electrons.
+317,advan,12,phy,english,Assertion: A compass points North. Reason: Earth itself behaves like a huge magnet.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Magnetism,Earth has magnetic poles.
+318,advan,12,phy,english,Which of the following is NOT electromagnetic wave?,Light,Sound,Radio wave,X-ray,2,EM Waves,"Sound needs medium, not EM."
+319,advan,12,phy,english,Odd one out:,Generator,Transformer,Battery,Alternator,3,Electromagnetism,Battery does not work on induction.
+320,advan,12,phy,english,SI unit of electric charge is:,Newton,Coulomb,Ampere,Volt,2,Electrostatics,Charge is measured in Coulomb.
+321,advan,12,phy,english,Which of the following is NOT a renewable energy source?,Solar,Wind,Coal,Water,3,Applications,Coal is non-renewable.
+322,advan,12,phy,english,"Match: (a) LED, (b) Resistor, (c) Diode, (d) Transistor → (i) Allows one way current, (ii) Emits light, (iii) Controls flow, (iv) Amplifier","a-ii, b-iii, c-i, d-iv","a-i, b-ii, c-iii, d-iv","a-iii, b-i, c-ii, d-iv","a-iv, b-ii, c-iii, d-i",1,Semiconductor Devices,"LED emits light, Diode allows one way."
+323,advan,12,phy,english,Assertion: Convex lens can form real images. Reason: Convex lens converges light rays.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Optics,Converging lens forms real images.
+324,advan,12,phy,english,Which particle has negative charge?,Proton,Electron,Neutron,Photon,2,Electrostatics,Electrons are negatively charged.
+325,advan,12,phy,english,Which is measured in Ohm-metre?,Current,Resistivity,Voltage,Power,2,Current Electricity,Resistivity unit is Ωm.
+326,advan,12,phy,english,Odd one out:,Lens,Mirror,Prism,Magnet,4,Optics,Magnet not optical.
+327,advan,12,phy,english,Which phenomenon makes sky blue?,Reflection,Refraction,Scattering,Absorption,3,Optics,Blue light scatters most.
+328,advan,12,phy,english,Assertion: Lightning is an electric discharge. Reason: It occurs due to friction between clouds.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Electrostatics,Charge builds in clouds and discharges.
+329,advan,12,phy,english,"Match: (a) Ohm, (b) Faraday, (c) Watt, (d) Coulomb → (i) Charge, (ii) Power, (iii) Resistance, (iv) Induction","a-iii, b-iv, c-ii, d-i","a-iv, b-iii, c-i, d-ii","a-i, b-ii, c-iii, d-iv","a-ii, b-i, c-iv, d-iii",1,Scientists,Match units with scientists.
+330,advan,12,phy,english,SI unit of frequency:,Hertz,Watt,Joule,Tesla,1,Waves,Frequency is measured in Hz.
+331,advan,12,phy,english,Odd one out:,Infrared,Ultraviolet,X-rays,Sound,4,EM Waves,Sound is mechanical.
+332,advan,12,phy,english,Which device stores charge?,Resistor,Capacitor,Inductor,Transformer,2,Electrostatics,Capacitors store charges.
+333,advan,12,phy,english,Assertion: An electric bulb produces light. Reason: Current heats filament to glow.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Current Electricity,Bulb glows due to heating.
+334,advan,12,phy,english,"Match: (a) Newton, (b) Ampere, (c) Volt, (d) Ohm → (i) Force, (ii) Potential difference, (iii) Resistance, (iv) Current","a-i, b-iv, c-ii, d-iii","a-ii, b-iii, c-iv, d-i","a-iii, b-i, c-ii, d-iv","a-iv, b-ii, c-i, d-iii",1,Units,Correct SI units.
+335,advan,12,phy,english,Which law explains electromagnetic induction?,Lenz’s law,Faraday’s law,Coulomb’s law,Ohm’s law,2,EM Induction,Faraday discovered induction.
+336,advan,12,phy,english,Which has highest speed?,Sound,Water wave,Light,Air wave,3,Waves,Light travels fastest.
+337,advan,12,phy,english,Odd one out:,DC,AC,Generator,Battery,3,Electricity,Generator produces AC.
+338,advan,12,phy,english,Assertion: Mirrors form virtual images. Reason: They reflect light.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",2,Optics,Reflection doesn’t explain virtuality.
+339,advan,12,phy,english,Which instrument splits light into spectrum?,Lens,Prism,Mirror,Telescope,2,Optics,Prism disperses light.
+340,advan,12,phy,english,"Match: (a) Electron, (b) Proton, (c) Neutron, (d) Photon → (i) Light particle, (ii) Neutral, (iii) Negative, (iv) Positive","a-iii, b-iv, c-ii, d-i","a-iv, b-i, c-ii, d-iii","a-i, b-iii, c-iv, d-ii","a-ii, b-iv, c-i, d-iii",1,Atomic Structure,Subatomic particles.
+341,advan,12,phy,english,SI unit of magnetic field strength:,Weber,Tesla,Gauss,Henry,2,Magnetism,Magnetic flux density in Tesla.
+342,advan,12,phy,english,Odd one out:,Motor,Fan,Generator,Torch,4,Electricity,Torch is not motor-based.
+343,advan,12,phy,english,Which scientist proposed matter waves?,Einstein,Newton,de Broglie,Bohr,3,Dual Nature,de Broglie proposed wave nature of matter.
+344,advan,12,phy,english,Assertion: Semiconductors conduct better than insulators. Reason: They have fewer free electrons.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Semiconductors,Semiconductors are midway.
+345,advan,12,phy,english,Which wave needs medium?,Light,Radio,Sound,X-ray,3,Waves,Sound needs medium.
+346,advan,12,phy,english,"Match: (a) Microscope, (b) Telescope, (c) Spectrometer, (d) Camera → (i) Records image, (ii) Distant objects, (iii) Small objects, (iv) Spectrum","a-iii, b-ii, c-iv, d-i","a-ii, b-iv, c-i, d-iii","a-i, b-iii, c-ii, d-iv","a-iv, b-iii, c-ii, d-i",1,Instruments,Optical instruments usage.
+347,advan,12,phy,english,Unit of electric energy:,Joule,Watt,Volt,Ampere,1,Electricity,Energy = Joule.
+348,advan,12,phy,english,Odd one out:,Convex lens,Concave lens,Plane mirror,Magnet,4,Optics,Magnet not optical device.
+349,advan,12,phy,english,Which law: “Direction of induced current opposes the cause producing it”?,Coulomb’s law,Ohm’s law,Lenz’s law,Faraday’s law,3,EM Induction,Opposition law.
+350,advan,12,phy,english,Assertion: Solar cells produce electricity. Reason: They convert sunlight into electrical energy.,"A true, R true, R explains A","A true, R true, R does not explain A","A true, R false","A false, R true",1,Applications,Solar cells use photovoltaic effect.

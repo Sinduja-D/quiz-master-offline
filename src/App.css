@@ -240,7 +240,7 @@ body {
   flex-wrap: wrap;
 }
 
-.level-btn {
+/*.level-btn {
   color: white;
   border: none;
   padding: 20px 30px;
@@ -258,7 +258,7 @@ body {
   gap: 10px;
   position: relative;
   overflow: hidden;
-}
+}*/
 
 .level-btn:before {
   content: '';
@@ -281,21 +281,59 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.level-icon {
+/*.level-icon {
   font-size: 2.5rem;
+}*/
+
+/*.level-name {
+  position: relative;
+  z-index: 1;
+}*/
+
+/*.level-grade {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-weight: normal;
+}*/
+
+.level-btn {
+  color: white;
+  border: none;
+  padding: 25px 35px; /* Increased padding */
+  font-size: 1.5rem; /* Increased font size */
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  min-width: 250px; /* Increased min-width */
+  max-width: 300px; /* Added max-width */
+  height: 180px; /* Added fixed height */
+  font-family: 'Segoe UI', 'Noto Sans Tamil', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  gap: 15px; /* Increased gap */
+  position: relative;
+  overflow: hidden;
+}
+
+.level-icon {
+  font-size: 3rem; /* Increased icon size */
 }
 
 .level-name {
+  font-size: 1.6rem; /* Increased name size */
   position: relative;
   z-index: 1;
 }
 
 .level-grade {
-  font-size: 0.9rem;
-  opacity: 0.8;
+  font-size: 1.1rem; /* Increased grade size */
+  opacity: 0.9;
   font-weight: normal;
 }
-
 /* Features */
 .features {
   display: flex;
