@@ -49,7 +49,6 @@ const Quiz = ({ language, level, numberOfQuestions, onQuizComplete, onBack }) =>
 
   // Select questions
   useEffect(() => {
-    fetch("http://localhost:5173/")
     const questionSet = getQuestionSet();
     const shuffled = [...questionSet].sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, numberOfQuestions);
