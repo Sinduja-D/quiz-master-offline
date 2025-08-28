@@ -45,7 +45,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
           {language === "English" ? "More Features" : "கூடுதல் அம்சங்கள்"}
         </h2>
         <div className="feature-buttons">
-          <button
+          {/*<button
             onClick={() => setActivePage("achievements")}
             className="feature-btn"
           >
@@ -56,7 +56,14 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
             className="feature-btn"
           >
             📊 {language === "English" ? "Leaderboard" : "முன்னணி பட்டியல்"}
-          </button>
+          </button>*/}
+          <button
+  onClick={() => setActivePage("riddles")}
+  className="feature-btn"
+>
+  🤔 {language === "English" ? "Riddles" : "புதிர்கள்"}
+</button>
+
           <button
             onClick={() => setActivePage("funFacts")}
             className="feature-btn"

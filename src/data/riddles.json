@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "language": "English",
+    "riddle": "I give life to animals and plants by helping them breathe. What am I?",
+    "answer": "Oxygen",
+    "explanation": "Oxygen is essential for cellular respiration in most living organisms."
+  },
+  {
+    "id": 2,
+    "language": "English",
+    "riddle": "I am the force that keeps your feet on the ground. What am I?",
+    "answer": "Gravity",
+    "explanation": "Gravity is the attractive force between masses; it pulls objects toward Earth."
+  },
+  {
+    "id": 3,
+    "language": "English",
+    "riddle": "I am the brightest object in our sky and the center of our solar system. What am I?",
+    "answer": "The Sun",
+    "explanation": "The Sun is a star that provides light and energy to Earth."
+  },
+  {
+    "id": 4,
+    "language": "English",
+    "riddle": "I am the smallest particle of an element that retains its chemical properties. What am I?",
+    "answer": "Atom",
+    "explanation": "Atoms are the basic building blocks of matter."
+  },
+  {
+    "id": 5,
+    "language": "English",
+    "riddle": "I am the process plants use to turn sunlight into food. What am I?",
+    "answer": "Photosynthesis",
+    "explanation": "Photosynthesis converts light energy into chemical energy (glucose) and releases oxygen."
+  },
+  {
+    "id": 6,
+    "language": "English",
+    "riddle": "I am liquid water turned into gas when heated. What am I?",
+    "answer": "Water vapor (steam)",
+    "explanation": "When water is heated, it evaporates into water vapor."
+  },
+  {
+    "id": 7,
+    "language": "English",
+    "riddle": "I measure temperature and can be in Celsius or Fahrenheit. What am I?",
+    "answer": "Thermometer",
+    "explanation": "A thermometer measures how hot or cold something is."
+  },
+  {
+    "id": 8,
+    "language": "English",
+    "riddle": "I carry oxygen in your blood to the rest of your body. What am I?",
+    "answer": "Red blood cells",
+    "explanation": "Red blood cells contain hemoglobin which binds and transports oxygen."
+  },
+  {
+    "id": 9,
+    "language": "English",
+    "riddle": "I am the gas that makes up about 78% of Earth's atmosphere. What am I?",
+    "answer": "Nitrogen",
+    "explanation": "Nitrogen is the most abundant gas in Earth's atmosphere."
+  },
+  {
+    "id": 10,
+    "language": "English",
+    "riddle": "I am the material that semiconductors are commonly made from and used in electronics. What am I?",
+    "answer": "Silicon",
+    "explanation": "Silicon is used to make integrated circuits and computer chips."
+  },
+  {
+    "id": 11,
+    "language": "English",
+    "riddle": "I am the natural satellite that orbits Earth. What am I?",
+    "answer": "The Moon",
+    "explanation": "The Moon orbits Earth and affects tides."
+  },
+  {
+    "id": 12,
+    "language": "English",
+    "riddle": "I am a huge ball of gas made mostly of hydrogen and helium that shines by nuclear fusion. What am I?",
+    "answer": "A star",
+    "explanation": "Stars produce energy by fusing hydrogen into helium."
+  },
+  {
+    "id": 13,
+    "language": "English",
+    "riddle": "I am the change of a substance from liquid to solid when temperature drops. What am I?",
+    "answer": "Freezing",
+    "explanation": "Freezing is the phase change from liquid to solid."
+  },
+  {
+    "id": 14,
+    "language": "English",
+    "riddle": "I am the organ that filters waste from blood and produces urine. What am I?",
+    "answer": "Kidney",
+    "explanation": "Kidneys remove waste and balance fluids and electrolytes."
+  },
+  {
+    "id": 15,
+    "language": "English",
+    "riddle": "I am a chemical bond formed by sharing electron pairs between atoms. What am I?",
+    "answer": "Covalent bond",
+    "explanation": "Covalent bonds involve sharing electrons between atoms."
+  },
+  {
+    "id": 16,
+    "language": "English",
+    "riddle": "I am the process where molecules move from an area of high concentration to low concentration. What am I?",
+    "answer": "Diffusion",
+    "explanation": "Diffusion is the passive movement of particles down their concentration gradient."
+  },
+  {
+    "id": 17,
+    "language": "English",
+    "riddle": "I am the measure of how much matter an object contains. What am I?",
+    "answer": "Mass",
+    "explanation": "Mass quantifies the amount of matter in an object and is measured in kilograms."
+  },
+  {
+    "id": 18,
+    "language": "English",
+    "riddle": "I am the basic unit of heredity that carries information from parents to offspring. What am I?",
+    "answer": "Gene",
+    "explanation": "Genes are segments of DNA that code for proteins or traits."
+  },
+  {
+    "id": 19,
+    "language": "English",
+    "riddle": "I am the bending of light as it passes from one medium to another. What am I?",
+    "answer": "Refraction",
+    "explanation": "Refraction occurs because light changes speed when entering different media."
+  },
+  {
+    "id": 20,
+    "language": "English",
+    "riddle": "I am the energy stored in an object due to its position above the ground. What am I?",
+    "answer": "Potential energy (gravitational)",
+    "explanation": "Gravitational potential energy depends on an object's mass, height, and gravity."
+  },
+  {
+    "id": 21,
+    "language": "English",
+    "riddle": "I am the largest planet in our solar system. What am I?",
+    "answer": "Jupiter",
+    "explanation": "Jupiter is the largest planet and has a strong magnetic field and many moons."
+  },
+  {
+    "id": 22,
+    "language": "English",
+    "riddle": "I am the process by which liquid water soaks into the soil. What am I?",
+    "answer": "Infiltration",
+    "explanation": "Infiltration is when water enters and moves through the soil."
+  },
+  {
+    "id": 23,
+    "language": "English",
+    "riddle": "I am a sudden shaking of the Earth's surface caused by the release of energy. What am I?",
+    "answer": "Earthquake",
+    "explanation": "Earthquakes result from sudden movement along faults."
+  },
+  {
+    "id": 24,
+    "language": "English",
+    "riddle": "I am the molecule that stores genetic information in most organisms. What am I?",
+    "answer": "DNA",
+    "explanation": "DNA (deoxyribonucleic acid) carries genetic instructions."
+  },
+  {
+    "id": 25,
+    "language": "English",
+    "riddle": "I am the scale used to measure the magnitude of earthquakes. What am I?",
+    "answer": "Richter scale (or moment magnitude)",
+    "explanation": "Magnitude scales quantify earthquake strength."
+  },
+  {
+    "id": 26,
+    "language": "English",
+    "riddle": "I am the process that breaks down rocks into smaller pieces by wind, water, or ice. What am I?",
+    "answer": "Weathering",
+    "explanation": "Weathering is the physical and chemical breakdown of rocks."
+  },
+  {
+    "id": 27,
+    "language": "English",
+    "riddle": "I am the smallest blood vessel where exchange of gases occurs. What am I?",
+    "answer": "Capillary",
+    "explanation": "Capillaries connect arteries and veins and allow exchange with tissues."
+  },
+  {
+    "id": 28,
+    "language": "English",
+    "riddle": "I am an electrically charged atom or molecule. What am I?",
+    "answer": "Ion",
+    "explanation": "Ions form when atoms gain or lose electrons."
+  },
+  {
+    "id": 29,
+    "language": "English",
+    "riddle": "I am the unit of electrical resistance. What am I?",
+    "answer": "Ohm",
+    "explanation": "Ohm is the SI unit of resistance."
+  },
+  {
+    "id": 30,
+    "language": "English",
+    "riddle": "I am the scientist who proposed the three laws of motion. Who am I?",
+    "answer": "Isaac Newton",
+    "explanation": "Newton formulated the laws governing motion and gravity."
+  },
+  {
+    "id": 31,
+    "language": "English",
+    "riddle": "I am the distance light travels in one year. What am I?",
+    "answer": "Light-year",
+    "explanation": "A light-year is a unit of astronomical distance."
+  },
+  {
+    "id": 32,
+    "language": "English",
+    "riddle": "I am the process plants use to lose water vapor through leaves. What am I?",
+    "answer": "Transpiration",
+    "explanation": "Transpiration is water movement through plants and evaporation from leaves."
+  },
+  {
+    "id": 33,
+    "language": "English",
+    "riddle": "I am the chemical symbol 'H' in the periodic table. What am I?",
+    "answer": "Hydrogen",
+    "explanation": "Hydrogen is the lightest and most abundant element in the universe."
+  },
+  {
+    "id": 34,
+    "language": "English",
+    "riddle": "I am the scientific study of weather and atmosphere. What am I?",
+    "answer": "Meteorology",
+    "explanation": "Meteorology deals with weather forecasting and atmospheric processes."
+  },
+  {
+    "id": 35,
+    "language": "English",
+    "riddle": "I am the change of state from gas to liquid. What am I?",
+    "answer": "Condensation",
+    "explanation": "Condensation occurs when water vapor cools into liquid droplets."
+  },
+  {
+    "id": 36,
+    "language": "English",
+    "riddle": "I am the organelle where photosynthesis occurs in plants. What am I?",
+    "answer": "Chloroplast",
+    "explanation": "Chloroplasts contain chlorophyll and conduct photosynthesis."
+  },
+  {
+    "id": 37,
+    "language": "English",
+    "riddle": "I am the process in which living organisms produce offspring. What am I?",
+    "answer": "Reproduction",
+    "explanation": "Reproduction can be sexual or asexual and produces new organisms."
+  },
+  {
+    "id": 38,
+    "language": "English",
+    "riddle": "I am a measurement of the average kinetic energy of particles in a substance. What am I?",
+    "answer": "Temperature",
+    "explanation": "Temperature reflects how hot or cold a substance is."
+  },
+  {
+    "id": 39,
+    "language": "English",
+    "riddle": "I am a device that converts chemical energy into electrical energy in a controlled reaction. What am I?",
+    "answer": "Battery",
+    "explanation": "Batteries store and supply electrical energy via chemical reactions."
+  },
+  {
+    "id": 40,
+    "language": "English",
+    "riddle": "I am the event when the Moon passes between Earth and the Sun. What am I?",
+    "answer": "Solar eclipse",
+    "explanation": "During a solar eclipse the Moon blocks sunlight from reaching some parts of Earth."
+  },
+  {
+    "id": 41,
+    "language": "English",
+    "riddle": "I am the change in an object's motion divided by time. What am I?",
+    "answer": "Acceleration",
+    "explanation": "Acceleration is the rate of change of velocity over time."
+  },
+  {
+    "id": 42,
+    "language": "English",
+    "riddle": "I am the particle with a negative charge that orbits an atom's nucleus. What am I?",
+    "answer": "Electron",
+    "explanation": "Electrons are negatively charged subatomic particles."
+  },
+  {
+    "id": 43,
+    "language": "English",
+    "riddle": "I am the chemical that speeds up a reaction without being consumed. What am I?",
+    "answer": "Catalyst",
+    "explanation": "Catalysts lower activation energy and increase reaction rates."
+  },
+  {
+    "id": 44,
+    "language": "English",
+    "riddle": "I am the effect that makes stars appear to move across the sky due to Earth's rotation. What am I?",
+    "answer": "Diurnal motion",
+    "explanation": "The daily apparent motion of celestial objects is due to Earth's rotation."
+  },
+  {
+    "id": 45,
+    "language": "English",
+    "riddle": "I am the elastic band of tissue that returns to shape after being stretched, often in skin and blood vessels. What am I?",
+    "answer": "Elastin",
+    "explanation": "Elastin is a protein that gives elasticity to tissues."
+  },
+  {
+    "id": 46,
+    "language": "English",
+    "riddle": "I am the concentration of dissolved salts in water, often measured in parts per thousand. What am I?",
+    "answer": "Salinity",
+    "explanation": "Salinity measures how salty water is, influencing marine life and circulation."
+  },
+  {
+    "id": 47,
+    "language": "English",
+    "riddle": "I am the measure of how acidic or basic a solution is. What am I?",
+    "answer": "pH",
+    "explanation": "pH scale ranges from 0 (acidic) to 14 (basic), with 7 being neutral."
+  },
+  {
+    "id": 48,
+    "language": "English",
+    "riddle": "I am the gas produced by burning fossil fuels and contributing to climate change. What am I?",
+    "answer": "Carbon dioxide (CO2)",
+    "explanation": "CO2 is a greenhouse gas released by combustion of carbon-based fuels."
+  },
+  {
+    "id": 49,
+    "language": "English",
+    "riddle": "I am the instrument used to view tiny objects like cells and bacteria. What am I?",
+    "answer": "Microscope",
+    "explanation": "Microscopes magnify small objects for detailed observation."
+  },
+  {
+    "id": 50,
+    "language": "English",
+    "riddle": "I am the basic building block of proteins made of amino acids. What am I?",
+    "answer": "Amino acid",
+    "explanation": "Amino acids link together to form proteins."
+  },
+  {
+    "id": 51,
+    "language": "English",
+    "riddle": "I am the fastest aquatic animal known for bursts of speed. What am I?",
+    "answer": "Sailfish",
+    "explanation": "Sailfish can reach very high swimming speeds in bursts."
+  },
+  {
+    "id": 52,
+    "language": "English",
+    "riddle": "I am the layer of Earth composed mostly of liquid iron and nickel that generates the magnetic field. What am I?",
+    "answer": "Outer core",
+    "explanation": "Convection in the outer core produces Earth's magnetic field."
+  },
+  {
+    "id": 53,
+    "language": "English",
+    "riddle": "I am the process by which ice changes directly to vapor without becoming liquid. What am I?",
+    "answer": "Sublimation",
+    "explanation": "Sublimation occurs under certain temperature and pressure conditions."
+  },
+  {
+    "id": 54,
+    "language": "English",
+    "riddle": "I am the energy an object has because it is moving. What am I?",
+    "answer": "Kinetic energy",
+    "explanation": "Kinetic energy depends on mass and the square of velocity."
+  },
+  {
+    "id": 55,
+    "language": "English",
+    "riddle": "I am the large-scale movement of tectonic plates. What am I?",
+    "answer": "Plate tectonics",
+    "explanation": "Plate tectonics explains earthquakes, volcanoes, and mountain building."
+  },
+  {
+    "id": 56,
+    "language": "English",
+    "riddle": "I am the type of bond between metal atoms and 'sea of electrons' that allows conductivity. What am I?",
+    "answer": "Metallic bond",
+    "explanation": "Metallic bonding gives metals their conductive and malleable properties."
+  },
+  {
+    "id": 57,
+    "language": "English",
+    "riddle": "I am the measure of the amount of space an object occupies. What am I?",
+    "answer": "Volume",
+    "explanation": "Volume is typically measured in liters or cubic meters."
+  },
+  {
+    "id": 58,
+    "language": "English",
+    "riddle": "I am the visible spectrum of light split into colors by a prism. What am I?",
+    "answer": "Spectrum",
+    "explanation": "A spectrum shows different wavelengths of light as colors."
+  },
+  {
+    "id": 59,
+    "language": "English",
+    "riddle": "I am the process where a species disappears forever. What am I?",
+    "answer": "Extinction",
+    "explanation": "Extinction happens when the last individual of a species dies."
+  },
+  {
+    "id": 60,
+    "language": "English",
+    "riddle": "I am the phenomenon when warm, less dense air rises and cool air sinks creating circulation. What am I?",
+    "answer": "Convection",
+    "explanation": "Convection transfers heat through fluid movement."
+  },
+  {
+    "id": 61,
+    "language": "English",
+    "riddle": "I am the simplest carbohydrate and the main energy source for cells. What am I?",
+    "answer": "Glucose",
+    "explanation": "Glucose is used in cellular respiration to produce ATP."
+  },
+  {
+    "id": 62,
+    "language": "English",
+    "riddle": "I am the measure of electric charge flow per second. What am I?",
+    "answer": "Electric current (Ampere)",
+    "explanation": "Current is measured in amperes (A)."
+  },
+  {
+    "id": 63,
+    "language": "English",
+    "riddle": "I am the chemical element with atomic number 6 essential to organic life. What am I?",
+    "answer": "Carbon",
+    "explanation": "Carbon forms the backbone of organic molecules."
+  },
+  {
+    "id": 64,
+    "language": "English",
+    "riddle": "I am the boundary where two different air masses meet, often causing weather changes. What am I?",
+    "answer": "Front (weather front)",
+    "explanation": "Fronts bring storms and precipitation when air masses interact."
+  },
+  {
+    "id": 65,
+    "language": "English",
+    "riddle": "I am the green pigment in plants that absorbs light for photosynthesis. What am I?",
+    "answer": "Chlorophyll",
+    "explanation": "Chlorophyll captures light energy for photosynthesis."
+  },
+  {
+    "id": 66,
+    "language": "English",
+    "riddle": "I am the device that converts mechanical rotation into electrical energy. What am I?",
+    "answer": "Generator",
+    "explanation": "Generators produce electricity from mechanical motion."
+  },
+  {
+    "id": 67,
+    "language": "English",
+    "riddle": "I am the phenomenon where light spreads out after passing through a narrow opening. What am I?",
+    "answer": "Diffraction",
+    "explanation": "Diffraction occurs when waves encounter obstacles or slits."
+  },
+  {
+    "id": 68,
+    "language": "English",
+    "riddle": "I am the organ that controls the body's endocrine functions and produces insulin. What am I?",
+    "answer": "Pancreas",
+    "explanation": "The pancreas produces insulin and digestive enzymes."
+  },
+  {
+    "id": 69,
+    "language": "English",
+    "riddle": "I am the method of dating ancient organic remains using radioactive carbon. What am I?",
+    "answer": "Carbon-14 dating (radiocarbon dating)",
+    "explanation": "Radiocarbon dating estimates the age of formerly living things."
+  },
+  {
+    "id": 70,
+    "language": "English",
+    "riddle": "I am the minimum energy required to start a chemical reaction. What am I?",
+    "answer": "Activation energy",
+    "explanation": "Activation energy is lowered by catalysts."
+  },
+  {
+    "id": 71,
+    "language": "English",
+    "riddle": "I am the planet with a prominent ring system. What am I?",
+    "answer": "Saturn",
+    "explanation": "Saturn's rings are made of ice and rock particles."
+  },
+  {
+    "id": 72,
+    "language": "English",
+    "riddle": "I am the process of organisms becoming better suited to their environment over generations. What am I?",
+    "answer": "Evolution (natural selection)",
+    "explanation": "Natural selection drives evolution by favoring advantageous traits."
+  },
+  {
+    "id": 73,
+    "language": "English",
+    "riddle": "I am the unit used to measure frequency, cycles per second. What am I?",
+    "answer": "Hertz (Hz)",
+    "explanation": "Hertz measures how many cycles occur each second."
+  },
+  {
+    "id": 74,
+    "language": "English",
+    "riddle": "I am the boundary between Earth's crust and mantle where earthquakes can originate. What am I?",
+    "answer": "Fault (or plate boundary)",
+    "explanation": "Movement along faults causes earthquakes."
+  },
+  {
+    "id": 75,
+    "language": "English",
+    "riddle": "I am the acid found in the stomach that helps digest food. What am I?",
+    "answer": "Hydrochloric acid (HCl)",
+    "explanation": "Stomach acid aids in digestion and kills bacteria."
+  },
+  {
+    "id": 76,
+    "language": "English",
+    "riddle": "I am the phenomenon where waves increase in height as they approach shallow water. What am I?",
+    "answer": "Wave shoaling",
+    "explanation": "Shoaling occurs due to decreasing depth increasing wave height."
+  },
+  {
+    "id": 77,
+    "language": "English",
+    "riddle": "I am the change from a liquid to a gas at a specific boiling point. What am I?",
+    "answer": "Boiling",
+    "explanation": "Boiling is rapid vaporization occurring at the boiling temperature."
+  },
+  {
+    "id": 78,
+    "language": "English",
+    "riddle": "I am the immune system cells that 'eat' pathogens by engulfing them. What am I?",
+    "answer": "Phagocytes (e.g., macrophages)",
+    "explanation": "Phagocytes remove microbes and debris by phagocytosis."
+  },
+  {
+    "id": 79,
+    "language": "English",
+    "riddle": "I am the law stating that energy cannot be created or destroyed, only transformed. What am I?",
+    "answer": "Law of conservation of energy",
+    "explanation": "Energy is conserved in closed systems, changing forms but not vanishing."
+  },
+  {
+    "id": 80,
+    "language": "English",
+    "riddle": "I am the region of space where gravity is so strong that not even light can escape. What am I?",
+    "answer": "Black hole",
+    "explanation": "Black holes have an event horizon beyond which escape is impossible."
+  },
+  {
+    "id": 81,
+    "language": "English",
+    "riddle": "I am the study of heredity and variation in organisms. What am I?",
+    "answer": "Genetics",
+    "explanation": "Genetics investigates how traits pass from parents to offspring."
+  },
+  {
+    "id": 82,
+    "language": "English",
+    "riddle": "I am the process of breaking down food molecules to release energy in cells. What am I?",
+    "answer": "Cellular respiration",
+    "explanation": "Cellular respiration converts glucose into ATP using oxygen."
+  },
+  {
+    "id": 83,
+    "language": "English",
+    "riddle": "I am the phenomenon that causes seasons on Earth. What am I?",
+    "answer": "Tilt of Earth's axis",
+    "explanation": "Earth's axial tilt changes solar angle and daylight length through the year."
+  },
+  {
+    "id": 84,
+    "language": "English",
+    "riddle": "I am the natural process that cycles water between atmosphere, land, and oceans. What am I?",
+    "answer": "Water cycle (hydrologic cycle)",
+    "explanation": "The water cycle includes evaporation, condensation, precipitation, and runoff."
+  },
+  {
+    "id": 85,
+    "language": "English",
+    "riddle": "I am the term for substances that speed up biological reactions in the body. What am I?",
+    "answer": "Enzymes",
+    "explanation": "Enzymes are biological catalysts made of proteins."
+  },
+  {
+    "id": 86,
+    "language": "English",
+    "riddle": "I am the phenomenon where light changes direction when it bounces off a surface. What am I?",
+    "answer": "Reflection",
+    "explanation": "Reflection follows the law that angle of incidence equals angle of reflection."
+  },
+  {
+    "id": 87,
+    "language": "English",
+    "riddle": "I am the device used to measure atmospheric pressure. What am I?",
+    "answer": "Barometer",
+    "explanation": "Barometers help forecast weather by measuring pressure changes."
+  },
+  {
+    "id": 88,
+    "language": "English",
+    "riddle": "I am the particle found in an atomic nucleus with no charge. What am I?",
+    "answer": "Neutron",
+    "explanation": "Neutrons are electrically neutral subatomic particles in the nucleus."
+  },
+  {
+    "id": 89,
+    "language": "English",
+    "riddle": "I am the process by which water returns to Earth from clouds. What am I?",
+    "answer": "Precipitation",
+    "explanation": "Precipitation includes rain, snow, sleet, and hail."
+  },
+  {
+    "id": 90,
+    "language": "English",
+    "riddle": "I am the effect that causes apparent change in frequency of a wave for an observer moving relative to the source. What am I?",
+    "answer": "Doppler effect",
+    "explanation": "The Doppler effect shifts frequency for moving sources or observers."
+  },
+  {
+    "id": 91,
+    "language": "English",
+    "riddle": "I am the simplest unit of life capable of independent existence. What am I?",
+    "answer": "Cell",
+    "explanation": "Cells are the fundamental units of structure and function in living organisms."
+  },
+  {
+    "id": 92,
+    "language": "English",
+    "riddle": "I am the reaction where an acid and a base neutralize each other producing salt and water. What am I?",
+    "answer": "Neutralization",
+    "explanation": "Neutralization reactions form water and a salt from acid and base."
+  },
+  {
+    "id": 93,
+    "language": "English",
+    "riddle": "I am a network of neurons that processes and transmits information in animals. What am I?",
+    "answer": "Nervous system",
+    "explanation": "The nervous system controls behavior and coordinates body functions."
+  },
+  {
+    "id": 94,
+    "language": "English",
+    "riddle": "I am the freeze-dried solid form of carbon dioxide used for cooling. What am I?",
+    "answer": "Dry ice",
+    "explanation": "Dry ice sublimates directly from solid to gas at atmospheric pressure."
+  },
+  {
+    "id": 95,
+    "language": "English",
+    "riddle": "I am the phenomenon when two waves meet and the amplitudes add or subtract. What am I?",
+    "answer": "Interference",
+    "explanation": "Interference produces constructive or destructive patterns."
+  },
+  {
+    "id": 96,
+    "language": "English",
+    "riddle": "I am the term for organisms that make their own food from sunlight. What am I?",
+    "answer": "Autotrophs (producers)",
+    "explanation": "Autotrophs produce organic compounds via photosynthesis or chemosynthesis."
+  },
+  {
+    "id": 97,
+    "language": "English",
+    "riddle": "I am the process used to separate dissolved solids from liquids by boiling and condensing. What am I?",
+    "answer": "Distillation",
+    "explanation": "Distillation separates components based on differences in boiling point."
+  },
+  {
+    "id": 98,
+    "language": "English",
+    "riddle": "I am the phenomenon where electric charge builds up on an object's surface. What am I?",
+    "answer": "Static electricity",
+    "explanation": "Static charge accumulates due to friction or separation of charges."
+  },
+  {
+    "id": 99,
+    "language": "English",
+    "riddle": "I am the branch of science that studies fossils and ancient life. What am I?",
+    "answer": "Paleontology",
+    "explanation": "Paleontology examines fossils to understand past life and environments."
+  },
+  {
+    "id": 100,
+    "language": "English",
+    "riddle": "I am the measure of disorder or randomness in a system in thermodynamics. What am I?",
+    "answer": "Entropy",
+    "explanation": "Entropy quantifies the number of microstates and the degree of disorder."
+  }
+]

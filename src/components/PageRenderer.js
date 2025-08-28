@@ -10,6 +10,7 @@ import LeaderboardPage from "./LeaderboardPage.js";
 import FunFactsPage from "./FunFacts.js";
 import QuizSetup from "./QuizSetup.js";
 import Quiz from "./Quiz.js";
+import RiddleQuiz from  "./RiddleQuiz.js";
 import QuizResults from "./QuizResults.js";
 import { useQuizApp } from "../hooks/useQuizApp.js";
 
@@ -70,6 +71,8 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser })
       return <AchievementsPage language={language} user={user} />;
     case "leaderboard":
       return <LeaderboardPage language={language} />;
+    case "riddles":
+      return <RiddleQuiz language={language} />;
     case "funFacts":
       return <FunFactsPage language={language} />;
     case "quizsetup":
