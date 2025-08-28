@@ -238,7 +238,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         onClose={() => setShowStartPopup(false)} 
       />}
       
-      <div className="quiz-header">
+      < div className="quiz-header">
         <button className="back-button" onClick={handleBackClick}>
           ← {language === 'English' ? 'Back' : 'திரும்ப'}
         </button>
@@ -251,10 +251,20 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           {level === 'advance' && '🔴'} {/* Fixed: was 'advanced' */}
           {level.charAt(0).toUpperCase() + level.slice(1)}
         </div>
-        {currentQuestion.hint && !showFeedback && (
+        {/*{currentQuestion.hint && !showFeedback && (
           <button className="hint-button-header" onClick={() => setShowHint(!showHint)}>💡</button>
+        )}*/}
+          {!showFeedback && currentQuestion.hint && (
+          <button 
+            className="hint-button-header"
+            onClick={() => setShowHint(!showHint)}
+            title={language === 'English' ? 'Get a hint' : 'குறிப்பு பெறுங்கள்'}
+          >
+            💡
+          </button>
         )}
       </div>
+      
       
       <div className="question-container">
         <h2 className="question-text">{currentQuestion.question}</h2>
@@ -277,8 +287,21 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           })}
         </div>
         
-        {showFeedback && showConcept && <div className="concept-card">{currentQuestion.concept}</div>}
-        
+        {/*{showFeedback && showConcept && <div className="concept-card">{currentQuestion.concept}</div>}*/}
+        {showFeedback && currentQuestion.concept && (
+          <div className="concept-card">
+            <div className="concept-header" onClick={() => setShowConcept(!showConcept)}>
+              <span className="concept-icon">📚</span>
+              <span className="concept-title">{language === 'English' ? 'Related Concept' : 'தொடர்புடைய கருத்து'}</span>
+              <span className="concept-toggle">{showConcept ? '▲' : '▼'}</span>
+            </div>
+            {showConcept && (
+              <div className="concept-content">
+                {currentQuestion.concept}
+              </div>
+            )}
+          </div>
+        )}
 
 {showCongrats && (
   <div className="congrats-container">

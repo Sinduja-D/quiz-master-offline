@@ -116,6 +116,7 @@ export const useQuizApp = (setActivePage) => {
           (prev.totalQuizzes + 1)
       ),
     }));
+    setActivePage("quizresults");
   };
 
   const handleRestartQuiz = () => setActivePage("quizsetup");

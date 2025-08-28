@@ -76,15 +76,17 @@ body {
   align-items: center;
   gap: 15px;
 }
+
 .extra-features {
   margin-top: 30px;
   text-align: center;
 }
-/* Updated More Features heading to match Select Difficulty Level */
+
 .extra-features h2 {
   text-align: center;
-  font-size: 2.5rem; /* Increased from default */
+  font-size: 2.4rem; 
   margin-bottom: 30px;
+  font-weight:700;
   color: #1a2a6c;
   position: relative;
   display: inline-block;
@@ -96,7 +98,7 @@ body {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px; /* Increased from 80px */
+  width: 100px; 
   height: 3px;
   background: #1a2a6c;
   border-radius: 2px;
@@ -116,10 +118,13 @@ body {
   border-radius: 12px;
   font-size: 1rem;
   cursor: pointer;
+  
   transition: 0.3s;
 }
 .feature-btn:hover {
   transform: scale(1.05);
+  position:center;
+  box-align:center;
   box-shadow: 0 5px 15px rgba(26,42,108,0.3);
 }
 .fun-fact-box {
@@ -130,10 +135,12 @@ body {
   border-radius: 12px;
   font-size: 1.2rem;
   font-weight: 500;
+  position: center;
   color: #1a2a6c;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+
 
 .lang-btn {
   background: #1a2a6c;
@@ -165,7 +172,7 @@ body {
 .page-content h2 {
   color: #1a2a6c;
   margin-bottom: 20px;
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
 }
 
@@ -174,7 +181,61 @@ body {
   line-height: 1.6;
   font-size: 1.1rem;
 }
+/* Container for the title + subtitle */
+.home-subtitle-box {
+  width: 100%;
+  background: #f9f9f9;   /* light background */
+  border-radius: 12px;   /* rounded edges */
+  padding: 20px;
+  margin: 20px auto;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
+/* Title inside the box */
+.home-subtitle-box h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Subtitle text inside the box */
+.home-subtitle-box p {
+  font-size: 1.2rem;
+  color: #555;
+}
+.home-subtitle {
+  font-size: 1.8rem;        /* Slightly larger text */
+  font-weight: 700;         /* Bold */
+  color: #1e2a4a;           /* Dark blue shade */
+  text-align: center;       /* Centered */
+  margin: 30px 0 20px;      /* Spacing top and bottom */
+  position: relative;       /* For underline effect */
+}
+
+.home-subtitle::after {
+  content: "";
+  display: block;
+  width: 80px;              /* Line width */
+  height: 3px;              /* Line thickness */
+  background: #3b82f6;      /* Blue underline */
+  margin: 8px auto 0;       /* Centered below text */
+  border-radius: 2px;       /* Rounded edges */
+}
+.home-title{
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1a2a6c;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.section-title h2{
+  font-size: 2.5rem;
+  color: #1a2a6c;
+  margin-bottom: 25px;
+  text-align: center;
+  position: relative;
+}
 
 /* Footer */
 footer {
@@ -257,7 +318,6 @@ footer {
 .level-container {
 
   margin: 30px 0;
-
   text-align: center;
 
 }
@@ -266,11 +326,10 @@ footer {
 
 .section-title {
 
-  font-size: 1.8rem;
-
+  font-size: 2.4rem;
+font-weight: 700px;
   margin-bottom: 20px;
-
-  color: #333;
+  color: #1a2a6c;
 
 }
 
