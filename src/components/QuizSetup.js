@@ -27,7 +27,7 @@ const LEVELS_META = {
     id: "advance",
     icon: "🏆",
     color: "#3b82f6",
-    name: { English: "Advanced", Tamil: "உயர் நிலை" },
+    name: { English: "Advance", Tamil: "உயர் நிலை" },
     gradeText: { English: "Grades 11–12", Tamil: "11–12 ஆம் வகுப்பு" },
     grades: [11, 12],
   },
@@ -37,7 +37,7 @@ const LEVELS_META = {
 const SUBJECTS = {
   Physics: { name: "Physics", icon: "⚛️", levels: ["beginner", "intermediate, advance".split(", ")[0], "advance"] }, // keep all
   Chemistry: { name: "Chemistry", icon: "🧪", levels: ["beginner", "intermediate", "advance"] },
-  Biology: { name: "Biology", icon: "🧬", levels: ["beginner", "intermediate", "advance"] },
+  Biology: { name: "Biology", icon: "🧬", levels: ["beginner", "intermediate"] },
   Botany: { name: "Botany", icon: "🌿", levels: ["advance"] },
   Zoology: { name: "Zoology", icon: "🦋", levels: ["advance"] },
 };
@@ -140,7 +140,7 @@ export default function QuizSetup({
       <div className="quiz-setup-card">
         {/* Header */}
         <div className="setup-header">
-          <button className="back-button" onClick={onBack}>
+         < button className="back-button" onClick={onBack}>
             ← {t(language, "Back", "திரும்ப")}
           </button>
           <h2>{t(language, "Quiz Setup", "வினா அமைப்பு")}</h2>

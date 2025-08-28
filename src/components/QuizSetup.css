@@ -94,11 +94,16 @@
 }
 
 .subject-options {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  flex-wrap: wrap;
 }
-
+.subject-option.biology {
+  grid-column: span 2;   /* Biology takes the full row */
+  justify-self: center; 
+  width: 20px;
+  height: 100px; /* Centers Biology */
+}
 .subject-option {
   display: flex;
   flex-direction: column;
@@ -216,10 +221,10 @@
 }
 
 /* Start quiz button */
-.start-quiz-button {
+/*.start-quiz-button {
   background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
   color: white;
-  border: none;
+  border: black;
   padding: 12px 25px;
   border-radius: 30px;
   font-size: 1.1rem;
@@ -237,7 +242,26 @@
 .start-quiz-button:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
+}*/
+
+.start-quiz-button {
+  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  color: rgb(233, 222, 222);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
+
+.start-quiz-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
+}
+
 
 /* Mobile adjustments */
 @media (max-width: 768px) {

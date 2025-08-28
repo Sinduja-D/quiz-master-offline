@@ -1,6 +1,7 @@
 // src/components/Quiz.js
 import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
+import confetti from "canvas-confetti";
 import './Quiz.css';
 
 const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComplete, onBack }) => {
@@ -42,6 +43,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     return optionMap[correctOption] || correctOption;
   };
+  
 
   // Fetch questions from backend
   useEffect(() => {
@@ -109,7 +111,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   // ... rest of your Quiz component unchanged until handleSubmit ...
 
   useEffect(() => {
-    if (showStartPopup && timeLeft > 0) {
+   if (showStartPopup && timeLeft > 0) {
       const timerId = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timerId);
     } else if (showStartPopup && timeLeft === 0) {
@@ -239,9 +241,9 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       />}
       
       < div className="quiz-header">
-        <button className="back-button" onClick={handleBackClick}>
+        {/*<button className="back-button" onClick={handleBackClick}>
           ← {language === 'English' ? 'Back' : 'திரும்ப'}
-        </button>
+        </button>*/}
         <div className="quiz-progress">
           {language === 'English' ? 'Question' : 'கேள்வி'} {currentQuestionIndex + 1} {language === 'English' ? 'of' : 'மொத்தம்'} {quizQuestions.length}
         </div>
