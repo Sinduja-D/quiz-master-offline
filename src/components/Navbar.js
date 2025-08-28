@@ -1,7 +1,8 @@
+// src/components/Navbar.jsx
 import React from "react";
 
-const Navbar = ({ language, activePage, setActivePage, toggleLanguage }) => {
-  const navItems = ["home", "about", "contact", "help"];
+const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
+  const navItems = ["home", "about", "contact", "help", "leaderboard"];
   
   const getNavLabel = (page) => {
     if (language === "English")
@@ -15,6 +16,8 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage }) => {
         return "தொடர்பு";
       case "help":
         return "உதவி";
+      case "leaderboard":
+        return "தலைவர் பட்டியல்";
       default:
         return page;
     }
@@ -43,9 +46,21 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage }) => {
         >
           👤 {language === "English" ? "Profile" : "சுயவிவரம்"}
         </button>
+        <button
+          className={`nav-link ${activePage === "achievements" ? "active" : ""}`}
+          onClick={() => setActivePage("achievements")}
+        >
+          🏆 {language === "English" ? "Achievements" : "சாதனைகள்"}
+        </button>
         <button onClick={toggleLanguage} className="lang-btn">
           {language === "English" ? "தமிழ்" : "English"}
         </button>
+        <div className="user-info">
+          <span className="username">{user.username}</span>
+          <button onClick={onLogout} className="logout-btn">
+            {language === "English" ? "Logout" : "வெளியேறு"}
+          </button>
+        </div>
       </div>
     </nav>
   );

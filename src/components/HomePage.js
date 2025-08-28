@@ -5,7 +5,6 @@ import { levels } from '../levels.js';
 
 const HomePage = ({ language, setActivePage, onLevelSelect }) => {
   const t = (eng, tam) => (language === "English" ? eng : tam);
-
   return (
     <div className="home-container">
       <div className="home-content">
@@ -70,4 +69,4 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
   );
 };
 
-export default HomePage;      
+export default HomePage;

@@ -13,8 +13,8 @@ import Quiz from "./Quiz.js";
 import QuizResults from "./QuizResults.js";
 import { useQuizApp } from "../hooks/useQuizApp.js";
 
-const PageRenderer = ({ language, activePage, setActivePage }) => {
-  // Pass setActivePage to the hook
+const PageRenderer = ({ language, activePage, setActivePage, user, updateUser }) => {
+  // Pass setActivePage and user to the hook
   const {
     selectedLevel,
     quizSettings,
@@ -28,7 +28,8 @@ const PageRenderer = ({ language, activePage, setActivePage }) => {
     handleQuizComplete,
     handleRestartQuiz,
     handleBackToHome,
-  } = useQuizApp(setActivePage);
+    newlyUnlockedAchievements,
+  } = useQuizApp(setActivePage, user, updateUser);
 
   // Store selected difficulty in sessionStorage when level is selected
   useEffect(() => {
@@ -64,9 +65,9 @@ const PageRenderer = ({ language, activePage, setActivePage }) => {
     case "help":
       return <HelpPage language={language} />;
     case "profile":
-      return <ProfilePage language={language} />;
+      return <ProfilePage language={language} user={user} />;
     case "achievements":
-      return <AchievementsPage language={language} />;
+      return <AchievementsPage language={language} user={user} />;
     case "leaderboard":
       return <LeaderboardPage language={language} />;
     case "funFacts":
@@ -101,6 +102,13 @@ const PageRenderer = ({ language, activePage, setActivePage }) => {
           onHome={handleBackToHome}
         />
       );
+     case "achievements":
+      return( <AchievementsPage 
+        language={language} 
+        user={user} 
+        newlyUnlockedAchievements={newlyUnlockedAchievements}
+      /> 
+      ); 
     default:
       return <HomePage language={language} setActivePage={setActivePage} />;
   }

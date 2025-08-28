@@ -267,7 +267,37 @@ footer {
 .back-button:hover {
   background: rgba(26, 42, 108, 0.1);
 }
+/* Add to your existing CSS or create a new file for Navbar updates */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 15px;
+  padding-left: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
 
+.username {
+  font-weight: 600;
+  color: #1a2a6c;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(26, 42, 108, 0.1);
+  color: #1a2a6c;
+}
 /* Level Selection */
 /*.level-container {
   display: flex;

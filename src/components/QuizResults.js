@@ -1,10 +1,47 @@
 // src/components/QuizResults.js
-import React from 'react';
+import React, { useEffect } from 'react';
+import confetti from 'canvas-confetti';
 import './QuizResults.css';
 
 const QuizResults = ({ results, language, onRestart, onHome }) => {
   const percentage = Math.round((results.correctAnswers / results.totalQuestions) * 100);
-
+  
+  // Trigger confetti when user scores 100%
+  useEffect(() => {
+    if (percentage === 100) {
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#1a2a6c', '#2a3a7c', '#3498db', '#2980b9', '#5dade2'],
+        shapes: ['circle', 'square'],
+        gravity: 0.8,
+        drift: 1,
+      });
+      
+      // Add a second burst after a delay for more celebration
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#1a2a6c', '#2a3a7c', '#3498db', '#2980b9', '#5dade2'],
+        });
+      }, 300);
+      
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#1a2a6c', '#2a3a7c', '#3498db', '#2980b9', '#5dade2'],
+        });
+      }, 600);
+    }
+  }, [percentage]);
+  
   let performanceMessage = '';
   if (percentage >= 80) {
     performanceMessage =
@@ -23,6 +60,11 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
         : 'முயற்சி செய்து கொண்டே இருங்கள்! பயிற்சி மனிதனை நிபுணராக்கும்!';
   }
 
+  // Special message for perfect score
+  const perfectScoreMessage = language === 'English' 
+    ? 'Perfect Score! Amazing job!' 
+    : 'முழு மதிப்பெண்! அற்புதமான செயல்!';
+
   return (
     <div className="results-container">
       <div className="results-card">
@@ -33,15 +75,23 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
           </button>
           <h2>{language === 'English' ? 'Quiz Results' : 'வினா முடிவுகள்'}</h2>
         </div>
-
+        
+        {/* Perfect Score Celebration */}
+        {percentage === 100 && (
+          <div className="perfect-score-celebration">
+            <div className="perfect-score-icon">🏆</div>
+            <div className="perfect-score-text">{perfectScoreMessage}</div>
+          </div>
+        )}
+        
         {/* Performance Message */}
         <div className="performance-message">{performanceMessage}</div>
-
+        
         {/* Score Circle */}
-        <div className="score-circle">
+        <div className={`score-circle ${percentage === 100 ? 'perfect-score' : ''}`}>
           <div className="score-percentage">{percentage}%</div>
         </div>
-
+        
         {/* Stats */}
         <div className="results-stats">
           <div className="stat-item">
@@ -50,14 +100,12 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
               {language === 'English' ? 'Total Questions' : 'மொத்த கேள்விகள்'}
             </div>
           </div>
-
           <div className="stat-item correct">
             <div className="stat-value">{results.correctAnswers}</div>
             <div className="stat-label">
               {language === 'English' ? 'Correct' : 'சரியானவை'}
             </div>
           </div>
-
           <div className="stat-item wrong">
             <div className="stat-value">{results.wrongAnswers}</div>
             <div className="stat-label">
@@ -65,8 +113,8 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
             </div>
           </div>
         </div>
-
-        {/* Weak Topics Section (from your version) */}
+        
+        {/* Weak Topics Section */}
         {results.incorrectConcepts && results.incorrectConcepts.length > 0 && (
           <div className="weak-topics">
             <h3>
@@ -86,7 +134,7 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
             </ul>
           </div>
         )}
-
+        
         {/* Actions */}
         <div className="results-actions">
           <button className="action-button restart" onClick={onRestart}>
@@ -94,7 +142,6 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
               ? 'Restart Quiz'
               : 'வினாவை மீண்டும் தொடங்கு'}
           </button>
-
           <button className="action-button home" onClick={onHome}>
             {language === 'English' ? 'Back to Home' : 'முகப்பிற்குச் செல்ல'}
           </button>

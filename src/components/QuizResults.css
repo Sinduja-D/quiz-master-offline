@@ -194,6 +194,100 @@
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+/* src/components/QuizResults.css */
+/* Add to your existing QuizResults.css */
+.achievement-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 193, 7, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.achievement-icon {
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+.achievement-text {
+  font-weight: 600;
+  color: #856404;
+  font-size: 1.1rem;
+}
+/* src/components/QuizResults.css */
+/* ... existing styles ... */
+
+.perfect-score-celebration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: pulse 1.5s infinite alternate;
+}
+
+.perfect-score-icon {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.perfect-score-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1a2a6c;
+  text-align: center;
+}
+
+.score-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border: 5px solid #1a2a6c;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-circle.perfect-score {
+  border: 5px solid #FFD700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.score-percentage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1a2a6c;
+}
+
+.score-circle.perfect-score .score-percentage {
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
 
 @media (max-width: 768px) {
   .results-card {

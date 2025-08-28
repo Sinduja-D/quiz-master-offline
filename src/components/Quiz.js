@@ -1,7 +1,6 @@
 // src/components/Quiz.js
 import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
-import confetti from "canvas-confetti";
 import './Quiz.css';
 
 const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComplete, onBack }) => {
@@ -134,6 +133,13 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     
     setShowFeedback(true);
     if (!correct && currentQuestion.concept) setShowConcept(true);
+    
+    if (correct) {
+      setConsecutiveCorrect(prev => prev + 1);
+    } else {
+      setConsecutiveCorrect(0);
+    }
+    
     
     const updatedResults = {
       ...results,
