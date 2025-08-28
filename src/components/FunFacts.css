@@ -1,12 +1,13 @@
 .fun-fact-box {
   margin: 20px auto;
-  padding: 20px;
+  padding: 25px;
   max-width: 600px;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  border-radius: 12px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
   font-size: 1.2rem;
   font-weight: 500;
   color: #1a2a6c;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #1a2a6c;
 }

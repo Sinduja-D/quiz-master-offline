@@ -1,4 +1,3 @@
-// src/components/AboutPage.jsx
 import React from 'react';
 
 const AboutPage = ({ language }) => {

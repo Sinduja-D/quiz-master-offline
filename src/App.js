@@ -1,63 +1,32 @@
-// src/App.js
-import React from 'react';
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import PageRenderer from "./components/PageRenderer";
 import './App.css';
-import reportWebVitals from './reportWebVitals';
-
-// Import components
-import Navbar from './components/Navbar';
-import PageRenderer from './components/PageRenderer';
-import Footer from './components/Footer';
-import { useQuizApp } from './hooks/useQuizApp';
 
 function App() {
-  const {
-    language,
-    selectedLevel,
-    activePage,
-    quizSettings,
-    quizResults,
-    userProfile,
-    levels,
-    toggleLanguage,
-    handleLevelSelect,
-    handleStartQuiz,
-    handleQuizComplete,
-    handleRestartQuiz,
-    handleBackToHome,
-    setActivePage
-  } = useQuizApp();
-
+  const [activePage, setActivePage] = useState("home");
+  const [language, setLanguage] = useState("English");
+  const toggleLanguage = () => {
+    setLanguage(language === "English" ? "Tamil" : "English");
+  };
   return (
     <div className="app-container">
-      <Navbar 
-        language={language} 
-        activePage={activePage} 
-        setActivePage={setActivePage} 
-        toggleLanguage={toggleLanguage} 
+      <Navbar
+        language={language}
+        activePage={activePage}
+        setActivePage={setActivePage}
+        toggleLanguage={toggleLanguage}
       />
-      
-      <main className="main-content">
+      <main className="page-container">
         <PageRenderer 
-          activePage={activePage}
-          language={language}
-          levels={levels}
-          handleLevelSelect={handleLevelSelect}
-          setActivePage={setActivePage}
-          selectedLevel={selectedLevel}
-          quizSettings={quizSettings}
-          handleStartQuiz={handleStartQuiz}
-          handleQuizComplete={handleQuizComplete}
-          handleBackToHome={handleBackToHome}
-          handleRestartQuiz={handleRestartQuiz}
-          quizResults={quizResults}
-          userProfile={userProfile}
+          language={language} 
+          activePage={activePage} 
+          setActivePage={setActivePage} 
         />
       </main>
-      
       <Footer language={language} />
     </div>
   );
 }
-
-reportWebVitals();
 export default App;

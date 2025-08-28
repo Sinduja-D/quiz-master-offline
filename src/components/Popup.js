@@ -1,6 +1,5 @@
-// src/components/Popup.js
 import React from 'react';
-import './Popup.css';
+import '../App.css';
 
 const Popup = ({ message, onClose, timer }) => {
   return (
@@ -13,7 +12,5 @@ const Popup = ({ message, onClose, timer }) => {
     </div>
   );
 };
-
-
 
 export default Popup;

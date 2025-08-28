@@ -1,4 +1,3 @@
-// src/components/LeaderboardPage.jsx
 import React from 'react';
 
 const LeaderboardPage = ({ language }) => {

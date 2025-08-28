@@ -4,6 +4,7 @@
   "private": true,
   "main": "main.js",
   "homepage": "./",
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@capacitor/android": "^7.4.3",
     "@capacitor/cli": "^7.4.3",
