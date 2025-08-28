@@ -279,6 +279,26 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         
         {showFeedback && showConcept && <div className="concept-card">{currentQuestion.concept}</div>}
         
+
+{showCongrats && (
+  <div className="congrats-container">
+    {/* Glitter shower particles */}
+    {[...Array(50)].map((_, i) => (
+      <div key={`glitter-${i}`} className="glitter"></div>
+    ))}
+    
+    <div className="congrats-message">
+      <div className="congrats-title">
+        {language === 'English' ? 'Congratulations!' : 'வாழ்த்துக்கள்!'}
+      </div>
+      <div className="congrats-streak">{consecutiveCorrect}</div>
+      <div className="congrats-subtitle">
+        {language === 'English' ? 'Correct Answers in a Row!' : 'தொடர்ச்சியாக சரியான பதில்கள்!'}
+      </div>
+    </div>
+  </div>
+)}
+
         <div className="quiz-actions">
           {!showFeedback && 
             <button 

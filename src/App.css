@@ -76,6 +76,64 @@ body {
   align-items: center;
   gap: 15px;
 }
+.extra-features {
+  margin-top: 30px;
+  text-align: center;
+}
+/* Updated More Features heading to match Select Difficulty Level */
+.extra-features h2 {
+  text-align: center;
+  font-size: 2.5rem; /* Increased from default */
+  margin-bottom: 30px;
+  color: #1a2a6c;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.extra-features h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px; /* Increased from 80px */
+  height: 3px;
+  background: #1a2a6c;
+  border-radius: 2px;
+}
+.feature-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  color: blue;
+  flex-wrap: wrap;
+}
+.feature-btn {
+  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.feature-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(26,42,108,0.3);
+}
+.fun-fact-box {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #1a2a6c;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
 .lang-btn {
   background: #1a2a6c;
@@ -117,6 +175,7 @@ body {
   font-size: 1.1rem;
 }
 
+
 /* Footer */
 footer {
   background: rgba(255, 255, 255, 0.8);
@@ -149,7 +208,7 @@ footer {
 }
 
 /* Level Selection */
-.level-container {
+/*.level-container {
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -189,7 +248,135 @@ footer {
 .level-grade {
   font-size: 1.1rem;
   opacity: 0.9;
+}*/
+/* Level Selection - Horizontal Centered */
+/* Level Selection - Horizontal Buttons */
+/* Level Selection */
+/* Container for level cards */
+
+.level-container {
+
+  margin: 30px 0;
+
+  text-align: center;
+
 }
+
+
+
+.section-title {
+
+  font-size: 1.8rem;
+
+  margin-bottom: 20px;
+
+  color: #333;
+
+}
+
+
+
+/* Level cards wrapper */
+
+.level-cards {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+/* Individual card */
+
+.level-card {
+
+  width: 220px;
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  color: white;
+
+  font-weight: bold;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+/* Hover effect */
+
+.level-card:hover {
+
+  transform: translate(-8px) scale(1.05);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+/* Level icon */
+
+.level-icon {
+
+  font-size: 2.5rem;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+/* Level name */
+
+.level-name {
+
+  font-size: 1.4rem;
+
+  margin: 5px 0;
+
+}
+
+
+
+/* Level grade text */
+
+.level-grade {
+
+  font-size: 1rem;
+
+  opacity: 0.9;
+
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .level-container {
+    flex-direction: column; /* stack vertically on mobile */
+    gap: 20px;
+  }
+
+  .level-card {
+    width: 80%;
+    padding: 25px 40px;
+  }
+}
+
+
 
 /* Responsive */
 @media (max-width: 768px) {

@@ -24,7 +24,7 @@ const ProfilePage = ({ language, userProfile }) => {
           <p><strong>{language === 'English' ? 'Total Points:' : 'மொத்த புள்ளிகள்:'}</strong> {profile.totalPoints}</p>
         </div>
       </div>
-      <div className="profile-stats">
+      {/*<div className="profile-stats">
         <h3>{language === 'English' ? 'Quiz Statistics' : 'வினா புள்ளிவிவரங்கள்'}</h3>
         <div className="stats-grid">
           <div className="stat-item">
@@ -40,7 +40,7 @@ const ProfilePage = ({ language, userProfile }) => {
             <div className="stat-label">{language === 'English' ? 'Achievements' : 'சாதனைகள்'}</div>
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 };

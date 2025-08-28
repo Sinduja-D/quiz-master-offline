@@ -263,41 +263,6 @@
   align-items: center;
   gap: 8px;
 }
-/*.congrats-message {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, #4CAF50, #2E7D32);
-  color: white;
-  padding: 20px 30px;
-  border-radius: 15px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  animation: pulse 0.5s ease-in-out;
-}
-@keyframes pulse {
-  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-  50% { transform: translate(-50%, -50%) scale(1.05); }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-@media (max-width: 768px) {
-  .options-container {
-    grid-template-columns: 1fr;
-  }*/
-  /* src/components/Quiz.css */
-/* ... existing styles ... */
-/* src/components/Quiz.css */
-/* ... existing styles ... */
-/* src/components/Quiz.css */
-/* ... existing styles ... */
-/* src/components/Quiz.css */
-/* ... existing styles ... */
-/* src/components/Quiz.css */
-/* ... existing styles ... */
 
 .congrats-container {
   position: fixed;
@@ -446,10 +411,6 @@
   }
 }
 
-/* ... existing styles ... */
-
-/* ... existing styles ... */
-/* ... existing styles ... */
   .question-text {
     font-size: 1.2rem;
   }
