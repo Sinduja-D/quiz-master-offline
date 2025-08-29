@@ -34,7 +34,7 @@ const FunFacts = ({ language }) => {
       <div className="fun-fact-box">
         <p>{language === 'English' ? currentFact.en : currentFact.ta}</p>
       </div>
-      <button onClick={showAnotherFact} className="feature-btn">
+      <button onClick={showAnotherFact} className="another-btn">
         {language === 'English' ? 'Show Another Fact' : 'மற்றொரு சுவாரஸ்யம்'}
       </button>
     </div>

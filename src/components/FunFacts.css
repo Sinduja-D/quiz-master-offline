@@ -11,3 +11,19 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-left: 4px solid #1a2a6c;
 }
+.another-btn{
+  box-align:center;
+  justify-content: center;  /* horizontal center */
+  align-items: center;
+  margin-left:43%;  
+  margin-top: 20px;
+    background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  
+  transition: 0.3s; 
+}
