@@ -17,7 +17,7 @@ const HelpPage = ({ language }) => {
         },
         {
           heading: "Taking Quizzes",
-          content: "• Read each question carefully and select the best answer.\n• Use hints if you're stuck (available for some questions).\n• Review concepts after answering to enhance learning.\n• Track your streak of correct answers for bonus achievements."
+          content: "• Read each question carefully and select the best answer.\n• Use hints if you're stuck (available for all questions).\n• Review concepts after answering to enhance learning.\n• Track your streak of correct answers for bonus achievements."
         },
         {
           heading: "Performance Tracking",
@@ -33,7 +33,7 @@ const HelpPage = ({ language }) => {
         },
         {
           heading: "Tips for Success",
-          content: "• Start with easier difficulties to build confidence\n• Review concepts after incorrect answers\n• Take quizzes regularly to maintain your streak\n• Focus on weak areas to improve your overall score\n• Challenge yourself with higher difficulties as you progress"
+          content: "• Start with easier difficulties to build confidence\n• Review concepts after incorrect answers\n• Focus on weak areas to improve your overall score\n• Challenge yourself with higher difficulties as you progress"
         }
       ]
     },
