@@ -184,7 +184,7 @@ body {
 /* Container for the title + subtitle */
 .home-subtitle-box {
   width: 100%;
-  background: #f9f9f9;   /* light background */
+  background: #f9f9f9;  /* light background */
   border-radius: 12px;   /* rounded edges */
   padding: 20px;
   margin: 20px auto;
@@ -237,7 +237,7 @@ body {
   color: #1a2a6c;
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 100%;  
 }
 
 /* Footer */
@@ -301,58 +301,10 @@ footer {
   background: rgba(26, 42, 108, 0.1);
   color: #1a2a6c;
 }
-/* Level Selection */
-/*.level-container {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin: 40px 0;
-}
-
-.level-card {
-  color: white;
-  border: none;
-  padding: 30px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  min-width: 250px;
-  text-align: center;
-}
-
-.level-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.level-icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
-
-.level-name {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.level-grade {
-  font-size: 1.1rem;
-  opacity: 0.9;
-}*/
-/* Level Selection - Horizontal Centered */
-/* Level Selection - Horizontal Buttons */
-/* Level Selection */
-/* Container for level cards */
-
 .level-container {
 
   margin: 30px 0;
   text-align: center;
-
 }
 
 
@@ -375,13 +327,9 @@ font-weight: 700px;
   justify-content: center;
 
   gap: 20px;
-
   flex-wrap: wrap;
 
 }
-
-
-
 /* Individual card */
 
 .level-card {

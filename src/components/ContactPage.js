@@ -119,7 +119,7 @@ const ContactPage = ({ language }) => {
         submitting: "அனுப்புகிறது..."
       },
       successMessage: "உங்கள் செய்திக்கு நன்றி! விரைவில் உங்களைத் தொடர்பு கொள்வோம்.",
-      
+       
     }
   };
 

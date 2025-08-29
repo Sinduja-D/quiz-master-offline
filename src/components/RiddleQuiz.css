@@ -1,15 +1,21 @@
 /* RiddleQuiz.css */
 .riddle-container {
-  display: flex;
-  flex-direction: column;
+   position: static;   /* or remove position entirely */
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  justify-self: center; 
+  padding: 15px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
   align-items: center;
+  border-radius: 10px;
   justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 20px;
-  font-family: 'Poppins', sans-serif;
-  position: center;
-  overflow: hidden;
+  flex-direction: column;
+  text-align: center; 
+  background: none;      /* removes light color box */
+  border: none;          /* removes border */
+  box-shadow: none;  
 }
 
 /* Subtle background pattern */
