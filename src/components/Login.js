@@ -79,7 +79,7 @@ const Login = ({ onLogin, language }) => {
           </div>
           
           <button type="submit" className="login-button">
-            {language === 'English' ? 'Start Quiz' : 'வினாவைத் தொடங்கு'}
+            {language === 'English' ? 'Start Exploring' : 'ஆரம்பிக்கவும்'}
           </button>
         </form>
         

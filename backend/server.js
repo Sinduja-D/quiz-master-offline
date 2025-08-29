@@ -13,36 +13,43 @@ app.use(express.json());
 // Connect to SQLite
 const dbPath = path.join(__dirname, "quiz.db");
 console.log("Database path:", dbPath);
-const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
-  if (err) {
-    console.error("❌ Could not connect to database:", err.message);
-  } else {
-    console.log("✅ Connected to SQLite database.");
-    
-    // Create table if not exists
-    db.run(`CREATE TABLE IF NOT EXISTS questions (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      difficulty TEXT,
-      grade INTEGER,
-      subject TEXT,
-      language TEXT,
-      question TEXT,
-      optionA TEXT,
-      optionB TEXT,
-      optionC TEXT,
-      optionD TEXT,
-      correctOption TEXT,
-      concept TEXT,
-      hint TEXT
-    )`, (err) => {
-      if (err) {
-        console.error("❌ Error creating table:", err.message);
-      } else {
-        console.log("✅ Table 'questions' created or already exists.");
-      }
-    });
+
+const db = new sqlite3.Database(
+  dbPath,
+  sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+  (err) => {
+    if (err) {
+      console.error("❌ Could not connect to database:", err.message);
+    } else {
+      console.log("✅ Connected to SQLite database.");
+      // Create table if not exists
+      db.run(
+        `CREATE TABLE IF NOT EXISTS questions (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          difficulty TEXT,
+          grade INTEGER,
+          subject TEXT,
+          language TEXT,
+          question TEXT,
+          optionA TEXT,
+          optionB TEXT,
+          optionC TEXT,
+          optionD TEXT,
+          correctOption TEXT,
+          concept TEXT,
+          hint TEXT
+        )`,
+        (err) => {
+          if (err) {
+            console.error("❌ Error creating table:", err.message);
+          } else {
+            console.log("✅ Table 'questions' created or already exists.");
+          }
+        }
+      );
+    }
   }
-});
+);
 
 // Root route
 app.get("/", (req, res) => {
@@ -52,10 +59,9 @@ app.get("/", (req, res) => {
 // API to fetch questions
 app.get("/api/questions", (req, res) => {
   const { difficulty, grade, subject, language, limit } = req.query;
-  
   let sql = "SELECT * FROM questions WHERE 1=1";
   const params = [];
-  
+
   if (difficulty) {
     sql += " AND difficulty = ?";
     params.push(difficulty);
@@ -76,9 +82,9 @@ app.get("/api/questions", (req, res) => {
     sql += " LIMIT ?";
     params.push(parseInt(limit));
   }
-  
+
   console.log("📥 SQL Query:", sql, params);
-  
+
   db.all(sql, params, (err, rows) => {
     if (err) {
       console.error("❌ Error fetching questions:", err.message);
@@ -90,5 +96,5 @@ app.get("/api/questions", (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log('🚀 Server running on http://localhost:${PORT}');
 });

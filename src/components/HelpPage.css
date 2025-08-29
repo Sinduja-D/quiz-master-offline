@@ -1,0 +1,85 @@
+/* src/components/HelpPage.css */
+.help-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.help-title {
+  color: #1a2a6c;
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.help-title:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: #1a2a6c;
+  border-radius: 2px;
+}
+
+.help-content {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.help-section {
+  margin-bottom: 30px;
+}
+
+.help-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-heading {
+  color: #1a2a6c;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(26, 42, 108, 0.1);
+}
+
+.section-content p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.section-content p:last-child {
+  margin-bottom: 0;
+}
+
+.help-footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .help-title {
+    font-size: 2rem;
+  }
+  
+  .help-content {
+    padding: 20px;
+  }
+  
+  .section-heading {
+    font-size: 1.3rem;
+  }
+}
