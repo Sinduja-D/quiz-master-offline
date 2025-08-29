@@ -9,6 +9,7 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
   const [quizSettings, setQuizSettings] = useState(null);
   const [quizResults, setQuizResults] = useState(null);
   const [newlyUnlockedAchievements, setNewlyUnlockedAchievements] = useState([]);
+  const [isQuizInProgress, setIsQuizInProgress] = useState(false); // Track quiz progress
   
   // 📊 Backend state
   const [questions, setQuestions] = useState([]);
@@ -41,6 +42,7 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
         setQuestions([]);
       } else {
         setQuestions(data);
+        console.log("Questions loaded:", data.length);
       }
     } catch (err) {
       console.error("❌ Fetch error:", err);
@@ -51,8 +53,15 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
   };
   
   // 🌍 Handlers
-  const toggleLanguage = () =>
+  const toggleLanguage = () => {
+    if (isQuizInProgress) {
+      alert(language === 'English' 
+        ? "You are not allowed to change the language after starting the quiz" 
+        : "வினா தொடங்கிய பிறகு மொழியை மாற்ற அனுமதியில்லை");
+      return;
+    }
     setLanguage(language === "English" ? "Tamil" : "English");
+  };
     
   const handleLevelSelect = (level) => {
     setSelectedLevel(level);
@@ -88,6 +97,7 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     
     try {
       await fetchQuestions(fetchParams);
+      setIsQuizInProgress(true); // Mark quiz as in progress
       setActivePage("quiz");
     } catch (err) {
       console.error("Error in handleStartQuiz:", err);
@@ -95,6 +105,7 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
   };
   
   const handleQuizComplete = (results) => {
+    setIsQuizInProgress(false); // Mark quiz as completed
     setQuizResults(results);
     
     // Calculate points earned
@@ -189,6 +200,7 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
   const handleRestartQuiz = () => setActivePage("quizsetup");
   
   const handleBackToHome = () => {
+    setIsQuizInProgress(false); // Reset quiz progress when going home
     setActivePage("home");
     setSelectedLevel(null);
     setQuizResults(null);
@@ -216,5 +228,6 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     handleRestartQuiz,
     handleBackToHome,
     newlyUnlockedAchievements,
+    isQuizInProgress, // Expose this state
   };
 };

@@ -210,7 +210,7 @@ body {
   color: #1e2a4a;           /* Dark blue shade */
   text-align: center;       /* Centered */
   margin: 30px 0 20px;      /* Spacing top and bottom */
-  position: relative;       /* For underline effect */
+  /*position: relative;       /* For underline effect */
 }
 
 .home-subtitle::after {
@@ -228,11 +228,14 @@ body {
   color: #1a2a6c;
   text-align: center;
   margin-bottom: 10px;
+  border: none !important;
+  box-shadow: none;
 }
+
 .section-title h2{
   text-align: center;
-  font-size: 2.5rem; 
-  margin-bottom: 30px;
+  font-size: 2.4rem; 
+  margin-bottom: 0px;
   font-weight:770;
   color: #1a2a6c;
   position: relative;
@@ -323,9 +326,7 @@ font-weight: 700px;
 .level-cards {
 
   display: flex;
-
   justify-content: center;
-
   gap: 20px;
   flex-wrap: wrap;
 
@@ -335,21 +336,13 @@ font-weight: 700px;
 .level-card {
 
   width: 220px;
-
   padding: 20px;
-
   border-radius: 15px;
-
   color: white;
-
   font-weight: bold;
-
   text-align: center;
-
   cursor: pointer;
-
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
 }
@@ -374,7 +367,7 @@ font-weight: 700px;
 
   font-size: 2.5rem;
 
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
 }
 
@@ -442,4 +435,29 @@ font-weight: 700px;
     width: 100%;
     max-width: 300px;
   }
+}
+/* src/App.css */
+/* Add this to your existing App.css */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(26, 42, 108, 0.1);
+  border-radius: 50%;
+  border-top-color: #1a2a6c;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

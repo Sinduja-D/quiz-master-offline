@@ -15,7 +15,7 @@ const ContactPage = ({ language }) => {
   const teamMembers = [
     {
       name: { english: "Vijayalakshmi S.R", tamil: "விஜயலட்சுமி எஸ் ஆர்" },
-      role: { english: "Database Developer", tamil: "முன்னணி டெவலப்பர்" },
+      role: { english: "Database Developer", tamil: "தரவுத்தள உருவாக்குநர்" },
       phone: "+91 9444129301",
       email: "srvijayalakshmi14@gmail.com"
     },
@@ -27,7 +27,7 @@ const ContactPage = ({ language }) => {
     },
     {
       name: { english: "Sinduja D", tamil: "சிந்துஜா டி" },
-      role: { english: "Backend Developer", tamil: "பின்தள டெவலப்பர்" },
+      role: { english: "Backend Developer", tamil: "பின்தள உருவாக்குநர்" },
       phone: "+91 7010966979",
       email: "sindujadilibabu@gmail.com"
     }

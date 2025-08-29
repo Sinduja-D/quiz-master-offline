@@ -3,33 +3,42 @@ import React from 'react';
 import './ProfilePage.css';
 
 const ProfilePage = ({ language, user }) => {
-  // Calculate weak and strong fields based on quiz history
+  // Calculate weak and strong fields based on concepts from wrong answers
   const calculateFields = () => {
-    const subjectScores = {};
-    const subjectCounts = {};
+    const conceptScores = {};
+    const conceptCounts = {};
     
     user.quizHistory.forEach(quiz => {
-      if (!subjectScores[quiz.subject]) {
-        subjectScores[quiz.subject] = 0;
-        subjectCounts[quiz.subject] = 0;
+      // Process each incorrect concept from the quiz
+      if (quiz.incorrectConcepts && Array.isArray(quiz.incorrectConcepts)) {
+        quiz.incorrectConcepts.forEach(concept => {
+          if (!conceptScores[concept]) {
+            conceptScores[concept] = 0;
+            conceptCounts[concept] = 0;
+          }
+          
+          // Calculate a score based on how often the user got this concept wrong
+          // The higher the score, the weaker the concept
+          conceptScores[concept] += 1; // Increment by 1 for each wrong answer
+          conceptCounts[concept] += 1;
+        });
       }
-      
-      subjectScores[quiz.subject] += (quiz.correctAnswers / quiz.totalQuestions) * 100;
-      subjectCounts[quiz.subject] += 1;
     });
     
-    const subjectAverages = {};
-    Object.keys(subjectScores).forEach(subject => {
-      subjectAverages[subject] = subjectScores[subject] / subjectCounts[subject];
+    // Calculate average scores for each concept
+    const conceptAverages = {};
+    Object.keys(conceptScores).forEach(concept => {
+      conceptAverages[concept] = conceptScores[concept] / conceptCounts[concept];
     });
     
-    const sortedSubjects = Object.keys(subjectAverages).sort((a, b) => 
-      subjectAverages[b] - subjectAverages[a]
+    // Sort concepts by score (ascending - lower scores are stronger)
+    const sortedConcepts = Object.keys(conceptAverages).sort((a, b) => 
+      conceptAverages[a] - conceptAverages[b]
     );
     
     return {
-      strongFields: sortedSubjects.slice(0, 2),
-      weakFields: sortedSubjects.slice(-2).reverse()
+      strongFields: sortedConcepts.slice(0, 2), // First 2 are the strongest (lowest scores)
+      weakFields: sortedConcepts.slice(-2).reverse() // Last 2 are the weakest (highest scores)
     };
   };
   

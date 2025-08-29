@@ -1,68 +1,98 @@
 // src/App.js
-import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import PageRenderer from "./components/PageRenderer";
-import Login from "./components/Login.js";
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import PageRenderer from './components/PageRenderer';
 import './App.css';
 
 function App() {
-  const [activePage, setActivePage] = useState("home");
-  const [language, setLanguage] = useState("English");
+  const [language, setLanguage] = useState('English');
+  const [activePage, setActivePage] = useState('home');
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Check if user is already logged in
   useEffect(() => {
-    const savedUser = localStorage.getItem('currentUser');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
+    // Check if user is logged in
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      // Create a default user
+      const defaultUser = {
+        id: 1,
+        username: 'Guest User',
+        memberSince: new Date().toLocaleDateString(),
+        totalPoints: 0,
+        totalQuizzes: 0,
+        averageScore: 0,
+        achievements: [],
+        quizHistory: []
+      };
+      setUser(defaultUser);
+      localStorage.setItem('currentUser', JSON.stringify(defaultUser));
     }
     setIsLoading(false);
   }, []);
 
   const toggleLanguage = () => {
-    setLanguage(language === "English" ? "Tamil" : "English");
+    setLanguage(language === 'English' ? 'Tamil' : 'English');
   };
 
-  const handleLogin = (userData) => {
-    setUser(userData);
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
   };
 
   const handleLogout = () => {
     localStorage.removeItem('currentUser');
-    setUser(null);
-    setActivePage("home");
+    // Create a default user again
+    const defaultUser = {
+      id: 1,
+      username: 'Guest User',
+      memberSince: new Date().toLocaleDateString(),
+      totalPoints: 0,
+      totalQuizzes: 0,
+      averageScore: 0,
+      achievements: [],
+      quizHistory: []
+    };
+    setUser(defaultUser);
+    localStorage.setItem('currentUser', JSON.stringify(defaultUser));
   };
 
+  // Show loading screen while user is being initialized
   if (isLoading) {
-    return <div className="loading-screen">Loading...</div>;
-  }
-
-  if (!user) {
-    return <Login onLogin={handleLogin} language={language} />;
+    return (
+      <div className="app-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="app-container">
-      <Navbar
-        language={language}
-        activePage={activePage}
-        setActivePage={setActivePage}
+      <Navbar 
+        language={language} 
         toggleLanguage={toggleLanguage}
+        setActivePage={setActivePage}
+        activePage={activePage}
         user={user}
         onLogout={handleLogout}
       />
-      <main className="page-container">
+      <div className="page-container">
         <PageRenderer 
           language={language} 
           activePage={activePage} 
           setActivePage={setActivePage}
           user={user}
-          updateUser={setUser}
+          updateUser={updateUser}
+          toggleLanguage={toggleLanguage}
         />
-      </main>
-      <Footer language={language} />
+      </div>
+      <footer>
+        {language === 'English' ? '© 2023 Quiz Master. All rights reserved.' : '© 2023 வினா மாஸ்டர். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.'}
+      </footer>
     </div>
   );
 }

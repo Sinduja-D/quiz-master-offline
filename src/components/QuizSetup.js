@@ -35,7 +35,7 @@ const LEVELS_META = {
 
 // Subject availability by level (per your DB setup)
 const SUBJECTS = {
-  Physics: { name: "Physics", icon: "⚛️", levels: ["beginner", "intermediate, advance".split(", ")[0], "advance"] }, // keep all
+  Physics: { name: "Physics", icon: "⚛️", levels: ["beginner", "intermediate", "advance"] },
   Chemistry: { name: "Chemistry", icon: "🧪", levels: ["beginner", "intermediate", "advance"] },
   Biology: { name: "Biology", icon: "🧬", levels: ["beginner", "intermediate"] },
   Botany: { name: "Botany", icon: "🌿", levels: ["advance"] },
@@ -52,29 +52,27 @@ export default function QuizSetup({
   const [difficultyId, setDifficultyId] = useState(
     level?.id || sessionStorage.getItem("selectedDifficulty") || ""
   );
-
   // derived meta for the current difficulty
   const meta = useMemo(() => (difficultyId ? LEVELS_META[difficultyId] : null), [difficultyId]);
-
   // local UI state
   const [selectedGrade, setSelectedGrade] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
   const [numberOfQuestions, setNumberOfQuestions] = useState(10);
   const [isStarting, setIsStarting] = useState(false);
-
+  
   // When level prop changes, sync difficultyId
   useEffect(() => {
     if (level?.id && level.id !== difficultyId) {
       setDifficultyId(level.id);
     }
   }, [level, difficultyId]);
-
+  
   // If difficulty changes, reset subject/grade
   useEffect(() => {
     setSelectedGrade("");
     setSelectedSubject("");
   }, [difficultyId]);
-
+  
   // Available subjects for the chosen difficulty
   const availableSubjects = useMemo(() => {
     if (!difficultyId) return [];
@@ -82,7 +80,7 @@ export default function QuizSetup({
       SUBJECTS[s].levels.includes(difficultyId)
     );
   }, [difficultyId]);
-
+  
   const handleStart = async () => {
     if (!difficultyId) {
       alert(
@@ -96,10 +94,9 @@ export default function QuizSetup({
       );
       return;
     }
-
     setIsStarting(true);
     try {
-      // Call parent’s startQuiz handler
+      // Call parent's startQuiz handler
       await startQuiz(
         numberOfQuestions,
         selectedSubject,        // subject (must match DB names exactly)
@@ -113,7 +110,7 @@ export default function QuizSetup({
       setIsStarting(false);
     }
   };
-
+  
   // If difficulty is missing, gently guide user back
   if (!difficultyId || !meta) {
     return (
@@ -134,18 +131,16 @@ export default function QuizSetup({
     );
   }
   
-
   return (
     <div className="quiz-setup-container">
       <div className="quiz-setup-card">
         {/* Header */}
         <div className="setup-header">
-         < button className="back-button" onClick={onBack}>
+          <button className="back-button" onClick={onBack}>
             ← {t(language, "Back", "திரும்ப")}
           </button>
           <h2>{t(language, "Quiz Setup", "வினா அமைப்பு")}</h2>
         </div>
-
         {/* Difficulty Info */}
         <div className="setup-info">
           <div className="info-item">
@@ -160,7 +155,6 @@ export default function QuizSetup({
             <span>{meta.gradeText[language]}</span>
           </div>
         </div>
-
         {/* Subject Selector */}
         <div className="subject-selector">
           <label>{t(language, "Select Subject:", "பாடத்தைத் தேர்ந்தெடுக்கவும்:")}</label>
@@ -178,7 +172,6 @@ export default function QuizSetup({
             ))}
           </div>
         </div>
-
         {/* Grade Selector */}
         <div className="grade-selector">
           <label htmlFor="grade-select">
@@ -198,7 +191,6 @@ export default function QuizSetup({
             ))}
           </select>
         </div>
-
         {/* Number of Questions */}
         <div className="question-selector">
           <label htmlFor="question-range">
@@ -216,7 +208,6 @@ export default function QuizSetup({
           />
           <div className="question-count-display">{numberOfQuestions}</div>
         </div>
-
         {/* Start Button */}
         <button
           className="start-quiz-button"

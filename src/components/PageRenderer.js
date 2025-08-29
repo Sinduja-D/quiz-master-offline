@@ -14,7 +14,7 @@ import RiddleQuiz from  "./RiddleQuiz.js";
 import QuizResults from "./QuizResults.js";
 import { useQuizApp } from "../hooks/useQuizApp.js";
 
-const PageRenderer = ({ language, activePage, setActivePage, user, updateUser }) => {
+const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, toggleLanguage }) => {
   // Pass setActivePage and user to the hook
   const {
     selectedLevel,
@@ -23,7 +23,6 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser })
     questions,
     loading,
     error,
-    toggleLanguage,
     handleLevelSelect,
     handleStartQuiz,
     handleQuizComplete,
@@ -31,6 +30,15 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser })
     handleBackToHome,
     newlyUnlockedAchievements,
   } = useQuizApp(setActivePage, user, updateUser);
+  
+  // Create a safe toggle language function that checks if we're in a quiz
+  const safeToggleLanguage = () => {
+    if (activePage === "quiz") {
+      // We're in a quiz, show warning
+      return;
+    }
+    toggleLanguage();
+  };
 
   // Store selected difficulty in sessionStorage when level is selected
   useEffect(() => {
@@ -50,6 +58,16 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser })
     }
   }, [activePage, setActivePage]);
 
+  // If user is null, show loading
+  if (!user) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p>{language === 'English' ? 'Loading...' : 'ஏற்றப்படுகிறது...'}</p>
+      </div>
+    );
+  }
+
   switch (activePage) {
     case "home":
       return (
@@ -57,6 +75,7 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser })
           language={language} 
           setActivePage={setActivePage}
           onLevelSelect={handleLevelSelect}
+          toggleLanguage={safeToggleLanguage}
         />
       );
     case "about":

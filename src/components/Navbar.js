@@ -55,12 +55,14 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
         <button onClick={toggleLanguage} className="lang-btn">
           {language === "English" ? "தமிழ்" : "English"}
         </button>
-        <div className="user-info">
-          <span className="username">{user.username}</span>
-          <button onClick={onLogout} className="logout-btn">
-            {language === "English" ? "Logout" : "வெளியேறு"}
-          </button>
-        </div>
+        {user && (
+          <div className="user-info">
+            <span className="username">{user.username}</span>
+            <button onClick={onLogout} className="logout-btn">
+              {language === "English" ? "Logout" : "வெளியேறு"}
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );

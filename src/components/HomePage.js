@@ -18,9 +18,11 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
         </p>
         
         <div className="level-container">
-          <h2 className="section-title">
+          <div className="section-title">
+            <h2>
             {language === "English" ? "Select Difficulty Level" : "சிரம நிலையைத் தேர்ந்தெடுக்கவும்"}
           </h2>
+          </div>
           <div className="level-cards">
             {levels.map((level) => (
               <div

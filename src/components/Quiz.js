@@ -28,6 +28,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     database: false,
     questions: false
   });
+  const [showLanguageWarning, setShowLanguageWarning] = useState(false);
 
   // ✅ Use .env for API
   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
@@ -42,7 +43,6 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     return optionMap[correctOption] || correctOption;
   };
-  
 
   // Fetch questions from backend
   useEffect(() => {
@@ -107,10 +107,27 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
 
   const handleRetry = () => setRetryCount(prev => prev + 1);
 
-  // ... rest of your Quiz component unchanged until handleSubmit ...
+  // Prevent user from leaving the quiz page
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (!showStartPopup && quizQuestions.length > 0) {
+        const message = language === 'English' 
+          ? 'Are you sure you want to leave? Your progress will be lost.' 
+          : 'நீங்கள் வெளியேற விரும்புகிறீர்களா? உங்கள் முன்னேற்றம் இழக்கப்படும்.';
+        e.returnValue = message;
+        return message;
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [language, showStartPopup, quizQuestions.length]);
 
   useEffect(() => {
-   if (showStartPopup && timeLeft > 0) {
+    if (showStartPopup && timeLeft > 0) {
       const timerId = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timerId);
     } else if (showStartPopup && timeLeft === 0) {
@@ -133,13 +150,6 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     
     setShowFeedback(true);
     if (!correct && currentQuestion.concept) setShowConcept(true);
-    
-    if (correct) {
-      setConsecutiveCorrect(prev => prev + 1);
-    } else {
-      setConsecutiveCorrect(0);
-    }
-    
     
     const updatedResults = {
       ...results,
@@ -178,15 +188,18 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   };
 
   const handleBackClick = () => {
-    if (currentQuestionIndex === 0) {
+    const confirmMessage = language === 'English' 
+      ? 'Are you sure you want to exit the quiz? Your progress will be lost.' 
+      : 'நீங்கள் வினாவிலிருந்து வெளியேற விரும்புகிறீர்களா? உங்கள் முன்னேற்றம் இழக்கப்படும்.';
+    
+    if (window.confirm(confirmMessage)) {
       onBack();
-    } else {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      setSelectedOption(null);
-      setShowFeedback(false);
-      setShowHint(false);
-      setShowConcept(false);
     }
+  };
+
+  const handleLanguageChangeAttempt = () => {
+    setShowLanguageWarning(true);
+    setTimeout(() => setShowLanguageWarning(false), 3000);
   };
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
@@ -246,10 +259,20 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         onClose={() => setShowStartPopup(false)} 
       />}
       
-      < div className="quiz-header">
-        {/*<button className="back-button" onClick={handleBackClick}>
+      {showLanguageWarning && (
+        <div className="language-warning-popup">
+          <div className="popup-content">
+            <p>{language === 'English' 
+              ? 'You are not allowed to change the language after starting the quiz' 
+              : 'வினா தொடங்கிய பிறகு மொழியை மாற்ற அனுமதிக்கப்படவில்லை'}</p>
+          </div>
+        </div>
+      )}
+      
+      <div className="quiz-header">
+        <button className="back-button" onClick={handleBackClick}>
           ← {language === 'English' ? 'Back' : 'திரும்ப'}
-        </button>*/}
+        </button>
         <div className="quiz-progress">
           {language === 'English' ? 'Question' : 'கேள்வி'} {currentQuestionIndex + 1} {language === 'English' ? 'of' : 'மொத்தம்'} {quizQuestions.length}
         </div>
@@ -259,10 +282,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           {level === 'advance' && '🔴'} {/* Fixed: was 'advanced' */}
           {level.charAt(0).toUpperCase() + level.slice(1)}
         </div>
-        {/*{currentQuestion.hint && !showFeedback && (
-          <button className="hint-button-header" onClick={() => setShowHint(!showHint)}>💡</button>
-        )}*/}
-          {!showFeedback && currentQuestion.hint && (
+        {currentQuestion.hint && !showFeedback && (
           <button 
             className="hint-button-header"
             onClick={() => setShowHint(!showHint)}
@@ -273,10 +293,19 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         )}
       </div>
       
-      
       <div className="question-container">
         <h2 className="question-text">{currentQuestion.question}</h2>
-        {showHint && <div className="hint-card">{currentQuestion.hint}</div>}
+        {showHint && (
+          <div className="hint-card">
+            <div className="hint-header">
+              <span className="hint-icon">💡</span>
+              <span className="hint-title">{language === 'English' ? 'Hint' : 'குறிப்பு'}</span>
+            </div>
+            <div className="hint-content">
+              {currentQuestion.hint}
+            </div>
+          </div>
+        )}
         
         <div className="options-container">
           {['optionA','optionB','optionC','optionD'].map((key, idx) => {
@@ -285,7 +314,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             return (
               <div
                 key={key}
-                className={`option${isSelected ? ' selected' : ''}${showFeedback && isCorrect ? ' correct' : ''}${showFeedback && isSelected && !isCorrect ? ' wrong' : ''}`}
+                className={`option ${isSelected ? ' selected' : ''}${showFeedback && isCorrect ? ' correct' : ''}${showFeedback && isSelected && !isCorrect ? ' wrong' : ''}`}
                 onClick={() => !showFeedback && handleOptionSelect(key)}
               >
                 <span className="option-label">{String.fromCharCode(65 + idx)}</span>
@@ -295,7 +324,6 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           })}
         </div>
         
-        {/*{showFeedback && showConcept && <div className="concept-card">{currentQuestion.concept}</div>}*/}
         {showFeedback && currentQuestion.concept && (
           <div className="concept-card">
             <div className="concept-header" onClick={() => setShowConcept(!showConcept)}>
@@ -311,24 +339,23 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           </div>
         )}
 
-{showCongrats && (
-  <div className="congrats-container">
-    {/* Glitter shower particles */}
-    {[...Array(50)].map((_, i) => (
-      <div key={`glitter-${i}`} className="glitter"></div>
-    ))}
-    
-    <div className="congrats-message">
-      <div className="congrats-title">
-        {language === 'English' ? 'Congratulations!' : 'வாழ்த்துக்கள்!'}
-      </div>
-      <div className="congrats-streak">{consecutiveCorrect}</div>
-      <div className="congrats-subtitle">
-        {language === 'English' ? 'Correct Answers in a Row!' : 'தொடர்ச்சியாக சரியான பதில்கள்!'}
-      </div>
-    </div>
-  </div>
-)}
+        {showCongrats && (
+          <div className="congrats-container">
+            {[...Array(50)].map((_, i) => (
+              <div key={`glitter-${i}`} className="glitter"></div>
+            ))}
+            
+            <div className="congrats-message">
+              <div className="congrats-title">
+                {language === 'English' ? 'Congratulations!' : 'வாழ்த்துக்கள்!'}
+              </div>
+              <div className="congrats-streak">{consecutiveCorrect}</div>
+              <div className="congrats-subtitle">
+                {language === 'English' ? 'Correct Answers in a Row!' : 'தொடர்ச்சியாக சரியான பதில்கள்!'}
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="quiz-actions">
           {!showFeedback && 
@@ -354,7 +381,9 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
       
       <div className="quiz-footer">
-        <div className="streak-counter">{language==='English'?'Streak':'வரிசை'}: {consecutiveCorrect}</div>
+        <div className="streak-counter">
+          🔥 {language==='English'?'Streak':'வரிசை'}: {consecutiveCorrect}
+        </div>
       </div>
     </div>
   );
