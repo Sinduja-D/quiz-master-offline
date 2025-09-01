@@ -1,5 +1,7 @@
 // src/components/Navbar.jsx
 import React from "react";
+import './Navbar.css';
+import logo from "../assets/logo.png"; // make sure your logo is in src/assets/
 
 const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
   const navItems = ["home", "about", "contact", "help", "leaderboard"];
@@ -25,9 +27,15 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
   
   return (
     <nav className="navbar">
-      <div className="nav-brand">
-        🧠 {language === "English" ? "Quiz Master" : "வினா மாஸ்டர்"}
+      {/* Brand (Logo + Text) */}
+      <div className="nav-brand" onClick={() => setActivePage("home")} style={{ cursor: "pointer" }}>
+        <img src={logo} alt="App Logo" className="nav-logo" />
+        <span className="brand-text">
+          {language === "English" ? "Quiz Master" : "வினா மாஸ்டர்"}
+        </span>
       </div>
+
+      {/* Navigation Links */}
       <div className="nav-links">
         {navItems.map((page) => (
           <button
@@ -39,6 +47,8 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
           </button>
         ))}
       </div>
+
+      {/* Actions */}
       <div className="nav-actions">
         <button
           className={`nav-link ${activePage === "profile" ? "active" : ""}`}

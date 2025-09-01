@@ -461,3 +461,18 @@ font-weight: 700px;
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+.home-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.home-logo {
+  width: 60px;   /* adjust size */
+  height: auto;
+  margin-right: 15px; /* space between logo & text */
+}
