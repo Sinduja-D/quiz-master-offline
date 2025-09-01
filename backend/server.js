@@ -78,6 +78,8 @@ app.get("/api/questions", (req, res) => {
     sql += " AND language = ?";
     params.push(language);
   }
+    sql += " ORDER BY RANDOM()";
+
   if (limit) {
     sql += " LIMIT ?";
     params.push(parseInt(limit));

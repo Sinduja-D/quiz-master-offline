@@ -220,30 +220,6 @@
   margin-top: 10px;
 }
 
-/* Start quiz button */
-/*.start-quiz-button {
-  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
-  color: white;
-  border: black;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.start-quiz-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
-.start-quiz-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
-}*/
-
 .start-quiz-button {
   background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
   color: rgb(233, 222, 222);
