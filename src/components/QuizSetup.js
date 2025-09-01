@@ -36,7 +36,7 @@ const LEVELS_META = {
 const SUBJECTS = {
   Physics: {
     name: { English: "Physics", Tamil: "இயற்பியல்" },
-    icon: "🧲",
+    icon: "⚛️",
     levels: ["beginner", "intermediate", "advance"],
   },
   Chemistry: {
