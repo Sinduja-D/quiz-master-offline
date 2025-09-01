@@ -17,7 +17,10 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     totalQuestions: 0,
     correctAnswers: 0,
     wrongAnswers: 0,
-    incorrectConcepts: []
+    incorrectConcepts: [],
+    hintsUsed: 0,
+    startTime: null,
+    endTime: null
   });
   const [showHint, setShowHint] = useState(false);
   const [showConcept, setShowConcept] = useState(false);
@@ -30,10 +33,10 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     questions: false
   });
   const [showLanguageWarning, setShowLanguageWarning] = useState(false);
-
+  
   // ✅ Use .env for API
   const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-
+  
   // Map correct option from database (1,2,3,4) to frontend keys (optionA, optionB, etc.)
   const mapCorrectOption = (correctOption) => {
     const optionMap = {
@@ -44,7 +47,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     return optionMap[correctOption] || correctOption;
   };
-
+  
   // Fetch questions from backend
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -87,7 +90,10 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             totalQuestions: data.length, 
             correctAnswers: 0, 
             wrongAnswers: 0, 
-            incorrectConcepts: [] 
+            incorrectConcepts: [],
+            hintsUsed: 0,
+            startTime: new Date(), // Set start time when quiz begins
+            endTime: null
           });
           setConnectionStatus({ server: true, database: true, questions: true });
         }
@@ -105,9 +111,9 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setLoading(false);
     }
   }, [language, level, numberOfQuestions, subject, grade, retryCount]);
-
+  
   const handleRetry = () => setRetryCount(prev => prev + 1);
-
+  
   // Prevent user from leaving the quiz page
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -119,14 +125,14 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         return message;
       }
     };
-
+    
     window.addEventListener('beforeunload', handleBeforeUnload);
     
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, [language, showStartPopup, quizQuestions.length]);
-
+  
   useEffect(() => {
     if (showStartPopup && timeLeft > 0) {
       const timerId = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -135,11 +141,19 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowStartPopup(false);
     }
   }, [showStartPopup, timeLeft]);
-
+  
   const handleOptionSelect = (option) => {
     if (!showFeedback) setSelectedOption(option);
   };
-
+  
+  const handleHintClick = () => {
+    setShowHint(true);
+    setResults(prev => ({
+      ...prev,
+      hintsUsed: prev.hintsUsed + 1
+    }));
+  };
+  
   const handleSubmit = () => {
     if (selectedOption === null) return;
     
@@ -159,7 +173,8 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       totalQuestions: quizQuestions.length,
       incorrectConcepts: !correct && currentQuestion.concept && !results.incorrectConcepts.includes(currentQuestion.concept)
         ? [...results.incorrectConcepts, currentQuestion.concept]
-        : results.incorrectConcepts
+        : results.incorrectConcepts,
+      consecutiveCorrect: correct ? consecutiveCorrect + 1 : 0 // Track consecutive correct
     };
     
     setResults(updatedResults);
@@ -167,7 +182,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     if (correct) {
       const newCount = consecutiveCorrect + 1;
       setConsecutiveCorrect(newCount);
-      if (newCount % 3 === 0) {
+      if (newCount % 3 === 0 || newCount === 5 || newCount === 10) {
         setShowCongrats(true);
         setTimeout(() => setShowCongrats(false), 2000);
       }
@@ -175,7 +190,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setConsecutiveCorrect(0);
     }
   };
-
+  
   const handleNext = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -184,10 +199,16 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowHint(false);
       setShowConcept(false);
     } else {
-      onQuizComplete(results);
+      // Set end time and pass the consecutiveCorrect streak to results
+      const finalResults = {
+        ...results,
+        consecutiveCorrect: consecutiveCorrect,
+        endTime: new Date()
+      };
+      onQuizComplete(finalResults);
     }
   };
-
+  
   const handleBackClick = () => {
     const confirmMessage = language === 'English' 
       ? 'Are you sure you want to exit the quiz? Your progress will be lost.' 
@@ -197,14 +218,14 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       onBack();
     }
   };
-
+  
   const handleLanguageChangeAttempt = () => {
     setShowLanguageWarning(true);
     setTimeout(() => setShowLanguageWarning(false), 3000);
   };
-
+  
   const currentQuestion = quizQuestions[currentQuestionIndex];
-
+  
   if (loading) {
     return (
       <div className="quiz-loading">
@@ -225,7 +246,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-
+  
   if (error) {
     return (
       <div className="quiz-error">
@@ -240,7 +261,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-
+  
   if (quizQuestions.length === 0) {
     return (
       <div className="quiz-empty">
@@ -251,7 +272,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-
+  
   return (
     <div className="quiz-container">
       {showStartPopup && <Popup 
@@ -286,7 +307,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         {currentQuestion.hint && !showFeedback && (
           <button 
             className="hint-button-header"
-            onClick={() => setShowHint(!showHint)}
+            onClick={handleHintClick} // Use our new hint click handler
             title={language === 'English' ? 'Get a hint' : 'குறிப்பு பெறுங்கள்'}
           >
             💡
@@ -339,7 +360,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             )}
           </div>
         )}
-
+        
         {showCongrats && (
           <div className="congrats-container">
             {[...Array(50)].map((_, i) => (
@@ -357,7 +378,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             </div>
           </div>
         )}
-
+        
         <div className="quiz-actions">
           {!showFeedback && 
             <button 
