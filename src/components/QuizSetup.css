@@ -47,9 +47,10 @@
   color: #2a3a7c;
 }
 
-.setup-content {
-  /* No special properties needed */
+/*.setup-content {
+  /* No special properties needed 
 }
+*/
 
 .setup-info {
   margin-bottom: 30px;
@@ -280,7 +281,7 @@
     min-width: auto;
   }
 }
-/* Add these to QuizSetup.css to override parent styles */
+/* Add these to QuizSetup.css to override parent styles 
 html, body {
   height: auto !important;
   overflow-y: auto !important;
@@ -291,3 +292,4 @@ html, body {
   min-height: 100vh !important;
   overflow-y: auto !important;
 }
+*/

@@ -1,6 +1,6 @@
 // src/components/HomePage.jsx
 import React from 'react';
-import '../App.css';
+import './HomePage.css';
 import { levels } from '../levels.js';
 import logo from '../assets/logo.png'; // 👈 Import your logo
 
