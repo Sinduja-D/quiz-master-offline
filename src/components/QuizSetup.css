@@ -1,11 +1,11 @@
 /* src/components/QuizSetup.css */
 .quiz-setup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  flex: 1;
+  display: block; /* Changed from flex to block */
   width: 100%;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh; /* Changed from height to min-height */
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .quiz-setup-card {
@@ -16,6 +16,7 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
+  margin-bottom: 40px; /* Add bottom margin to ensure button is visible */
 }
 
 .setup-header {
@@ -44,6 +45,10 @@
 
 .back-button:hover {
   color: #2a3a7c;
+}
+
+.setup-content {
+  /* No special properties needed */
 }
 
 .setup-info {
@@ -98,12 +103,14 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
+
 .subject-option.biology {
   grid-column: span 2;   /* Biology takes the full row */
   justify-self: center; 
   width: 20px;
   height: 100px; /* Centers Biology */
 }
+
 .subject-option {
   display: flex;
   flex-direction: column;
@@ -220,6 +227,11 @@
   margin-top: 10px;
 }
 
+.start-button-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .start-quiz-button {
   background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
   color: rgb(233, 222, 222);
@@ -238,11 +250,20 @@
   box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
 }
 
+.start-quiz-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
+  .quiz-setup-container {
+    padding: 10px;
+  }
+  
   .quiz-setup-card {
     padding: 20px;
+    margin-bottom: 30px;
   }
   
   .setup-header h2 {
@@ -258,4 +279,15 @@
     justify-content: center;
     min-width: auto;
   }
+}
+/* Add these to QuizSetup.css to override parent styles */
+html, body {
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+#root, .app-container, .page-container {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
 }

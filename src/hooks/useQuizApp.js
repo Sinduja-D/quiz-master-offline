@@ -1,7 +1,7 @@
 // src/hooks/useQuizApp.js
 import { useState, useEffect } from "react";
 import { levels } from "../levels.js";
-import confetti from 'canvas-confetti';
+import { fetchLocalQuestions } from '../data/localDataService';
 
 export const useQuizApp = (setActivePage, user, updateUser) => {
   // 🌍 UI + State
@@ -10,36 +10,24 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
   const [quizSettings, setQuizSettings] = useState(null);
   const [quizResults, setQuizResults] = useState(null);
   const [newlyUnlockedAchievements, setNewlyUnlockedAchievements] = useState([]);
-  const [isQuizInProgress, setIsQuizInProgress] = useState(false); // Track quiz progress
+  const [isQuizInProgress, setIsQuizInProgress] = useState(false);
+  const [achievementNotification, setAchievementNotification] = useState(null);
   
   // 📊 Backend state
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
-  // 🌐 Backend URL from .env
-  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
-  
-  // 🌐 Fetch questions
+  // 🌐 Fetch questions from local JSON
   const fetchQuestions = async ({ difficulty, grade, subject, language, limit }) => {
     console.log("fetchQuestions called with:", { difficulty, grade, subject, language, limit });
     setLoading(true);
     setError(null);
     try {
-      // Use the correct API endpoint
-      const url = `${API_URL}/api/questions?difficulty=${difficulty}&grade=${grade}&subject=${subject}&language=${language}&limit=${limit}`;
-      console.log("Fetching from URL:", url);
-      const response = await fetch(url);
-      console.log("Response status:", response.status);
+      const data = await fetchLocalQuestions({ difficulty, grade, subject, language, limit });
       
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      if (data.message) {
-        setError(data.message);
+      if (data.length === 0) {
+        setError(`No questions found for ${subject} Grade ${grade} (${difficulty} level)`);
         setQuestions([]);
       } else {
         setQuestions(data);
@@ -85,7 +73,6 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     const settings = { ...quizSettings, numberOfQuestions, subject, grade, difficulty };
     setQuizSettings(settings);
     
-    // Use the values directly without mapping
     const fetchParams = {
       difficulty,
       grade,
@@ -98,11 +85,24 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     
     try {
       await fetchQuestions(fetchParams);
-      setIsQuizInProgress(true); // Mark quiz as in progress
+      setIsQuizInProgress(true);
       setActivePage("quiz");
     } catch (err) {
       console.error("Error in handleStartQuiz:", err);
     }
+  };
+  
+  // Function to show achievement notification
+  const showAchievementNotification = (achievementId, achievementTitle) => {
+    setAchievementNotification({
+      id: achievementId,
+      title: achievementTitle
+    });
+    
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+      setAchievementNotification(null);
+    }, 5000);
   };
   
   const handleQuizComplete = (results) => {
@@ -131,9 +131,10 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
       endTime: results.endTime
     };
     
-    // Update user data
+    // Update user data - ensure schoolName is preserved
     const updatedUser = {
       ...user,
+      schoolName: user.schoolName || '', // Ensure schoolName is preserved
       totalPoints: user.totalPoints + pointsEarned,
       totalQuizzes: user.totalQuizzes + 1,
       averageScore: Math.round(
@@ -144,6 +145,11 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
       quizHistory: [...user.quizHistory, newQuizHistory]
     };
     
+    // Initialize achievementDates if it doesn't exist
+    if (!updatedUser.achievementDates) {
+      updatedUser.achievementDates = {};
+    }
+    
     // Check for new achievements
     const newAchievements = [...user.achievements];
     const unlockedAchievements = [];
@@ -152,46 +158,150 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     if (user.totalQuizzes === 0) {
       newAchievements.push("first_quiz");
       unlockedAchievements.push("first_quiz");
+      if (!updatedUser.achievementDates.first_quiz) {
+        updatedUser.achievementDates.first_quiz = new Date().toISOString();
+      }
+      showAchievementNotification("first_quiz", "First Quiz Completed");
+    }
+    
+    // Quiz count achievements
+    if (updatedUser.totalQuizzes >= 5 && !user.achievements.includes("5_quizzes")) {
+      newAchievements.push("5_quizzes");
+      unlockedAchievements.push("5_quizzes");
+      if (!updatedUser.achievementDates["5_quizzes"]) {
+        updatedUser.achievementDates["5_quizzes"] = new Date().toISOString();
+      }
+      showAchievementNotification("5_quizzes", "5 Quizzes Completed");
+    }
+    
+    if (updatedUser.totalQuizzes >= 10 && !user.achievements.includes("10_quizzes")) {
+      newAchievements.push("10_quizzes");
+      unlockedAchievements.push("10_quizzes");
+      if (!updatedUser.achievementDates["10_quizzes"]) {
+        updatedUser.achievementDates["10_quizzes"] = new Date().toISOString();
+      }
+      showAchievementNotification("10_quizzes", "10 Quizzes Completed");
+    }
+    
+    if (updatedUser.totalQuizzes >= 25 && !user.achievements.includes("25_quizzes")) {
+      newAchievements.push("25_quizzes");
+      unlockedAchievements.push("25_quizzes");
+      if (!updatedUser.achievementDates["25_quizzes"]) {
+        updatedUser.achievementDates["25_quizzes"] = new Date().toISOString();
+      }
+      showAchievementNotification("25_quizzes", "25 Quizzes Completed");
+    }
+    
+    if (updatedUser.totalQuizzes >= 50 && !user.achievements.includes("50_quizzes")) {
+      newAchievements.push("50_quizzes");
+      unlockedAchievements.push("50_quizzes");
+      if (!updatedUser.achievementDates["50_quizzes"]) {
+        updatedUser.achievementDates["50_quizzes"] = new Date().toISOString();
+      }
+      showAchievementNotification("50_quizzes", "50 Quizzes Completed");
     }
     
     // Perfect score achievement
     if (results.correctAnswers === results.totalQuestions) {
       newAchievements.push("perfect_score");
       unlockedAchievements.push("perfect_score");
+      if (!updatedUser.achievementDates.perfect_score) {
+        updatedUser.achievementDates.perfect_score = new Date().toISOString();
+      }
+      showAchievementNotification("perfect_score", "Perfect Score");
     }
     
     // Streak achievements
     if (results.consecutiveCorrect >= 3 && !user.achievements.includes("streak_3")) {
       newAchievements.push("streak_3");
       unlockedAchievements.push("streak_3");
+      if (!updatedUser.achievementDates.streak_3) {
+        updatedUser.achievementDates.streak_3 = new Date().toISOString();
+      }
+      showAchievementNotification("streak_3", "3 Correct in a Row");
     }
+    
     if (results.consecutiveCorrect >= 5 && !user.achievements.includes("streak_5")) {
       newAchievements.push("streak_5");
       unlockedAchievements.push("streak_5");
+      if (!updatedUser.achievementDates.streak_5) {
+        updatedUser.achievementDates.streak_5 = new Date().toISOString();
+      }
+      showAchievementNotification("streak_5", "5 Correct in a Row");
     }
+    
     if (results.consecutiveCorrect >= 10 && !user.achievements.includes("streak_10")) {
       newAchievements.push("streak_10");
       unlockedAchievements.push("streak_10");
+      if (!updatedUser.achievementDates.streak_10) {
+        updatedUser.achievementDates.streak_10 = new Date().toISOString();
+      }
+      showAchievementNotification("streak_10", "10 Correct in a Row");
+    }
+    
+    if (results.consecutiveCorrect >= 15 && !user.achievements.includes("streak_15")) {
+      newAchievements.push("streak_15");
+      unlockedAchievements.push("streak_15");
+      if (!updatedUser.achievementDates.streak_15) {
+        updatedUser.achievementDates.streak_15 = new Date().toISOString();
+      }
+      showAchievementNotification("streak_15", "15 Correct in a Row");
+    }
+    
+    if (results.consecutiveCorrect >= 25 && !user.achievements.includes("streak_25")) {
+      newAchievements.push("streak_25");
+      unlockedAchievements.push("streak_25");
+      if (!updatedUser.achievementDates.streak_25) {
+        updatedUser.achievementDates.streak_25 = new Date().toISOString();
+      }
+      showAchievementNotification("streak_25", "25 Correct in a Row");
+    }
+    
+    if (results.consecutiveCorrect >= 50 && !user.achievements.includes("streak_50")) {
+      newAchievements.push("streak_50");
+      unlockedAchievements.push("streak_50");
+      if (!updatedUser.achievementDates.streak_50) {
+        updatedUser.achievementDates.streak_50 = new Date().toISOString();
+      }
+      showAchievementNotification("streak_50", "50 Correct in a Row");
     }
     
     // Points achievements
     if (updatedUser.totalPoints >= 100 && !user.achievements.includes("100_points")) {
       newAchievements.push("100_points");
       unlockedAchievements.push("100_points");
+      if (!updatedUser.achievementDates["100_points"]) {
+        updatedUser.achievementDates["100_points"] = new Date().toISOString();
+      }
+      showAchievementNotification("100_points", "100 Points Earned");
     }
+    
     if (updatedUser.totalPoints >= 500 && !user.achievements.includes("500_points")) {
       newAchievements.push("500_points");
       unlockedAchievements.push("500_points");
+      if (!updatedUser.achievementDates["500_points"]) {
+        updatedUser.achievementDates["500_points"] = new Date().toISOString();
+      }
+      showAchievementNotification("500_points", "500 Points Earned");
     }
+    
     if (updatedUser.totalPoints >= 1000 && !user.achievements.includes("1000_points")) {
       newAchievements.push("1000_points");
       unlockedAchievements.push("1000_points");
+      if (!updatedUser.achievementDates["1000_points"]) {
+        updatedUser.achievementDates["1000_points"] = new Date().toISOString();
+      }
+      showAchievementNotification("1000_points", "1000 Points Earned");
     }
     
     // Quiz master achievement (10 quizzes with 80%+ average)
     if (updatedUser.totalQuizzes >= 10 && updatedUser.averageScore >= 80 && !user.achievements.includes("quiz_master")) {
       newAchievements.push("quiz_master");
       unlockedAchievements.push("quiz_master");
+      if (!updatedUser.achievementDates.quiz_master) {
+        updatedUser.achievementDates.quiz_master = new Date().toISOString();
+      }
+      showAchievementNotification("quiz_master", "Quiz Master");
     }
     
     // Subject expert achievement (5 quizzes in the same subject with 90%+ average)
@@ -203,21 +313,32 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
       if (subjectAverage >= 90 && !user.achievements.includes("subject_expert")) {
         newAchievements.push("subject_expert");
         unlockedAchievements.push("subject_expert");
+        if (!updatedUser.achievementDates.subject_expert) {
+          updatedUser.achievementDates.subject_expert = new Date().toISOString();
+        }
+        showAchievementNotification("subject_expert", "Subject Expert");
       }
     }
     
     // Speed demon achievement (completed quiz in less than half the allotted time)
-    // Assuming 30 seconds per question as allotted time
     const allottedTime = results.totalQuestions * 30;
     if (timeTaken < allottedTime / 2 && !user.achievements.includes("speed_demon")) {
       newAchievements.push("speed_demon");
       unlockedAchievements.push("speed_demon");
+      if (!updatedUser.achievementDates.speed_demon) {
+        updatedUser.achievementDates.speed_demon = new Date().toISOString();
+      }
+      showAchievementNotification("speed_demon", "Speed Demon");
     }
     
     // No hints achievement
     if (results.hintsUsed === 0 && !user.achievements.includes("no_hints")) {
       newAchievements.push("no_hints");
       unlockedAchievements.push("no_hints");
+      if (!updatedUser.achievementDates.no_hints) {
+        updatedUser.achievementDates.no_hints = new Date().toISOString();
+      }
+      showAchievementNotification("no_hints", "No Hints Used");
     }
     
     // Early bird achievement (completed quiz between 5 AM and 9 AM)
@@ -225,16 +346,23 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     if (hour >= 5 && hour < 9 && !user.achievements.includes("early_bird")) {
       newAchievements.push("early_bird");
       unlockedAchievements.push("early_bird");
+      if (!updatedUser.achievementDates.early_bird) {
+        updatedUser.achievementDates.early_bird = new Date().toISOString();
+      }
+      showAchievementNotification("early_bird", "Early Bird");
     }
     
     // Night owl achievement (completed quiz between 10 PM and 2 AM)
     if ((hour >= 22 || hour < 2) && !user.achievements.includes("night_owl")) {
       newAchievements.push("night_owl");
       unlockedAchievements.push("night_owl");
+      if (!updatedUser.achievementDates.night_owl) {
+        updatedUser.achievementDates.night_owl = new Date().toISOString();
+      }
+      showAchievementNotification("night_owl", "Night Owl");
     }
     
     // Weekly warrior achievement (completed at least one quiz every day for a week)
-    // This is a simplified check - in a real app, you'd need more sophisticated tracking
     const last7Days = [...user.quizHistory, newQuizHistory]
       .filter(q => new Date(q.date) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000))
       .map(q => new Date(q.date).toLocaleDateString());
@@ -243,10 +371,13 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     if (uniqueDays.length >= 7 && !user.achievements.includes("weekly_warrior")) {
       newAchievements.push("weekly_warrior");
       unlockedAchievements.push("weekly_warrior");
+      if (!updatedUser.achievementDates.weekly_warrior) {
+        updatedUser.achievementDates.weekly_warrior = new Date().toISOString();
+      }
+      showAchievementNotification("weekly_warrior", "Weekly Warrior");
     }
     
     // Monthly champion achievement (completed at least one quiz every day for a month)
-    // This is a simplified check - in a real app, you'd need more sophisticated tracking
     const last30Days = [...user.quizHistory, newQuizHistory]
       .filter(q => new Date(q.date) > new Date(Date.now() - 30 * 24 * 60 * 60 * 1000))
       .map(q => new Date(q.date).toLocaleDateString());
@@ -255,6 +386,10 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     if (uniqueDays30.length >= 30 && !user.achievements.includes("monthly_champion")) {
       newAchievements.push("monthly_champion");
       unlockedAchievements.push("monthly_champion");
+      if (!updatedUser.achievementDates.monthly_champion) {
+        updatedUser.achievementDates.monthly_champion = new Date().toISOString();
+      }
+      showAchievementNotification("monthly_champion", "Monthly Champion");
     }
     
     // Update achievements if there are new ones
@@ -267,11 +402,16 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     updateUser(updatedUser);
     localStorage.setItem('currentUser', JSON.stringify(updatedUser));
     
-    // Update users list in localStorage
+    // Update users list in localStorage - ensure schoolName is preserved
     const users = JSON.parse(localStorage.getItem('quizAppUsers') || '[]');
     const userIndex = users.findIndex(u => u.id === user.id);
     if (userIndex !== -1) {
-      users[userIndex] = updatedUser;
+      // Preserve schoolName when updating user
+      users[userIndex] = {
+        ...users[userIndex],
+        ...updatedUser,
+        schoolName: user.schoolName || users[userIndex].schoolName || ''
+      };
       localStorage.setItem('quizAppUsers', JSON.stringify(users));
     }
     
@@ -281,7 +421,7 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
   const handleRestartQuiz = () => setActivePage("quizsetup");
   
   const handleBackToHome = () => {
-    setIsQuizInProgress(false); // Reset quiz progress when going home
+    setIsQuizInProgress(false);
     setActivePage("home");
     setSelectedLevel(null);
     setQuizResults(null);
@@ -292,154 +432,6 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
   useEffect(() => {
     document.title = language === "English" ? "Quiz Master" : "வினா மாஸ்டர்";
   }, [language]);
-  
-  // Sequential confetti for achievements
-  useEffect(() => {
-    if (newlyUnlockedAchievements.length > 0) {
-      // Order achievements in the desired sequence
-      const achievementOrder = [
-        "first_quiz", 
-        "perfect_score", 
-        "streak_3", 
-        "streak_5", 
-        "streak_10",
-        "100_points",
-        "500_points",
-        "1000_points",
-        "quiz_master",
-        "subject_expert",
-        "speed_demon",
-        "no_hints",
-        "early_bird",
-        "night_owl",
-        "weekly_warrior",
-        "monthly_champion"
-      ];
-      
-      // Sort unlocked achievements based on the predefined order
-      const sortedAchievements = [...newlyUnlockedAchievements].sort((a, b) => {
-        return achievementOrder.indexOf(a) - achievementOrder.indexOf(b);
-      });
-      
-      // Function to trigger confetti for each achievement in sequence
-      const triggerConfettiForAchievement = (index) => {
-        if (index >= sortedAchievements.length) {
-          // Reset after all achievements
-          setNewlyUnlockedAchievements([]);
-          return;
-        }
-        
-        const achievementId = sortedAchievements[index];
-        
-        // Different confetti styles for different achievements
-        let confettiConfig = {
-          particleCount: 150,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#FFD700', '#FFA500', '#FF8C00', '#FF7F50', '#FF6347'],
-          shapes: ['star'],
-          gravity: 0.8,
-          drift: 1,
-        };
-        
-        // Special effects for specific achievements
-        if (achievementId === 'perfect_score') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 200,
-            spread: 90,
-            colors: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF'],
-            shapes: ['circle', 'star'],
-          };
-        } else if (achievementId === 'streak_3' || achievementId === 'streak_5' || achievementId === 'streak_10') {
-          const streakCount = achievementId === 'streak_3' ? 3 : achievementId === 'streak_5' ? 5 : 10;
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: streakCount * 50,
-            spread: 70 + streakCount * 5,
-            colors: ['#FF4500', '#FF8C00', '#FFA500'],
-            shapes: ['star'],
-            origin: { y: 0.6 },
-          };
-        } else if (achievementId === 'quiz_master') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 300,
-            spread: 100,
-            colors: ['#9370DB', '#4B0082', '#8A2BE2', '#9932CC', '#BA55D3'],
-            shapes: ['circle', 'star', 'square'],
-          };
-        } else if (achievementId === 'subject_expert') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 250,
-            spread: 90,
-            colors: ['#1E90FF', '#00BFFF', '#87CEFA', '#4682B4', '#5F9EA0'],
-            shapes: ['circle', 'star'],
-          };
-        } else if (achievementId === 'speed_demon') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 200,
-            spread: 80,
-            colors: ['#FF4500', '#FF6347', '#FF7F50', '#FFA500', '#FFD700'],
-            shapes: ['star'],
-            gravity: 1.2,
-          };
-        } else if (achievementId === 'weekly_warrior' || achievementId === 'monthly_champion') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 300,
-            spread: 100,
-            colors: ['#32CD32', '#3CB371', '#2E8B57', '#228B22', '#008000'],
-            shapes: ['circle', 'star'],
-          };
-        } else if (achievementId.includes('points')) {
-          const points = achievementId.split('_')[0];
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: points === '100' ? 150 : points === '500' ? 200 : 300,
-            spread: points === '100' ? 70 : points === '500' ? 90 : 100,
-            colors: ['#FFD700', '#FFA500', '#FF8C00'],
-            shapes: ['star'],
-          };
-        } else if (achievementId === 'no_hints') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 180,
-            spread: 75,
-            colors: ['#4169E1', '#1E90FF', '#00BFFF', '#87CEFA', '#4682B4'],
-            shapes: ['circle', 'star'],
-          };
-        } else if (achievementId === 'early_bird') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 200,
-            spread: 85,
-            colors: ['#FFD700', '#FFA500', '#FF8C00', '#FFFF00', '#F0E68C'],
-            shapes: ['circle', 'star'],
-          };
-        } else if (achievementId === 'night_owl') {
-          confettiConfig = {
-            ...confettiConfig,
-            particleCount: 200,
-            spread: 85,
-            colors: ['#191970', '#000080', '#00008B', '#0000CD', '#4169E1'],
-            shapes: ['circle', 'star'],
-          };
-        }
-        
-        // Trigger confetti
-        confetti(confettiConfig);
-        
-        // Schedule next achievement confetti with a delay
-        setTimeout(() => triggerConfettiForAchievement(index + 1), 2000);
-      };
-      
-      // Start the sequence
-      triggerConfettiForAchievement(0);
-    }
-  }, [newlyUnlockedAchievements]);
   
   return {
     language,
@@ -457,6 +449,7 @@ export const useQuizApp = (setActivePage, user, updateUser) => {
     handleRestartQuiz,
     handleBackToHome,
     newlyUnlockedAchievements,
-    isQuizInProgress, // Expose this state
+    isQuizInProgress,
+    achievementNotification,
   };
 };

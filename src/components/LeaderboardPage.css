@@ -1,7 +1,7 @@
-/* src/components/LeaderboardPage.css */
 .leaderboard-page {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .leaderboard-page h2 {
@@ -73,13 +73,14 @@
 
 .leaderboard-header {
   display: grid;
-  grid-template-columns: 60px 1fr 100px 100px 120px;
+  grid-template-columns: 60px 1fr 1.5fr 100px 100px 120px;
   gap: 15px;
   padding: 15px 20px;
   background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
   color: white;
   font-weight: 600;
   text-align: center;
+  align-items: center;
 }
 
 .header-rank {
@@ -90,6 +91,10 @@
   text-align: left;
 }
 
+.header-school {
+  text-align: left;
+}
+
 .leaderboard-list {
   max-height: 500px;
   overflow-y: auto;
@@ -97,7 +102,7 @@
 
 .leaderboard-item {
   display: grid;
-  grid-template-columns: 60px 1fr 100px 100px 120px;
+  grid-template-columns: 60px 1fr 1.5fr 100px 100px 120px;
   gap: 15px;
   padding: 15px 20px;
   border-bottom: 1px solid #eee;
@@ -130,16 +135,36 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
+  min-width: 60px;
 }
 
-.user-info {
+.user-info-container {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .user-name {
   font-weight: 600;
   color: #1a2a6c;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-school-container {
+  min-width: 0;
+}
+
+.user-school {
+  font-size: 0.9rem;
+  color: #555;
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 .current-user-badge {
@@ -151,12 +176,14 @@
   border-radius: 10px;
   margin-top: 5px;
   align-self: flex-start;
+  white-space: nowrap;
 }
 
 .user-points, .user-quizzes, .user-score {
   text-align: center;
   font-weight: 600;
   color: #1a2a6c;
+  white-space: nowrap;
 }
 
 .leaderboard-footer {
@@ -166,18 +193,45 @@
   font-size: 1rem;
 }
 
+/* Tamil language specific adjustments */
+.leaderboard-page.tamil-language .leaderboard-header,
+.leaderboard-page.tamil-language .leaderboard-item {
+  grid-template-columns: 80px 1.5fr 2fr 100px 100px 120px;
+}
+
+.leaderboard-page.tamil-language .user-name,
+.leaderboard-page.tamil-language .user-school {
+  font-size: 0.9rem;
+}
+
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .leaderboard-header, .leaderboard-item {
-    grid-template-columns: 40px 1fr 80px;
-    gap: 10px;
+    grid-template-columns: 60px 1fr 1.2fr 100px 100px;
   }
   
-  .header-quizzes, .header-score, .user-quizzes, .user-score {
+  .header-score, .user-score {
     display: none;
   }
   
-  .user-info {
+  .leaderboard-page.tamil-language .leaderboard-header,
+  .leaderboard-page.tamil-language .leaderboard-item {
+    grid-template-columns: 80px 1.5fr 1.5fr 100px 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .leaderboard-header, .leaderboard-item {
+    grid-template-columns: 50px 1fr 80px;
+    gap: 10px;
+  }
+  
+  .header-school, .header-quizzes, .header-score, 
+  .user-school-container, .user-quizzes, .user-score {
+    display: none;
+  }
+  
+  .user-info-container {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -186,5 +240,31 @@
   .current-user-badge {
     margin-top: 0;
     margin-left: 10px;
+  }
+  
+  /* Tamil language specific adjustments for mobile */
+  .leaderboard-page.tamil-language .leaderboard-header,
+  .leaderboard-page.tamil-language .leaderboard-item {
+    grid-template-columns: 60px 1fr 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .leaderboard-page {
+    padding: 0 10px;
+  }
+  
+  .leaderboard-header, .leaderboard-item {
+    padding: 12px 15px;
+  }
+  
+  .user-rank {
+    font-size: 1.2rem;
+    min-width: 50px;
+  }
+  
+  .leaderboard-page.tamil-language .leaderboard-header,
+  .leaderboard-page.tamil-language .leaderboard-item {
+    grid-template-columns: 60px 1fr 80px;
   }
 }

@@ -13,12 +13,7 @@ const ContactPage = ({ language }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const teamMembers = [
-    {
-      name: { english: "Vijayalakshmi S.R", tamil: "விஜயலட்சுமி எஸ் ஆர்" },
-      role: { english: "Database Developer", tamil: "தரவுத்தள உருவாக்குநர்" },
-      phone: "+91 9444129301",
-      email: "srvijayalakshmi14@gmail.com"
-    },
+    
     {
       name: { english: "Reethu P", tamil: "ரீத்து பெ" },
       role: { english: "UI/UX Designer", tamil: "UI/UX வடிவமைப்பாளர்" },
@@ -26,11 +21,18 @@ const ContactPage = ({ language }) => {
       email: "preethu.0306@gmail.com"
     },
     {
+      name: { english: "Vijayalakshmi S.R", tamil: "விஜயலட்சுமி எஸ் ஆர்" },
+      role: { english: "Database Developer", tamil: "தரவுத்தள உருவாக்குநர்" },
+      phone: "+91 9444129301",
+      email: "srvijayalakshmi14@gmail.com"
+    },
+     {
       name: { english: "Sinduja D", tamil: "சிந்துஜா டி" },
-      role: { english: "Backend Developer", tamil: "பின்தள உருவாக்குநர்" },
+      role: { english: "Team Lead", tamil: "குழுத் தலைவர்" },
       phone: "+91 7010966979",
       email: "sindujadilibabu@gmail.com"
     }
+   
   ];
 
   const handleChange = (e) => {

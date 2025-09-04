@@ -1,4 +1,3 @@
-// src/components/QuizResults.js
 import React, { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import './QuizResults.css';
@@ -59,12 +58,12 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
         ? 'Keep trying! Practice makes perfect!'
         : 'முயற்சி செய்து கொண்டே இருங்கள்! பயிற்சி மனிதனை நிபுணராக்கும்!';
   }
-
+  
   // Special message for perfect score
   const perfectScoreMessage = language === 'English' 
     ? 'Perfect Score! Amazing job!' 
     : 'முழு மதிப்பெண்! அற்புதமான செயல்!';
-
+    
   return (
     <div className="results-container">
       <div className="results-card">

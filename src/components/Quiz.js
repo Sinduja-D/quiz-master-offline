@@ -1,8 +1,18 @@
-
-// src/components/Quiz.js
 import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
+import confetti from 'canvas-confetti';
 import './Quiz.css';
+import { fetchLocalQuestions } from '../data/localDataService';
+
+// Fisher-Yates shuffle algorithm
+const shuffleArray = (array) => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
 
 const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComplete, onBack }) => {
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -26,16 +36,8 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   const [showConcept, setShowConcept] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [retryCount, setRetryCount] = useState(0);
-  const [connectionStatus, setConnectionStatus] = useState({
-    server: false,
-    database: false,
-    questions: false
-  });
   const [showLanguageWarning, setShowLanguageWarning] = useState(false);
-  
-  // ✅ Use .env for API
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  const [achievementNotification, setAchievementNotification] = useState(null);
   
   // Map correct option from database (1,2,3,4) to frontend keys (optionA, optionB, etc.)
   const mapCorrectOption = (correctOption) => {
@@ -48,57 +50,69 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     return optionMap[correctOption] || correctOption;
   };
   
-  // Fetch questions from backend
+  // Function to trigger confetti for streak achievements
+  const triggerStreakConfetti = (streakCount) => {
+    let confettiConfig = {
+      particleCount: streakCount * 50,
+      spread: 70 + streakCount * 5,
+      origin: { y: 0.6 },
+      colors: ['#FF4500', '#FF8C00', '#FFA500'],
+      shapes: ['star'],
+      gravity: 0.8,
+      drift: 1,
+    };
+    
+    confetti(confettiConfig);
+  };
+  
+  // Function to show achievement notification
+  const showAchievementNotification = (achievementId, achievementTitle) => {
+    setAchievementNotification({
+      id: achievementId,
+      title: achievementTitle
+    });
+    
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+      setAchievementNotification(null);
+    }, 3000);
+  };
+  
+  // Fetch questions from local JSON
   useEffect(() => {
     const fetchQuestions = async () => {
       setLoading(true);
       setError(null);
-      setConnectionStatus({ server: false, database: false, questions: false });
       
       try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000);
-        
-        // ✅ Use correct API endpoint and no subject mapping
-        const queryParams = new URLSearchParams({
-          language: language,
+        const data = await fetchLocalQuestions({
           difficulty: level,
-          subject: subject, // Use subject directly
           grade: parseInt(grade),
+          subject: subject,
+          language: language,
           limit: numberOfQuestions
         });
         
-        const response = await fetch(`${API_URL}/api/questions?${queryParams.toString()}`, { 
-          signal: controller.signal 
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        if (data.message) {
-          setError(data.message);
+        if (data.length === 0) {
+          setError(`No questions found for ${subject} Grade ${grade} (${level} level)`);
           setQuizQuestions([]);
         } else {
-          setQuizQuestions(data);
+          // Shuffle the questions array to randomize order
+          const shuffledQuestions = shuffleArray(data);
+          setQuizQuestions(shuffledQuestions);
           setResults({ 
-            totalQuestions: data.length, 
+            totalQuestions: shuffledQuestions.length, 
             correctAnswers: 0, 
             wrongAnswers: 0, 
             incorrectConcepts: [],
             hintsUsed: 0,
-            startTime: new Date(), // Set start time when quiz begins
+            startTime: new Date(),
             endTime: null
           });
-          setConnectionStatus({ server: true, database: true, questions: true });
         }
       } catch (err) {
-        setError(err.message || 'Failed to load questions. Please try again later.');
+        console.error('Error loading local questions:', err);
+        setError('Failed to load questions. Please try again later.');
         setQuizQuestions([]);
       } finally {
         setLoading(false);
@@ -110,9 +124,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     } else {
       setLoading(false);
     }
-  }, [language, level, numberOfQuestions, subject, grade, retryCount]);
-  
-  const handleRetry = () => setRetryCount(prev => prev + 1);
+  }, [language, level, numberOfQuestions, subject, grade]);
   
   // Prevent user from leaving the quiz page
   useEffect(() => {
@@ -174,7 +186,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       incorrectConcepts: !correct && currentQuestion.concept && !results.incorrectConcepts.includes(currentQuestion.concept)
         ? [...results.incorrectConcepts, currentQuestion.concept]
         : results.incorrectConcepts,
-      consecutiveCorrect: correct ? consecutiveCorrect + 1 : 0 // Track consecutive correct
+      consecutiveCorrect: correct ? consecutiveCorrect + 1 : 0
     };
     
     setResults(updatedResults);
@@ -182,8 +194,37 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     if (correct) {
       const newCount = consecutiveCorrect + 1;
       setConsecutiveCorrect(newCount);
-      if (newCount % 3 === 0 || newCount === 5 || newCount === 10) {
+      
+      // Show congrats and trigger confetti for streak achievements
+      if (newCount === 3) {
         setShowCongrats(true);
+        triggerStreakConfetti(3);
+        showAchievementNotification("streak_3", "3 Correct in a Row!");
+        setTimeout(() => setShowCongrats(false), 2000);
+      } else if (newCount === 5) {
+        setShowCongrats(true);
+        triggerStreakConfetti(5);
+        showAchievementNotification("streak_5", "5 Correct in a Row!");
+        setTimeout(() => setShowCongrats(false), 2000);
+      } else if (newCount === 10) {
+        setShowCongrats(true);
+        triggerStreakConfetti(10);
+        showAchievementNotification("streak_10", "10 Correct in a Row!");
+        setTimeout(() => setShowCongrats(false), 2000);
+      } else if (newCount === 15) {
+        setShowCongrats(true);
+        triggerStreakConfetti(15);
+        showAchievementNotification("streak_15", "15 Correct in a Row!");
+        setTimeout(() => setShowCongrats(false), 2000);
+      } else if (newCount === 25) {
+        setShowCongrats(true);
+        triggerStreakConfetti(25);
+        showAchievementNotification("streak_25", "25 Correct in a Row!");
+        setTimeout(() => setShowCongrats(false), 2000);
+      } else if (newCount === 50) {
+        setShowCongrats(true);
+        triggerStreakConfetti(50);
+        showAchievementNotification("streak_50", "50 Correct in a Row!");
         setTimeout(() => setShowCongrats(false), 2000);
       }
     } else {
@@ -199,7 +240,6 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowHint(false);
       setShowConcept(false);
     } else {
-      // Set end time and pass the consecutiveCorrect streak to results
       const finalResults = {
         ...results,
         consecutiveCorrect: consecutiveCorrect,
@@ -232,13 +272,6 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>{language === 'English' ? 'Loading questions...' : 'கேள்விகள் ஏற்றப்படுகின்றன...'}</p>
-          <div className="connection-status">
-            <ul>
-              <li>Server: {connectionStatus.server ? '✅ Connected' : '⏳ Checking...'}</li>
-              <li>Database: {connectionStatus.database ? '✅ Connected' : '⏳ Checking...'}</li>
-              <li>Questions: {connectionStatus.questions ? '✅ Loaded' : '⏳ Loading...'}</li>
-            </ul>
-          </div>
           <button className="back-button" onClick={onBack}>
             {language === 'English' ? 'Back to Home' : 'முகப்பிற்குச் செல்ல'}
           </button>
@@ -252,9 +285,6 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       <div className="quiz-error">
         <h3>{language === 'English' ? 'Error' : 'பிழை'}</h3>
         <p>{error}</p>
-        <button className="retry-button" onClick={handleRetry}>
-          {language === 'English' ? 'Try Again' : 'மீண்டும் முயற்சிக்கவும்'}
-        </button>
         <button className="back-button" onClick={onBack}>
           {language === 'English' ? 'Back to Home' : 'முகப்பிற்குச் செல்ல'}
         </button>
@@ -291,6 +321,22 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         </div>
       )}
       
+      {achievementNotification && (
+        <div className="achievement-notification">
+          <div className="notification-content">
+            <div className="notification-icon">🏆</div>
+            <div className="notification-text">
+              <div className="notification-title">
+                {language === 'English' ? 'Achievement Unlocked!' : 'சாதனை திறக்கப்பட்டது!'}
+              </div>
+              <div className="notification-name">
+                {achievementNotification.title}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <div className="quiz-header">
         <button className="back-button" onClick={handleBackClick}>
           ← {language === 'English' ? 'Back' : 'திரும்ப'}
@@ -301,13 +347,13 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         <div className="quiz-level">
           {level === 'beginner' && '🟢'}
           {level === 'intermediate' && '🟡'}
-          {level === 'advance' && '🔴'} {/* Fixed: was 'advanced' */}
+          {level === 'advance' && '🔴'}
           {level.charAt(0).toUpperCase() + level.slice(1)}
         </div>
         {currentQuestion.hint && !showFeedback && (
           <button 
             className="hint-button-header"
-            onClick={handleHintClick} // Use our new hint click handler
+            onClick={handleHintClick}
             title={language === 'English' ? 'Get a hint' : 'குறிப்பு பெறுங்கள்'}
           >
             💡

@@ -1,11 +1,10 @@
-// src/components/LeaderboardPage.jsx
 import React, { useState, useEffect } from 'react';
 import './LeaderboardPage.css';
 
 const LeaderboardPage = ({ language, currentUser }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     // Load users from localStorage
     const savedUsers = localStorage.getItem('quizAppUsers');
@@ -17,7 +16,7 @@ const LeaderboardPage = ({ language, currentUser }) => {
     }
     setLoading(false);
   }, []);
-
+  
   const getRankIcon = (rank) => {
     switch (rank) {
       case 1: return '🥇';
@@ -26,7 +25,7 @@ const LeaderboardPage = ({ language, currentUser }) => {
       default: return `#${rank}`;
     }
   };
-
+  
   const getRankClass = (rank) => {
     switch (rank) {
       case 1: return 'rank-1';
@@ -35,7 +34,7 @@ const LeaderboardPage = ({ language, currentUser }) => {
       default: return '';
     }
   };
-
+  
   if (loading) {
     return (
       <div className="leaderboard-loading">
@@ -44,9 +43,9 @@ const LeaderboardPage = ({ language, currentUser }) => {
       </div>
     );
   }
-
+  
   return (
-    <div className="page-content leaderboard-page">
+    <div className={`page-content leaderboard-page ${language === 'Tamil' ? 'tamil-language' : ''}`}>
       <h2>{language === 'English' ? 'Leaderboard' : 'தலைவர் பட்டியல்'}</h2>
       
       <div className="leaderboard-intro">
@@ -66,6 +65,7 @@ const LeaderboardPage = ({ language, currentUser }) => {
           <div className="leaderboard-header">
             <div className="header-rank">{language === 'English' ? 'Rank' : 'தரவரிசை'}</div>
             <div className="header-user">{language === 'English' ? 'User' : 'பயனர்'}</div>
+            <div className="header-school">{language === 'English' ? 'School' : 'பள்ளி'}</div>
             <div className="header-points">{language === 'English' ? 'Points' : 'புள்ளிகள்'}</div>
             <div className="header-quizzes">{language === 'English' ? 'Quizzes' : 'வினாக்கள்'}</div>
             <div className="header-score">{language === 'English' ? 'Avg Score' : 'சராசரி மதிப்பெண்'}</div>
@@ -84,13 +84,18 @@ const LeaderboardPage = ({ language, currentUser }) => {
                   <div className="user-rank">
                     {getRankIcon(rank)}
                   </div>
-                  <div className="user-info">
+                  <div className="user-info-container">
                     <div className="user-name">{user.username}</div>
                     {isCurrentUser && (
                       <div className="current-user-badge">
                         {language === 'English' ? 'You' : 'நீங்கள்'}
                       </div>
                     )}
+                  </div>
+                  <div className="user-school-container">
+                    <div className="user-school">
+                      {user.schoolName || (language === 'English' ? 'Not specified' : 'குறிப்பிடப்படவில்லை')}
+                    </div>
                   </div>
                   <div className="user-points">{user.totalPoints}</div>
                   <div className="user-quizzes">{user.totalQuizzes}</div>

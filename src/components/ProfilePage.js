@@ -1,4 +1,3 @@
-// src/components/ProfilePage.jsx
 import React from 'react';
 import './ProfilePage.css';
 
@@ -52,7 +51,18 @@ const ProfilePage = ({ language, user }) => {
         <div className="profile-avatar">👤</div>
         <div className="profile-details">
           <h3>{user.username}</h3>
-          <p>{language === 'English' ? 'Member Since:' : 'உறுப்பினர் முதல்:'} {user.memberSince}</p>
+          <p className="profile-school">
+            <span className="profile-label">
+              {language === 'English' ? 'School:' : 'பள்ளி:'}
+            </span> 
+            {user.schoolName || (language === 'English' ? 'Not specified' : 'குறிப்பிடப்படவில்லை')}
+          </p>
+          <p className="profile-member-since">
+            <span className="profile-label">
+              {language === 'English' ? 'Member Since:' : 'உறுப்பினர் முதல்:'}
+            </span> 
+            {user.memberSince}
+          </p>
         </div>
       </div>
       

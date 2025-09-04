@@ -1,4 +1,3 @@
-// src/components/PageRenderer.js
 import React, { useState, useEffect } from "react";
 import HomePage from "./HomePage.js";
 import AboutPage from "./AboutPage.js";
@@ -29,6 +28,7 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
     handleRestartQuiz,
     handleBackToHome,
     newlyUnlockedAchievements,
+    //triggerAchievementConfetti,
   } = useQuizApp(setActivePage, user, updateUser);
   
   // Create a safe toggle language function that checks if we're in a quiz
@@ -39,14 +39,14 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
     }
     toggleLanguage();
   };
-
+  
   // Store selected difficulty in sessionStorage when level is selected
   useEffect(() => {
     if (selectedLevel) {
       sessionStorage.setItem('selectedDifficulty', selectedLevel.id);
     }
   }, [selectedLevel]);
-
+  
   // Get difficulty from sessionStorage when navigating to quiz setup
   useEffect(() => {
     if (activePage === "quizsetup") {
@@ -57,7 +57,7 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
       }
     }
   }, [activePage, setActivePage]);
-
+  
   // If user is null, show loading
   if (!user) {
     return (
@@ -67,7 +67,7 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
       </div>
     );
   }
-
+  
   switch (activePage) {
     case "home":
       return (
@@ -87,7 +87,12 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
     case "profile":
       return <ProfilePage language={language} user={user} />;
     case "achievements":
-      return <AchievementsPage language={language} user={user} />;
+      return <AchievementsPage 
+        language={language} 
+        user={user} 
+        newlyUnlockedAchievements={newlyUnlockedAchievements}
+        //triggerAchievementConfetti={triggerAchievementConfetti} 
+      />;
     case "leaderboard":
       return <LeaderboardPage language={language} />;
     case "riddles":
@@ -124,13 +129,6 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
           onHome={handleBackToHome}
         />
       );
-     case "achievements":
-      return( <AchievementsPage 
-        language={language} 
-        user={user} 
-        newlyUnlockedAchievements={newlyUnlockedAchievements}
-      /> 
-      ); 
     default:
       return <HomePage language={language} setActivePage={setActivePage} />;
   }
