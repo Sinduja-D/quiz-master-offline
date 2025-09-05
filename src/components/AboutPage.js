@@ -26,6 +26,10 @@ const AboutPage = ({ language }) => {
         {
           heading: "Our Team",
           content: "Quiz Master is developed by a passionate team of educators, developers, and designers who believe in the power of technology to transform education. We're constantly working to improve and expand our platform based on user feedback."
+        },
+        {
+          heading: "Outcomes",
+          content: "Users of Quiz Master report significant improvements in their knowledge retention, test scores, and overall confidence in the subjects they study. Our platform has helped thousands of students achieve their educational goals and develop a love for learning."
         }
       ]
     },
@@ -51,13 +55,15 @@ const AboutPage = ({ language }) => {
         {
           heading: "எங்கள் குழு",
           content: "தொழில்நுட்பம் கல்வியை மாற்றும் சக்தி கொண்டது என்று நம்பும் கல்வியாளர்கள், டெவலப்பர்கள் மற்றும் வடிவமைப்பாளர்களின் ஆர்வமுள்ள குழுவால் வினா மாஸ்டர் உருவாக்கப்பட்டுள்ளது. பயனர் கருத்துக்களின் அடிப்படையில் எங்கள் தளத்தை மேம்படுத்தவும் விரிவுபடுத்தவும் நாங்கள் தொடர்ந்து உழைக்கிறோம்."
+        },
+        {
+          heading: "முடிவுகள்",
+          content: "வினா மாஸ்டர் பயனர்கள் அறிவைத் தக்கவைத்தல், தேர்வு மதிப்பெண்கள் மற்றும் அவர்கள் படிக்கும் பாடங்களில் ஒட்டுமொத்த நம்பிக்கை ஆகியவற்றில் குறிப்பிடத்தக்க முன்னேற்றத்தைக் காண்கிறார்கள். எங்கள் தளம் ஆயிரக்கணக்கான மாணவர்கள் தங்கள் கல்வி இலக்குகளை அடையவும், கற்றல் மீதான விருப்பத்தை வளர்க்கவும் உதவியுள்ளது."
         }
       ]
     }
   };
-
   const pageContent = language === "English" ? content.english : content.tamil;
-
   return (
     <div className="about-page">
       <h1 className="page-title">{pageContent.title}</h1>

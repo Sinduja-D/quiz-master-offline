@@ -1,29 +1,358 @@
-.fun-fact-box {
-  margin: 20px auto;
-  padding: 25px;
-  max-width: 600px;
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-  border-radius: 15px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #1a2a6c;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #1a2a6c;
+/* Main container */
+.board-game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a2a6c, #2a3a7c, #3a4a8c);
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  overflow: hidden;
 }
-.another-btn{
-  box-align:center;
-  justify-content: center;  /* horizontal center */
+
+/* Game header */
+.game-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-left:43%;  
-  margin-top: 20px;
-    background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+.game-header h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  background: linear-gradient(90deg, #ffffff, #a2c7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Game stats */
+.game-stats {
+  display: flex;
+  gap: 15px;
+}
+
+/* Updated stat-item to accommodate Tamil text */
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Added to center vertically */
+  background: rgba(234, 231, 231, 0.1);
+  padding: 10px 15px;
+  border-radius: 10px;
+  min-width: 100px; /* Increased from 80px to accommodate longer text */
+  height: 70px; /* Fixed height to ensure consistent box size */
+  text-align: center; /* Ensure text is centered */
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4facfe;
+  margin-bottom: 5px; /* Added space between value and label */
+}
+
+/* Updated stat label styling */
+.stat-item span:last-child {
+  font-size: 0.8rem; /* Reduced font size for better fit */
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis if text is too long */
+  width: 100%; /* Ensure it takes full width of container */
+  text-align: center; 
+   color: #000 !important; 
+}
+
+/* Game board */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+  perspective: 1000px;
+}
+
+/* Board squares */
+.board-square {
+  height: 180px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.board-square:hover {
+  transform: translateY(-5px);
+}
+
+.square-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.board-square.revealed .square-inner {
+  transform: rotateY(180deg);
+}
+
+.square-front, .square-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.square-front {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+}
+
+.square-back {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.square-number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.2);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-icon {
+  font-size: 3rem;
+  margin-top: 10px;
+}
+
+/* Square back content */
+.square-back-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.fact-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.fact-preview {
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Fact display */
+.fact-display {
+  margin: 30px 0;
+  perspective: 1000px;
+}
+
+.fact-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateZ(0);
+  transition: transform 0.5s ease;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fact-content p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
+/* Game completed message */
+.game-completed {
+  margin: 30px 0;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.completion-message {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
+}
+
+.completion-message h2 {
+  font-size: 2rem;
+  margin: 0 0 10px 0;
+}
+
+.completion-message p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Game controls */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-size: 1rem;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+}
+
+.reset-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(240, 147, 251, 0.5);
+}
+
+/* Background decoration */
+.board-game-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(245, 87, 108, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .game-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
   
-  transition: 0.3s; 
+  .game-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .game-board {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .board-square {
+    height: 150px;
+  }
+  
+  .fact-content p {
+    font-size: 1.2rem;
+  }
+  
+  /* Adjust stat items for mobile */
+  .stat-item {
+    min-width: 90px; /* Slightly smaller for mobile */
+    height: 65px; /* Slightly smaller height */
+  }
+  
+  .stat-value {
+    font-size: 1.6rem; /* Slightly smaller */
+  }
+  
+  .stat-item span:last-child {
+    font-size: 0.75rem; /* Even smaller for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .game-board {
+    grid-template-columns: 1fr;
+  }
+  
+  .board-square {
+    height: 120px;
+  }
+  
+  .square-icon {
+    font-size: 2.5rem;
+  }
+  
+  .fact-content p {
+    font-size: 1.1rem;
+  }
+  
+  .completion-message h2 {
+    font-size: 1.6rem;
+  }
+  
+  .completion-message p {
+    font-size: 1rem;
+  }
+  
+  /* Further adjustments for very small screens */
+  .stat-item {
+    min-width: 80px;
+    height: 60px;
+    padding: 8px 10px;
+  }
+  
+  .stat-value {
+    font-size: 1.4rem;
+    margin-bottom: 3px;
+  }
+  
+  .stat-item span:last-child {
+    font-size: 0.7rem;
+  }
 }
