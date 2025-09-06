@@ -25,10 +25,10 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
     "subject_expert",
     "speed_demon",
     "no_hints",
-    "early_bird",
-    "night_owl",
-    "weekly_warrior",
-    "monthly_champion"
+    //"early_bird",
+    //"night_owl",
+    //"weekly_warrior",
+    //"monthly_champion"
   ];
   
   const achievements = [
@@ -203,7 +203,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
     },
     
     // Consistency Achievements
-    { 
+   /* { 
       id: 'weekly_warrior', 
       icon: '🗓️', 
       title: { en: 'Weekly Warrior', ta: 'வாராந்திர வீரர்' }, 
@@ -211,8 +211,8 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
         en: 'Complete at least one quiz every day for a week', 
         ta: 'ஒரு வாரத்திற்கு ஒவ்வொரு நாளும் குறைந்தது ஒரு வினாவை முடிக்கவும்' 
       }
-    },
-    { 
+    },*/
+    /*{ 
       id: 'monthly_champion', 
       icon: '🏅', 
       title: { en: 'Monthly Champion', ta: 'மாதாந்திர சாம்பியன்' }, 
@@ -220,7 +220,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
         en: 'Complete at least one quiz every day for a month', 
         ta: 'ஒரு மாதத்திற்கு ஒவ்வொரு நாளும் குறைந்தது ஒரு வினாவை முடிக்கவும்' 
       }
-    },
+    },*/
     
     // Special Achievements
     { 
@@ -241,7 +241,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
         ta: 'காலை 5 மணி முதல் 9 மணி வரை ஒரு வினாவை முடிக்கவும்' 
       }
     },
-    { 
+    /*{ 
       id: 'night_owl', 
       icon: '🦉', 
       title: { en: 'Night Owl', ta: 'இரவு நேர வெற்றி' }, 
@@ -249,7 +249,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
         en: 'Complete a quiz between 10 PM and 2 AM', 
         ta: 'இரவு 10 மணி முதல் 2 மணி வரை ஒரு வினாவை முடிக்கவும்' 
       }
-    },
+    },*/
   ];
   
   // Create refs for each achievement card
