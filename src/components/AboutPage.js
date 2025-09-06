@@ -29,7 +29,7 @@ const AboutPage = ({ language }) => {
         },
         {
           heading: "Outcomes",
-          content: "Users of Quiz Master report significant improvements in their knowledge retention, test scores, and overall confidence in the subjects they study. Our platform has helped thousands of students achieve their educational goals and develop a love for learning."
+          content: "Users of Quiz Master report significant improvements in their knowledge retention, test scores, and overall confidence in the subjects they study. Our platform will help thousands of students achieve their educational goals and develop a love for learning."
         }
       ]
     },
@@ -58,7 +58,7 @@ const AboutPage = ({ language }) => {
         },
         {
           heading: "முடிவுகள்",
-          content: "வினா மாஸ்டர் பயனர்கள் அறிவைத் தக்கவைத்தல், தேர்வு மதிப்பெண்கள் மற்றும் அவர்கள் படிக்கும் பாடங்களில் ஒட்டுமொத்த நம்பிக்கை ஆகியவற்றில் குறிப்பிடத்தக்க முன்னேற்றத்தைக் காண்கிறார்கள். எங்கள் தளம் ஆயிரக்கணக்கான மாணவர்கள் தங்கள் கல்வி இலக்குகளை அடையவும், கற்றல் மீதான விருப்பத்தை வளர்க்கவும் உதவியுள்ளது."
+          content: "வினா மாஸ்டர் பயனர்கள் அறிவைத் தக்கவைத்தல், தேர்வு மதிப்பெண்கள் மற்றும் அவர்கள் படிக்கும் பாடங்களில் ஒட்டுமொத்த நம்பிக்கை ஆகியவற்றில் குறிப்பிடத்தக்க முன்னேற்றத்தைக் காண்கிறார்கள். எங்கள் தளம் ஆயிரக்கணக்கான மாணவர்கள் தங்கள் கல்வி இலக்குகளை அடையவும், கற்றல் மீதான விருப்பத்தை வளர்க்கவும் உதவும்."
         }
       ]
     }
