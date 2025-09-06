@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import PageRenderer from "./components/PageRenderer";
 import Login from "./components/Login.js";
 import SplashScreen from "./components/SplashScreen.js";
-import './App.css';
+import "./App.css";
 
 function App() {
   const [activePage, setActivePage] = useState("home");
@@ -12,47 +12,50 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
-  
-  // Check if user is already logged in
+
+  // Load saved user & splash
   useEffect(() => {
-    const savedUser = localStorage.getItem('currentUser');
+    const savedUser = localStorage.getItem("currentUser");
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
-    
-    // Hide splash screen after 2 seconds
+
+    // splash hides after 2s
     const splashTimer = setTimeout(() => {
       setShowSplash(false);
     }, 2000);
-    
-    // Set loading to false after checking for saved user
+
     setIsLoading(false);
-    
     return () => clearTimeout(splashTimer);
   }, []);
-  
+
   const toggleLanguage = () => {
-    setLanguage(language === "English" ? "Tamil" : "English");
+    setLanguage((prev) => (prev === "English" ? "Tamil" : "English"));
   };
-  
+
   const handleLogin = (userData) => {
+    // Login.js passes user object with username, schoolName, etc.
     setUser(userData);
+    // optionally jump straight to quiz or keep home
+    setActivePage("home");
   };
-  
+
   const handleLogout = () => {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem("currentUser");
     setUser(null);
     setActivePage("home");
   };
-  
+
   if (isLoading || showSplash) {
     return <SplashScreen />;
   }
-  
+
+  // Not logged in → go to login screen
   if (!user) {
     return <Login onLogin={handleLogin} language={language} />;
   }
-  
+
+  // Logged in → render normal layout
   return (
     <div className="app-container">
       <Navbar
@@ -63,16 +66,19 @@ function App() {
         user={user}
         onLogout={handleLogout}
       />
+
       <main className="page-container">
-        <PageRenderer 
-          language={language} 
-          activePage={activePage} 
+        <PageRenderer
+          language={language}
+          activePage={activePage}
           setActivePage={setActivePage}
           user={user}
           updateUser={setUser}
           toggleLanguage={toggleLanguage}
+          candidateName={user.username}   /* ✅ pass username to pages */
         />
       </main>
+
       <Footer language={language} />
     </div>
   );

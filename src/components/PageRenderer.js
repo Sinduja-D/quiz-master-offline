@@ -18,11 +18,18 @@ import StoryMenu from "./StoryMenu.js";
 import EscapeRoom from "./EscapeRoom.js";
 import { useQuizApp } from "../hooks/useQuizApp.js";
 
-const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, toggleLanguage }) => {
-  // State for escape room functionality
+const PageRenderer = ({
+  language,
+  activePage,
+  setActivePage,
+  user,
+  updateUser,
+  toggleLanguage,
+  candidateName,       // ✅ receive from App.js
+}) => {
   const [selectedStory, setSelectedStory] = useState(null);
-  
-  // Pass setActivePage and user to the hook
+
+  // useQuizApp hook
   const {
     selectedLevel,
     quizSettings,
@@ -37,47 +44,46 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
     handleBackToHome,
     newlyUnlockedAchievements,
     isQuizInProgress,
-    achievementNotification
+    achievementNotification,
   } = useQuizApp(setActivePage, user, updateUser);
-  
-  // Create a safe toggle language function that checks if we're in a quiz
+
+  // Prevent language toggle during quiz
   const safeToggleLanguage = () => {
     if (activePage === "quiz") {
-      // We're in a quiz, show warning
-      alert(language === 'English' 
-        ? "You are not allowed to change the language after starting the quiz" 
-        : "வினா தொடங்கிய பிறகு மொழியை மாற்ற அனுமதியில்லை");
+      alert(
+        language === "English"
+          ? "You are not allowed to change the language after starting the quiz"
+          : "வினா தொடங்கிய பிறகு மொழியை மாற்ற அனுமதியில்லை"
+      );
       return;
     }
     toggleLanguage();
   };
-  
-  // Store selected difficulty in sessionStorage when level is selected
+
+  // Remember selected difficulty
   useEffect(() => {
     if (selectedLevel) {
-      sessionStorage.setItem('selectedDifficulty', selectedLevel.id);
+      sessionStorage.setItem("selectedDifficulty", selectedLevel.id);
     }
   }, [selectedLevel]);
-  
-  // Get difficulty from sessionStorage when navigating to quiz setup
+
+  // Redirect if quizsetup has no difficulty
   useEffect(() => {
     if (activePage === "quizsetup") {
-      const difficulty = sessionStorage.getItem('selectedDifficulty');
+      const difficulty = sessionStorage.getItem("selectedDifficulty");
       if (!difficulty) {
-        // If no difficulty is found, redirect to home
         setActivePage("home");
       }
     }
   }, [activePage, setActivePage]);
-  
-  // Escape room handlers
+
+  // Escape room helpers
   const handleStorySelect = (story) => {
     setSelectedStory(story);
     setActivePage("escapeRoom");
   };
-  
+
   const handleEscapeRoomComplete = (storyId) => {
-    // Update user with escape room completion
     const updatedUser = { ...user };
     if (!updatedUser.escapeRoomsCompleted) {
       updatedUser.escapeRoomsCompleted = [];
@@ -85,48 +91,45 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
     if (!updatedUser.escapeRoomsCompleted.includes(storyId)) {
       updatedUser.escapeRoomsCompleted.push(storyId);
     }
-    
-    // Update user points for completing escape room
     updatedUser.totalPoints = (updatedUser.totalPoints || 0) + 50;
-    
+
     updateUser(updatedUser);
-    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-    
-    // Update users list in localStorage
-    const users = JSON.parse(localStorage.getItem('quizAppUsers') || '[]');
-    const userIndex = users.findIndex(u => u.id === user.id);
+    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+    const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
+    const userIndex = users.findIndex((u) => u.id === user.id);
     if (userIndex !== -1) {
       users[userIndex] = updatedUser;
-      localStorage.setItem('quizAppUsers', JSON.stringify(users));
+      localStorage.setItem("quizAppUsers", JSON.stringify(users));
     }
-    
-    // Navigate back to story menu
+
     setActivePage("storyMenu");
   };
-  
+
   const handleEscapeRoomBack = () => {
     setSelectedStory(null);
     setActivePage("storyMenu");
   };
-  
-  // If user is null, show loading
+
+  // Safety: if no user
   if (!user) {
     return (
       <div className="loading-container">
         <div className="loading-spinner"></div>
-        <p>{language === 'English' ? 'Loading...' : 'ஏற்றப்படுகிறது...'}</p>
+        <p>{language === "English" ? "Loading..." : "ஏற்றப்படுகிறது..."}</p>
       </div>
     );
   }
-  
+
   switch (activePage) {
     case "home":
       return (
-        <HomePage 
-          language={language} 
+        <HomePage
+          language={language}
           setActivePage={setActivePage}
           onLevelSelect={handleLevelSelect}
           toggleLanguage={safeToggleLanguage}
+           user={user}       
         />
       );
     case "about":
@@ -138,50 +141,50 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
     case "profile":
       return <ProfilePage language={language} user={user} />;
     case "achievements":
-      return <AchievementsPage 
-        language={language} 
-        user={user} 
-        newlyUnlockedAchievements={newlyUnlockedAchievements}
-      />;
+      return (
+        <AchievementsPage
+          language={language}
+          user={user}
+          newlyUnlockedAchievements={newlyUnlockedAchievements}
+        />
+      );
     case "leaderboard":
       return <LeaderboardPage language={language} currentUser={user} />;
     case "riddles":
       return <RiddleQuiz language={language} />;
     case "storyMenu":
-      return <StoryMenu 
-        language={language} 
-        onStorySelect={handleStorySelect}
-        completedStories={user.escapeRoomsCompleted || []}
-      />;
+      return (
+        <StoryMenu
+          language={language}
+          onStorySelect={handleStorySelect}
+          completedStories={user.escapeRoomsCompleted || []}
+        />
+      );
     case "escapeRoom":
       return (
-        <EscapeRoom 
-          language={language} 
+        <EscapeRoom
+          language={language}
           storyId={selectedStory?.id}
           onBack={handleEscapeRoomBack}
           onComplete={handleEscapeRoomComplete}
         />
       );
     case "dailyScience":
-      return <DailySciencePage 
-        language={language} 
-        user={user} 
-        updateUser={updateUser}
-      />;
+      return <DailySciencePage language={language} user={user} updateUser={updateUser} />;
     case "funFacts":
       return <FunFactsPage language={language} />;
     case "quizsetup":
       return (
-        <QuizSetup 
-          level={selectedLevel} 
-          startQuiz={handleStartQuiz} 
+        <QuizSetup
+          level={selectedLevel}
+          startQuiz={handleStartQuiz}
           language={language}
           onBack={() => setActivePage("home")}
         />
       );
     case "quiz":
       return (
-        <Quiz 
+        <Quiz
           language={language}
           level={quizSettings?.level?.id}
           numberOfQuestions={quizSettings?.numberOfQuestions || 10}
@@ -189,11 +192,12 @@ const PageRenderer = ({ language, activePage, setActivePage, user, updateUser, t
           grade={quizSettings?.grade}
           onQuizComplete={handleQuizComplete}
           onBack={() => setActivePage("quizsetup")}
+          candidateName={candidateName}     /* ✅ name from App.js */
         />
       );
     case "quizresults":
       return (
-        <QuizResults 
+        <QuizResults
           results={quizResults}
           language={language}
           onRestart={handleRestartQuiz}

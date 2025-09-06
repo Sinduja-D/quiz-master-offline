@@ -1,11 +1,31 @@
 // src/components/HomePage.jsx
-import React from 'react';
-import './HomePage.css';
-import { levels } from '../levels.js';
+import React, { useEffect, useState } from "react";
+import "./HomePage.css";
+import { levels } from "../levels.js";
 
-const HomePage = ({ language, setActivePage, onLevelSelect }) => {
+const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
+  const [showWelcome, setShowWelcome] = useState(false);
+
+  // show banner once on mount if we have a username
+  useEffect(() => {
+    if (user?.username) {
+      setShowWelcome(true);
+      const timer = setTimeout(() => setShowWelcome(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [user]);
+
   return (
     <div className="home-container">
+      {/* welcome banner */}
+      {showWelcome && (
+        <div className="welcome-popup">
+          {language === "English"
+            ? `Welcome, ${user.username}!`
+            : `வரவேற்பு, ${user.username}!`}
+        </div>
+      )}
+
       <div className="hero-box">
         <h1 className="hero-title">
           {language === "English"
@@ -23,7 +43,9 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
         <div className="level-container">
           <div className="section-title">
             <h2>
-              {language === "English" ? "Select Difficulty Level" : "சிரம நிலையைத் தேர்ந்தெடுக்கவும்"}
+              {language === "English"
+                ? "Select Difficulty Level"
+                : "சிரம நிலையைத் தேர்ந்தெடுக்கவும்"}
             </h2>
           </div>
           <div className="level-cards">
@@ -48,23 +70,37 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
         <div className="explore-section">
           <div className="explore-header">
             <h2>
-              {language === "English" ? "Explore More Adventures" : "மேலும் சாகசங்களை ஆராயுங்கள்"}
+              {language === "English"
+                ? "Explore More Adventures"
+                : "மேலும் சாகசங்களை ஆராயுங்கள்"}
             </h2>
           </div>
           <div className="adventure-grid">
-            <button onClick={() => setActivePage("riddles")} className="adventure-card riddles">
+            <button
+              onClick={() => setActivePage("riddles")}
+              className="adventure-card riddles"
+            >
               <div className="card-icon">🤔</div>
               <span>{language === "English" ? "Riddles" : "புதிர்கள்"}</span>
             </button>
-            <button onClick={() => setActivePage("dailyScience")} className="adventure-card daily-science">
+            <button
+              onClick={() => setActivePage("dailyScience")}
+              className="adventure-card daily-science"
+            >
               <div className="card-icon">🎡</div>
               <span>{language === "English" ? "Spin Wheel" : "சுழலும் சக்கரம்"}</span>
             </button>
-            <button onClick={() => setActivePage("funFacts")} className="adventure-card fun-facts">
+            <button
+              onClick={() => setActivePage("funFacts")}
+              className="adventure-card fun-facts"
+            >
               <div className="card-icon">💡</div>
               <span>{language === "English" ? "Fun Facts" : "சுவாரஸ்யங்கள்"}</span>
             </button>
-            <button onClick={() => setActivePage("storyMenu")} className="adventure-card story-menu">
+            <button
+              onClick={() => setActivePage("storyMenu")}
+              className="adventure-card story-menu"
+            >
               <div className="card-icon">🔍</div>
               <span>{language === "English" ? "Escape Room" : "தப்பிப்பிழைத்தல் அறை"}</span>
             </button>
