@@ -1,0 +1,63 @@
+{
+  "id": "space",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "text": {
+        "English": "Your spaceship is stuck in orbit! Solve space puzzles to return to Earth.",
+        "Tamil": "உங்கள் விண்கலம் சுற்றுப்பாதையில் சிக்கியுள்ளது! பூமிக்குத் திரும்ப விண்வெளி புதிர்களைத் தீர்க்கவும்."
+      },
+      "duration": 3000
+    },
+    {
+      "id": "riddle1",
+      "type": "riddle",
+      "question": {
+        "English": "I shine bright but I’m not a bulb. I rise in the east and set in the west. What am I?",
+        "Tamil": "நான் பிரகாசமாக ஒளிர்கிறேன் ஆனால் பல்ப் அல்ல. கிழக்கில் உதித்து மேற்கில் மறைகிறேன். நான் யார்?"
+      },
+      "options": [
+        { "English": "Moon", "Tamil": "சந்திரன்" },
+        { "English": "Sun", "Tamil": "சூரியன்" },
+        { "English": "Star", "Tamil": "நட்சத்திரம்" }
+      ],
+      "answer": "Sun"
+    },
+    {
+      "id": "transition1",
+      "type": "transition",
+      "text": {
+        "English": "The spaceship powers are back online. One more puzzle left...",
+        "Tamil": "விண்கலத்தின் சக்தி மீண்டும் இயங்கத் தொடங்கியது. இன்னும் ஒரு புதிர் மட்டுமே உள்ளது..."
+      },
+      "duration": 2500
+    },
+    {
+      "id": "riddle2",
+      "type": "riddle",
+      "question": {
+        "English": "I have no air but I can carry sound waves on Earth. Where am I?",
+        "Tamil": "என்னிடம் காற்று இல்லை ஆனால் பூமியில் ஒலி அலைகளை எடுத்துச் செல்ல முடியும். நான் எங்கே இருக்கிறேன்?"
+      },
+      "options": [
+        { "English": "Space", "Tamil": "விண்வெளி" },
+        { "English": "Ocean", "Tamil": "கடல்" },
+        { "English": "Cave", "Tamil": "குகை" }
+      ],
+      "answer": "Space"
+    },
+    {
+      "id": "ending",
+      "type": "ending",
+      "text": {
+        "English": "Congratulations! You safely returned to Earth.",
+        "Tamil": "வாழ்த்துக்கள்! நீங்கள் பாதுகாப்பாக பூமிக்குத் திரும்பிவிட்டீர்கள்."
+      },
+      "funFact": {
+        "English": "Did you know? Space is completely silent because sound cannot travel in a vacuum.",
+        "Tamil": "தெரியுமா? விண்வெளி முற்றிலும் அமைதியானது, ஏனெனில் ஒலி வெற்றிடத்தில் பயணம் செய்ய முடியாது."
+      }
+    }
+  ]
+}

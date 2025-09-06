@@ -1,3 +1,5 @@
+/* src/components/HomePage.css */
+
 /* Home Page Styles */
 .home-container {
   display: flex;
@@ -65,7 +67,8 @@
   flex-direction: column;
   flex: 1;
   padding: 20px;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Level Selection - Enhanced Design */
@@ -291,6 +294,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  margin-top: 20px;
 }
 
 .explore-section::before {
@@ -321,7 +325,7 @@
 .adventure-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 15px;
   position: relative;
   z-index: 1;
 }
@@ -331,7 +335,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 12px 8px;
+  padding: 15px 10px;
   border-radius: 12px;
   background: white;
   border: none;
@@ -340,6 +344,7 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  height: 110px;
 }
 
 .adventure-card::before {
@@ -353,8 +358,8 @@
 }
 
 .adventure-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .adventure-card:hover::before {
@@ -363,7 +368,7 @@
 }
 
 .adventure-card .card-icon {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 8px;
 }
 
@@ -371,19 +376,23 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: #1a2a6c;
+  text-align: center;
 }
 
 /* Individual adventure card styles */
-.riddles::before {
+.story-menu::before {
   background: #f59e0b;
 }
+
 .fun-facts::before {
   background: #10b981;
 }
-.spin-wheel::before {
+
+.daily-science::before {
   background: #ef4444;
 }
-.escape-room::before {
+
+.riddles::before {
   background: #8b5cf6;
 }
 
@@ -416,6 +425,12 @@
   
   .adventure-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .adventure-card {
+    height: 100px;
+    padding: 12px 8px;
   }
   
   .adventure-card .card-icon {
@@ -424,5 +439,26 @@
   
   .adventure-card span {
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .adventure-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .adventure-card {
+    height: 90px;
+    padding: 10px 5px;
+  }
+  
+  .adventure-card .card-icon {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+  }
+  
+  .adventure-card span {
+    font-size: 0.8rem;
   }
 }

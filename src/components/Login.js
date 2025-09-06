@@ -65,8 +65,31 @@ const Login = ({ onLogin, language }) => {
         setUsers(updatedUsers);
         localStorage.setItem('quizAppUsers', JSON.stringify(updatedUsers));
       }
+      
+      // Ensure existing user has all required fields for new features
+      if (!user.lastDailyQuestionDate) {
+        user.lastDailyQuestionDate = null;
+      }
+      if (!user.lastDailyQuestionId) {
+        user.lastDailyQuestionId = null;
+      }
+      if (!user.lastSpinWheelDate) {
+        user.lastSpinWheelDate = null;
+      }
+      if (user.spinWheelSecondChance === undefined) {
+        user.spinWheelSecondChance = false;
+      }
+      if (!user.achievementDates) {
+        user.achievementDates = {};
+      }
+      if (!user.escapeRoomsCompleted) {
+        user.escapeRoomsCompleted = [];
+      }
+      if (!user.escapeRoomProgress) {
+        user.escapeRoomProgress = {};
+      }
     } else {
-      // If user doesn't exist, create a new one
+      // If user doesn't exist, create a new one with all required fields
       const newUser = {
         id: Date.now(),
         username: username.trim(),
@@ -76,7 +99,17 @@ const Login = ({ onLogin, language }) => {
         totalQuizzes: 0,
         averageScore: 0,
         achievements: [],
-        quizHistory: []
+        achievementDates: {}, // Track when achievements were earned
+        quizHistory: [],
+        // Add fields for daily science questions
+        lastDailyQuestionDate: null,
+        lastDailyQuestionId: null,
+        // Add fields for spin wheel
+        lastSpinWheelDate: null,
+        spinWheelSecondChance: false,
+        // Add fields for escape rooms
+        escapeRoomsCompleted: [],
+        escapeRoomProgress: {}
       };
       
       const updatedUsers = [...users, newUser];

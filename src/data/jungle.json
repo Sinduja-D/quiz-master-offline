@@ -1,0 +1,63 @@
+{
+  "id": "jungle",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "text": {
+        "English": "You are lost in the jungle! Solve riddles to find your way out.",
+        "Tamil": "நீங்கள் காட்டில் தவறி விட்டீர்கள்! வெளியேற புதிர்களைத் தீர்க்கவும்."
+      },
+      "duration": 3000
+    },
+    {
+      "id": "riddle1",
+      "type": "riddle",
+      "question": {
+        "English": "I roar but I am not thunder. I am the king of the jungle. Who am I?",
+        "Tamil": "நான் முழங்குகிறேன் ஆனால் இடிமுழக்கம் அல்ல. நான் காட்டின் ராஜா. நான் யார்?"
+      },
+      "options": [
+        { "English": "Tiger", "Tamil": "புலி" },
+        { "English": "Lion", "Tamil": "சிங்கம்" },
+        { "English": "Elephant", "Tamil": "யானை" }
+      ],
+      "answer": "Lion"
+    },
+    {
+      "id": "transition1",
+      "type": "transition",
+      "text": {
+        "English": "You crossed the animal’s territory. One more riddle remains...",
+        "Tamil": "நீங்கள் விலங்கின் பிரதேசத்தை கடந்துவிட்டீர்கள். இன்னும் ஒரு புதிர் உள்ளது..."
+      },
+      "duration": 2500
+    },
+    {
+      "id": "riddle2",
+      "type": "riddle",
+      "question": {
+        "English": "I flow without legs, I sing without a mouth. What am I?",
+        "Tamil": "எனக்கு கால்கள் இல்லை ஆனாலும் ஓடுகிறேன், வாய் இல்லை ஆனாலும் பாடுகிறேன். நான் யார்?"
+      },
+      "options": [
+        { "English": "Wind", "Tamil": "காற்று" },
+        { "English": "River", "Tamil": "ஆறு" },
+        { "English": "Bird", "Tamil": "பறவை" }
+      ],
+      "answer": "River"
+    },
+    {
+      "id": "ending",
+      "type": "ending",
+      "text": {
+        "English": "You escaped the jungle safely!",
+        "Tamil": "நீங்கள் பாதுகாப்பாக காட்டிலிருந்து தப்பித்தீர்கள்!"
+      },
+      "funFact": {
+        "English": "Did you know? Jungles produce more than 20% of the world’s oxygen.",
+        "Tamil": "தெரியுமா? உலகின் ஆக்சிஜனில் 20% க்கும் மேற்பட்டவை காடுகள் உற்பத்தி செய்கின்றன."
+      }
+    }
+  ]
+}

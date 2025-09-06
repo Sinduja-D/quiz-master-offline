@@ -16,8 +16,10 @@
     "canvas-confetti": "^1.9.3",
     "nodemailer": "^7.0.5",
     "react": "^19.1.1",
+    "react-confetti": "^6.4.0",
     "react-dom": "^19.1.1",
     "react-scripts": "^5.0.1",
+    "react-spin-wheel": "^0.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

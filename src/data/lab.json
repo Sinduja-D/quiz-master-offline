@@ -1,0 +1,63 @@
+{
+  "id": "lab",
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "intro",
+      "text": {
+        "English": "You are locked inside the Science Lab! Solve riddles to escape...",
+        "Tamil": "நீங்கள் அறிவியல் ஆய்வகத்திற்குள் அடைக்கப்பட்டுள்ளீர்கள்! தப்பிக்க புதிர்களை தீர்க்கவும்..."
+      },
+      "duration": 3000
+    },
+    {
+      "id": "riddle1",
+      "type": "riddle",
+      "question": {
+        "English": "I am not alive but I can die. I need power to live. What am I?",
+        "Tamil": "நான் உயிருடன் இல்லை ஆனால் நான் இறக்க முடியும். வாழ எனக்கு சக்தி தேவை. நான் யார்?"
+      },
+      "options": [
+        { "English": "Battery", "Tamil": "பேட்டரி" },
+        { "English": "Bulb", "Tamil": "பல்ப்" },
+        { "English": "Wire", "Tamil": "கம்பி" }
+      ],
+      "answer": "Battery"
+    },
+    {
+      "id": "transition1",
+      "type": "transition",
+      "text": {
+        "English": "You unlocked the first door. But there's more ahead...",
+        "Tamil": "நீங்கள் முதல் கதவைத் திறந்தீர்கள். ஆனால் முன்னால் இன்னும் அதிகம் உள்ளது..."
+      },
+      "duration": 2500
+    },
+    {
+      "id": "riddle2",
+      "type": "riddle",
+      "question": {
+        "English": "The more you take from me, the bigger I become. What am I?",
+        "Tamil": "நீங்கள் என்னிடமிருந்து அதிகம் எடுத்தால், நான் அதிகமாக வளர்கிறேன். நான் யார்?"
+      },
+      "options": [
+        { "English": "Hole", "Tamil": "துளை" },
+        { "English": "Balloon", "Tamil": "பலூன்" },
+        { "English": "Shadow", "Tamil": "நிழல்" }
+      ],
+      "answer": "Hole"
+    },
+    {
+      "id": "ending",
+      "type": "ending",
+      "text": {
+        "English": "You Escaped the Science Lab!",
+        "Tamil": "நீங்கள் அறிவியல் ஆய்வகத்திலிருந்து தப்பித்தீர்கள்!"
+      },
+      "funFact": {
+        "English": "Did you know? Batteries convert chemical energy into electrical energy.",
+        "Tamil": "தெரியுமா? பேட்டரிகள் வேதியியல் ஆற்றலை மின்சார ஆற்றலாக மாற்றுகின்றன."
+      }
+    }
+  ]
+}

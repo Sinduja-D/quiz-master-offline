@@ -2,6 +2,7 @@
 import React from 'react';
 import './HomePage.css';
 import { levels } from '../levels.js';
+
 const HomePage = ({ language, setActivePage, onLevelSelect }) => {
   return (
     <div className="home-container">
@@ -55,15 +56,15 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
               <div className="card-icon">🤔</div>
               <span>{language === "English" ? "Riddles" : "புதிர்கள்"}</span>
             </button>
+            <button onClick={() => setActivePage("dailyScience")} className="adventure-card daily-science">
+              <div className="card-icon">🎡</div>
+              <span>{language === "English" ? "Spin Wheel" : "சுழலும் சக்கரம்"}</span>
+            </button>
             <button onClick={() => setActivePage("funFacts")} className="adventure-card fun-facts">
               <div className="card-icon">💡</div>
               <span>{language === "English" ? "Fun Facts" : "சுவாரஸ்யங்கள்"}</span>
             </button>
-            <button onClick={() => setActivePage("spinWheel")} className="adventure-card spin-wheel">
-              <div className="card-icon">🎡</div>
-              <span>{language === "English" ? "Spin Wheel" : "ஸ்பின் சக்கரம்"}</span>
-            </button>
-            <button onClick={() => setActivePage("escapeRoom")} className="adventure-card escape-room">
+            <button onClick={() => setActivePage("storyMenu")} className="adventure-card story-menu">
               <div className="card-icon">🔍</div>
               <span>{language === "English" ? "Escape Room" : "தப்பிப்பிழைத்தல் அறை"}</span>
             </button>
@@ -73,4 +74,5 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
     </div>
   );
 };
+
 export default HomePage;
