@@ -1,10 +1,29 @@
-import React from 'react';
+// src/components/Footer.js
+import React from "react";
 
 const Footer = ({ language }) => (
-  <footer>
-    <p>{language === 'English' ? '© 2025 Quiz Master App' : '© 2025 வினா மாஸ்டர் பயன்பாடு'}</p>
-    <p>{language === 'English' ? 'RMKEC IT DEPARTMENT 2027' : 'RMKEC தொழில்நுட்பத் துறை 2027'}</p>
+  <footer style={styles.footer}>
+    {language === "English"
+      ? "Designed & Developed by RMK Engineering College | © 2025 Quiz Master App | RMKEC IT Department 2027"
+      : "RMK பொறியியல் கல்லூரியால் வடிவமைத்து உருவாக்கப்பட்டது | © 2025 வினா மாஸ்டர் பயன்பாடு | RMKEC தொழில்நுட்பத் துறை 2027"}
   </footer>
 );
+
+const styles = {
+  footer: {
+    background: "#f8faff",
+    borderTop: "4px solid transparent",
+    borderImage: "linear-gradient(to right, #4f8cff, #9ec9ff) 1", // matches navbar
+    boxShadow: "0 -2px 6px rgba(0, 0, 0, 0.05)",
+    padding: "12px 25px",
+    textAlign: "center",
+    fontSize: "0.95rem",
+    fontWeight: 600,
+    color: "#1a2a6c",
+    borderRadius: "12px 12px 0 0",
+    fontFamily: "'Noto Sans', 'Noto Sans Tamil', Arial, sans-serif",
+    whiteSpace: "nowrap",         // keeps everything on one line
+  },
+};
 
 export default Footer;
