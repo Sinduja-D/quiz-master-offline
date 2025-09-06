@@ -8,17 +8,17 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
     <div className="home-container">
       <div className="hero-box">
         <h1 className="hero-title">
-          {language === "English" 
-            ? "Unlock Your Potential Through Knowledge" 
-            : "அறிவு மூலம் உங்கள் திறனை திறக்கவும்"}
+          {language === "English"
+            ? "Every tap counts — show you’re sharp."
+            : "ஒவ்வொரு தொடுதலும் முக்கியம் — நீ கூர்மையானவன் என்பதை நிரூபி."}
         </h1>
         <p className="hero-subtitle">
           {language === "English"
-            ? "Embark on a journey of discovery and challenge your mind!"
-            : "கண்டுபிடிப்பின் பயணத்தை மேற்கொண்டு உங்கள் மனத்தை சவால் செய்யுங்கள்!"}
+            ? "Challenge yourself, rise above, and outthink the rest!"
+            : "உன்னைச் சவால் செய், மேலெழு, மற்றவர்களை மிஞ்சி சிந்தி!"}
         </p>
       </div>
-      
+
       <div className="content-wrapper">
         <div className="level-container">
           <div className="section-title">
@@ -44,7 +44,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect }) => {
             ))}
           </div>
         </div>
-        
+
         <div className="explore-section">
           <div className="explore-header">
             <h2>
