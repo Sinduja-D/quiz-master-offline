@@ -14,14 +14,20 @@ const shuffleArray = (array) => {
   return newArray;
 };
 
-const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComplete, onBack }) => {
+const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComplete, onBack, candidateName }) => {
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [showCongrats, setShowCongrats] = useState(false);
+
+  // Timer for start popup
   const [timeLeft, setTimeLeft] = useState(5);
+
+  // Timer for each question
+  const [questionTimeLeft, setQuestionTimeLeft] = useState(60);
+
   const [showStartPopup, setShowStartPopup] = useState(true);
   const [results, setResults] = useState({
     totalQuestions: 0,
@@ -38,7 +44,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   const [error, setError] = useState(null);
   const [showLanguageWarning, setShowLanguageWarning] = useState(false);
   const [achievementNotification, setAchievementNotification] = useState(null);
-  
+
   // Map correct option from database (1,2,3,4) to frontend keys (optionA, optionB, etc.)
   const mapCorrectOption = (correctOption) => {
     const optionMap = {
@@ -49,7 +55,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     return optionMap[correctOption] || correctOption;
   };
-  
+
   // Function to trigger confetti for streak achievements
   const triggerStreakConfetti = (streakCount) => {
     let confettiConfig = {
@@ -61,29 +67,28 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       gravity: 0.8,
       drift: 1,
     };
-    
+
     confetti(confettiConfig);
   };
-  
+
   // Function to show achievement notification
   const showAchievementNotification = (achievementId, achievementTitle) => {
     setAchievementNotification({
       id: achievementId,
       title: achievementTitle
     });
-    
-    // Hide notification after 3 seconds
+
     setTimeout(() => {
       setAchievementNotification(null);
     }, 3000);
   };
-  
+
   // Fetch questions from local JSON
   useEffect(() => {
     const fetchQuestions = async () => {
       setLoading(true);
       setError(null);
-      
+
       try {
         const data = await fetchLocalQuestions({
           difficulty: level,
@@ -92,18 +97,17 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           language: language,
           limit: numberOfQuestions
         });
-        
+
         if (data.length === 0) {
           setError(`No questions found for ${subject} Grade ${grade} (${level} level)`);
           setQuizQuestions([]);
         } else {
-          // Shuffle the questions array to randomize order
           const shuffledQuestions = shuffleArray(data);
           setQuizQuestions(shuffledQuestions);
-          setResults({ 
-            totalQuestions: shuffledQuestions.length, 
-            correctAnswers: 0, 
-            wrongAnswers: 0, 
+          setResults({
+            totalQuestions: shuffledQuestions.length,
+            correctAnswers: 0,
+            wrongAnswers: 0,
             incorrectConcepts: [],
             hintsUsed: 0,
             startTime: new Date(),
@@ -118,33 +122,34 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         setLoading(false);
       }
     };
-    
+
     if (level && subject && grade && numberOfQuestions) {
       fetchQuestions();
     } else {
       setLoading(false);
     }
   }, [language, level, numberOfQuestions, subject, grade]);
-  
-  // Prevent user from leaving the quiz page
+
+  // Prevent user from leaving quiz page
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       if (!showStartPopup && quizQuestions.length > 0) {
-        const message = language === 'English' 
-          ? 'Are you sure you want to leave? Your progress will be lost.' 
+        const message = language === 'English'
+          ? 'Are you sure you want to leave? Your progress will be lost.'
           : 'நீங்கள் வெளியேற விரும்புகிறீர்களா? உங்கள் முன்னேற்றம் இழக்கப்படும்.';
         e.returnValue = message;
         return message;
       }
     };
-    
+
     window.addEventListener('beforeunload', handleBeforeUnload);
-    
+
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, [language, showStartPopup, quizQuestions.length]);
-  
+
+  // Start popup countdown
   useEffect(() => {
     if (showStartPopup && timeLeft > 0) {
       const timerId = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -153,11 +158,27 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowStartPopup(false);
     }
   }, [showStartPopup, timeLeft]);
-  
+
+  // Per-question countdown
+  useEffect(() => {
+    if (showStartPopup) return; // don't run until quiz starts
+
+    if (questionTimeLeft === 0) {
+      handleNext(); // auto next when timer ends
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setQuestionTimeLeft(prev => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [questionTimeLeft, showStartPopup]);
+
   const handleOptionSelect = (option) => {
     if (!showFeedback) setSelectedOption(option);
   };
-  
+
   const handleHintClick = () => {
     setShowHint(true);
     setResults(prev => ({
@@ -165,19 +186,17 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       hintsUsed: prev.hintsUsed + 1
     }));
   };
-  
+
   const handleSubmit = () => {
     if (selectedOption === null) return;
-    
+
     const currentQuestion = quizQuestions[currentQuestionIndex];
-    
-    // Map the correct option from the database
     const correctOptionKey = mapCorrectOption(currentQuestion.correctOption);
     const correct = selectedOption === correctOptionKey;
-    
+
     setShowFeedback(true);
     if (!correct && currentQuestion.concept) setShowConcept(true);
-    
+
     const updatedResults = {
       ...results,
       correctAnswers: correct ? results.correctAnswers + 1 : results.correctAnswers,
@@ -188,50 +207,24 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         : results.incorrectConcepts,
       consecutiveCorrect: correct ? consecutiveCorrect + 1 : 0
     };
-    
+
     setResults(updatedResults);
-    
+
     if (correct) {
       const newCount = consecutiveCorrect + 1;
       setConsecutiveCorrect(newCount);
-      
-      // Show congrats and trigger confetti for streak achievements
-      if (newCount === 3) {
+
+      if ([3, 5, 10, 15, 25, 50].includes(newCount)) {
         setShowCongrats(true);
-        triggerStreakConfetti(3);
-        showAchievementNotification("streak_3", "3 Correct in a Row!");
-        setTimeout(() => setShowCongrats(false), 2000);
-      } else if (newCount === 5) {
-        setShowCongrats(true);
-        triggerStreakConfetti(5);
-        showAchievementNotification("streak_5", "5 Correct in a Row!");
-        setTimeout(() => setShowCongrats(false), 2000);
-      } else if (newCount === 10) {
-        setShowCongrats(true);
-        triggerStreakConfetti(10);
-        showAchievementNotification("streak_10", "10 Correct in a Row!");
-        setTimeout(() => setShowCongrats(false), 2000);
-      } else if (newCount === 15) {
-        setShowCongrats(true);
-        triggerStreakConfetti(15);
-        showAchievementNotification("streak_15", "15 Correct in a Row!");
-        setTimeout(() => setShowCongrats(false), 2000);
-      } else if (newCount === 25) {
-        setShowCongrats(true);
-        triggerStreakConfetti(25);
-        showAchievementNotification("streak_25", "25 Correct in a Row!");
-        setTimeout(() => setShowCongrats(false), 2000);
-      } else if (newCount === 50) {
-        setShowCongrats(true);
-        triggerStreakConfetti(50);
-        showAchievementNotification("streak_50", "50 Correct in a Row!");
+        triggerStreakConfetti(newCount);
+        showAchievementNotification(`streak_${newCount}`, `${newCount} Correct in a Row!`);
         setTimeout(() => setShowCongrats(false), 2000);
       }
     } else {
       setConsecutiveCorrect(0);
     }
   };
-  
+
   const handleNext = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -239,6 +232,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowFeedback(false);
       setShowHint(false);
       setShowConcept(false);
+      setQuestionTimeLeft(60); // reset timer on next question (match initial)
     } else {
       const finalResults = {
         ...results,
@@ -248,24 +242,24 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       onQuizComplete(finalResults);
     }
   };
-  
+
   const handleBackClick = () => {
-    const confirmMessage = language === 'English' 
-      ? 'Are you sure you want to exit the quiz? Your progress will be lost.' 
+    const confirmMessage = language === 'English'
+      ? 'Are you sure you want to exit the quiz? Your progress will be lost.'
       : 'நீங்கள் வினாவிலிருந்து வெளியேற விரும்புகிறீர்களா? உங்கள் முன்னேற்றம் இழக்கப்படும்.';
-    
+
     if (window.confirm(confirmMessage)) {
       onBack();
     }
   };
-  
+
   const handleLanguageChangeAttempt = () => {
     setShowLanguageWarning(true);
     setTimeout(() => setShowLanguageWarning(false), 3000);
   };
-  
+
   const currentQuestion = quizQuestions[currentQuestionIndex];
-  
+
   if (loading) {
     return (
       <div className="quiz-loading">
@@ -279,7 +273,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-  
+
   if (error) {
     return (
       <div className="quiz-error">
@@ -291,7 +285,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-  
+
   if (quizQuestions.length === 0) {
     return (
       <div className="quiz-empty">
@@ -302,25 +296,25 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-  
+
   return (
     <div className="quiz-container">
-      {showStartPopup && <Popup 
-        message={language === 'English' ? 'The Test is going to start in' : 'தேர்வு தொடங்குவதற்கு'} 
-        timer={timeLeft} 
-        onClose={() => setShowStartPopup(false)} 
+      {showStartPopup && <Popup
+        message={language === 'English' ? 'The Test is going to start in' : 'தேர்வு தொடங்குவதற்கு'}
+        timer={timeLeft}
+        onClose={() => setShowStartPopup(false)}
       />}
-      
+
       {showLanguageWarning && (
         <div className="language-warning-popup">
           <div className="popup-content">
-            <p>{language === 'English' 
-              ? 'You are not allowed to change the language after starting the quiz' 
+            <p>{language === 'English'
+              ? 'You are not allowed to change the language after starting the quiz'
               : 'வினா தொடங்கிய பிறகு மொழியை மாற்ற அனுமதிக்கப்படவில்லை'}</p>
           </div>
         </div>
       )}
-      
+
       {achievementNotification && (
         <div className="achievement-notification">
           <div className="notification-content">
@@ -336,7 +330,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           </div>
         </div>
       )}
-      
+
       <div className="quiz-header">
         <button className="back-button" onClick={handleBackClick}>
           ← {language === 'English' ? 'Back' : 'திரும்ப'}
@@ -350,8 +344,14 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           {level === 'advance' && '🔴'}
           {level.charAt(0).toUpperCase() + level.slice(1)}
         </div>
+
+        {/* TIMER UI */}
+        <div className="quiz-timer">
+          ⏱ {questionTimeLeft}s
+        </div>
+
         {currentQuestion.hint && !showFeedback && (
-          <button 
+          <button
             className="hint-button-header"
             onClick={handleHintClick}
             title={language === 'English' ? 'Get a hint' : 'குறிப்பு பெறுங்கள்'}
@@ -360,7 +360,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           </button>
         )}
       </div>
-      
+
       <div className="question-container">
         <h2 className="question-text">{currentQuestion.question}</h2>
         {showHint && (
@@ -374,15 +374,15 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             </div>
           </div>
         )}
-        
+
         <div className="options-container">
-          {['optionA','optionB','optionC','optionD'].map((key, idx) => {
+          {['optionA', 'optionB', 'optionC', 'optionD'].map((key, idx) => {
             const isSelected = selectedOption === key;
             const isCorrect = mapCorrectOption(currentQuestion.correctOption) === key;
             return (
               <div
                 key={key}
-                className={`option ${isSelected ? ' selected' : ''}${showFeedback && isCorrect ? ' correct' : ''}${showFeedback && isSelected && !isCorrect ? ' wrong' : ''}`}
+                className={`option ${isSelected ? 'selected' : ''} ${showFeedback && isCorrect ? 'correct' : ''} ${showFeedback && isSelected && !isCorrect ? 'wrong' : ''}`}
                 onClick={() => !showFeedback && handleOptionSelect(key)}
               >
                 <span className="option-label">{String.fromCharCode(65 + idx)}</span>
@@ -391,7 +391,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             );
           })}
         </div>
-        
+
         {showFeedback && currentQuestion.concept && (
           <div className="concept-card">
             <div className="concept-header" onClick={() => setShowConcept(!showConcept)}>
@@ -406,17 +406,20 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             )}
           </div>
         )}
-        
+
         {showCongrats && (
           <div className="congrats-container">
             {[...Array(50)].map((_, i) => (
               <div key={`glitter-${i}`} className="glitter"></div>
             ))}
-            
+
             <div className="congrats-message">
               <div className="congrats-title">
-                {language === 'English' ? 'Congratulations!' : 'வாழ்த்துக்கள்!'}
+                {language === 'English'
+                  ? `Congratulations ${candidateName || ''}!`
+                  : `வாழ்த்துக்கள் ${candidateName || ''}!`}
               </div>
+
               <div className="congrats-streak">{consecutiveCorrect}</div>
               <div className="congrats-subtitle">
                 {language === 'English' ? 'Correct Answers in a Row!' : 'தொடர்ச்சியாக சரியான பதில்கள்!'}
@@ -424,33 +427,33 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             </div>
           </div>
         )}
-        
+
         <div className="quiz-actions">
-          {!showFeedback && 
-            <button 
-              className="submit-button" 
-              onClick={handleSubmit} 
-              disabled={selectedOption===null}
+          {!showFeedback &&
+            <button
+              className="submit-button"
+              onClick={handleSubmit}
+              disabled={selectedOption === null}
             >
-              {language==='English'?'Submit Answer':'பதிலைச் சமர்ப்பிக்கவும்'}
+              {language === 'English' ? 'Submit Answer' : 'பதிலைச் சமர்ப்பிக்கவும்'}
             </button>
           }
-          {showFeedback && 
-            <button 
-              className="next-button" 
+          {showFeedback &&
+            <button
+              className="next-button"
               onClick={handleNext}
             >
-              {currentQuestionIndex < quizQuestions.length - 1 
-                ? (language==='English'?'Next Question →':'அடுத்த கேள்வி →') 
-                : (language==='English'?'Finish Quiz':'வினாடி வினா முடி')}
+              {currentQuestionIndex < quizQuestions.length - 1
+                ? (language === 'English' ? 'Next Question →' : 'அடுத்த கேள்வி →')
+                : (language === 'English' ? 'Finish Quiz' : 'வினாடி வினா முடி')}
             </button>
           }
         </div>
       </div>
-      
+
       <div className="quiz-footer">
         <div className="streak-counter">
-          🔥 {language==='English'?'Streak':'வரிசை'}: {consecutiveCorrect}
+          🔥 {language === 'English' ? 'Streak' : 'வரிசை'}: {consecutiveCorrect}
         </div>
       </div>
     </div>
