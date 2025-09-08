@@ -21,7 +21,7 @@ const HelpPage = ({ language }) => {
         },
         {
           heading: "Performance Tracking",
-          content: "Your profile displays:\n• Total points earned\n• Number of quizzes taken\n• Average score percentage\n• Strong and weak subject areas\n• Detailed quiz history with scores"
+          content: "Your profile displays:\n• Total points earned\n• Number of quizzes taken\n• Average score percentage\n• Detailed quiz history with scores"
         },
         {
           heading: "Achievements System",

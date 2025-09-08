@@ -1,8 +1,6 @@
-// src/components/PageRenderer.jsx
 import React, { useState, useEffect } from "react";
 import HomePage from "./HomePage.js";
 import AboutPage from "./AboutPage.js";
-//import ContactPage from "./ContactPage.js";
 import HelpPage from "./HelpPage.js";
 import ProfilePage from "./ProfilePage.js";
 import AchievementsPage from "./AchievementsPage.js";
@@ -26,9 +24,9 @@ const PageRenderer = ({
   updateUser,
   toggleLanguage,
   candidateName,
+  setIsQuizInProgress
 }) => {
   const [selectedStory, setSelectedStory] = useState(null);
-
   const {
     selectedLevel,
     quizSettings,
@@ -39,7 +37,7 @@ const PageRenderer = ({
     handleRestartQuiz,
     handleBackToHome,
     newlyUnlockedAchievements,
-  } = useQuizApp(setActivePage, user, updateUser);
+  } = useQuizApp(setActivePage, user, updateUser, setIsQuizInProgress);
 
   const safeToggleLanguage = () => {
     if (activePage === "quiz") {
@@ -82,17 +80,14 @@ const PageRenderer = ({
       updatedUser.escapeRoomsCompleted.push(storyId);
     }
     updatedUser.totalPoints = (updatedUser.totalPoints || 0) + 50;
-
     updateUser(updatedUser);
     localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-
     const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
     const userIndex = users.findIndex((u) => u.id === user.id);
     if (userIndex !== -1) {
       users[userIndex] = updatedUser;
       localStorage.setItem("quizAppUsers", JSON.stringify(users));
     }
-
     setActivePage("storyMenu");
   };
 
@@ -123,8 +118,6 @@ const PageRenderer = ({
       );
     case "about":
       return <AboutPage language={language} />;
-    //case "contact":
-     // return <ContactPage language={language} />;
     case "help":
       return <HelpPage language={language} />;
     case "profile":

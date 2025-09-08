@@ -1,7 +1,6 @@
-// src/components/Navbar.jsx
 import React from "react";
 import './Navbar.css';
-import logo from "../assets/logo.png"; // make sure your logo is in src/assets/
+import logo from "../assets/logo.png";
 
 const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
   const navItems = ["home", "about", "help", "leaderboard"];
@@ -14,8 +13,6 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
         return "முகப்பு";
       case "about":
         return "எங்களைப் பற்றி";
-      //case "contact":
-        //return "தொடர்பு";
       case "help":
         return "உதவி";
       case "leaderboard":
@@ -34,7 +31,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
           {language === "English" ? "Quiz Master" : "வினா மாஸ்டர்"}
         </span>
       </div>
-
+      
       {/* Navigation Links */}
       <div className="nav-links">
         {navItems.map((page) => (
@@ -47,7 +44,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
           </button>
         ))}
       </div>
-
+      
       {/* Actions */}
       <div className="nav-actions">
         <button

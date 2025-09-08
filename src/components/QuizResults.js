@@ -3,7 +3,10 @@ import confetti from 'canvas-confetti';
 import './QuizResults.css';
 
 const QuizResults = ({ results, language, onRestart, onHome }) => {
-  const percentage = Math.round((results.correctAnswers / results.totalQuestions) * 100);
+  // Calculate percentage safely
+  const percentage = results.totalQuestions > 0 
+    ? Math.round((results.correctAnswers / results.totalQuestions) * 100)
+    : 0;
   
   // Trigger confetti when user scores 100%
   useEffect(() => {
@@ -69,9 +72,6 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
       <div className="results-card">
         {/* Header */}
         <div className="results-header">
-          {/*<button className="back-button" onClick={onHome}>
-            ← {language === 'English' ? 'Back to Home' : 'முகப்பிற்குச் செல்ல'}
-          </button>*/}
           <h2>{language === 'English' ? 'Quiz Results' : 'வினா முடிவுகள்'}</h2>
         </div>
         
@@ -94,19 +94,19 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
         {/* Stats */}
         <div className="results-stats">
           <div className="stat-item">
-            <div className="stat-value">{results.totalQuestions}</div>
+            <div className="stat-value">{results.totalQuestions || 0}</div>
             <div className="stat-label">
               {language === 'English' ? 'Total Questions' : 'மொத்த கேள்விகள்'}
             </div>
           </div>
           <div className="stat-item correct">
-            <div className="stat-value">{results.correctAnswers}</div>
+            <div className="stat-value">{results.correctAnswers || 0}</div>
             <div className="stat-label">
               {language === 'English' ? 'Correct' : 'சரியானவை'}
             </div>
           </div>
           <div className="stat-item wrong">
-            <div className="stat-value">{results.wrongAnswers}</div>
+            <div className="stat-value">{results.wrongAnswers || 0}</div>
             <div className="stat-label">
               {language === 'English' ? 'Wrong' : 'தவறானவை'}
             </div>

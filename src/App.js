@@ -12,6 +12,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
+  const [isQuizInProgress, setIsQuizInProgress] = useState(false);
 
   // Load saved user & splash
   useEffect(() => {
@@ -19,27 +20,25 @@ function App() {
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
-
     // splash hides after 2s
     const splashTimer = setTimeout(() => {
       setShowSplash(false);
     }, 2000);
-
     setIsLoading(false);
     return () => clearTimeout(splashTimer);
   }, []);
 
   const toggleLanguage = () => {
+    // Always allow language change
     setLanguage((prev) => (prev === "English" ? "Tamil" : "English"));
   };
-   useEffect(() => {
+
+  useEffect(() => {
     document.documentElement.lang = language === "Tamil" ? "ta" : "en";
   }, [language]);
 
   const handleLogin = (userData) => {
-    // Login.js passes user object with username, schoolName, etc.
     setUser(userData);
-    // optionally jump straight to quiz or keep home
     setActivePage("home");
   };
 
@@ -69,7 +68,6 @@ function App() {
         user={user}
         onLogout={handleLogout}
       />
-
       <main className="page-container">
         <PageRenderer
           language={language}
@@ -78,10 +76,10 @@ function App() {
           user={user}
           updateUser={setUser}
           toggleLanguage={toggleLanguage}
-          candidateName={user.username}   /* ✅ pass username to pages */
+          candidateName={user.username}
+          setIsQuizInProgress={setIsQuizInProgress}
         />
       </main>
-
       <Footer language={language} />
     </div>
   );
