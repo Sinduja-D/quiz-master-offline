@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import HomePage from "./HomePage.js";
 import AboutPage from "./AboutPage.js";
-import ContactPage from "./ContactPage.js";
+//import ContactPage from "./ContactPage.js";
 import HelpPage from "./HelpPage.js";
 import ProfilePage from "./ProfilePage.js";
 import AchievementsPage from "./AchievementsPage.js";
@@ -123,8 +123,8 @@ const PageRenderer = ({
       );
     case "about":
       return <AboutPage language={language} />;
-    case "contact":
-      return <ContactPage language={language} />;
+    //case "contact":
+     // return <ContactPage language={language} />;
     case "help":
       return <HelpPage language={language} />;
     case "profile":

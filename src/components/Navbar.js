@@ -4,7 +4,7 @@ import './Navbar.css';
 import logo from "../assets/logo.png"; // make sure your logo is in src/assets/
 
 const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
-  const navItems = ["home", "about", "contact", "help", "leaderboard"];
+  const navItems = ["home", "about", "help", "leaderboard"];
   
   const getNavLabel = (page) => {
     if (language === "English")
@@ -14,8 +14,8 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
         return "முகப்பு";
       case "about":
         return "எங்களைப் பற்றி";
-      case "contact":
-        return "தொடர்பு";
+      //case "contact":
+        //return "தொடர்பு";
       case "help":
         return "உதவி";
       case "leaderboard":
