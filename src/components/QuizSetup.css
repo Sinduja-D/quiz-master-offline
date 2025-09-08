@@ -1,11 +1,11 @@
 /* src/components/QuizSetup.css */
 .quiz-setup-container {
-  display: block; /* Changed from flex to block */
+  display: block;
   width: 100%;
   padding: 20px;
   background-color: #f8f9fa;
-  min-height: 100vh; /* Changed from height to min-height */
-  overflow-y: auto; /* Allow vertical scrolling */
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 .quiz-setup-card {
@@ -16,13 +16,14 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  margin-bottom: 40px; /* Add bottom margin to ensure button is visible */
+  margin-bottom: 40px;
 }
 
 .setup-header {
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+  position: relative;
 }
 
 .setup-header h2 {
@@ -32,25 +33,30 @@
   flex: 1;
 }
 
-/* Back button */
+/* Enhanced back button styling */
 .back-button {
-  background: none;
-  border: none;
+  background: rgba(26, 42, 108, 0.1);
+  border: 2px solid #1a2a6c;
   color: #1a2a6c;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 15px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  position: fixed;
+ 
 }
 
 .back-button:hover {
-  color: #2a3a7c;
+  background: rgba(26, 42, 108, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(26, 42, 108, 0.2);
 }
-
-/*.setup-content {
-  /* No special properties needed 
-}
-*/
 
 .setup-info {
   margin-bottom: 30px;
@@ -106,10 +112,10 @@
 }
 
 .subject-option.biology {
-  grid-column: span 2;   /* Biology takes the full row */
-  justify-self: center; 
+  grid-column: span 2;
+  justify-self: center;
   width: 20px;
-  height: 100px; /* Centers Biology */
+  height: 100px;
 }
 
 .subject-option {
@@ -156,7 +162,6 @@
   color: #555;
 }
 
-/* Fixed grade dropdown */
 .grade-select {
   width: 100%;
   padding: 12px 15px;
@@ -256,6 +261,16 @@
   cursor: not-allowed;
 }
 
+.error-message {
+  color: #d32f2f;
+  text-align: center;
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(211, 47, 47, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #d32f2f;
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .quiz-setup-container {
@@ -280,16 +295,9 @@
     justify-content: center;
     min-width: auto;
   }
+  
+  .back-button {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
 }
-/* Add these to QuizSetup.css to override parent styles 
-html, body {
-  height: auto !important;
-  overflow-y: auto !important;
-}
-
-#root, .app-container, .page-container {
-  height: auto !important;
-  min-height: 100vh !important;
-  overflow-y: auto !important;
-}
-*/

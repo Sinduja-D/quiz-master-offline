@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import { levels } from "../levels.js";
 
+
 const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   const [showWelcome, setShowWelcome] = useState(false);
 

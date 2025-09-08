@@ -65,6 +65,8 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  flex-wrap: wrap;       /* ✅ allow wrapping if too long */
+  justify-content: flex-end;
 }
 
 .lang-btn {
@@ -127,4 +129,11 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+html[lang="ta"] .nav-links .nav-link,
+html[lang="ta"] .nav-actions .lang-btn,
+html[lang="ta"] .nav-actions .logout-btn,
+html[lang="ta"] .nav-actions .username {
+  font-size: 0.8rem;   /* smaller font size for Tamil */
+  padding: 6px 12px;   /* reduce padding */
 }

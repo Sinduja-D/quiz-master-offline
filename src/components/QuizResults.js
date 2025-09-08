@@ -69,9 +69,9 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
       <div className="results-card">
         {/* Header */}
         <div className="results-header">
-          <button className="back-button" onClick={onHome}>
+          {/*<button className="back-button" onClick={onHome}>
             ← {language === 'English' ? 'Back to Home' : 'முகப்பிற்குச் செல்ல'}
-          </button>
+          </button>*/}
           <h2>{language === 'English' ? 'Quiz Results' : 'வினா முடிவுகள்'}</h2>
         </div>
         

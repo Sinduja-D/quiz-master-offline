@@ -50,9 +50,31 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
 .quiz-progress {
   font-weight: bold;
   color: #1a2a6c;
+  margin-bottom: 5px;
 }
 
 .quiz-level {
@@ -71,6 +93,8 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .question-text {
@@ -232,10 +256,12 @@
 .quiz-actions {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
 }
 
-.submit-button {
+.submit-button, .next-button, .previous-button {
   background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
   color: white;
   border: none;
@@ -244,39 +270,23 @@
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  width: 100%;
+  min-width: 200px;
+  max-width: 200px;
+  flex: 0 0 200px;
   transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
 }
 
-.submit-button:hover:not(:disabled) {
+.submit-button:hover:not(:disabled), 
+.next-button:hover:not(:disabled), 
+.previous-button:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
 }
 
-.submit-button:disabled {
-  background: #cccccc;
-  cursor: not-allowed;
-}
-
-.next-button {
-  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.next-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
-}
-
-.next-button:disabled {
+.submit-button:disabled, 
+.next-button:disabled, 
+.previous-button:disabled {
   background: #cccccc;
   cursor: not-allowed;
 }
@@ -350,7 +360,6 @@
   animation: pulse 1.5s infinite alternate;
 }
 
-
 /* Achievement Notification */
 .achievement-notification {
   position: fixed;
@@ -414,6 +423,7 @@
     transform: translate(-50%, -20px);
   }
 }
+
 /* Glitter shower particles */
 .glitter {
   position: absolute;
@@ -472,7 +482,7 @@
 .glitter:nth-child(44) { left: 24%; background-color: #2196F3; box-shadow: 0 0 15px 3px #2196F3; animation-duration: 2.2s; animation-delay: 1.1s; }
 .glitter:nth-child(45) { left: 29%; background-color: #9C27B0; box-shadow: 0 0 15px 3px #9C27B0; animation-duration: 1.8s; animation-delay: 1.3s; }
 .glitter:nth-child(46) { left: 34%; background-color: #FF9800; box-shadow: 0 0 15px 3px #FF9800; animation-duration: 2.4s; animation-delay: 1.5s; }
-.glitter:nth-child(47) { left: 39%; background-color: #F44336; box-shadow: 0 0 15px 3px #F44336; animation-duration: 2.1s; animation-delay: 1.7s; }
+.glitter:nth-child(47) { left: 39%; background-color: #F44336; box-shadow: 0 0 15px 3px #F44336; animation-duration: 2.2s; animation-delay: 1.7s; }
 .glitter:nth-child(48) { left: 44%; background-color: #00BCD4; box-shadow: 0 0 15px 3px #00BCD4; animation-duration: 1.9s; animation-delay: 1.9s; }
 .glitter:nth-child(49) { left: 49%; background-color: #8BC34A; box-shadow: 0 0 15px 3px #8BC34A; animation-duration: 2.3s; animation-delay: 0.2s; }
 .glitter:nth-child(50) { left: 54%; background-color: #673AB7; box-shadow: 0 0 15px 3px #673AB7; animation-duration: 2.0s; animation-delay: 0.4s; }
@@ -560,6 +570,29 @@
   .hint-content, .concept-content {
     padding: 12px;
   }
+  
+  .quiz-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .submit-button, .next-button, .previous-button {
+    min-width: 100%;
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+  
+  .previous-button {
+    order: 2;
+  }
+  
+  .header-left, .header-center, .header-right {
+    flex: 1;
+  }
+  
+  .quiz-header {
+    flex-wrap: wrap;
+  }
 }
 
 .quiz-cointainer {
@@ -568,12 +601,10 @@
   text-align: center;
   color: #ff5722;
   margin: 15px 0;
-
   /* Glow effect */
   text-shadow: 0 0 10px rgba(255, 87, 34, 0.8),
                0 0 20px rgba(255, 87, 34, 0.6),
                0 0 30px rgba(255, 87, 34, 0.4);
-
   /* Animation */
   animation: popupGlow 1.5s infinite ease-in-out;
 }

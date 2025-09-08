@@ -32,6 +32,9 @@ function App() {
   const toggleLanguage = () => {
     setLanguage((prev) => (prev === "English" ? "Tamil" : "English"));
   };
+   useEffect(() => {
+    document.documentElement.lang = language === "Tamil" ? "ta" : "en";
+  }, [language]);
 
   const handleLogin = (userData) => {
     // Login.js passes user object with username, schoolName, etc.

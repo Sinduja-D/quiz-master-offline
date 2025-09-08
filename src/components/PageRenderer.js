@@ -25,29 +25,22 @@ const PageRenderer = ({
   user,
   updateUser,
   toggleLanguage,
-  candidateName,       // ✅ receive from App.js
+  candidateName,
 }) => {
   const [selectedStory, setSelectedStory] = useState(null);
 
-  // useQuizApp hook
   const {
     selectedLevel,
     quizSettings,
     quizResults,
-    questions,
-    loading,
-    error,
     handleLevelSelect,
     handleStartQuiz,
     handleQuizComplete,
     handleRestartQuiz,
     handleBackToHome,
     newlyUnlockedAchievements,
-    isQuizInProgress,
-    achievementNotification,
   } = useQuizApp(setActivePage, user, updateUser);
 
-  // Prevent language toggle during quiz
   const safeToggleLanguage = () => {
     if (activePage === "quiz") {
       alert(
@@ -60,14 +53,12 @@ const PageRenderer = ({
     toggleLanguage();
   };
 
-  // Remember selected difficulty
   useEffect(() => {
     if (selectedLevel) {
       sessionStorage.setItem("selectedDifficulty", selectedLevel.id);
     }
   }, [selectedLevel]);
 
-  // Redirect if quizsetup has no difficulty
   useEffect(() => {
     if (activePage === "quizsetup") {
       const difficulty = sessionStorage.getItem("selectedDifficulty");
@@ -77,7 +68,6 @@ const PageRenderer = ({
     }
   }, [activePage, setActivePage]);
 
-  // Escape room helpers
   const handleStorySelect = (story) => {
     setSelectedStory(story);
     setActivePage("escapeRoom");
@@ -111,7 +101,6 @@ const PageRenderer = ({
     setActivePage("storyMenu");
   };
 
-  // Safety: if no user
   if (!user) {
     return (
       <div className="loading-container">
@@ -129,7 +118,7 @@ const PageRenderer = ({
           setActivePage={setActivePage}
           onLevelSelect={handleLevelSelect}
           toggleLanguage={safeToggleLanguage}
-           user={user}       
+          user={user}
         />
       );
     case "about":
@@ -151,7 +140,13 @@ const PageRenderer = ({
     case "leaderboard":
       return <LeaderboardPage language={language} currentUser={user} />;
     case "riddles":
-      return <RiddleQuiz language={language} />;
+      return (
+        <RiddleQuiz
+          language={language}
+          userName={user.name}
+          schoolName={user.schoolName}
+        />
+      );
     case "storyMenu":
       return (
         <StoryMenu
@@ -192,7 +187,7 @@ const PageRenderer = ({
           grade={quizSettings?.grade}
           onQuizComplete={handleQuizComplete}
           onBack={() => setActivePage("quizsetup")}
-          candidateName={candidateName}     /* ✅ name from App.js */
+          candidateName={candidateName}
         />
       );
     case "quizresults":

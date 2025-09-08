@@ -3,7 +3,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./QuizSetup.css";
 
 const t = (language, eng, tam) => (language === "English" ? eng : tam);
-
 // Local metadata so this component works standalone
 const LEVELS_META = {
   beginner: {
@@ -152,6 +151,16 @@ export default function QuizSetup({
     return (
       <div className="quiz-setup-container">
         <div className="quiz-setup-card">
+          {/* Header with back button on top */}
+          <div className="setup-header">
+            <div className="header-top">
+              <button className="back-button" onClick={onBack}>
+                ← {t(language, "Back", "திரும்ப")}
+              </button>
+            </div>
+            <h2>{t(language, "Quiz Setup", "வினா அமைப்பு")}</h2>
+          </div>
+          
           <div className="error-message">
             {t(
               language,
@@ -159,9 +168,12 @@ export default function QuizSetup({
               "சிரம நிலை தேர்ந்தெடுக்கப்படவில்லை. தயவுசெய்து திரும்பி ஒரு நிலையைத் தேர்ந்தெடுக்கவும்."
             )}
           </div>
-          <button className="back-button" onClick={onBack}>
-            ← {t(language, "Back", "திரும்ப")}
-          </button>
+          
+          <div className="start-button-container">
+            <button className="back-button" onClick={onBack}>
+              ← {t(language, "Back", "திரும்ப")}
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -170,11 +182,13 @@ export default function QuizSetup({
   return (
     <div className="quiz-setup-container">
       <div className="quiz-setup-card">
-        {/* Header */}
+        {/* Header with back button on top */}
         <div className="setup-header">
-          <button className="back-button" onClick={onBack}>
-            ← {t(language, "Back", "திரும்ப")}
-          </button>
+          <div className="header-top">
+            <button className="back-button" onClick={onBack}>
+              ← {t(language, "Back", "திரும்ப")}
+            </button>
+          </div>
           <h2>{t(language, "Quiz Setup", "வினா அமைப்பு")}</h2>
         </div>
         
