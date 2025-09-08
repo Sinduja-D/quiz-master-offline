@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import Confetti from "react-confetti";
+//import Confetti from "react-confetti";
 import "./SpinWheel.css";
 
 const SpinWheel = ({ language = "English", onSpinComplete }) => {
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
-  const [showConfetti, setShowConfetti] = useState(false);
   const [windowDimension, setWindowDimension] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -58,7 +57,6 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
 
     setSpinning(true);
     setResult(null);
-    setShowConfetti(false);
 
     const segmentAngle = 360 / rewards.length; // 51.43° for 7 segments
     const randomRewardIndex = Math.floor(Math.random() * rewards.length);
@@ -82,21 +80,11 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
     setTimeout(() => {
       setResult(rewards[randomRewardIndex]);
       setSpinning(false);
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 4000);
     }, 4000);
   };
 
   return (
     <div className="spin-wheel-container">
-      {showConfetti && (
-        <Confetti
-          width={windowDimension.width}
-          height={windowDimension.height}
-          recycle={false}
-          numberOfPieces={400}
-        />
-      )}
 
       <h3>{t("Spin the Wheel!", "சக்கரத்தை சுழற்றுங்கள்!")}</h3>
 

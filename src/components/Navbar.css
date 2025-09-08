@@ -134,6 +134,6 @@ html[lang="ta"] .nav-links .nav-link,
 html[lang="ta"] .nav-actions .lang-btn,
 html[lang="ta"] .nav-actions .logout-btn,
 html[lang="ta"] .nav-actions .username {
-  font-size: 0.8rem;   /* smaller font size for Tamil */
+  font-size:0.8rem;   /* smaller font size for Tamil */
   padding: 6px 12px;   /* reduce padding */
 }
