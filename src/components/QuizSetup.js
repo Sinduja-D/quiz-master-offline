@@ -154,9 +154,6 @@ export default function QuizSetup({
           {/* Header with back button on top */}
           <div className="setup-header">
             <div className="header-top">
-              <button className="back-button" onClick={onBack}>
-                ← {t(language, "Back", "திரும்ப")}
-              </button>
             </div>
             <h2>{t(language, "Quiz Setup", "வினா அமைப்பு")}</h2>
           </div>
@@ -170,9 +167,6 @@ export default function QuizSetup({
           </div>
           
           <div className="start-button-container">
-            <button className="back-button" onClick={onBack}>
-              ← {t(language, "Back", "திரும்ப")}
-            </button>
           </div>
         </div>
       </div>

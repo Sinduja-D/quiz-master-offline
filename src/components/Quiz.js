@@ -1,3 +1,4 @@
+// src/components/Quiz.js
 import React, { useState, useEffect } from 'react';
 import Popup from './Popup';
 import confetti from 'canvas-confetti';
@@ -348,7 +349,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       )}
       <div className="quiz-header">
         <div className="header-left">
-          <button className="back-button" onClick={handleBackClick}>
+          <button className="back-button-header" onClick={handleBackClick}>
             ← {language === 'English' ? 'Back' : 'திரும்ப'}
           </button>
         </div>
@@ -356,14 +357,15 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           <div className="quiz-progress">
             {language === 'English' ? 'Question' : 'கேள்வி'} {currentQuestionIndex + 1} {language === 'English' ? 'of' : 'மொத்தம்'} {quizQuestions.length}
           </div>
+          
+        </div>
+        <div className="header-right">
           <div className="quiz-level">
             {level === 'beginner' && '🟢'}
             {level === 'intermediate' && '🟡'}
             {level === 'advance' && '🔴'}
             {level.charAt(0).toUpperCase() + level.slice(1)}
           </div>
-        </div>
-        <div className="header-right">
           <div className="quiz-timer">
             ⏱ {questionTimeLeft}s
           </div>
@@ -445,7 +447,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
               className="previous-button"
               onClick={handlePrevious}
             >
-              ← {language === 'English' ? 'Previous' : 'முந்தைய'}
+              ← {language === 'English' ? 'Previous' : 'முந்தைய '}
             </button>
           )}
           {!showFeedback ?
