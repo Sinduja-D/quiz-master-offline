@@ -18,7 +18,6 @@
   white-space: nowrap;
 }
 
-
 .nav-brand {
   display: flex;
   align-items: center;
@@ -28,22 +27,18 @@
   color: #1a2a6c;
   cursor: pointer;
 }
-
 .nav-logo {
   width: 40px;
   height: auto;
 }
-
 .brand-text {
   font-size: 1.4rem;
   font-weight: 600;
 }
-
 .nav-links {
   display: flex;
   gap: 20px;
 }
-
 .nav-link {
   background: none;
   border: none;
@@ -55,12 +50,10 @@
   border-radius: 20px;
   transition: all 0.3s ease;
 }
-
 .nav-link:hover, .nav-link.active {
   background: rgba(26, 42, 108, 0.1);
   color: #1a2a6c;
 }
-
 .nav-actions {
   display: flex;
   align-items: center;
@@ -68,7 +61,6 @@
   flex-wrap: wrap;       /* ✅ allow wrapping if too long */
   justify-content: flex-end;
 }
-
 .lang-btn {
   background: #1a2a6c;
   border: none;
@@ -80,17 +72,14 @@
   font-weight: bold;
   transition: all 0.3s ease;
 }
-
 .lang-btn:hover {
   background: #2a3a7c;
   transform: translateY(-2px);
 }
-
 .lang-btn-disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
 .lang-btn-disabled:hover {
   background-color: #f0f0f0;
 }
@@ -102,12 +91,10 @@
   padding-left: 15px;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
-
 .username {
   font-weight: 600;
   color: #1a2a6c;
 }
-
 .logout-btn {
   background: none;
   border: none;
@@ -119,12 +106,10 @@
   border-radius: 20px;
   transition: all 0.3s ease;
 }
-
 .logout-btn:hover {
   background: rgba(26, 42, 108, 0.1);
   color: #1a2a6c;
 }
-
 /* Navbar Responsive */
 @media (max-width: 768px) {
   .navbar {
@@ -138,10 +123,24 @@
     justify-content: center;
   }
 }
-html[lang="ta"] .nav-links .nav-link,
-html[lang="ta"] .nav-actions .lang-btn,
-html[lang="ta"] .nav-actions .logout-btn,
-html[lang="ta"] .nav-actions .username {
-  font-size:0.8rem;   /* smaller font size for Tamil */
-  padding: 6px 12px;   /* reduce padding */
+
+/* Tamil text styling - smaller than English */
+html[lang="ta"] .navbar .nav-link,
+html[lang="ta"] .navbar .brand-text,
+html[lang="ta"] .navbar .lang-btn,
+html[lang="ta"] .navbar .logout-btn,
+html[lang="ta"] .navbar .username {
+  font-size: 0.8rem !important;  /* Smaller font size for Tamil */
+  padding: 6px 6px !important;  /* Reduced padding for better proportions */
+}
+
+/* Special handling for Tamil brand text to maintain visibility */
+html[lang="ta"] .brand-text {
+  font-size: 0.9rem !important;  /* Slightly larger than other Tamil text but smaller than English */
+}
+
+/* Tamil profile and achievement buttons */
+html[lang="ta"] .nav-actions .nav-link {
+  font-size: 0.8rem !important;
+  padding: 6px 6px !important;
 }

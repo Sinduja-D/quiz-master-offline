@@ -418,9 +418,9 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         </div>
         <div className="header-right">
           <div className="quiz-level">
-            {level === 'beginner' && '🟢'}
-            {level === 'intermediate' && '🟡'}
-            {level === 'advance' && '🔴'}
+            {level === 'beginner'}
+            {level === 'intermediate'}
+            {level === 'advance'}
             {level.charAt(0).toUpperCase() + level.slice(1)}
           </div>
           <div className="quiz-timer">

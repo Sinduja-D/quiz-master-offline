@@ -3,33 +3,23 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PageRenderer from "./components/PageRenderer";
 import Login from "./components/Login.js";
-import SplashScreen from "./components/SplashScreen.js";
 import "./App.css";
 
 function App() {
   const [activePage, setActivePage] = useState("home");
   const [language, setLanguage] = useState("English");
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [showSplash, setShowSplash] = useState(true);
   const [isQuizInProgress, setIsQuizInProgress] = useState(false);
 
-  // Load saved user & splash
+  // Load saved user on mount
   useEffect(() => {
     const savedUser = localStorage.getItem("currentUser");
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
-    // splash hides after 2s
-    const splashTimer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2000);
-    setIsLoading(false);
-    return () => clearTimeout(splashTimer);
   }, []);
 
   const toggleLanguage = () => {
-    // Always allow language change
     setLanguage((prev) => (prev === "English" ? "Tamil" : "English"));
   };
 
@@ -47,10 +37,6 @@ function App() {
     setUser(null);
     setActivePage("home");
   };
-
-  if (isLoading || showSplash) {
-    return <SplashScreen />;
-  }
 
   // Not logged in → go to login screen
   if (!user) {

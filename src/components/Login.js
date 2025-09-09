@@ -7,12 +7,10 @@ const Login = ({ onLogin, language }) => {
   const [error, setError] = useState('');
   const [users, setUsers] = useState([]);
 
-  // Load users from localStorage on mount
+  // Load users from localStorage
   useEffect(() => {
     const savedUsers = localStorage.getItem('quizAppUsers');
-    if (savedUsers) {
-      setUsers(JSON.parse(savedUsers));
-    }
+    if (savedUsers) setUsers(JSON.parse(savedUsers));
   }, []);
 
   const handleSubmit = (e) => {
@@ -34,25 +32,18 @@ const Login = ({ onLogin, language }) => {
     }
 
     // Check if username exists anywhere
-    const userWithSameName = users.find(u =>
+    const usernameExists = users.some(u =>
       u.username.toLowerCase() === username.toLowerCase()
     );
 
-    if (userWithSameName) {
-      if (userWithSameName.schoolName.toLowerCase() === schoolName.toLowerCase()) {
-        // Same username and same school → login allowed
-        localStorage.setItem('currentUser', JSON.stringify(userWithSameName));
-        onLogin(userWithSameName);
-      } else {
-        // Same username in different school → block registration
-        setError(language === 'English'
-          ? 'This username already exists with a different school. Please choose a different name.'
-          : 'இந்த பெயர் வேறு பள்ளியுடன் ஏற்கனவே உள்ளது. வேறு பெயரை தேர்வு செய்யவும்.');
-      }
+    if (usernameExists) {
+      setError(language === 'English'
+        ? 'This username is already taken. You cannot use it again.'
+        : 'இந்த பெயர் ஏற்கனவே பயன்படுத்தப்பட்டுள்ளது. மீண்டும் பயன்படுத்த முடியாது.');
       return;
     }
 
-    // New user → create and login
+    // Username is new → create user
     const newUser = {
       id: Date.now(),
       username: username.trim(),

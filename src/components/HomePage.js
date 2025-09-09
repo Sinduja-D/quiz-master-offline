@@ -31,7 +31,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
         <h1 className="hero-title">
           {language === "English"
             ? "Every tap counts — show you’re sharp."
-            : "ஒவ்வொரு தொடுதலும் முக்கியம் — நீ கூர்மையானவன் என்பதை நிரூபி."}
+            : "ஒவ்வொரு தொடுதலும் முக்கியம் — நீ கூர்மையானவர் என்பதை நிரூபி."}
         </h1>
         <p className="hero-subtitle">
           {language === "English"
