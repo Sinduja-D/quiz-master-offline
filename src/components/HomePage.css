@@ -10,7 +10,7 @@
 }
 /* Hero Box */
 .hero-box {
-  padding: 40px 40px;
+  padding: 20px 20px;
   text-align: center;
   background: linear-gradient(135deg, #1a2a6c 0%, #2a3a8c 50%, #3b4aa0 100%);
   color: white;
@@ -54,6 +54,7 @@
   position: relative;
   z-index: 1;
 }
+
 /* Content Wrapper */
 .content-wrapper {
   display: flex;

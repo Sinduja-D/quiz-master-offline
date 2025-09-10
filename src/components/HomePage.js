@@ -30,14 +30,20 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
       <div className="hero-box">
         <h1 className="hero-title">
           {language === "English"
-            ? "Every tap counts — show you’re sharp."
-            : "ஒவ்வொரு தொடுதலும் முக்கியம் — நீ கூர்மையானவர் என்பதை நிரூபி."}
+            ? "SCIENCE PARK-THIRUVALLUR DISTRICT"
+            : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
         </h1>
+        <h3 className="hero-title">
+          {language === "English"
+            ? "DESIGNED AND DEVELOPED BY: R.M.K. ENGINEERING COLLEGE"
+            : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
+        </h3>
         <p className="hero-subtitle">
           {language === "English"
-            ? "Challenge yourself, rise above, and outthink the rest!"
-            : "உன்னைச் சவால் செய், மேலெழு, மற்றவர்களை மிஞ்சி சிந்தி!"}
+            ? "Sinduja D · Reethu P · Vijayalakshmi SR, \n Mentor: M.Rekha, Assistant Professor"
+            : "சிந்துஜா டி · ரீத்து பெ · விஜயலட்சுமி எஸ் ஆ,\n வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்"}
         </p>
+        
       </div>
 
       <div className="content-wrapper">
