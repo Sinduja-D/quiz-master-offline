@@ -40,7 +40,7 @@ function App() {
 
   // Not logged in → go to login screen
   if (!user) {
-    return <Login onLogin={handleLogin} language={language} />;
+    return <Login onLogin={handleLogin} language={language} toggleLanguage={toggleLanguage} />;
   }
 
   // Logged in → render normal layout
