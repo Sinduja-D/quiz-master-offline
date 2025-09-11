@@ -38,12 +38,37 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             ? "DESIGNED AND DEVELOPED BY: R.M.K. ENGINEERING COLLEGE"
             : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
         </h3>
-        <p className="hero-subtitle">
+        {/*<p className="hero-subtitle">
           {language === "English"
             ? "Sinduja D · Reethu P · Vijayalakshmi SR, \n Mentor: M.Rekha, Assistant Professor"
             : "சிந்துஜா டி · ரீத்து பெ · விஜயலட்சுமி எஸ் ஆ,\n வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்"}
-        </p>
-        
+        </p>*/}
+        <div className="credits">
+  {language === "English" ? (
+    <>
+      <div className="student-names">
+        <span className="student-tag">Sinduja D</span>
+        <span className="student-tag">Reethu P</span>
+        <span className="student-tag">Vijayalakshmi SR</span>
+      </div>
+      <div className="mentor-name">
+        Mentor: M.Rekha, Assistant Professor
+      </div>
+    </>
+  ) : (
+    <>
+      <div className="student-names">
+        <span className="student-tag">சிந்துஜா டி</span>
+        <span className="student-tag">ரீத்து பெ</span>
+        <span className="student-tag">விஜயலட்சுமி எஸ் ஆ</span>
+      </div>
+      <div className="mentor-name">
+        வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்
+      </div>
+    </>
+  )}
+</div>
+
       </div>
 
       <div className="content-wrapper">

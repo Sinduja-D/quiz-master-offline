@@ -46,6 +46,7 @@ function App() {
   // Logged in → render normal layout
   return (
     <div className="app-container">
+   
       <Navbar
         language={language}
         activePage={activePage}
@@ -54,6 +55,7 @@ function App() {
         user={user}
         onLogout={handleLogout}
       />
+          
       <main className="page-container">
         <PageRenderer
           language={language}
