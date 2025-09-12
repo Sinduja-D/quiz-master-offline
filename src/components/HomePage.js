@@ -19,8 +19,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
       {showWelcome && (
         <div className="welcome-popup">
           {language === "English"
-            ? `Welcome, ${user.username}!`
-            : `வரவேற்பு, ${user.username}!`}
+            ? `Welcome to HomePage, ${user.username}!`
+            : `முகப்புப்பக்கத்திற்கு வரவேற்கிறோம், ${user.username}!`}
         </div>
       )}
       <div className="hero-box">
@@ -34,15 +34,16 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             ? "DESIGNED AND DEVELOPED BY: R.M.K. ENGINEERING COLLEGE"
             : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
         </h2>
+    
         <p className="hero-subtitle">
           {language === "English" ? (
             <>
-              Sinduja D · Reethu P · Vijayalakshmi SR, <br />
+              Students: Sinduja D · Reethu P · Vijayalakshmi S R<br />
               Mentor: M.Rekha, Assistant Professor
             </>
           ) : (
             <>
-              சிந்துஜா டி · ரீத்து பெ · விஜயலட்சுமி எஸ் ஆ, <br />
+              மாணவர்கள்: சிந்துஜா டி · ரீத்து பெ · விஜயலட்சுமி சி.ரா<br />
               வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்
             </>
           )}

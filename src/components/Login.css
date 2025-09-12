@@ -142,7 +142,7 @@
   border-radius: 20px;
   padding: 40px;
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow: hidden;
@@ -185,7 +185,7 @@
   font-size: 2rem;
   color: #1a2a6c;
   margin: 0 0 12px 0;
-  font-weight: 700;
+  font-weight: 500;
   position: relative;
   display: inline-block;
 }

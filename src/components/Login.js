@@ -84,8 +84,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
           <div className="college-info">
             <h3>
               {language === "English"
-                ? "Designed and Developed by"
-                : "மூலம் வடிவமைக்கப்பட்டு உருவாக்கப்பட்டது"}
+                ? "Designed and Developed By"
+                : "மூலம் வடிவமைத்து உருவாக்கப்பட்டது"}
             </h3>
             <h2>
               {language === "English"
@@ -99,8 +99,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             </h4>
             <p className="student-names">
               {language === "English"
-                ? "Sinduja D, Reethu P, Vijayalakshmi SR"
-                : "சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி எஸ் ஆர்"}
+                ? "Students: Sinduja D, Reethu P, Vijayalakshmi S R"
+                : "மாணவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
             </p>
             <p className="mentor-name">
               {language === "English"
@@ -115,7 +115,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
       <div className="login-section">
         <div className="login-card">
           <div className="login-header">
-            <h2>{language === 'English' ? 'Welcome to Quiz Master' : 'வினா மாஸ்டரிற்கு வரவேற்கிறோம்'}</h2>
+            <h2>{language === 'English' ? 'Welcome to Science Quiz for Young Achievers' : 'இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினாவிற்கு வரவேற்கிறோம்'}</h2>
             <p>{language === 'English'
               ? 'Please enter your details to continue'
               : 'தொடர்வதற்கு தயவுசெய்து உங்கள் விவரங்களை உள்ளிடவும்'}</p>

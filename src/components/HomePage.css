@@ -112,7 +112,8 @@
 /* Level Selection */
 .home-container .level-container {
   margin: 0 auto 20px;
-  max-width: 800px;
+ /* max-width: 1800px;*/
+   max-width: 100% !important;
   text-align: center;
   flex: none;
   display: flex;

@@ -2,10 +2,9 @@
 // src/components/RiddleQuiz.js
 import React, { useState, useEffect } from "react";
 import "./RiddleQuiz.css";
-import riddlesEnglish from "../data/riddlesEnglish.json";
-import riddlesTamil from "../data/riddlesTamil.json";
+import { ScienceQuestions } from "../data/RiddleDatas.js";
 
-const MultipleChoiceRiddle = ({ language }) => {
+const RiddleQuestions = ({ language }) => {
   const [shuffledRiddles, setShuffledRiddles] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -14,75 +13,68 @@ const MultipleChoiceRiddle = ({ language }) => {
   const [score, setScore] = useState(0);
   const [attempts, setAttempts] = useState(0);
   const [options, setOptions] = useState([]);
-
-  // Pick riddles based on language
-  const baseRiddles = language === "English" ? riddlesEnglish : riddlesTamil;
-
+  const [correctAnswer, setCorrectAnswer] = useState("");
+  
+  // Get language key (lowercase)
+  const langKey = language.toLowerCase();
+  
   // Shuffle riddles once whenever language changes
   useEffect(() => {
-    const shuffled = [...baseRiddles].sort(() => 0.5 - Math.random());
+    const shuffled = [...ScienceQuestions].sort(() => 0.5 - Math.random());
     setShuffledRiddles(shuffled);
     setCurrentIndex(0);
   }, [language]);
-
+  
   const currentRiddle = shuffledRiddles[currentIndex] || {};
-
+  
   // Generate options whenever currentIndex or riddles change
   useEffect(() => {
     if (shuffledRiddles.length) {
       generateOptions();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, shuffledRiddles]);
-
+  }, [currentIndex, shuffledRiddles, language]);
+  
   const generateOptions = () => {
     if (!shuffledRiddles.length) return;
-
-    const correctAnswer = currentRiddle.answer;
-
-    // Collect incorrect answers from the other riddles
-    const incorrectAnswers = shuffledRiddles
-      .filter((r) => r.id !== currentRiddle.id)
-      .map((r) => r.answer)
-      .filter((ans) => ans !== correctAnswer);
-
-    // Shuffle & pick 3 wrong answers
-    const shuffled = [...incorrectAnswers].sort(() => 0.5 - Math.random());
-    const selectedIncorrect = shuffled.slice(0, 3);
-
-    // Combine, shuffle & set
-    const allOptions = [correctAnswer, ...selectedIncorrect];
-    const shuffledOptions = [...allOptions].sort(() => 0.5 - Math.random());
-
+    
+    // Get the correct answer in the current language
+    const correctAnswerText = currentRiddle.options[currentRiddle.correctAnswer][langKey];
+    setCorrectAnswer(correctAnswerText);
+    
+    // Get all options in the current language
+    const optionTexts = currentRiddle.options.map(opt => opt[langKey]);
+    
+    // Shuffle the options
+    const shuffledOptions = [...optionTexts].sort(() => 0.5 - Math.random());
     setOptions(shuffledOptions);
     setSelectedOption(null);
     setShowResult(false);
   };
-
+  
   const handleOptionSelect = (option) => {
     if (showResult) return;
     setSelectedOption(option);
   };
-
+  
   const handleSubmit = () => {
     if (selectedOption === null) return;
-
-    const correct = selectedOption === currentRiddle.answer;
+    const correct = selectedOption === correctAnswer;
     setIsCorrect(correct);
     setShowResult(true);
     setAttempts((prev) => prev + 1);
     if (correct) setScore((prev) => prev + 1);
   };
-
+  
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % shuffledRiddles.length);
   };
-
+  
   // safe to return JSX after hooks
   if (!shuffledRiddles.length) {
     return <div>No riddles found!</div>;
   }
-
+  
   return (
     <div className="multiple-choice-container">
       <div className="game-header">
@@ -96,23 +88,23 @@ const MultipleChoiceRiddle = ({ language }) => {
           </div>
         </div>
       </div>
-
+      
       <div className="riddle-card">
         <div className="riddle-header">
           <div className="riddle-number">
-            {language === "English" ? "Riddle #" : "புதிர் #"}
+            {language === "English" ? "Question #" : "கேள்வி #"}
             {currentIndex + 1}
           </div>
           <div className="riddle-category">
             {language === "English" ? "Multiple Choice" : "பல தேர்வு"}
           </div>
         </div>
-
+        
         <div className="riddle-content">
           <div className="riddle-question">
-            <p>{currentRiddle.riddle}</p>
+            <p>{currentRiddle.question[langKey]}</p>
           </div>
-
+          
           {!showResult ? (
             <div className="options-section">
               <div className="options-grid">
@@ -131,7 +123,7 @@ const MultipleChoiceRiddle = ({ language }) => {
                   </div>
                 ))}
               </div>
-
+              
               <button
                 className="submit-btn"
                 onClick={handleSubmit}
@@ -156,7 +148,7 @@ const MultipleChoiceRiddle = ({ language }) => {
                     : "சரியான பதில் இல்லை"}
                 </div>
               </div>
-
+              
               <div className="answer-comparison">
                 <div className="answer-row">
                   <span className="answer-label">
@@ -168,25 +160,18 @@ const MultipleChoiceRiddle = ({ language }) => {
                   <span className="answer-label">
                     {language === "English" ? "Correct Answer:" : "சரியான பதில்:"}
                   </span>
-                  <span className="correct-answer">{currentRiddle.answer}</span>
+                  <span className="correct-answer">{correctAnswer}</span>
                 </div>
               </div>
-
-              <div className="explanation-box">
-                <div className="explanation-title">
-                  {language === "English" ? "Explanation" : "விளக்கம்"}
-                </div>
-                <p>{currentRiddle.explanation}</p>
-              </div>
-
+              
               <button className="next-btn" onClick={handleNext}>
-                {language === "English" ? "Next Riddle" : "அடுத்த புதிர்"}
+                {language === "English" ? "Next Question" : "அடுத்த கேள்வி"}
               </button>
             </div>
           )}
         </div>
       </div>
-
+      
       <div className="progress-container">
         <div className="progress-bar">
           <div
@@ -205,4 +190,4 @@ const MultipleChoiceRiddle = ({ language }) => {
   );
 };
 
-export default MultipleChoiceRiddle;
+export default RiddleQuestions;

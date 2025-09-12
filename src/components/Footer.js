@@ -4,8 +4,8 @@ import React from "react";
 const Footer = ({ language }) => (
   <footer style={styles.footer}>
     {language === "English"
-      ? "Designed & Developed by RMK Engineering College | © 2025 Quiz Master App | RMKEC IT Department 2027"
-      : "RMK பொறியியல் கல்லூரியால் வடிவமைத்து உருவாக்கப்பட்டது | © 2025 வினா மாஸ்டர் பயன்பாடு | RMKEC தொழில்நுட்பத் துறை 2027"}
+      ? "Designed & Developed by RMK Engineering College | RMKEC IT Department 2027"
+      : "ஆர்.எம்.கே. பொறியியல் கல்லூரியால் வடிவமைத்து உருவாக்கப்பட்டது | ஆர்.எம்.கே. தொழில்நுட்பத் துறை 2027"}
   </footer>
 );
 
