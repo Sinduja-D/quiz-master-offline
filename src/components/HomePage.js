@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import "./HomePage.css";
 import { levels } from "../levels.js";
 
-
 const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   const [showWelcome, setShowWelcome] = useState(false);
-
   // show banner once on mount if we have a username
   useEffect(() => {
     if (user?.username) {
@@ -15,7 +13,6 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
       return () => clearTimeout(timer);
     }
   }, [user]);
-
   return (
     <div className="home-container">
       {/* welcome banner */}
@@ -26,26 +23,31 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             : `வரவேற்பு, ${user.username}!`}
         </div>
       )}
-
       <div className="hero-box">
-        <h1 className="hero-title">
+        <h3 className="hero-title main-title">
           {language === "English"
             ? "SCIENCE PARK-THIRUVALLUR DISTRICT"
             : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
-        </h1>
-        <h3 className="hero-title">
+        </h3>
+        <h2 className="hero-title sub-title">
           {language === "English"
             ? "DESIGNED AND DEVELOPED BY: R.M.K. ENGINEERING COLLEGE"
             : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
-        </h3>
+        </h2>
         <p className="hero-subtitle">
-          {language === "English"
-            ? "Sinduja D · Reethu P · Vijayalakshmi SR, \n Mentor: M.Rekha, Assistant Professor"
-            : "சிந்துஜா டி · ரீத்து பெ · விஜயலட்சுமி எஸ் ஆ,\n வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்"}
+          {language === "English" ? (
+            <>
+              Sinduja D · Reethu P · Vijayalakshmi SR, <br />
+              Mentor: M.Rekha, Assistant Professor
+            </>
+          ) : (
+            <>
+              சிந்துஜா டி · ரீத்து பெ · விஜயலட்சுமி எஸ் ஆ, <br />
+              வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்
+            </>
+          )}
         </p>
-        
       </div>
-
       <div className="content-wrapper">
         <div className="level-container">
           <div className="section-title">
@@ -73,7 +75,6 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             ))}
           </div>
         </div>
-
         <div className="explore-section">
           <div className="explore-header">
             <h2>
@@ -117,5 +118,4 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
     </div>
   );
 };
-
 export default HomePage;

@@ -1,4 +1,3 @@
-// src/components/AchievementsPage.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import confetti from 'canvas-confetti';
 import './AchievementsPage.css';
@@ -25,10 +24,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
     "subject_expert",
     "speed_demon",
     "no_hints",
-    //"early_bird",
-    //"night_owl",
-    //"weekly_warrior",
-    //"monthly_champion"
+    "early_bird"
   ];
   
   const achievements = [
@@ -202,26 +198,6 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
       }
     },
     
-    // Consistency Achievements
-   /* { 
-      id: 'weekly_warrior', 
-      icon: '🗓️', 
-      title: { en: 'Weekly Warrior', ta: 'வாராந்திர வீரர்' }, 
-      description: { 
-        en: 'Complete at least one quiz every day for a week', 
-        ta: 'ஒரு வாரத்திற்கு ஒவ்வொரு நாளும் குறைந்தது ஒரு வினாவை முடிக்கவும்' 
-      }
-    },*/
-    /*{ 
-      id: 'monthly_champion', 
-      icon: '🏅', 
-      title: { en: 'Monthly Champion', ta: 'மாதாந்திர சாம்பியன்' }, 
-      description: { 
-        en: 'Complete at least one quiz every day for a month', 
-        ta: 'ஒரு மாதத்திற்கு ஒவ்வொரு நாளும் குறைந்தது ஒரு வினாவை முடிக்கவும்' 
-      }
-    },*/
-    
     // Special Achievements
     { 
       id: 'no_hints', 
@@ -240,16 +216,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
         en: 'Complete a quiz between 5 AM and 9 AM', 
         ta: 'காலை 5 மணி முதல் 9 மணி வரை ஒரு வினாவை முடிக்கவும்' 
       }
-    },
-    /*{ 
-      id: 'night_owl', 
-      icon: '🦉', 
-      title: { en: 'Night Owl', ta: 'இரவு நேர வெற்றி' }, 
-      description: { 
-        en: 'Complete a quiz between 10 PM and 2 AM', 
-        ta: 'இரவு 10 மணி முதல் 2 மணி வரை ஒரு வினாவை முடிக்கவும்' 
-      }
-    },*/
+    }
   ];
   
   // Create refs for each achievement card
@@ -325,14 +292,6 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
           shapes: ['star'],
           gravity: 1.2,
         };
-      } else if (achievementId === 'weekly_warrior' || achievementId === 'monthly_champion') {
-        confettiConfig = {
-          ...confettiConfig,
-          particleCount: 300,
-          spread: 100,
-          colors: ['#32CD32', '#3CB371', '#2E8B57', '#228B22', '#008000'],
-          shapes: ['circle', 'star'],
-        };
       } else if (achievementId.includes('points')) {
         const points = achievementId.split('_')[0];
         confettiConfig = {
@@ -356,14 +315,6 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
           particleCount: 200,
           spread: 85,
           colors: ['#FFD700', '#FFA500', '#FF8C00', '#FFFF00', '#F0E68C'],
-          shapes: ['circle', 'star'],
-        };
-      } else if (achievementId === 'night_owl') {
-        confettiConfig = {
-          ...confettiConfig,
-          particleCount: 200,
-          spread: 85,
-          colors: ['#191970', '#000080', '#00008B', '#0000CD', '#4169E1'],
           shapes: ['circle', 'star'],
         };
       }

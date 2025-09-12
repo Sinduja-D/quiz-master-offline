@@ -1,3 +1,23 @@
+/* Add this to your AchievementsPage.css file */
+
+.achievement-card.newly-unlocked {
+  animation: pulse 2s infinite;
+  border: 2px solid #4CAF50;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .achievements-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -116,25 +136,6 @@
   color: #7f8c8d;
 }
 
-/* Add this to AchievementsPage.css */
-
-.achievement-card.newly-unlocked {
-  animation: pulse 2s infinite;
-  border: 2px solid #4CAF50;
-  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .achievements-grid {

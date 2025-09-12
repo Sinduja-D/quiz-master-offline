@@ -91,12 +91,12 @@ const HelpPage = ({ language }) => {
         ))}
       </div>
       
-      <div className="help-footer">
+      {/*<div className="help-footer">
         <p>{language === "English" 
           ? "For additional support, contact our team through the Contact page." 
           : "கூடுதல் ஆதரவுக்கு, தொடர்பு பக்கம் வழியாக எங்கள் குழுவைத் தொடர்பு கொள்ளவும்."}
         </p>
-      </div>
+      </div>*/}
     </div>
   );
 };
