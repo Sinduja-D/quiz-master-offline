@@ -5,11 +5,11 @@ import './AboutPage.css';
 const AboutPage = ({ language }) => {
   const content = {
     english: {
-      title: "About Quiz Master",
+      title: "About Us",
       sections: [
         {
           heading: "Our Mission",
-          content: "Quiz Master is dedicated to making learning fun, interactive, and accessible to everyone. We believe that education should be engaging and that quizzes are one of the most effective ways to reinforce knowledge and track progress."
+          content: "This app is dedicated to making learning fun, interactive, and accessible to everyone. We believe that education should be engaging and that quizzes are one of the most effective ways to reinforce knowledge and track progress."
         },
         {
           heading: "What We Offer",
@@ -21,24 +21,24 @@ const AboutPage = ({ language }) => {
         },
         {
           heading: "Technology",
-          content: "Built with modern web technologies, Quiz Master provides a seamless experience across devices. Our responsive design ensures you can learn whether you're on a computer, tablet, or smartphone."
+          content: "Built with modern web technologies, This app provides a seamless experience across devices. Our responsive design ensures you can learn whether you're on a computer, tablet, or smartphone."
         },
         {
           heading: "Our Team",
-          content: "Quiz Master is developed by a passionate team of educators, developers, and designers who believe in the power of technology to transform education. We're constantly working to improve and expand our platform based on user feedback."
+          content: "This is developed by a passionate team of educators, developers, and designers who believe in the power of technology to transform education. We're constantly working to improve and expand our platform based on user feedback."
         },
         {
           heading: "Outcomes",
-          content: "Users of Quiz Master report significant improvements in their knowledge retention, test scores, and overall confidence in the subjects they study. Our platform will help thousands of students achieve their educational goals and develop a love for learning."
+          content: "Users of This app report significant improvements in their knowledge retention, test scores, and overall confidence in the subjects they study. Our platform will help thousands of students achieve their educational goals and develop a love for learning."
         }
       ]
     },
     tamil: {
-      title: "வினா மாஸ்டர் பற்றி",
+      title: "எங்களை பற்றி",
       sections: [
         {
           heading: "எங்கள் பணி",
-          content: "கற்றலை சுவாரஸ்யமானதும், ஊடாடும் தன்மை கொண்டதுமாகவும், அனைவருக்கும் அணுகக்கூடியதாகவும் மாற்றுவதே வினா மாஸ்டரின் நோக்கம். கல்வி ஈர்க்கக்கூடியதாக இருக்க வேண்டும் என்றும், வினாத்திட்டங்கள் அறிவை வலுப்படுத்தவும் முன்னேற்றத்தைக் கண்காணிக்கவும் மிகவும் பயனுள்ள வழிகளில் ஒன்று என்று நாங்கள் நம்புகிறோம்."
+          content: "கற்றலை சுவாரஸ்யமானதும், ஊடாடும் தன்மை கொண்டதுமாகவும், அனைவருக்கும் அணுகக்கூடியதாகவும் மாற்றுவதே இந்த செயலி நோக்கம். கல்வி ஈர்க்கக்கூடியதாக இருக்க வேண்டும் என்றும், வினாத்திட்டங்கள் அறிவை வலுப்படுத்தவும் முன்னேற்றத்தைக் கண்காணிக்கவும் மிகவும் பயனுள்ள வழிகளில் ஒன்று என்று நாங்கள் நம்புகிறோம்."
         },
         {
           heading: "எங்கள் சேவைகள்",
@@ -58,7 +58,7 @@ const AboutPage = ({ language }) => {
         },
         {
           heading: "முடிவுகள்",
-          content: "வினா மாஸ்டர் பயனர்கள் அறிவைத் தக்கவைத்தல், தேர்வு மதிப்பெண்கள் மற்றும் அவர்கள் படிக்கும் பாடங்களில் ஒட்டுமொத்த நம்பிக்கை ஆகியவற்றில் குறிப்பிடத்தக்க முன்னேற்றத்தைக் காண்கிறார்கள். எங்கள் தளம் ஆயிரக்கணக்கான மாணவர்கள் தங்கள் கல்வி இலக்குகளை அடையவும், கற்றல் மீதான விருப்பத்தை வளர்க்கவும் உதவும்."
+          content: "இந்த செயலி பயனர்கள் அறிவைத் தக்கவைத்தல், தேர்வு மதிப்பெண்கள் மற்றும் அவர்கள் படிக்கும் பாடங்களில் ஒட்டுமொத்த நம்பிக்கை ஆகியவற்றில் குறிப்பிடத்தக்க முன்னேற்றத்தைக் காண்கிறார்கள். எங்கள் தளம் ஆயிரக்கணக்கான மாணவர்கள் தங்கள் கல்வி இலக்குகளை அடையவும், கற்றல் மீதான விருப்பத்தை வளர்க்கவும் உதவும்."
         }
       ]
     }
