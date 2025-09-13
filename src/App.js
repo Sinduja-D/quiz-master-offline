@@ -10,6 +10,7 @@ function App() {
   const [language, setLanguage] = useState("English");
   const [user, setUser] = useState(null);
   const [isQuizInProgress, setIsQuizInProgress] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Load saved user on mount
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
+    setIsLoading(false);
   }, []);
 
   const toggleLanguage = () => {
@@ -38,6 +40,16 @@ function App() {
     setActivePage("home");
   };
 
+  // Show loading state while checking for saved user
+  if (isLoading) {
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p>{language === "English" ? "Loading..." : "ஏற்றப்படுகிறது..."}</p>
+      </div>
+    );
+  }
+
   // Not logged in → go to login screen
   if (!user) {
     return <Login onLogin={handleLogin} language={language} toggleLanguage={toggleLanguage} />;
@@ -46,7 +58,6 @@ function App() {
   // Logged in → render normal layout
   return (
     <div className="app-container">
-   
       <Navbar
         language={language}
         activePage={activePage}
@@ -73,4 +84,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

@@ -13,7 +13,7 @@ const DailySciencePage = ({ language, user, updateUser }) => {
   const [hasAnsweredToday, setHasAnsweredToday] = useState(false);
   const [secondChance, setSecondChance] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  
   // Check if user has answered today's question
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
@@ -42,20 +42,24 @@ const DailySciencePage = ({ language, user, updateUser }) => {
     setIsCorrect(correct);
     setShowResult(true);
     
-    if (correct) {
-      // User gets a chance to spin the wheel
-      setTimeout(() => setShowSpinWheel(true), 1500);
-    } else {
-      // Update user data to show they answered today
-      const today = new Date().toISOString().split('T')[0];
-      const updatedUser = {
-        ...user,
-        lastDailyQuestionDate: today,
-        lastDailyQuestionId: question.id
-      };
-      updateUser(updatedUser);
-      localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-    }
+    // No automatic navigation anymore - we'll let the user click the button
+  };
+
+  const handleProceedToSpinWheel = () => {
+    setShowSpinWheel(true);
+  };
+
+  const handleCompleteQuiz = () => {
+    // Update user data to show they answered today
+    const today = new Date().toISOString().split('T')[0];
+    const updatedUser = {
+      ...user,
+      lastDailyQuestionDate: today,
+      lastDailyQuestionId: question.id
+    };
+    updateUser(updatedUser);
+    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+    setHasAnsweredToday(true);
   };
 
   const handleSpinComplete = (reward) => {
@@ -159,6 +163,16 @@ const DailySciencePage = ({ language, user, updateUser }) => {
                 <p>{t('Correct! You earned a spin!', 'சரி! நீங்கள் ஒரு சுழற்சியை வென்றீர்கள்!')}</p>
               ) : (
                 <p>{t('Incorrect. Better luck tomorrow!', 'தவறு. நாளை நல்ல அதிர்ஷ்டம்!')}</p>
+              )}
+              
+              {isCorrect ? (
+                <button className="action-button proceed-button" onClick={handleProceedToSpinWheel}>
+                  {t('Proceed to Spin Wheel', 'சுழலும் சக்கரத்திற்குச் செல்லுங்கள்')}
+                </button>
+              ) : (
+                <button className="action-button complete-button" onClick={handleCompleteQuiz}>
+                  {t('Complete Daily Science Quiz', 'தினசரி அறிவியல் வினாவை முடிக்கவும்')}
+                </button>
               )}
             </div>
           )}

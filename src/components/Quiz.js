@@ -19,6 +19,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   const [selectedOption, setSelectedOption] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
+  const [maxStreak, setMaxStreak] = useState(0); // Track max streak
   const [showCongrats, setShowCongrats] = useState(false);
   // Timer for start popup
   const [timeLeft, setTimeLeft] = useState(5);
@@ -48,7 +49,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   const [hintsRequested, setHintsRequested] = useState({});
   // Track current display language (can be different from the initial language)
   const [displayLanguage, setDisplayLanguage] = useState(language);
-
+  
   // Map correct option from database (1,2,3,4) to frontend keys (optionA, optionB, etc.)
   const mapCorrectOption = (correctOption) => {
     const optionMap = {
@@ -59,7 +60,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     return optionMap[correctOption] || correctOption;
   };
-
+  
   // Function to trigger confetti for streak achievements
   const triggerStreakConfetti = (streakCount) => {
     let confettiConfig = {
@@ -73,7 +74,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     confetti(confettiConfig);
   };
-
+  
   // Function to show achievement notification
   const showAchievementNotification = (achievementId, achievementTitle) => {
     setAchievementNotification({
@@ -84,7 +85,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setAchievementNotification(null);
     }, 3000);
   };
-
+  
   // Fetch questions from local JSON (only once when component mounts)
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -147,7 +148,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setLoading(false);
     }
   }, [level, numberOfQuestions, subject, grade]); // Removed language from dependencies
-
+  
   // Prevent user from leaving quiz page
   useEffect(() => {
     const handleBeforeUnload = (e) => {
@@ -165,7 +166,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, [displayLanguage, showStartPopup, quizQuestions.length]);
-
+  
   // Start popup countdown
   useEffect(() => {
     if (showStartPopup && timeLeft > 0) {
@@ -175,7 +176,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowStartPopup(false);
     }
   }, [showStartPopup, timeLeft]);
-
+  
   // Per-question countdown
   useEffect(() => {
     if (showStartPopup) return; // don't run until quiz starts
@@ -188,7 +189,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     }, 1000);
     return () => clearInterval(timer);
   }, [questionTimeLeft, showStartPopup]);
-
+  
   // Restore saved answer when changing questions
   useEffect(() => {
     if (quizQuestions.length > 0) {
@@ -197,14 +198,14 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowHint(hintsRequested[currentQuestionIndex] || false);
     }
   }, [currentQuestionIndex, userAnswers, submittedQuestions, hintsRequested, quizQuestions.length]);
-
+  
   // Update display language when language prop changes
   useEffect(() => {
     setDisplayLanguage(language);
     // Reset hint visibility when language changes
     setShowHint(false);
   }, [language]);
-
+  
   const handleOptionSelect = (option) => {
     if (!showFeedback) {
       setSelectedOption(option);
@@ -215,7 +216,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       }));
     }
   };
-
+  
   const handleHintClick = () => {
     setShowHint(true);
     // Mark that hint was requested for this question
@@ -228,7 +229,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       hintsUsed: prev.hintsUsed + 1
     }));
   };
-
+  
   const handleSubmit = () => {
     if (selectedOption === null) return;
     const currentQuestion = quizQuestions[currentQuestionIndex];
@@ -258,7 +259,14 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     if (correct) {
       const newCount = consecutiveCorrect + 1;
       setConsecutiveCorrect(newCount);
-      if ([3, 5, 10, 15, 25, 50].includes(newCount)) {
+      
+      // Update max streak if current streak is higher
+      if (newCount > maxStreak) {
+        setMaxStreak(newCount);
+      }
+      
+      // Check for streak achievements
+      if ([3, 5, 10, 15, 20, 25, 30].includes(newCount)) {
         setShowCongrats(true);
         triggerStreakConfetti(newCount);
         showAchievementNotification(`streak_${newCount}`, `${newCount} Correct in a Row!`);
@@ -268,23 +276,32 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setConsecutiveCorrect(0);
     }
   };
-
+  
   const handleNext = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setQuestionTimeLeft(60); // reset timer on next question (match initial)
+      setQuestionTimeLeft(60); // reset timer on next question
       // Reset hint visibility for the next question
       setShowHint(false);
     } else {
+      // Calculate total time taken for the quiz
+      const totalTimeTaken = Math.floor((new Date() - results.startTime) / 1000);
+      
+      // Calculate allotted time (60 seconds per question)
+      const allottedTime = quizQuestions.length * 60;
+      
       const finalResults = {
         ...results,
         consecutiveCorrect: consecutiveCorrect,
-        endTime: new Date()
+        maxStreak: maxStreak, // Pass the tracked max streak
+        endTime: new Date(),
+        timeTaken: totalTimeTaken,
+        allottedTime: allottedTime
       };
       onQuizComplete(finalResults);
     }
   };
-
+  
   const handlePrevious = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
@@ -293,7 +310,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       setShowHint(false);
     }
   };
-
+  
   const handleBackClick = () => {
     const confirmMessage = displayLanguage === 'English'
       ? 'Are you sure you want to exit the quiz? Your progress will be lost.'
@@ -302,9 +319,9 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       onBack();
     }
   };
-
+  
   const currentQuestion = quizQuestions[currentQuestionIndex];
-
+  
   // Get question content based on current display language
   const getQuestionContent = () => {
     if (!currentQuestion) return null;
@@ -331,9 +348,9 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       };
     }
   };
-
+  
   const questionContent = getQuestionContent();
-
+  
   if (loading) {
     return (
       <div className="quiz-loading">
@@ -347,7 +364,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-
+  
   if (error) {
     return (
       <div className="quiz-error">
@@ -359,7 +376,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-
+  
   if (quizQuestions.length === 0) {
     return (
       <div className="quiz-empty">
@@ -370,7 +387,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
       </div>
     );
   }
-
+  
   return (
     <div className="quiz-container">
       {showStartPopup && <Popup

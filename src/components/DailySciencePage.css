@@ -308,3 +308,31 @@
     font-size: 1.1rem;
   }
 }
+/*new buttons style */
+.action-button {
+  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.action-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.proceed-button {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.complete-button {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+}

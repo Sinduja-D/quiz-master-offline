@@ -3,7 +3,7 @@ import confetti from 'canvas-confetti';
 import './AchievementsPage.css';
 
 const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) => {
-  // Define the order of achievements
+  // Updated achievement order with new achievements
   const achievementOrder = [
     "first_quiz", 
     "perfect_score", 
@@ -11,13 +11,15 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
     "streak_5", 
     "streak_10",
     "streak_15",
+    "streak_20",
     "streak_25",
-    "streak_50",
+    "streak_30",
     "5_quizzes",
     "10_quizzes",
-    "25_quizzes",
-    "50_quizzes",
+    "15_quizzes",
+    "20_quizzes",
     "100_points",
+    "200_points",
     "500_points",
     "1000_points",
     "quiz_master",
@@ -57,21 +59,21 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
       }
     },
     { 
-      id: '25_quizzes', 
+      id: '15_quizzes', 
       icon: '📓', 
-      title: { en: '25 Quizzes Completed', ta: '25 வினாக்கள் முடிந்தன' }, 
+      title: { en: '15 Quizzes Completed', ta: '15 வினாக்கள் முடிந்தன' }, 
       description: { 
-        en: 'Complete 25 quizzes', 
-        ta: '25 வினாக்களை முடிக்கவும்' 
+        en: 'Complete 15 quizzes', 
+        ta: '15 வினாக்களை முடிக்கவும்' 
       }
     },
     { 
-      id: '50_quizzes', 
+      id: '20_quizzes', 
       icon: '📔', 
-      title: { en: '50 Quizzes Completed', ta: '50 வினாக்கள் முடிந்தன' }, 
+      title: { en: '20 Quizzes Completed', ta: '20 வினாக்கள் முடிந்தன' }, 
       description: { 
-        en: 'Complete 50 quizzes', 
-        ta: '50 வினாக்களை முடிக்கவும்' 
+        en: 'Complete 20 quizzes', 
+        ta: '20 வினாக்களை முடிக்கவும்' 
       }
     },
     { 
@@ -122,6 +124,15 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
       }
     },
     { 
+      id: 'streak_20', 
+      icon: '🌌', 
+      title: { en: '20 Correct in a Row', ta: 'இருபது தொடர்ச்சியான சரியான பதில்கள்' }, 
+      description: { 
+        en: 'Answer 20 questions correctly in a row', 
+        ta: 'தொடர்ச்சியாக 20 கேள்விகளுக்கு சரியான பதில் அளிக்கவும்' 
+      }
+    },
+    { 
       id: 'streak_25', 
       icon: '🌌', 
       title: { en: '25 Correct in a Row', ta: 'இருபத்தைந்து தொடர்ச்சியான சரியான பதில்கள்' }, 
@@ -131,12 +142,12 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
       }
     },
     { 
-      id: 'streak_50', 
+      id: 'streak_30', 
       icon: '🌌', 
-      title: { en: '50 Correct in a Row', ta: 'ஐம்பது தொடர்ச்சியான சரியான பதில்கள்' }, 
+      title: { en: '30 Correct in a Row', ta: 'முப்பது தொடர்ச்சியான சரியான பதில்கள்' }, 
       description: { 
-        en: 'Answer 50 questions correctly in a row', 
-        ta: 'தொடர்ச்சியாக 50 கேள்விகளுக்கு சரியான பதில் அளிக்கவும்' 
+        en: 'Answer 30 questions correctly in a row', 
+        ta: 'தொடர்ச்சியாக 30 கேள்விகளுக்கு சரியான பதில் அளிக்கவும்' 
       }
     },
     
@@ -151,8 +162,17 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
       }
     },
     { 
-      id: '500_points', 
+      id: '200_points', 
       icon: '🌟', 
+      title: { en: '200 Points Earned', ta: '200 புள்ளிகள் பெற்றது' }, 
+      description: { 
+        en: 'Accumulate 200 points in total', 
+        ta: 'மொத்தமாக 200 புள்ளிகளைச் சேர்க்கவும்' 
+      }
+    },
+    { 
+      id: '500_points', 
+      icon: '🌠', 
       title: { en: '500 Points Earned', ta: '500 புள்ளிகள் பெற்றது' }, 
       description: { 
         en: 'Accumulate 500 points in total', 
@@ -296,8 +316,8 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
         const points = achievementId.split('_')[0];
         confettiConfig = {
           ...confettiConfig,
-          particleCount: points === '100' ? 150 : points === '500' ? 200 : 300,
-          spread: points === '100' ? 70 : points === '500' ? 90 : 100,
+          particleCount: points === '100' ? 150 : points === '200' ? 175 : points === '500' ? 200 : 300,
+          spread: points === '100' ? 70 : points === '200' ? 80 : points === '500' ? 90 : 100,
           colors: ['#FFD700', '#FFA500', '#FF8C00'],
           shapes: ['star'],
         };

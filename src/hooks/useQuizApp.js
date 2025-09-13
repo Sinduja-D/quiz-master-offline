@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { levels } from "../levels.js";
 import { fetchLocalQuestions } from '../data/localDataService';
 
-// Copy achievements array from AchievementsPage.jsx
+// Updated achievements array with your requirements
 const achievements = [
+  // Quiz Completion Achievements
   { 
     id: 'first_quiz', 
     icon: '🏆', 
@@ -32,21 +33,21 @@ const achievements = [
     }
   },
   { 
-    id: '25_quizzes', 
+    id: '15_quizzes', 
     icon: '📓', 
-    title: { en: '25 Quizzes Completed', ta: '25 வினாக்கள் முடிந்தன' }, 
+    title: { en: '15 Quizzes Completed', ta: '15 வினாக்கள் முடிந்தன' }, 
     description: { 
-      en: 'Complete 25 quizzes', 
-      ta: '25 வினாக்களை முடிக்கவும்' 
+      en: 'Complete 15 quizzes', 
+      ta: '15 வினாக்களை முடிக்கவும்' 
     }
   },
   { 
-    id: '50_quizzes', 
+    id: '20_quizzes', 
     icon: '📔', 
-    title: { en: '50 Quizzes Completed', ta: '50 வினாக்கள் முடிந்தன' }, 
+    title: { en: '20 Quizzes Completed', ta: '20 வினாக்கள் முடிந்தன' }, 
     description: { 
-      en: 'Complete 50 quizzes', 
-      ta: '50 வினாக்களை முடிக்கவும்' 
+      en: 'Complete 20 quizzes', 
+      ta: '20 வினாக்களை முடிக்கவும்' 
     }
   },
   { 
@@ -58,6 +59,8 @@ const achievements = [
       ta: 'எந்த வினாவிலும் 100% மதிப்பெண் பெறவும்' 
     }
   },
+  
+  // Streak Achievements
   { 
     id: 'streak_3', 
     icon: '🔥', 
@@ -95,6 +98,15 @@ const achievements = [
     }
   },
   { 
+    id: 'streak_20', 
+    icon: '🌌', 
+    title: { en: '20 Correct in a Row', ta: 'இருபது தொடர்ச்சியான சரியான பதில்கள்' }, 
+    description: { 
+      en: 'Answer 20 questions correctly in a row', 
+      ta: 'தொடர்ச்சியாக 20 கேள்விகளுக்கு சரியான பதில் அளிக்கவும்' 
+    }
+  },
+  { 
     id: 'streak_25', 
     icon: '🌌', 
     title: { en: '25 Correct in a Row', ta: 'இருபத்தைந்து தொடர்ச்சியான சரியான பதில்கள்' }, 
@@ -104,14 +116,16 @@ const achievements = [
     }
   },
   { 
-    id: 'streak_50', 
+    id: 'streak_30', 
     icon: '🌌', 
-    title: { en: '50 Correct in a Row', ta: 'ஐம்பது தொடர்ச்சியான சரியான பதில்கள்' }, 
+    title: { en: '30 Correct in a Row', ta: 'முப்பது தொடர்ச்சியான சரியான பதில்கள்' }, 
     description: { 
-      en: 'Answer 50 questions correctly in a row', 
-      ta: 'தொடர்ச்சியாக 50 கேள்விகளுக்கு சரியான பதில் அளிக்கவும்' 
+      en: 'Answer 30 questions correctly in a row', 
+      ta: 'தொடர்ச்சியாக 30 கேள்விகளுக்கு சரியான பதில் அளிக்கவும்' 
     }
   },
+  
+  // Points Achievements
   { 
     id: '100_points', 
     icon: '⭐', 
@@ -122,8 +136,17 @@ const achievements = [
     }
   },
   { 
-    id: '500_points', 
+    id: '200_points', 
     icon: '🌟', 
+    title: { en: '200 Points Earned', ta: '200 புள்ளிகள் பெற்றது' }, 
+    description: { 
+      en: 'Accumulate 200 points in total', 
+      ta: 'மொத்தமாக 200 புள்ளிகளைச் சேர்க்கவும்' 
+    }
+  },
+  { 
+    id: '500_points', 
+    icon: '🌠', 
     title: { en: '500 Points Earned', ta: '500 புள்ளிகள் பெற்றது' }, 
     description: { 
       en: 'Accumulate 500 points in total', 
@@ -139,6 +162,8 @@ const achievements = [
       ta: 'மொத்தமாக 1000 புள்ளிகளைச் சேர்க்கவும்' 
     }
   },
+  
+  // Mastery Achievements
   { 
     id: 'quiz_master', 
     icon: '👑', 
@@ -166,6 +191,8 @@ const achievements = [
       ta: 'ஒதுக்கப்பட்ட நேரத்தில் பாதியில் எந்த வினாவையும் முடிக்கவும்' 
     }
   },
+  
+  // Special Achievements
   { 
     id: 'no_hints', 
     icon: '🤫', 
@@ -226,7 +253,6 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
   
   // 🌍 Handlers
   const toggleLanguage = () => {
-    // Always allow language change
     setLanguage(language === "English" ? "Tamil" : "English");
   };
     
@@ -311,10 +337,10 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
       endTime: results.endTime
     };
     
-    // Update user data - ensure schoolName is preserved
+    // Update user data
     const updatedUser = {
       ...user,
-      schoolName: user.schoolName || '', // Ensure schoolName is preserved
+      schoolName: user.schoolName || '',
       totalPoints: user.totalPoints + pointsEarned,
       totalQuizzes: user.totalQuizzes + 1,
       averageScore: Math.round(
@@ -366,23 +392,25 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
     const newTotalQuizzes = user.totalQuizzes + 1;
     if (newTotalQuizzes >= 5) unlockAchievement("5_quizzes");
     if (newTotalQuizzes >= 10) unlockAchievement("10_quizzes");
-    if (newTotalQuizzes >= 25) unlockAchievement("25_quizzes");
-    if (newTotalQuizzes >= 50) unlockAchievement("50_quizzes");
+    if (newTotalQuizzes >= 15) unlockAchievement("15_quizzes");
+    if (newTotalQuizzes >= 20) unlockAchievement("20_quizzes");
     
     // Points achievements
     const newTotalPoints = user.totalPoints + pointsEarned;
     if (newTotalPoints >= 100) unlockAchievement("100_points");
+    if (newTotalPoints >= 200) unlockAchievement("200_points");
     if (newTotalPoints >= 500) unlockAchievement("500_points");
     if (newTotalPoints >= 1000) unlockAchievement("1000_points");
     
-    // Streak achievements (if streak data is available)
+    // Streak achievements (using maxStreak from results)
     if (results.maxStreak) {
       if (results.maxStreak >= 3) unlockAchievement("streak_3");
       if (results.maxStreak >= 5) unlockAchievement("streak_5");
       if (results.maxStreak >= 10) unlockAchievement("streak_10");
       if (results.maxStreak >= 15) unlockAchievement("streak_15");
+      if (results.maxStreak >= 20) unlockAchievement("streak_20");
       if (results.maxStreak >= 25) unlockAchievement("streak_25");
-      if (results.maxStreak >= 50) unlockAchievement("streak_50");
+      if (results.maxStreak >= 30) unlockAchievement("streak_30");
     }
     
     // Quiz Master achievement
@@ -401,7 +429,7 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
       if (subjectAverage >= 90) unlockAchievement("subject_expert");
     }
     
-    // Speed Demon achievement (if time data is available)
+    // Speed Demon achievement
     if (results.allottedTime && results.timeTaken) {
       if (results.timeTaken < results.allottedTime / 2) {
         unlockAchievement("speed_demon");
@@ -432,6 +460,9 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
       maxStreak: results.maxStreak,
       hintsUsed: results.hintsUsed,
       completionHour,
+      timeTaken: results.timeTaken,
+      allottedTime: results.allottedTime,
+      speedDemon: results.timeTaken < results.allottedTime / 2,
       unlockedAchievements
     });
     
@@ -439,11 +470,10 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
     updateUser(updatedUser);
     localStorage.setItem('currentUser', JSON.stringify(updatedUser));
     
-    // Update users list in localStorage - ensure schoolName is preserved
+    // Update users list in localStorage
     const users = JSON.parse(localStorage.getItem('quizAppUsers') || '[]');
     const userIndex = users.findIndex(u => u.id === user.id);
     if (userIndex !== -1) {
-      // Preserve schoolName when updating user
       users[userIndex] = {
         ...users[userIndex],
         ...updatedUser,
