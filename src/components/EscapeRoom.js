@@ -72,7 +72,7 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
        (currentSceneData.type === "intro" || currentSceneData.type === "transition")) {
       const timer = setTimeout(() => {
         setCurrentScene(prev => prev + 1);
-      }, currentSceneData.duration || 2000);
+      }, currentSceneData.duration || 4000);
       return () => clearTimeout(timer);
     }
   }, [currentSceneData]);

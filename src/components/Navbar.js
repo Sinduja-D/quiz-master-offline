@@ -1,6 +1,6 @@
 import React from "react";
 import './Navbar.css';
-import rmk from "../assets/rmk.jpeg";
+import logo from "../assets/logo.png";
 
 const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
   const navItems = ["home", "about", "help", "leaderboard"];
@@ -26,9 +26,14 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
     <nav className="navbar">
       {/* Brand (Logo + Text) */}
       <div className="nav-brand" onClick={() => setActivePage("home")} style={{ cursor: "pointer" }}>
-        <img src={rmk} alt="App Logo" className="nav-logo" />
+        <img src={logo} alt="App Logo" className="nav-logo" />
         <span className="brand-text">
-          {language === "English" ? "Science Quiz for Young Achievers" : "இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினா"}
+          {language === "English" ? ("Science Quiz for Young Achievers" ): (
+    <>
+      இளைய சிந்தனையாளர்களுக்கான <br />
+      அறிவியல் வினாடி வினா
+    </>
+  )}
         </span>
       </div>
       
