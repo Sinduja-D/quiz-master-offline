@@ -92,12 +92,12 @@
 .text-container.full-width {
   width: 100%;
 }
-.hero-title {
-  font-size: 0.85rem;
-  font-weight: 500;
+.hero-subtitle {
+  font-size: 0.2rem;
+  font-weight: 100;
   margin: 0;
   padding: 0;
-  line-height: 1.2;
+  line-height: 1;
 }
 .hero-address {
   font-size: 0.75rem;

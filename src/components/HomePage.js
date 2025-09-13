@@ -7,6 +7,7 @@ import { levels } from "../levels.js";
 
 const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   const [showWelcome, setShowWelcome] = useState(false);
+  
   // show banner once on mount if we have a username
   useEffect(() => {
     if (user?.username) {
@@ -15,6 +16,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
       return () => clearTimeout(timer);
     }
   }, [user]);
+  
   return (
     <div className="home-container">
       {/* welcome banner */}
@@ -33,7 +35,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="hero-logo" />
           </div>
           <div className="text-container">
-            <h3 className="hero-title">
+            <h3 className="hero-park">
               {language === "English"
                 ? "Science Park Thiruvallur District"
                 : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
@@ -46,7 +48,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             <img src={rmkLogo} alt="R.M.K Logo" className="hero-logo" />
           </div>
           <div className="text-container">
-            <h3 className="hero-title">
+            <h3 className="hero-r.m.k">
               {language === "English"
                 ? "Designed and developed by R.M.K. Engineering College"
                 : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
@@ -150,4 +152,5 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
     </div>
   );
 };
+
 export default HomePage;
