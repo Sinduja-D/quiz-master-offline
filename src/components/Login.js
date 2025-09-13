@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
+import tamilNaduLogo from '../assets/tamil-nadu-logo.png'; // Add your logo path
+import rmkLogo from '../assets/rmk.jpeg'; // Add your logo path
 
 const Login = ({ onLogin, language, toggleLanguage }) => {
   const [username, setUsername] = useState('');
   const [schoolName, setSchoolName] = useState('');
   const [error, setError] = useState('');
   const [users, setUsers] = useState([]);
-
+  
   // Load users from localStorage
   useEffect(() => {
     const savedUsers = localStorage.getItem('quizAppUsers');
     if (savedUsers) setUsers(JSON.parse(savedUsers));
   }, []);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
@@ -75,13 +77,22 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
       {/* Left Side - Hero Content (Original Content with Homepage Styling) */}
       <div className="hero-section">
         <div className="hero-box">
-          <h1 className="hero-title">
-            {language === "English"
-              ? "SCIENCE PARK - THIRUVALLUR DISTRICT"
-              : "அறிவியல் பூங்கா திட்டம் திருவள்ளூர் மாவட்டம்"}
-          </h1>
+          {/* Tamil Nadu Logo and Title */}
+          <div className="hero-header">
+            <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="tamilnadu-logo" />
+            <h1 className="hero-title">
+              {language === "English"
+                ? "SCIENCE PARK - THIRUVALLUR DISTRICT"
+                : "அறிவியல் பூங்கா திட்டம் திருவள்ளூர் மாவட்டம்"}
+            </h1>
+          </div>
           
           <div className="college-info">
+            {/* R.M.K. Logo */}
+            <div className="college-logo-container">
+              <img src={rmkLogo} alt="R.M.K. Engineering College Logo" className="rmk-logo" />
+            </div>
+            
             <h3>
               {language === "English"
                 ? "Designed and Developed By"
@@ -90,7 +101,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             <h2>
               {language === "English"
                 ? "R.M.K. Engineering College"
-                : "ஆர்.எம்.கே பொறியியல் கல்லூரி"}
+                : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h2>
             <h4>
               {language === "English"

@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: center;
   padding: 60px 40px;
+  width:50%;
   background: linear-gradient(135deg, #1a2a6c 0%, #2a3a8c 50%, #3b4aa0 100%);
   color: white;
   position: relative;
@@ -53,7 +54,7 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  max-width: 650px;
+  max-width: 750px;
   width: 100%;
   min-height: 500px;
   display: flex;
@@ -65,7 +66,7 @@
 
 /* Hero Title - Matching Homepage */
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 16px 0;
   text-transform: uppercase;
@@ -182,7 +183,8 @@
 }
 
 .login-header h2 {
-  font-size: 2rem;
+  font-size: 1.25rem;
+  font-weight: 400;
   color: #1a2a6c;
   margin: 0 0 12px 0;
   font-weight: 500;
@@ -448,5 +450,62 @@
   .language-button {
     padding: 8px 14px;
     font-size: 0.8rem;
+  }
+}
+/* Add these styles to your Login.css file */
+
+/* Hero Header with Tamil Nadu Logo */
+.hero-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tamilnadu-logo {
+  height: 60px;
+  width: auto;
+  margin-right: 15px;
+  object-fit: contain;
+}
+
+/* College Logo Container */
+.college-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.rmk-logo {
+  height: 80px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+/* Responsive adjustments for logos */
+@media (max-width: 768px) {
+  .hero-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .tamilnadu-logo {
+    height: 50px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .rmk-logo {
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tamilnadu-logo {
+    height: 40px;
+  }
+  
+  .rmk-logo {
+    height: 60px;
   }
 }

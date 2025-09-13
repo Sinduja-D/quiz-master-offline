@@ -1,6 +1,9 @@
+
 // src/components/HomePage.jsx
 import React, { useEffect, useState } from "react";
 import "./HomePage.css";
+import rmkLogo from "../assets/rmk.jpeg";
+import tamilNaduLogo from "../assets/tamil-nadu-logo.png";
 import { levels } from "../levels.js";
 
 const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
@@ -23,32 +26,61 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             : `முகப்புப்பக்கத்திற்கு வரவேற்கிறோம், ${user.username}!`}
         </div>
       )}
-      <div className="hero-box">
-        <h3 className="hero-title main-title">
-          {language === "English"
-            ? "SCIENCE PARK-THIRUVALLUR DISTRICT"
-            : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
-        </h3>
-        <h2 className="hero-title sub-title">
-          {language === "English"
-            ? "DESIGNED AND DEVELOPED BY: R.M.K. ENGINEERING COLLEGE"
-            : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
-        </h2>
-    
-        <p className="hero-subtitle">
-          {language === "English" ? (
-            <>
-              Students: Sinduja D · Reethu P · Vijayalakshmi S R<br />
-              Mentor: M.Rekha, Assistant Professor
-            </>
-          ) : (
-            <>
-              மாணவர்கள்: சிந்துஜா டி · ரீத்து பெ · விஜயலட்சுமி சி.ரா<br />
-              வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்
-            </>
-          )}
-        </p>
+      
+      {/* New Hero Container with Three Columns */}
+      <div className="hero-container">
+        <div className="hero-column">
+          <div className="logo-container">
+            <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="hero-logo" />
+          </div>
+          <div className="text-container">
+            <h3 className="hero-title">
+              {language === "English"
+                ? "Science Park Thiruvallur District"
+                : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
+            </h3>
+          </div>
+        </div>
+        
+        <div className="hero-column">
+          <div className="logo-container">
+            <img src={rmkLogo} alt="R.M.K Logo" className="hero-logo" />
+          </div>
+          <div className="text-container">
+            <h3 className="hero-title">
+              {language === "English"
+                ? "Designed and developed by R.M.K. Engineering College"
+                : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
+            </h3>
+            <p className="hero-address">
+              {language === "English"
+                ? "Address: R.S.M. Nagar, Kavaraipettai, Gummudipoondi Taluk, Thiruvallur District 601206"
+                : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம், திருவள்ளூர் மாவட்டம் 601206"}
+            </p>
+          </div>
+        </div>
+        
+        <div className="hero-column">
+          <div className="text-container full-width">
+            <p className="hero-developers">
+              {language === "English"
+                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
+                : "உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
+            </p>
+            <p className="hero-mentor">
+              {language === "English"
+                ? "Mentor: Ms. M. Rekha, Assistant Professor"
+                : "வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்"}
+            </p>
+            <p className="hero-department">
+              {language === "English"
+                ? "Department of Information Technology-2027"
+                : "தகவல் தொழில்நுட்பத் துறை-2027"}
+            </p>
+          </div>
+        </div>
       </div>
+      
       <div className="content-wrapper">
         <div className="level-container">
           <div className="section-title">

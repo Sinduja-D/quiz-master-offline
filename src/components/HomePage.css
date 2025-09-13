@@ -9,6 +9,7 @@
   position: relative;
   z-index: 1;
 }
+
 /* Override any page-content styles that might be affecting the home page */
 .home-container .page-content {
   background: transparent !important;
@@ -20,10 +21,14 @@
   max-width: 100% !important;
   margin: 0 !important;
 }
-/* Hero Box - Updated with reduced padding */
-.home-container .hero-box {
-  padding: 10px 8px;
-  text-align: center;
+
+/* New Hero Container with Three Columns */
+.hero-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
   background: linear-gradient(135deg, #1a2a6c 0%, #2a3a8c 50%, #3b4aa0 100%);
   color: white;
   position: relative;
@@ -32,15 +37,14 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin: 0;
   z-index: 10;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  min-height: auto !important;
-  box-sizing: border-box !important;
+  width: 100% ;
+  min-width: 100% ;
+  max-width: 100% ;
+  box-sizing: border-box ;
 }
+
 /* Keep the original circular decorations */
-.home-container .hero-box::before {
+.hero-container::before {
   content: '';
   position: absolute;
   top: -10px;
@@ -51,7 +55,8 @@
   background: rgba(255, 255, 255, 0.1);
   display: block;
 }
-.home-container .hero-box::after {
+
+.hero-container::after {
   content: '';
   position: absolute;
   bottom: -15px;
@@ -62,40 +67,72 @@
   background: rgba(255, 255, 255, 0.1);
   display: block;
 }
-/* Main title - largest with no extra space */
-.home-container .hero-title.main-title {
-  font-size: 1.6rem;
-  font-weight: 700;
+
+/* Hero Column */
+.hero-column {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo Container */
+.logo-container {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-logo {
+  height: 100px;
+  width: 100px;
+  max-width: 100px;
+  object-fit: contain;
+}
+
+/* Text Container */
+.text-container {
+  flex: 1;
+}
+
+.text-container.full-width {
+  width: 100%;
+}
+
+.hero-title {
+  font-size: 1.25rem;
   margin: 0;
   padding: 0;
-  position: relative;
-  z-index: 1;
-  letter-spacing: normal;
-  text-shadow: none;
-  line-height: 1.2;
+  line-height: 1.25;
 }
-/* Sub title - smaller than main title */
-.home-container .hero-title.sub-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 2px;
-  position: relative;
-  z-index: 1;
-  letter-spacing: normal;
-  text-shadow: none;
-  line-height: 1.2;
-}
-/* Subtitle - smallest */
-.home-container .hero-subtitle {
-  font-size: 0.9rem;
-  font-weight: 500;
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+
+.hero-address {
+  font-size: 0.8rem;
+  margin: 5px 0 0;
+  opacity: 0.9;
   line-height: 1.3;
-  opacity: 1;
 }
+
+.hero-developers, .hero-mentor, .hero-department {
+  font-size: 1.10rem;
+  margin: 3px 0;
+  line-height: 1.25;
+
+}
+.hero-mentor{
+    color: #1de8e5;
+     font-weight: 600;
+}
+.hero-developers{
+   color: #1de8e5;
+}
+.hero-developers {
+  font-weight: 600;
+}
+
 /* Content Wrapper */
 .home-container .content-wrapper {
   display: flex;
@@ -109,6 +146,7 @@
   width: 100%;
   box-sizing: border-box !important;
 }
+
 /* Level Selection */
 .home-container .level-container {
   margin: 0 auto 20px;
@@ -127,6 +165,7 @@
   min-width: 320px;
   width: 100%;
 }
+
 .home-container .level-container::before {
   content: '';
   position: absolute;
@@ -138,6 +177,7 @@
   background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
   z-index: 0;
 }
+
 .home-container .level-container::after {
   content: '';
   position: absolute;
@@ -149,11 +189,13 @@
   background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.1));
   z-index: 0;
 }
+
 .home-container .section-title {
   position: relative;
   z-index: 1;
   margin-bottom: 15px;
 }
+
 .home-container .section-title h2 {
   text-align: center;
   font-size: 1.6rem;
@@ -163,6 +205,7 @@
   position: relative;
   display: inline-block;
 }
+
 .home-container .section-title h2::after {
   content: '';
   position: absolute;
@@ -174,10 +217,12 @@
   border-radius: 2px;
   animation: shimmer 2s infinite;
 }
+
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: calc(200px + 100%) 0; }
 }
+
 .home-container .level-cards {
   display: flex;
   justify-content: center;
@@ -188,6 +233,7 @@
   z-index: 1;
   min-height: 220px;
 }
+
 .home-container .level-card {
   width: 250px;
   max-width: 30%;
@@ -211,6 +257,7 @@
   min-width: 180px;
   flex-shrink: 0;
 }
+
 .home-container .level-card::before {
   content: '';
   position: absolute;
@@ -223,6 +270,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
 .home-container .level-card::after {
   content: '';
   position: absolute;
@@ -235,21 +283,26 @@
   transition: opacity 0.5s ease;
   transform: scale(0.5);
 }
+
 .home-container .level-card:hover::before {
   opacity: 1;
 }
+
 .home-container .level-card:hover::after {
   opacity: 1;
   transform: scale(1);
 }
+
 .home-container .level-card:hover {
   transform: translateY(-10px) rotateX(5deg);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
+
 .home-container .level-card:active {
   transform: translateY(-5px) rotateX(2deg);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
+
 .home-container .level-icon {
   font-size: 2.5rem;
   margin-bottom: 15px;
@@ -257,11 +310,13 @@
   z-index: 1;
   animation: float 3s ease-in-out infinite;
 }
+
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0px); }
 }
+
 .home-container .level-name {
   font-size: 1.3rem;
   margin: 5px 0;
@@ -272,6 +327,7 @@
   hyphens: auto;
   max-width: 90%;
 }
+
 .home-container .level-grade {
   font-size: 0.9rem;
   opacity: 0.9;
@@ -285,14 +341,17 @@
   hyphens: auto;
   max-width: 90%;
 }
+
 /* Add entrance animation for level cards */
 .home-container .level-card {
   animation: slideIn 0.6s ease-out forwards;
   opacity: 0;
 }
+
 .home-container .level-card:nth-child(1) { animation-delay: 0.1s; }
 .home-container .level-card:nth-child(2) { animation-delay: 0.2s; }
 .home-container .level-card:nth-child(3) { animation-delay: 0.3s; }
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -303,15 +362,18 @@
     transform: translateY(0);
   }
 }
+
 /* Add a pulse animation to the section title */
 .home-container .section-title h2 {
   animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
+
 /* Explore Section */
 .home-container .explore-section {
   background: white;
@@ -326,6 +388,7 @@
   margin-right: auto;
   width: 100%;
 }
+
 .home-container .explore-section::before {
   content: '';
   position: absolute;
@@ -337,17 +400,20 @@
   background: linear-gradient(45deg, #6366f1, #8b5cf6);
   opacity: 0.1;
 }
+
 .home-container .explore-header {
   text-align: center;
   margin-bottom: 15px;
   position: relative;
   z-index: 1;
 }
+
 .home-container .explore-header h2 {
   font-size: 1.6rem;
   font-weight: 700;
   color: #1a2a6c;
 }
+
 .home-container .adventure-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -355,6 +421,7 @@
   position: relative;
   z-index: 1;
 }
+
 .home-container .adventure-card {
   display: flex;
   flex-direction: column;
@@ -371,6 +438,7 @@
   overflow: hidden;
   height: 110px;
 }
+
 .home-container .adventure-card::before {
   content: '';
   position: absolute;
@@ -380,49 +448,78 @@
   height: 3px;
   transition: all 0.3s ease;
 }
+
 .home-container .adventure-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
+
 .home-container .adventure-card:hover::before {
   height: 100%;
   opacity: 0.1;
 }
+
 .home-container .adventure-card .card-icon {
   font-size: 2rem;
   margin-bottom: 8px;
 }
+
 .home-container .adventure-card span {
   font-size: 0.9rem;
   font-weight: 600;
   color: #1a2a6c;
   text-align: center;
 }
+
 /* Individual adventure card styles */
 .home-container .story-menu::before {
   background: #f59e0b;
 }
+
 .home-container .fun-facts::before {
   background: #10b981;
 }
+
 .home-container .daily-science::before {
   background: #ef4444;
 }
+
 .home-container .riddles::before {
   background: #8b5cf6;
 }
+
 /* Home Page Responsive */
 @media (max-width: 768px) {
-  .home-container .hero-title.main-title {
-    font-size: 1.4rem;
+  .hero-container {
+    flex-direction: column;
+    padding: 15px;
   }
   
-  .home-container .hero-title.sub-title {
-    font-size: 1.1rem;
+  .hero-column {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 0;
   }
   
-  .home-container .hero-subtitle {
-    font-size: 0.85rem;
+  .hero-column:last-child {
+    margin-bottom: 0;
+  }
+  
+  .logo-container {
+    margin-right: 15px;
+  }
+  
+  .hero-logo {
+    height: 40px;
+    max-width: 80px;
+  }
+  
+  .hero-title {
+    font-size: 1rem;
+  }
+  
+  .hero-address, .hero-developers, .hero-mentor, .hero-department {
+    font-size: 1rem;
   }
   
   .home-container .section-title h2, 
@@ -462,24 +559,27 @@
     font-size: 0.85rem;
   }
 }
+
 @media (max-width: 480px) {
-  .home-container .hero-box {
-    padding: 8px 6px;
+  .hero-container {
+    padding: 12px;
   }
   
-  .home-container .hero-title.main-title {
-    font-size: 1.2rem;
-    margin: 0;
-    padding: 0;
+  .hero-column {
+    margin-bottom: 12px;
   }
   
-  .home-container .hero-title.sub-title {
+  .hero-logo {
+    height: 35px;
+    max-width: 45px;
+  }
+  
+  .hero-title {
     font-size: 1rem;
-    margin-bottom: 1px;
   }
   
-  .home-container .hero-subtitle {
-    font-size: 0.8rem;
+  .hero-address, .hero-developers, .hero-mentor, .hero-department {
+    font-size: 0.75rem;
   }
   
   .home-container .content-wrapper {
@@ -530,13 +630,31 @@
     font-size: 0.75rem;
   }
 }
+
 @media (max-width: 320px) {
-  .home-container .hero-title.main-title {
-    font-size: 1.1rem;
+  .hero-container {
+    padding: 10px;
   }
   
-  .home-container .hero-title.sub-title {
+  .hero-column {
+    margin-bottom: 10px;
+  }
+  
+  .logo-container {
+    margin-right: 10px;
+  }
+  
+  .hero-logo {
+    height: 30px;
+    max-width: 40px;
+  }
+  
+  .hero-title {
     font-size: 0.9rem;
+  }
+  
+  .hero-address, .hero-developers, .hero-mentor, .hero-department {
+    font-size: 0.7rem;
   }
   
   .home-container .level-card {
@@ -571,6 +689,7 @@
     text-align: left;
   }
 }
+
 .home-container .welcome-popup {
   position: fixed;
   top: 70px; /* Position below navbar */
@@ -591,6 +710,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 @keyframes fadeSlide {
   0% {
     opacity: 0;
