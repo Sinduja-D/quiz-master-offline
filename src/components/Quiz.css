@@ -296,8 +296,8 @@
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  min-width: 200px;
-  max-width: 200px;
+  min-width: 300px;
+  max-width: 300px;
   flex: 0 0 200px;
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;

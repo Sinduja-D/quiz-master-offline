@@ -527,7 +527,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
               className="previous-button"
               onClick={handlePrevious}
             >
-              ← {displayLanguage === 'English' ? 'Previous' : 'முந்தைய '}
+              ← {displayLanguage === 'English' ? 'Previous' : 'முந்தைய வினா'}
             </button>
           )}
           {!showFeedback ?
@@ -536,7 +536,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
               onClick={handleSubmit}
               disabled={selectedOption === null}
             >
-              {displayLanguage === 'English' ? 'Submit Answer' : 'பதிலைச் சமர்ப்பிக்கவும்'}
+              {displayLanguage === 'English' ? 'Submit Answer' : 'பதிலைச் சமர்ப்பி'}
             </button>
             :
             <button
