@@ -1,6 +1,5 @@
-
 // src/components/RiddleQuiz.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./RiddleQuiz.css";
 import { ScienceQuestions } from "../data/RiddleDatas.js";
 
@@ -15,24 +14,40 @@ const RiddleQuestions = ({ language }) => {
   const [options, setOptions] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState("");
   
+  // Use a ref to track if we've initialized the questions
+  const initializedRef = useRef(false);
+  
   // Get language key (lowercase)
   const langKey = language.toLowerCase();
   
-  // Shuffle riddles once whenever language changes
+  // Initialize 10 random questions only once
   useEffect(() => {
-    const shuffled = [...ScienceQuestions].sort(() => 0.5 - Math.random());
+    if (initializedRef.current) return;
+    
+    // Create a copy of all questions
+    const allQuestions = [...ScienceQuestions];
+    
+    // Shuffle and select 10 unique questions
+    const shuffled = [];
+    while (shuffled.length < 10 && allQuestions.length > 0) {
+      const randomIndex = Math.floor(Math.random() * allQuestions.length);
+      shuffled.push(allQuestions.splice(randomIndex, 1)[0]);
+    }
+    
     setShuffledRiddles(shuffled);
     setCurrentIndex(0);
-  }, [language]);
+    setScore(0);
+    setAttempts(0);
+    initializedRef.current = true;
+  }, []);
   
   const currentRiddle = shuffledRiddles[currentIndex] || {};
   
-  // Generate options whenever currentIndex or riddles change
+  // Generate options whenever currentIndex, shuffledRiddles, or language changes
   useEffect(() => {
-    if (shuffledRiddles.length) {
+    if (shuffledRiddles.length > 0) {
       generateOptions();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, shuffledRiddles, language]);
   
   const generateOptions = () => {
@@ -67,12 +82,28 @@ const RiddleQuestions = ({ language }) => {
   };
   
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % shuffledRiddles.length);
+    if (currentIndex < shuffledRiddles.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    } else {
+      // Reset quiz after 10 questions
+      initializedRef.current = false;
+      const allQuestions = [...ScienceQuestions];
+      const shuffled = [];
+      while (shuffled.length < 10 && allQuestions.length > 0) {
+        const randomIndex = Math.floor(Math.random() * allQuestions.length);
+        shuffled.push(allQuestions.splice(randomIndex, 1)[0]);
+      }
+      
+      setShuffledRiddles(shuffled);
+      setCurrentIndex(0);
+      setScore(0);
+      setAttempts(0);
+    }
   };
   
-  // safe to return JSX after hooks
+  // Return loading state if no riddles available
   if (!shuffledRiddles.length) {
-    return <div>No riddles found!</div>;
+    return <div>Loading riddles...</div>;
   }
   
   return (
@@ -144,7 +175,7 @@ const RiddleQuestions = ({ language }) => {
                       ? "Correct! Well done!"
                       : "சரியான பதில்! நன்றாக செய்தீர்கள்!"
                     : language === "English"
-                    ? "Not quite right"
+                    ? "Not Right Answer"
                     : "சரியான பதில் இல்லை"}
                 </div>
               </div>
@@ -165,7 +196,13 @@ const RiddleQuestions = ({ language }) => {
               </div>
               
               <button className="next-btn" onClick={handleNext}>
-                {language === "English" ? "Next Question" : "அடுத்த கேள்வி"}
+                {currentIndex === shuffledRiddles.length - 1
+                  ? language === "English"
+                    ? "Start New Quiz"
+                    : "புதிய வினாடியைத் தொடங்கு"
+                  : language === "English"
+                  ? "Next Question"
+                  : "அடுத்த கேள்வி"}
               </button>
             </div>
           )}
