@@ -53,11 +53,11 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
                 ? "Designed and developed by R.M.K. Engineering College"
                 : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h3>
-            <p className="hero-address">
+            {/*<p className="hero-address">
               {language === "English"
                 ? "Address: R.S.M. Nagar, Kavaraipettai, Gummudipoondi Taluk, Thiruvallur District 601206"
                 : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம், திருவள்ளூர் மாவட்டம் 601206"}
-            </p>
+            </p>*/}
           </div>
         </div>
         
