@@ -50,8 +50,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <div className="text-container">
             <h3 className="hero-r.m.k">
               {language === "English"
-                ? (<> Designed And Developed By <br /> R.M.K. Engineering College</>)
-                : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
+                ? (<> Designed And Developed By <br /> R.M.K. Engineering College <br />(An Antonomous Institution)</>)
+                : ( <> வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி (ஒரு தன்னாட்சி நிறுவனம்)</>)}
             </h3>
             {/*<p className="hero-address">
               {language === "English"
@@ -70,8 +70,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             </p>
             <p className="hero-department">
               {language === "English"
-                ? "Department of Information Technology 2023-2027"
-                : "தகவல் தொழில்நுட்பத் துறை 2023-2027"}
+                ? "Department of Information Technology Batch [2023-2027]"
+                : "தகவல் தொழில்நுட்பத் துறை குழு [2023-2027]"}
             </p>
             <p className="hero-mentor">
               {language === "English"
