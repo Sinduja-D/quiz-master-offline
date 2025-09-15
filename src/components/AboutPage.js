@@ -9,7 +9,7 @@ const AboutPage = ({ language }) => {
       sections: [
         {
           heading: "Our Mission",
-          content: "This app is dedicated to making learning fun, interactive, and accessible to everyone. We believe that education should be engaging and that quizzes are one of the most effective ways to reinforce knowledge and track progress."
+          content: "This app is dedicated to make learning fun, interactive, and accessible to everyone. We believe that education should be engaging and that quizzes are one of the most effective ways to reinforce knowledge and track progress."
         },
         {
           heading: "What We Offer",
@@ -17,11 +17,11 @@ const AboutPage = ({ language }) => {
         },
         {
           heading: "Educational Value",
-          content: "Our quizzes are designed by educators to align with curriculum standards. Each question includes explanations and concepts to help users understand not just the correct answer, but the reasoning behind it. This approach promotes deeper learning and knowledge retention."
+          content: "Our quizzes are designed by educators to align with curriculum standards. Each question includes explanations and concepts to help users understand not just the correct answer, but the concept behind it. This approach promotes deeper learning and knowledge retention."
         },
         {
           heading: "Technology",
-          content: "Built with modern web technologies, This app provides a seamless experience across devices. Our responsive design ensures you can learn whether you're on a computer, tablet, or smartphone."
+          content: "Built with modern web technologies, This app provides a seamless experience across devices. Our responsive design ensures you can learn whether you're on a computer, smartphone."
         },
         {
           heading: "Our Team",
@@ -50,11 +50,11 @@ const AboutPage = ({ language }) => {
         },
         {
           heading: "தொழில்நுட்பம்",
-          content: "நவீன வலை தொழில்நுட்பங்களைப் பயன்படுத்தி உருவாக்கப்பட்ட வினா மாஸ்டர், சாதனங்கள் முழுவதிலும் இயல்பான அனுபவத்தை வழங்குகிறது. நீங்கள் கணினி, டேப்லெட் அல்லது ஸ்மார்ட்போனில் இருந்தாலும் கற்க முடியும் என்பதை உங்கள் பதிலளிக்கும் வடிவமைப்பு உறுதி செய்கிறது."
+          content: "நவீன வலை தொழில்நுட்பங்களைப் பயன்படுத்தி உருவாக்கப்பட்ட இந்த செயலி, சாதனங்கள் முழுவதிலும் இயல்பான அனுபவத்தை வழங்குகிறது. நீங்கள் கணினி, ஸ்மார்ட்போனில் இருந்தாலும் கற்க முடியும் என்பதை உங்கள் பதிலளிக்கும் வடிவமைப்பு உறுதி செய்கிறது."
         },
         {
           heading: "எங்கள் குழு",
-          content: "தொழில்நுட்பம் கல்வியை மாற்றும் சக்தி கொண்டது என்று நம்பும் கல்வியாளர்கள், டெவலப்பர்கள் மற்றும் வடிவமைப்பாளர்களின் ஆர்வமுள்ள குழுவால் வினா மாஸ்டர் உருவாக்கப்பட்டுள்ளது. பயனர் கருத்துக்களின் அடிப்படையில் எங்கள் தளத்தை மேம்படுத்தவும் விரிவுபடுத்தவும் நாங்கள் தொடர்ந்து உழைக்கிறோம்."
+          content: "தொழில்நுட்பம் கல்வியை மாற்றும் சக்தி கொண்டது என்று நம்பும் கல்வியாளர்கள், உருவாக்கியவர்கள் மற்றும் வடிவமைப்பாளர்களின் ஆர்வமுள்ள குழுவால் இந்த செயலி உருவாக்கப்பட்டுள்ளது. பயனர் கருத்துக்களின் அடிப்படையில் எங்கள் தளத்தை மேம்படுத்தவும் விரிவுபடுத்தவும் நாங்கள் தொடர்ந்து உழைக்கிறோம்."
         },
         {
           heading: "முடிவுகள்",
@@ -91,7 +91,7 @@ const AboutPage = ({ language }) => {
             <h3>{language === "English" ? "Excellence" : "சிறப்பு"}</h3>
             <p>{language === "English" 
               ? "Committed to providing high-quality educational content" 
-              : "தரமான கல்வி உள்ளடக்கத்தை வழங்க உறுதிபூண்டோம்"}
+              : "தரமான கல்வி உள்ளடக்கத்தை வழங்க உறுதி அளிக்கிறோம்"}
             </p>
           </div>
           <div className="value-item">
