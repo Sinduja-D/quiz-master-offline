@@ -75,8 +75,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             </p>
             <p className="hero-department">
               {language === "English"
-                ? "Department of Information Technology-2027"
-                : "தகவல் தொழில்நுட்பத் துறை-2027"}
+                ? "Department of Information Technology 2023-2027"
+                : "தகவல் தொழில்நுட்பத் துறை 2023-2027"}
             </p>
           </div>
         </div>

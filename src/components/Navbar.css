@@ -1,147 +1,272 @@
-/* Navbar Styles - Footer Inspired */
-/* Navbar Styles - Footer Inspired with Bottom Gradient Line */
+/* Navbar Styles - Minimal Padding for Full Text Visibility */
 .navbar {
-  background: #f8faff; /* same as footer */
-  border-bottom: 4px solid transparent; /* bottom border instead of top */
-  border-image: linear-gradient(to right, #4f8cff, #9ec9ff) 1; /* gradient line */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* subtle shadow like footer */
-  padding: 12px 25px; 
+  background: #f8faff;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, #4f8cff, #9ec9ff) 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 4px 12px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;   /* ✅ Brand + links side by side */
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-radius: 12px 12px 0 0; /* keep top corners rounded */
-  font-family: 'Noto Sans', 'Noto Sans Tamil', Arial, sans-serif; 
+  border-radius: 6px 6px 0 0;
+  font-family: 'Noto Sans', 'Noto Sans Tamil', Arial, sans-serif;
   color: #1a2a6c;
   white-space: nowrap;
+  min-height: 45px;
+  overflow: hidden;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1.5rem;
+  gap: 4px;
+  font-size: 0.9rem;
   font-weight: bold;
   color: #1a2a6c;
   cursor: pointer;
+  flex-shrink: 0;
+  max-width: 22%;
 }
+
 .nav-logo {
-  width: 40px;
+  width: 24px;
   height: auto;
 }
+
 .brand-text {
-  font-size: 1.4rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 4px;
+  flex-shrink: 1;
+  min-width: 0;
+  margin-left: 12px; /* ✅ small space between brand and nav items */
 }
+
 .nav-link {
   background: none;
   border: none;
   color: #555;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 8px 15px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
+  padding: 2px 6px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: none; /* Remove max-width constraint */
 }
-.nav-link:hover, .nav-link.active {
+
+.nav-link:hover,
+.nav-link.active {
   background: rgba(26, 42, 108, 0.1);
   color: #1a2a6c;
 }
+
 .nav-actions {
+  margin-left: auto; /* ✅ Push actions to the right */
   display: flex;
   align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;       /* ✅ allow wrapping if too long */
-  justify-content: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
 }
+
 .lang-btn {
   background: #1a2a6c;
   border: none;
   color: #fff;
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 2px 8px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
+
 .lang-btn:hover {
   background: #2a3a7c;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
-.lang-btn-disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.lang-btn-disabled:hover {
-  background-color: #f0f0f0;
-}
+
 .user-info {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-left: 15px;
-  padding-left: 15px;
+  gap: 4px;
+  margin-left: 6px;
+  padding-left: 6px;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
+
 .username {
   font-weight: 600;
   color: #1a2a6c;
+  font-size: 0.8rem;
+  white-space: nowrap;
 }
+
 .logout-btn {
   background: none;
   border: none;
   color: #555;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 5px 10px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
+  padding: 2px 4px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
+
 .logout-btn:hover {
   background: rgba(26, 42, 108, 0.1);
   color: #1a2a6c;
 }
-/* Navbar Responsive */
+
+/* Tamil text styling - Ultra compact with minimal padding */
+html[lang="ta"] .navbar {
+  padding: 3px 10px;
+  min-height: 40px;
+}
+
+html[lang="ta"] .nav-brand {
+  gap: 3px;
+  max-width: 25%;
+}
+
+html[lang="ta"] .nav-logo {
+  width: 20px;
+}
+
+html[lang="ta"] .brand-text {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+html[lang="ta"] .nav-links {
+  gap: 3px;
+  margin-left: 8px;
+}
+
+html[lang="ta"] .nav-link {
+  font-size: 0.7rem;
+  padding: 1px 4px;
+}
+
+html[lang="ta"] .nav-actions {
+  gap: 3px;
+}
+
+html[lang="ta"] .lang-btn {
+  font-size: 0.65rem;
+  padding: 1px 6px;
+}
+
+html[lang="ta"] .user-info {
+  gap: 3px;
+  margin-left: 4px;
+  padding-left: 4px;
+}
+
+html[lang="ta"] .username {
+  font-size: 0.7rem;
+}
+
+html[lang="ta"] .logout-btn {
+  font-size: 0.65rem;
+  padding: 1px 3px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 3px 10px;
+  }
+
+  .nav-brand {
+    font-size: 0.85rem;
+  }
+
+  .brand-text {
+    font-size: 0.8rem;
+  }
+
+  .nav-links {
+    gap: 3px;
+    margin-left: 8px;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    padding: 2px 5px;
+  }
+
+  .nav-actions {
+    gap: 3px;
+  }
+
+  .lang-btn {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+
+  .username {
+    font-size: 0.75rem;
+  }
+
+  .logout-btn {
+    font-size: 0.7rem;
+    padding: 2px 3px;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    padding: 15px;
-    gap: 15px;
+    padding: 6px;
+    gap: 6px;
+    min-height: auto;
   }
-  
+
+  .nav-brand {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 3px;
+  }
+
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    gap: 3px;
+    margin-left: 0; /* ✅ No left margin in mobile */
   }
-}
 
-/* Tamil text styling - smaller than English */
-html[lang="ta"] .navbar .nav-link,
-html[lang="ta"] .navbar .brand-text,
-html[lang="ta"] .navbar .lang-btn,
-html[lang="ta"] .navbar .logout-btn,
-html[lang="ta"] .navbar .username {
-  font-size: 0.8rem !important;  /* Smaller font size for Tamil */
-  padding: 6px 6px !important;  /* Reduced padding for better proportions */
-}
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-left: 0;
+  }
 
-/* Special handling for Tamil brand text to maintain visibility */
-html[lang="ta"] .brand-text {
-  font-size: 0.9rem !important;  /* Slightly larger than other Tamil text but smaller than English */
-}
-
-/* Tamil profile and achievement buttons */
-html[lang="ta"] .nav-actions .nav-link {
-  font-size: 0.8rem !important;
-  padding: 6px 6px !important;
+  .user-info {
+    width: 100%;
+    justify-content: center;
+    margin: 3px 0;
+    padding: 3px 0;
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
