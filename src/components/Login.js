@@ -103,6 +103,11 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
                 ? "R.M.K. Engineering College"
                 : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h2>
+            <p className="hero-address">
+              {language === "English"
+                ? "Address: R.S.M. Nagar, Kavaraipettai, Gummudipoondi Taluk, Thiruvallur District 601206"
+                : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம், திருவள்ளூர் மாவட்டம் 601206"}
+            </p>
             <h4>
               {language === "English"
                 ? "IT Department Batch 2023-2027"
@@ -115,8 +120,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             </p>
             <p className="mentor-name">
               {language === "English"
-                ? "Mentor: M.Rekha, Assistant Professor"
-                : "வழிகாட்டி: ம.ரேகா, உதவிப் பேராசிரியர்"}
+                ? "Mentor:Ms.M.Rekha,M.E(Ph.D),Assistant Professor"
+                : "வழிகாட்டி:திருமதி.ம.ரேகா,M.E(Ph.D),உதவிப் பேராசிரியர்"}
             </p>
           </div>
         </div>

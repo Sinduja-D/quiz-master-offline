@@ -70,8 +70,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             </p>
             <p className="hero-mentor">
               {language === "English"
-                ? "Mentor: Ms. M. Rekha, Assistant Professor"
-                : "வழிகாட்டி: ம.ரேகா, உதவி பேராசிரியர்"}
+                ? "Mentor:Ms.M.Rekha,Assistant Professor"
+                : "வழிகாட்டி:திருமதி.ம.ரேகா, உதவி பேராசிரியர்"}
             </p>
             <p className="hero-department">
               {language === "English"
