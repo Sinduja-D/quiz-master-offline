@@ -105,8 +105,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             </h2>
             <h4>
               {language === "English"
-                ? "IT Department Batch-2027"
-                : "தொழில்நுட்பத் துறை குழு-2027"}
+                ? "IT Department Batch 2023-2027"
+                : "தொழில்நுட்பத் துறை குழு 2023-2027"}
             </h4>
             <p className="student-names">
               {language === "English"
