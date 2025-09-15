@@ -96,28 +96,34 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             <h3>
               {language === "English"
                 ? "Designed and Developed By"
-                : "மூலம் வடிவமைத்து உருவாக்கப்பட்டது"}
+                : "வடிவமைத்து உருவாக்கியவர்கள்"}
             </h3>
             <h2>
               {language === "English"
-                ? "R.M.K. Engineering College"
+                ? "R.M.K. Engineering College "
                 : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h2>
+            <h4>
+              {language === "English"
+              ? "An Autonomous Institution"
+              : "ஒரு தன்னாட்சி நிறுவனம்"}
+            </h4>
             <p className="hero-address">
               {language === "English"
-                ? "Address: R.S.M. Nagar, Kavaraipettai, Gummudipoondi Taluk, Thiruvallur District 601206"
-                : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம், திருவள்ளூர் மாவட்டம் 601206"}
+                ? "Address: R.S.M. Nagar,Kavaraipettai,Gummudipoondi Taluk,Thiruvallur District-601206"
+                : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம்,திருவள்ளூர் மாவட்டம்-601206"}
+            </p>
+            
+            <p className="student-names">
+              {language === "English"
+                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
+                : "உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
             </p>
             <h4>
               {language === "English"
-                ? "IT Department Batch 2023-2027"
-                : "தொழில்நுட்பத் துறை குழு 2023-2027"}
+                ? "Department of Information Technology Batch [2023-2027]"
+                : "தகவல் தொழில்நுட்பத் துறை தொகுப்பு [2023-2027]"}
             </h4>
-            <p className="student-names">
-              {language === "English"
-                ? "Students: Sinduja D, Reethu P, Vijayalakshmi S R"
-                : "மாணவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
-            </p>
             <p className="mentor-name">
               {language === "English"
                 ? "Mentor:Ms.M.Rekha,M.E(Ph.D),Assistant Professor"

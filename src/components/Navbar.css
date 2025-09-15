@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: bold;
   color: #1a2a6c;
   cursor: pointer;
@@ -32,7 +32,7 @@
 }
 
 .nav-logo {
-  width: 24px;
+  width: 35px;
   height: auto;
 }
 
@@ -49,14 +49,14 @@
   gap: 4px;
   flex-shrink: 1;
   min-width: 0;
-  margin-left: 12px; /* ✅ small space between brand and nav items */
+  margin-left: 50px; /* ✅ small space between brand and nav items */
 }
 
 .nav-link {
   background: none;
   border: none;
   color: #555;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   padding: 2px 6px;
@@ -146,11 +146,11 @@ html[lang="ta"] .nav-brand {
 }
 
 html[lang="ta"] .nav-logo {
-  width: 20px;
+  width: 35px;
 }
 
 html[lang="ta"] .brand-text {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   line-height: 1;
 }
 
@@ -160,7 +160,7 @@ html[lang="ta"] .nav-links {
 }
 
 html[lang="ta"] .nav-link {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   padding: 1px 4px;
 }
 
@@ -169,7 +169,7 @@ html[lang="ta"] .nav-actions {
 }
 
 html[lang="ta"] .lang-btn {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   padding: 1px 6px;
 }
 
@@ -180,11 +180,11 @@ html[lang="ta"] .user-info {
 }
 
 html[lang="ta"] .username {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 
 html[lang="ta"] .logout-btn {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   padding: 1px 3px;
 }
 
@@ -195,11 +195,11 @@ html[lang="ta"] .logout-btn {
   }
 
   .nav-brand {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .brand-text {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .nav-links {
@@ -208,7 +208,7 @@ html[lang="ta"] .logout-btn {
   }
 
   .nav-link {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     padding: 2px 5px;
   }
 
@@ -217,7 +217,7 @@ html[lang="ta"] .logout-btn {
   }
 
   .lang-btn {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     padding: 2px 6px;
   }
 
