@@ -1,7 +1,7 @@
 // src/components/HomePage.jsx
 import React, { useEffect, useState } from "react";
 import "./HomePage.css";
-import rmkLogo from "../assets/rmk.jpeg";
+import rmkLogo from "../assets/rmk.gif";
 import tamilNaduLogo from "../assets/tamil-nadu-logo.png";
 import { levels } from "../levels.js";
 

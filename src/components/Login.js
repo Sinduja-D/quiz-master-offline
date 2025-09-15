@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
 import tamilNaduLogo from '../assets/tamil-nadu-logo.png'; // Add your logo path
-import rmkLogo from '../assets/rmk.jpeg'; // Add your logo path
+import rmkLogo from '../assets/rmk.gif'; // Add your logo path
 
 const Login = ({ onLogin, language, toggleLanguage }) => {
   const [username, setUsername] = useState('');
