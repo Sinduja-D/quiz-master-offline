@@ -268,7 +268,7 @@ export default function QuizSetup({
               id="question-range"
               type="range"
               min="1"
-              max="50"
+              max="30"
               step="1"
               value={numberOfQuestions}
               onChange={(e) => setNumberOfQuestions(parseInt(e.target.value, 10))}
