@@ -66,7 +66,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             <p className="hero-developers">
               {language === "English"
                 ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
-                : "உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
+                : (<>உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ,<br /> விஜயலட்சுமி சி.ரா</>)}
             </p>
             <p className="hero-department">
               {language === "English"
