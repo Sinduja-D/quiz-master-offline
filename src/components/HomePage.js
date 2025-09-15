@@ -37,7 +37,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <div className="text-container">
             <h3 className="hero-park">
               {language === "English"
-                ? "Science Park Thiruvallur District"
+                ? "Science Park-Thiruvallur District"
                 : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
             </h3>
           </div>
@@ -50,7 +50,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <div className="text-container">
             <h3 className="hero-r.m.k">
               {language === "English"
-                ? "Designed and developed by R.M.K. Engineering College"
+                ? (<> Designed And Developed By <br /> R.M.K. Engineering College</>)
                 : "வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h3>
             {/*<p className="hero-address">
@@ -68,16 +68,17 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
                 ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
                 : "உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
             </p>
-            <p className="hero-mentor">
-              {language === "English"
-                ? "Mentor:Ms.M.Rekha,Assistant Professor"
-                : "வழிகாட்டி:திருமதி.ம.ரேகா, உதவி பேராசிரியர்"}
-            </p>
             <p className="hero-department">
               {language === "English"
                 ? "Department of Information Technology 2023-2027"
                 : "தகவல் தொழில்நுட்பத் துறை 2023-2027"}
             </p>
+            <p className="hero-mentor">
+              {language === "English"
+                ? "Mentor:Ms.M.Rekha,M.E.(Ph.D),Assistant Professor"
+                : "வழிகாட்டி:திருமதி.ம.ரேகா,M.E.(Ph.D),உதவி பேராசிரியர்"}
+            </p>
+            
           </div>
         </div>
       </div>
