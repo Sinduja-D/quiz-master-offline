@@ -4,7 +4,7 @@ import React from "react";
 const Footer = ({ language }) => (
   <footer style={styles.footer}>
     {language === "English"
-      ? "Designed & Developed by R.M.K. Engineering College | Information Technology Department| ©Copyright 2025"
+      ? "Designed & Developed by R.M.K. Engineering College | Information Technology Department| ©Copyrights 2025"
       : "ஆர்.எம்.கே. பொறியியல் கல்லூரியால் வடிவமைத்து உருவாக்கப்பட்டது | தகவல் தொழில்நுட்பத் துறை| ©பதிப்புரிமை 2025"}
   </footer>
 );
