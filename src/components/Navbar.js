@@ -28,7 +28,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
       <div className="nav-brand" onClick={() => setActivePage("home")} style={{ cursor: "pointer" }}>
         <img src={logo} alt="App Logo" className="nav-logo" />
         <span className="brand-text">
-          {language === "English" ? ("Science Quiz for Young Achievers" ): (
+          {language === "English" ? (<> Science Quiz for Young <br /> Achievers  </>): (
     <>
       இளைய சிந்தனையாளர்களுக்கான <br />
       அறிவியல் வினாடி வினா
