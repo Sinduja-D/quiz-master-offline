@@ -83,7 +83,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             <h1 className="hero-title">
               {language === "English"
                 ? "SCIENCE PARK - THIRUVALLUR DISTRICT"
-                : "அறிவியல் பூங்கா திட்டம் திருவள்ளூர் மாவட்டம்"}
+                : "அறிவியல் பூங்கா திருவள்ளூர் மாவட்டம்"}
             </h1>
           </div>
           
