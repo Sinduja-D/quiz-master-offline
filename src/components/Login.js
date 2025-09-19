@@ -82,7 +82,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="tamilnadu-logo" />
             <h1 className="hero-title">
               {language === "English"
-                ? "SCIENCE PARK - THIRUVALLUR DISTRICT"
+                ? "SCIENCE PARK - TIRUVALLUR DISTRICT"
                 : "அறிவியல் பூங்கா - திருவள்ளூர் மாவட்டம்"}
             </h1>
           </div>

@@ -37,7 +37,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <div className="text-container">
             <h3 className="hero-park">
               {language === "English"
-                ? "Science Park-Thiruvallur District"
+                ? "Science Park-Tiruvallur District"
                 : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
             </h3>
           </div>
@@ -87,9 +87,12 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
         <div className="level-container">
           <div className="section-title">
             <h2>
-              {language === "English"
+              {/*{language === "English"
                 ? "Select Difficulty Level"
-                : "சிரம நிலையைத் தேர்ந்தெடுக்கவும்"}
+                : "சிரம நிலையைத் தேர்ந்தெடுக்கவும்"}*/}
+                {language === "English"
+                ? "Science Quiz for Young Achievers"
+                : "இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினா"}
             </h2>
           </div>
           <div className="level-cards">

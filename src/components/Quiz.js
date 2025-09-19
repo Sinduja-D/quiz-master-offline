@@ -449,8 +449,9 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
               onClick={handleHintClick}
               title={displayLanguage === 'English' ? 'Get a hint' : 'குறிப்பு பெறுங்கள்'}
             >
-              💡
+    💡 {displayLanguage === 'English' ? 'Hint' : 'குறிப்பு'}
             </button>
+           
           )}
         </div>
       </div>
