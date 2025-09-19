@@ -95,12 +95,12 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             
             <h3>
               {language === "English"
-                ? "Designed and Developed By"
+                ? "Designed and Compiled By"
                 : "வடிவமைத்து உருவாக்கியவர்கள்"}
             </h3>
             <h2>
               {language === "English"
-                ? "R.M.K. Engineering College "
+                ? "R.M.K. Engineering College"
                 : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h2>
             <h4>
@@ -110,7 +110,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             </h4>
             <p className="hero-address">
               {language === "English"
-                ? "Address: R.S.M. Nagar,Kavaraipettai,Gummudipoondi Taluk,Thiruvallur District-601206"
+                ? "Address: R.S.M. Nagar,Kavaraipettai,Gummudipoondi Taluk,Tiruvallur District-601206"
                 : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம்,திருவள்ளூர் மாவட்டம்-601206"}
             </p>
             
@@ -181,7 +181,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
           <div className="login-footer">
             <p>{language === 'English'
               ? 'Your progress will be saved locally on this device'
-              : 'உங்கள் முன்னேற்றம் இந்த சாதனத்தில் உள்ளூராகச் சேமிக்கப்படும்'}</p>
+              : 'உங்கள் முன்னேற்றம் இந்த சாதனத்தில் உள்ளூர் முறையில் சேமிக்கப்படும்'}</p>
             <div className="language-toggle">
               <button 
                 onClick={toggleLanguage} 
