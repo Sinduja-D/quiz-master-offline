@@ -5,7 +5,7 @@ import './AboutPage.css';
 const AboutPage = ({ language }) => {
   const content = {
     english: {
-      title: "About Us",
+      title: "About Our App",
       sections: [
         {
           heading: "Our Mission",
@@ -34,7 +34,7 @@ const AboutPage = ({ language }) => {
       ]
     },
     tamil: {
-      title: "எங்களை பற்றி",
+      title: "எங்கள் செயலியைப் பற்றி",
       sections: [
         {
           heading: "எங்கள் பணி",
