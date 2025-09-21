@@ -492,7 +492,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           <div className="concept-card">
             <div className="concept-header" onClick={() => setShowConcept(!showConcept)}>
               <span className="concept-icon">📚</span>
-              <span className="concept-title">{displayLanguage === 'English' ? 'Related Concept' : 'தொடர்புடைய கருத்து'}</span>
+              <span className="concept-title">{displayLanguage === 'English' ? 'Source Topic of the Question' : 'கேள்வி சார்ந்த தலைப்பு'}</span>
               <span className="concept-toggle">{showConcept ? '▲' : '▼'}</span>
             </div>
             {showConcept && (
@@ -528,7 +528,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
               className="previous-button"
               onClick={handlePrevious}
             >
-              ← {displayLanguage === 'English' ? 'Previous' : 'முந்தைய வினா'}
+              ← {displayLanguage === 'English' ? 'Previous Question' : 'முந்தைய கேள்வி '}
             </button>
           )}
           {!showFeedback ?
@@ -546,7 +546,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             >
               {currentQuestionIndex < quizQuestions.length - 1
                 ? (displayLanguage === 'English' ? 'Next Question →' : 'அடுத்த கேள்வி →')
-                : (displayLanguage === 'English' ? 'Finish Quiz' : 'வினாடி வினா முடி')}
+                : (displayLanguage === 'English' ? 'Finish Quiz' : 'நிறைவு செய்யவும்')}
             </button>
           }
         </div>
