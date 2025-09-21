@@ -8,7 +8,6 @@ import { levels } from "../levels.js";
 const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   const [showWelcome, setShowWelcome] = useState(false);
   
-  // show banner once on mount if we have a username
   useEffect(() => {
     if (user?.username) {
       setShowWelcome(true);
@@ -19,7 +18,6 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   
   return (
     <div className="home-container">
-      {/* welcome banner */}
       {showWelcome && (
         <div className="welcome-popup">
           {language === "English"
@@ -28,14 +26,13 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
         </div>
       )}
       
-      {/* New Hero Container with Three Columns */}
       <div className="hero-container">
         <div className="hero-column">
           <div className="logo-container">
             <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="hero-logo" />
           </div>
           <div className="text-container">
-            <h3 className="hero-park">
+            <h3 className="hero-main-title">
               {language === "English"
                 ? "Science Park-Tiruvallur District"
                 : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
@@ -48,16 +45,22 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             <img src={rmkLogo} alt="R.M.K Logo" className="hero-logo" />
           </div>
           <div className="text-container">
-            <h3 className="hero-r.m.k">
+            <p className="hero-developer-label">
               {language === "English"
-                ? (<> Designed And Developed By <br /> R.M.K. Engineering College <br />(An Antonomous Institution)</>)
-                : ( <> வடிவமைத்து உருவாக்கியவர்கள்: ஆர்.எம்.கே. பொறியியல் கல்லூரி (ஒரு தன்னாட்சி நிறுவனம்)</>)}
+                ? "Designed And Developed By"
+                : "வடிவமைத்து உருவாக்கியவர்கள்"}
+            </p>
+            <h3 className="hero-main-title">
+              {language === "English"
+                ? "R.M.K. Engineering College"
+                : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h3>
-            {/*<p className="hero-address">
+            <p className="hero-sub-title">
               {language === "English"
-                ? "Address: R.S.M. Nagar, Kavaraipettai, Gummudipoondi Taluk, Thiruvallur District 601206"
-                : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம், திருவள்ளூர் மாவட்டம் 601206"}
-            </p>*/}
+                ? "(An Autonomous Institution)"
+                : "(ஒரு தன்னாட்சி நிறுவனம்)"}
+            </p>
+            
           </div>
         </div>
         
@@ -65,8 +68,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <div className="text-container full-width">
             <p className="hero-developers">
               {language === "English"
-                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
-                : (<>உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ,<br /> விஜயலட்சுமி சி.ரா</>)}
+                ? "Sinduja D, Reethu P, Vijayalakshmi S R"
+                : (<>சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா</>)}
             </p>
             <p className="hero-department">
               {language === "English"
@@ -75,10 +78,9 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
             </p>
             <p className="hero-mentor">
               {language === "English"
-                ? "Mentor:Ms.M.Rekha,M.E.(Ph.D),Assistant Professor"
-                : "வழிகாட்டி:திருமதி.ம.ரேகா,M.E.(Ph.D),உதவி பேராசிரியர்"}
+                ? "Mentor: Ms. M. Rekha, M.E.(Ph.D), Assistant Professor"
+                : "வழிகாட்டி: திருமதி.ம.ரேகா, M.E.(Ph.D), உதவி பேராசிரியர்"}
             </p>
-            
           </div>
         </div>
       </div>
@@ -87,10 +89,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
         <div className="level-container">
           <div className="section-title">
             <h2>
-              {/*{language === "English"
-                ? "Select Difficulty Level"
-                : "சிரம நிலையைத் தேர்ந்தெடுக்கவும்"}*/}
-                {language === "English"
+              {language === "English"
                 ? "Science Quiz for Young Achievers"
                 : "இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினா"}
             </h2>

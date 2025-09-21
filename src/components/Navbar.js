@@ -1,3 +1,4 @@
+// src/components/Navbar.jsx
 import React from "react";
 import './Navbar.css';
 import logo from "../assets/logo.png";
@@ -30,7 +31,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
         <span className="brand-text">
           {language === "English" ? (<> Science Quiz for Young <br /> Achievers  </>): (
     <>
-      இளைய சிந்தனையாளர்களுக்கான <br />
+      இளைய <br />சிந்தனையாளர்களுக்கான <br />
       அறிவியல் வினாடி வினா
     </>
   )}
