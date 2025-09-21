@@ -254,7 +254,10 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     setResults(updatedResults);
     
-    if (!correct && currentQuestion.concept) setShowConcept(true);
+
+    //Altered to always show concept after answer submission
+    //if (!correct && currentQuestion.concept) 
+    setShowConcept(true);
     
     if (correct) {
       const newCount = consecutiveCorrect + 1;
