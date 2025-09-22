@@ -509,11 +509,12 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   animation: fadeSlide 0.4s ease-out;
   z-index: 999;
-  max-width: 90%;
+  max-width: 25%;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-left: 100px;
 }
 
 @keyframes fadeSlide {

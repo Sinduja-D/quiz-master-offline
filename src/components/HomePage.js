@@ -47,7 +47,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <div className="text-container">
             <p className="hero-developer-label">
               {language === "English"
-                ? "Designed And Developed By"
+                ? "Designed And Compiled By"
                 : "வடிவமைத்து உருவாக்கியவர்கள்"}
             </p>
             <h3 className="hero-main-title">
