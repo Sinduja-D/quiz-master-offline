@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100px;
+  min-height: 100%;
   overflow: hidden;
   background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
   position: relative;
@@ -145,7 +145,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 10px;
+  padding: 8px;
   overflow-y: auto;
   overflow-x: hidden;
   max-width: 1200px;
@@ -156,29 +156,29 @@
 
 /* Level Selection */
 .home-container .level-container {
-  margin: 0 auto 10px;
+  margin: 0 auto 8px;
   max-width: 100% !important;
   text-align: center;
   flex: none;
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 30px;
+  padding: 15px;
   background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(240,242,255,0.8) 100%);
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  min-width: 320px;
+  min-width: 300px;
   width: 100%;
 }
 
 .home-container .level-container::before {
   content: '';
   position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
+  top: -40px;
+  right: -40px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
   z-index: 0;
@@ -187,10 +187,10 @@
 .home-container .level-container::after {
   content: '';
   position: absolute;
-  bottom: -30px;
-  left: -30px;
-  width: 150px;
-  height: 150px;
+  bottom: -20px;
+  left: -20px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.1));
   z-index: 0;
@@ -199,13 +199,13 @@
 .home-container .section-title {
   position: relative;
   z-index: 1;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
 }
 
 .home-container .section-title h2 {
   text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
   font-weight: 700;
   color: #1a2a6c;
   position: relative;
@@ -215,10 +215,10 @@
 .home-container .section-title h2::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -3px;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, #1a2a6c, transparent);
   border-radius: 2px;
   animation: shimmer 2s infinite;
@@ -232,26 +232,26 @@
 .home-container .level-cards {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 8px;
   position: relative;
   z-index: 1;
-  min-height: 220px;
+  min-height: 200px;
 }
 
 .home-container .level-card {
-  width: 280px;
+  width: 300px;
   max-width: 30%;
-  height: 200px;
-  padding: 20px;
-  border-radius: 20px;
+  height: 180px;
+  padding: 12px;
+  border-radius: 15px;
   color: white;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -260,7 +260,7 @@
   align-items: center;
   transform-style: preserve-3d;
   perspective: 1000px;
-  min-width: 200px;
+  min-width: 160px;
   flex-shrink: 0;
 }
 
@@ -300,18 +300,18 @@
 }
 
 .home-container .level-card:hover {
-  transform: translateY(-10px) rotateX(5deg);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) rotateX(5deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .home-container .level-card:active {
-  transform: translateY(-5px) rotateX(2deg);
+  transform: translateY(-3px) rotateX(2deg);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .home-container .level-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
   position: relative;
   z-index: 1;
   animation: float 3s ease-in-out infinite;
@@ -319,13 +319,13 @@
 
 @keyframes float {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
   100% { transform: translateY(0px); }
 }
 
 .home-container .level-name {
-  font-size: 1.4rem;
-  margin: 5px 0;
+  font-size: 1.1rem;
+  margin: 3px 0;
   position: relative;
   z-index: 1;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -335,14 +335,14 @@
 }
 
 .home-container .level-grade {
-  font-size: 1rem;
+  font-size: 0.85rem;
   opacity: 0.9;
   position: relative;
   z-index: 1;
   background: rgba(0, 0, 0, 0.2);
-  padding: 6px 15px;
-  border-radius: 20px;
-  margin-top: 15px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-top: 6px;
   word-wrap: break-word;
   hyphens: auto;
   max-width: 90%;
@@ -361,7 +361,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -383,12 +383,12 @@
 /* Explore Section */
 .home-container .explore-section {
   background: white;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 8px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -398,10 +398,10 @@
 .home-container .explore-section::before {
   content: '';
   position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 80px;
-  height: 80px;
+  top: -15px;
+  right: -15px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: linear-gradient(45deg, #6366f1, #8b5cf6);
   opacity: 0.1;
@@ -409,13 +409,13 @@
 
 .home-container .explore-header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
   position: relative;
   z-index: 1;
 }
 
 .home-container .explore-header h2 {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #1a2a6c;
 }
@@ -423,7 +423,7 @@
 .home-container .adventure-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 10px;
   position: relative;
   z-index: 1;
 }
@@ -433,16 +433,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 15px;
-  border-radius: 12px;
+  padding: 10px 8px;
+  border-radius: 10px;
   background: white;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-  height: 130px;
+  height: 90px;
 }
 
 .home-container .adventure-card::before {
@@ -456,8 +456,8 @@
 }
 
 .home-container .adventure-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
 }
 
 .home-container .adventure-card:hover::before {
@@ -466,12 +466,12 @@
 }
 
 .home-container .adventure-card .card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: 1.8rem;
+  margin-bottom: 6px;
 }
 
 .home-container .adventure-card span {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #1a2a6c;
   text-align: center;
@@ -502,9 +502,9 @@
   transform: translateX(-50%);
   background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: #fff;
-  padding: 15px 30px;
-  border-radius: 25px;
-  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
   font-weight: 600;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   animation: fadeSlide 0.4s ease-out;
@@ -572,39 +572,39 @@
   
   .home-container .section-title h2, 
   .home-container .explore-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   
   .home-container .level-card {
-    width: 200px;
-    height: 180px;
+    width: 160px;
+    height: 130px;
     max-width: 45%;
   }
   
   .home-container .level-icon {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
   
   .home-container .level-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .home-container .adventure-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 8px;
   }
   
   .home-container .adventure-card {
-    height: 110px;
-    padding: 15px 10px;
+    height: 80px;
+    padding: 8px 6px;
   }
   
   .home-container .adventure-card .card-icon {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   
   .home-container .adventure-card span {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -635,51 +635,51 @@
   }
   
   .home-container .content-wrapper {
-    padding: 15px;
+    padding: 6px;
   }
   
   .home-container .level-container {
     min-width: auto;
-    padding: 15px;
+    padding: 10px;
   }
   
   .home-container .level-card {
-    width: 160px;
-    height: 170px;
+    width: 140px;
+    height: 120px;
     max-width: 45%;
   }
   
   .home-container .level-icon {
-    font-size: 2rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
   }
   
   .home-container .level-name {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
   }
   
   .home-container .level-grade {
-    font-size: 0.9rem;
-    padding: 5px 10px;
+    font-size: 0.8rem;
+    padding: 3px 8px;
   }
   
   .home-container .adventure-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    gap: 6px;
   }
   
   .home-container .adventure-card {
-    height: 100px;
-    padding: 12px 8px;
+    height: 70px;
+    padding: 6px 5px;
   }
   
   .home-container .adventure-card .card-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
   }
   
   .home-container .adventure-card span {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -717,13 +717,13 @@
   }
   
   .home-container .level-card {
-    width: 140px;
-    height: 160px;
+    width: 120px;
+    height: 110px;
     max-width: 45%;
   }
   
   .home-container .level-name {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
   
   .home-container .adventure-grid {
@@ -731,20 +731,20 @@
   }
   
   .home-container .adventure-card {
-    height: 90px;
+    height: 60px;
     flex-direction: row;
     justify-content: flex-start;
-    padding: 10px;
+    padding: 6px;
   }
   
   .home-container .adventure-card .card-icon {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 0;
-    margin-right: 10px;
+    margin-right: 6px;
   }
   
   .home-container .adventure-card span {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-align: left;
   }
 }
