@@ -65,12 +65,13 @@
   animation: rotate 1.5s linear infinite;
   box-shadow: 0 0 20px rgba(26, 42, 108, 0.4);
 }
-
-/*@keyframes rotate {
+/*
+@keyframes rotate {
   100% {
     transform: rotate(360deg);
   }
-}*/
+}
+*/
 @keyframes rotate {
   0% {
     transform: rotate(-45deg);

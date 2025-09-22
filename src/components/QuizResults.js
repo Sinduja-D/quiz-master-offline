@@ -28,6 +28,7 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
           angle: 60,
           spread: 55,
           origin: { x: 0 },
+          shapes:['star'],
           colors: ['#1a2a6c', '#2a3a7c', '#3498db', '#2980b9', '#5dade2'],
         });
       }, 300);
@@ -38,6 +39,7 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
           angle: 120,
           spread: 55,
           origin: { x: 1 },
+          shapes:['star'],
           colors: ['#1a2a6c', '#2a3a7c', '#3498db', '#2980b9', '#5dade2'],
         });
       }, 600);
@@ -64,7 +66,7 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
   
   // Special message for perfect score
   const perfectScoreMessage = language === 'English' 
-    ? 'Perfect Score! Amazing job!' 
+    ? 'Perfect Score!' 
     : 'முழு மதிப்பெண்! அற்புதமான செயல்!';
     
   return (
