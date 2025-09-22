@@ -68,8 +68,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <div className="text-container full-width">
             <p className="hero-developers">
               {language === "English"
-                ? "Sinduja D, Reethu P, Vijayalakshmi S R"
-                : (<>சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா</>)}
+                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
+                : (<>உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா</>)}
             </p>
             <p className="hero-department">
               {language === "English"
