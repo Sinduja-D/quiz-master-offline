@@ -109,8 +109,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             </h2>
             <h4 className="institution-type">
               {language === "English"
-              ? "An Autonomous Institution"
-              : "ஒரு தன்னாட்சி நிறுவனம்"}
+              ? "(An Autonomous Institution)"
+              : "(ஒரு தன்னாட்சி நிறுவனம்)"}
             </h4>
             <p className="hero-address">
               {language === "English"
