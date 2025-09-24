@@ -1,3 +1,4 @@
+// Login.js
 import React, { useState, useEffect } from 'react';
 import './Login.css';
 import tamilNaduLogo from '../assets/tamil-nadu-logo.png'; // Add your logo path
@@ -74,10 +75,17 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
 
   return (
     <div className="login-container">
-      {/* Left Side - Hero Content (Original Content with Homepage Styling) */}
+      {/* Background decoration */}
+      <div className="bg-decoration">
+        <div className="bg-circle bg-circle-1"></div>
+        <div className="bg-circle bg-circle-2"></div>
+        <div className="bg-circle bg-circle-3"></div>
+      </div>
+      
+      {/* Left Side - Hero Content */}
       <div className="hero-section">
-        <div className="hero-box">
-          {/* Tamil Nadu Logo and Title */}
+        <div className="hero-box glass-effect">
+          {/* Header with logos on both sides */}
           <div className="hero-header">
             <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="tamilnadu-logo" />
             <h1 className="hero-title">
@@ -85,57 +93,55 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
                 ? "SCIENCE PARK - TIRUVALLUR DISTRICT"
                 : "அறிவியல் பூங்கா - திருவள்ளூர் மாவட்டம்"}
             </h1>
+            <img src={rmkLogo} alt="R.M.K. Engineering College Logo" className="rmk-logo" />
           </div>
           
           <div className="college-info">
-            {/* R.M.K. Logo */}
-            <div className="college-logo-container">
-              <img src={rmkLogo} alt="R.M.K. Engineering College Logo" className="rmk-logo" />
-            </div>
-            
-            <h3>
+            <h3 className="designed-by">
               {language === "English"
                 ? "Designed and Compiled By"
                 : "வடிவமைத்து உருவாக்கியவர்கள்"}
             </h3>
-            <h2>
+            <h2 className="college-name">
               {language === "English"
                 ? "R.M.K. Engineering College"
                 : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
             </h2>
-            <h4>
+            <h4 className="institution-type">
               {language === "English"
               ? "An Autonomous Institution"
               : "ஒரு தன்னாட்சி நிறுவனம்"}
             </h4>
             <p className="hero-address">
               {language === "English"
-                ? "Address: R.S.M. Nagar,Kavaraipettai,Gummudipoondi Taluk,Tiruvallur District-601206"
-                : "முகவரி: ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம்,திருவள்ளூர் மாவட்டம்-601206"}
+                ? "R.S.M. Nagar, Kavaraipettai, Gummudipoondi Taluk, Tiruvallur District-601206"
+                : "ஆர்.எஸ்.எம். நகர், கவரைப்பேட்டை, கும்மிடிப்பூண்டி வட்டம், திருவள்ளூர் மாவட்டம்-601206"}
             </p>
             
-            <p className="student-names">
-              {language === "English"
-                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
-                : "உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
-            </p>
-            <h4>
-              {language === "English"
-                ? "Department of Information Technology Batch [2023-2027]"
-                : "தகவல் தொழில்நுட்பத் துறை தொகுப்பு [2023-2027]"}
-            </h4>
-            <p className="mentor-name">
-              {language === "English"
-                ? "Mentor:Ms.M.Rekha,M.E(Ph.D),Assistant Professor"
-                : "வழிகாட்டி:திருமதி.ம.ரேகா,M.E(Ph.D),உதவிப் பேராசிரியர்"}
-            </p>
+            <div className="developer-info">
+              <p className="student-names">
+                {language === "English"
+                  ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
+                  : "உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா"}
+              </p>
+              <h4 className="department-info">
+                {language === "English"
+                  ? "Department of Information Technology Batch [2023-2027]"
+                  : "தகவல் தொழில்நுட்பத் துறை தொகுப்பு [2023-2027]"}
+              </h4>
+              <p className="mentor-name">
+                {language === "English"
+                  ? "Mentor: Ms. M. Rekha, M.E(Ph.D), Assistant Professor"
+                  : "வழிகாட்டி: திருமதி.ம.ரேகா, M.E(Ph.D), உதவிப் பேராசிரியர்"}
+              </p>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Right Side - Login Form (Original Content with Homepage Styling) */}
+      {/* Right Side - Login Form */}
       <div className="login-section">
-        <div className="login-card">
+        <div className="login-card glass-effect">
           <div className="login-header">
             <h2>{language === 'English' ? 'Welcome to Science Quiz for Young Achievers' : 'இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினாவிற்கு வரவேற்கிறோம்'}</h2>
             <p>{language === 'English'
