@@ -227,10 +227,11 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
   
   return (
     <div className="escape-room">
+      {/*}
       <button onClick={onBack} className="back-button">
         {language === "English" ? "Back" : "திரும்ப"}
       </button>
-      
+      */}
       <div className="scene-container">
         {renderScene()}
       </div>

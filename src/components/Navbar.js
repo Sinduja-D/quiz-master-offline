@@ -13,7 +13,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
       case "home":
         return "முகப்பு";
       case "about":
-        return "எங்களைப் பற்றி";
+        return (<>எங்கள் <br />செயலியைப்<br/> பற்றி</>);
       case "help":
         return "உதவி";
       case "leaderboard":

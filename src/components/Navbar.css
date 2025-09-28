@@ -16,14 +16,16 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 270px;
+  width: 200px;
   z-index: 100;
   border-radius: 0 6px 6px 0;
   font-family: 'Noto Sans', 'Noto Sans Tamil', Arial, sans-serif;
   color: #1a2a6c;
   white-space: nowrap;
   overflow-y: auto;
+  overflow-x: hidden;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .nav-brand {
@@ -41,6 +43,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .nav-logo {
@@ -63,7 +66,8 @@
   min-width: 0;
   width: 100%;
   margin-bottom: 20px;
-  margin-top:130px;
+  margin-top: 130px;
+  box-sizing: border-box;
 }
 
 .nav-link {
@@ -81,6 +85,7 @@
   text-overflow: ellipsis;
   width: 100%;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .nav-link:hover,
@@ -98,6 +103,7 @@
   margin-top: auto;
   padding-top: 15px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .lang-btn {
@@ -113,6 +119,7 @@
   white-space: nowrap;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .lang-btn:hover {
@@ -127,6 +134,7 @@
   gap: 8px;
   padding: 10px 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .username {
@@ -153,6 +161,7 @@
   white-space: nowrap;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .logout-btn:hover {
@@ -301,6 +310,7 @@ html[lang="ta"] .logout-btn {
     flex-direction: row;
     gap: 5px;
     margin-bottom: 0;
+    margin-top: 0;
     width: auto;
   }
 
@@ -379,5 +389,124 @@ html[lang="ta"] .logout-btn {
   .logout-btn {
     font-size: 0.65rem;
     padding: 3px 5px;
+  }
+}
+
+/* Add a media query for TV screens */
+@media (min-width: 1200px) {
+  .navbar {
+    width: 200px;
+  }
+}
+
+/* Add a media query for very large screens (TVs) */
+@media (min-width: 1920px) {
+  .navbar {
+    width: 250px;
+    padding: 20px 15px;
+  }
+  
+  .nav-brand {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+  }
+  
+  .nav-logo {
+    width: 60px;
+  }
+  
+  .brand-text {
+    font-size: 1rem;
+  }
+  
+  .nav-links {
+    gap: 12px;
+    margin-bottom: 25px;
+    margin-top: 150px;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+  
+  .nav-actions {
+    gap: 15px;
+    padding-top: 20px;
+  }
+  
+  .lang-btn {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+  
+  .user-info {
+    gap: 10px;
+    padding: 15px 0;
+  }
+  
+  .username {
+    font-size: 1rem;
+  }
+  
+  .logout-btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+/* Tamil text styling for very large screens */
+@media (min-width: 1920px) {
+  html[lang="ta"] .navbar {
+    padding: 18px 12px;
+  }
+
+  html[lang="ta"] .nav-brand {
+    gap: 8px;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+  }
+
+  html[lang="ta"] .nav-logo {
+    width: 55px;
+  }
+
+  html[lang="ta"] .brand-text {
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  html[lang="ta"] .nav-links {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  html[lang="ta"] .nav-link {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+
+  html[lang="ta"] .nav-actions {
+    gap: 12px;
+    padding-top: 18px;
+  }
+
+  html[lang="ta"] .lang-btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  html[lang="ta"] .user-info {
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  html[lang="ta"] .username {
+    font-size: 0.95rem;
+  }
+
+  html[lang="ta"] .logout-btn {
+    font-size: 0.85rem;
+    padding: 6px 10px;
   }
 }

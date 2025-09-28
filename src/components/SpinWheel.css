@@ -2,6 +2,7 @@
 .spin-wheel-container {
   max-width: 700px;
   margin: 0 auto;
+  margin-left:200px;
   padding: 30px 20px;
   text-align: center;
   position: relative;

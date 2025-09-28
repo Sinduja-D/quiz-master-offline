@@ -1,7 +1,8 @@
 /* src/components/EscapeRoom.css */
 .escape-room {
   position: relative;
-  width: 100%;
+  width: 800px;
+  margin-left:200px;
   min-height: 100%;
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   color: #333;

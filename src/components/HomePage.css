@@ -10,7 +10,9 @@
   background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
   position: relative;
   z-index: 1;
-  margin-left: 100px; /* Space for left navbar */
+  margin-left: 0;
+  padding-left: 200px;
+  box-sizing: border-box;
 }
 
 /* Override any page-content styles that might be affecting the home page */
@@ -23,6 +25,7 @@
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
+  box-sizing: border-box !important;
 }
 
 /* New Hero Container with Three Columns */
@@ -40,10 +43,10 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin: 0;
   z-index: 10;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  min-width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
   height: auto;
   min-height: 120px;
 }
@@ -148,16 +151,16 @@
   padding: 8px;
   overflow-y: auto;
   overflow-x: hidden;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   width: 100%;
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
 
 /* Level Selection */
 .home-container .level-container {
   margin: 0 auto 8px;
-  max-width: 100% !important;
+  max-width: 100%;
   text-align: center;
   flex: none;
   display: flex;
@@ -168,8 +171,9 @@
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  min-width: 300px;
+  min-width: auto;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .home-container .level-container::before {
@@ -240,18 +244,19 @@
   min-height: 200px;
 }
 
+/* Level Card Styles - Reduced Size */
 .home-container .level-card {
-  width: 300px;
+  width: 250px;        /* Reduced from 300px */
+  height: 170px;       /* Reduced from 180px */
   max-width: 30%;
-  height: 180px;
-  padding: 12px;
-  border-radius: 15px;
+  padding: 8px;        /* Reduced from 12px */
+  border-radius: 12px; /* Reduced from 15px */
   color: white;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Reduced shadow */
   position: relative;
   overflow: hidden;
   display: flex;
@@ -260,7 +265,7 @@
   align-items: center;
   transform-style: preserve-3d;
   perspective: 1000px;
-  min-width: 160px;
+  min-width: 140px;    /* Reduced from 160px */
   flex-shrink: 0;
 }
 
@@ -299,19 +304,21 @@
   transform: scale(1);
 }
 
+/* Updated hover effects for smaller cards */
 .home-container .level-card:hover {
-  transform: translateY(-5px) rotateX(5deg);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px) rotateX(3deg); /* Reduced movement */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
 }
 
 .home-container .level-card:active {
-  transform: translateY(-3px) rotateX(2deg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) rotateX(1deg); /* Reduced movement */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Adjusted shadow */
 }
 
+/* Adjusted icon size */
 .home-container .level-icon {
-  font-size: 2.2rem;
-  margin-bottom: 8px;
+  font-size: 1.8rem;   /* Reduced from 2.2rem */
+  margin-bottom: 6px;  /* Reduced from 8px */
   position: relative;
   z-index: 1;
   animation: float 3s ease-in-out infinite;
@@ -323,9 +330,10 @@
   100% { transform: translateY(0px); }
 }
 
+/* Adjusted title size */
 .home-container .level-name {
-  font-size: 1.1rem;
-  margin: 3px 0;
+  font-size: 1rem;     /* Reduced from 1.1rem */
+  margin: 2px 0;       /* Reduced from 3px 0 */
   position: relative;
   z-index: 1;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -334,15 +342,16 @@
   max-width: 90%;
 }
 
+/* Adjusted grade label size */
 .home-container .level-grade {
-  font-size: 0.85rem;
+  font-size: 0.75rem;  /* Reduced from 0.85rem */
   opacity: 0.9;
   position: relative;
   z-index: 1;
   background: rgba(0, 0, 0, 0.2);
-  padding: 3px 10px;
-  border-radius: 12px;
-  margin-top: 6px;
+  padding: 2px 8px;    /* Reduced from 3px 10px */
+  border-radius: 10px; /* Reduced from 12px */
+  margin-top: 4px;     /* Reduced from 6px */
   word-wrap: break-word;
   hyphens: auto;
   max-width: 90%;
@@ -389,10 +398,11 @@
   position: relative;
   overflow: hidden;
   margin-top: 8px;
-  max-width: 1200px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .home-container .explore-section::before {
@@ -509,12 +519,14 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   animation: fadeSlide 0.4s ease-out;
   z-index: 999;
-  max-width: 25%;
+  max-width: 90%;
+  width: auto;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-left: 100px;
+  margin-left: 0;
+  box-sizing: border-box;
 }
 
 @keyframes fadeSlide {
@@ -531,7 +543,8 @@
 /* Home Page Responsive */
 @media (max-width: 768px) {
   .home-container {
-    margin-left: 0; /* Remove margin for mobile */
+    margin-left: 0;
+    padding-left: 0;
   }
   
   .hero-container {
@@ -576,18 +589,25 @@
     font-size: 1.2rem;
   }
   
+  /* Responsive adjustments for smaller screens */
   .home-container .level-card {
-    width: 160px;
-    height: 130px;
+    width: 140px;      /* Reduced from 160px */
+    height: 110px;     /* Reduced from 130px */
     max-width: 45%;
   }
   
   .home-container .level-icon {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Reduced from 1.8rem */
+    margin-bottom: 4px;
   }
   
   .home-container .level-name {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduced from 1rem */
+  }
+  
+  .home-container .level-grade {
+    font-size: 0.7rem; /* Reduced from 0.8rem */
+    padding: 2px 6px;
   }
   
   .home-container .adventure-grid {
@@ -644,24 +664,25 @@
     padding: 10px;
   }
   
+  /* Responsive adjustments for smaller screens */
   .home-container .level-card {
-    width: 140px;
-    height: 120px;
+    width: 120px;      /* Reduced from 140px */
+    height: 100px;     /* Reduced from 120px */
     max-width: 45%;
   }
   
   .home-container .level-icon {
-    font-size: 1.6rem;
-    margin-bottom: 6px;
+    font-size: 1.4rem; /* Reduced from 1.6rem */
+    margin-bottom: 3px;
   }
   
   .home-container .level-name {
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Reduced from 0.9rem */
   }
   
   .home-container .level-grade {
-    font-size: 0.8rem;
-    padding: 3px 8px;
+    font-size: 0.65rem; /* Reduced from 0.8rem */
+    padding: 2px 5px;
   }
   
   .home-container .adventure-grid {
@@ -717,14 +738,25 @@
     font-weight: 400;
   }
   
+  /* Responsive adjustments for smaller screens */
   .home-container .level-card {
-    width: 120px;
-    height: 110px;
+    width: 100px;      /* Reduced from 120px */
+    height: 90px;      /* Reduced from 110px */
     max-width: 45%;
   }
   
+  .home-container .level-icon {
+    font-size: 1.2rem; /* Reduced from 1.6rem */
+    margin-bottom: 2px;
+  }
+  
   .home-container .level-name {
-    font-size: 0.85rem;
+    font-size: 0.8rem; /* Reduced from 0.85rem */
+  }
+  
+  .home-container .level-grade {
+    font-size: 0.6rem; /* Reduced from 0.8rem */
+    padding: 1px 4px;
   }
   
   .home-container .adventure-grid {
@@ -747,5 +779,91 @@
   .home-container .adventure-card span {
     font-size: 0.7rem;
     text-align: left;
+  }
+}
+
+/* Add a media query for TV screens */
+@media (min-width: 1200px) {
+  .home-container {
+    padding-left: 200px;
+  }
+  
+  .home-container .content-wrapper {
+    max-width: 1200px;
+  }
+  
+  .home-container .level-container {
+    max-width: 1200px;
+  }
+  
+  .home-container .explore-section {
+    max-width: 1200px;
+  }
+}
+
+/* Add a media query for very large screens (TVs) */
+@media (min-width: 1920px) {
+  .home-container {
+    padding-left: 250px;
+  }
+  
+  .home-container .content-wrapper {
+    max-width: 1400px;
+  }
+  
+  .home-container .level-container {
+    max-width: 1400px;
+  }
+  
+  .home-container .explore-section {
+    max-width: 1400px;
+  }
+  
+  .hero-container {
+    padding: 0 20px;
+  }
+  
+  .hero-main-title {
+    font-size: 1.3rem;
+  }
+  
+  .hero-sub-title {
+    font-size: 1rem;
+  }
+  
+  .hero-developer-label, .hero-developers, .hero-mentor, .hero-department {
+    font-size: 0.9rem;
+  }
+  
+  .home-container .section-title h2, 
+  .home-container .explore-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  /* TV adjustments for smaller cards */
+  .home-container .level-card {
+    width: 280px;      /* Reduced from 350px */
+    height: 160px;     /* Reduced from 200px */
+  }
+  
+  .home-container .level-icon {
+    font-size: 2.2rem; /* Reduced from 2.5rem */
+  }
+  
+  .home-container .level-name {
+    font-size: 1.1rem; /* Reduced from 1.2rem */
+  }
+  
+  .home-container .adventure-card {
+    height: 100px;
+    padding: 12px 10px;
+  }
+  
+  .home-container .adventure-card .card-icon {
+    font-size: 2rem;
+  }
+  
+  .home-container .adventure-card span {
+    font-size: 0.9rem;
   }
 }

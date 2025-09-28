@@ -1,11 +1,12 @@
 /* src/components/QuizSetup.css */
 .quiz-setup-container {
   display: block;
-  width: 100%;
+  width: 100vh;
   padding: 20px;
   background-color: #f8f9fa;
   min-height: 100vh;
   overflow-y: auto;
+  margin-left: 250px;
 }
 
 .quiz-setup-card {

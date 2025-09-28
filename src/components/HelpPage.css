@@ -1,7 +1,8 @@
 /* src/components/HelpPage.css */
 .help-page {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin-left: 200px;
+  /*margin: 0 auto;*/
   padding: 20px;
 }
 
