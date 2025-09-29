@@ -5,9 +5,7 @@ import funFactsData from '../data/funFactsData';
 const FunFacts = ({ language }) => {
   const [board, setBoard] = useState([]);
   const [selectedFact, setSelectedFact] = useState(null);
-  const [revealedCount, setRevealedCount] = useState(0);
   const [gameCompleted, setGameCompleted] = useState(false);
-  const [shuffledFacts, setShuffledFacts] = useState([]);
   const [usedIndices, setUsedIndices] = useState([]);
 
   // Initialize the board with random facts
@@ -17,34 +15,31 @@ const FunFacts = ({ language }) => {
 
   const resetBoard = () => {
     // If we've used all facts, reshuffle and reset used indices
-    if (usedIndices.length >= funFactsData.length) {
-      setUsedIndices([]);
+    let newUsedIndices = [...usedIndices];
+    if (newUsedIndices.length >= funFactsData.length) {
+      newUsedIndices = [];
     }
-    
+
     // Get 9 unique random facts
     const newFacts = [];
-    const newUsedIndices = [...usedIndices];
-    
     while (newFacts.length < 9 && newUsedIndices.length < funFactsData.length) {
       const randomIndex = Math.floor(Math.random() * funFactsData.length);
-      
-      // Only add if this fact hasn't been used yet
       if (!newUsedIndices.includes(randomIndex)) {
         newFacts.push(funFactsData[randomIndex]);
         newUsedIndices.push(randomIndex);
       }
     }
-    
+
     // Update used indices
     setUsedIndices(newUsedIndices);
-    
+
     // If no facts available, end the game
     if (newFacts.length === 0) {
       setBoard([]);
       setGameCompleted(true);
       return;
     }
-    
+
     // Create board with new facts
     const newBoard = newFacts.map((fact, index) => ({
       id: index,
@@ -52,32 +47,34 @@ const FunFacts = ({ language }) => {
       revealed: false,
       position: index + 1,
     }));
-    
+
     setBoard(newBoard);
     setSelectedFact(null);
-    setRevealedCount(0);
     setGameCompleted(false);
   };
 
   const handleSquareClick = (square) => {
-    if (square.revealed || gameCompleted) return;
-    
+    // Allow clicking on revealed squares
+    if (square.revealed) {
+      setSelectedFact(square.fact);
+      return;
+    }
+
     // Update the board to mark this square as revealed
     const updatedBoard = board.map((item) =>
       item.id === square.id ? { ...item, revealed: true } : item
     );
     setBoard(updatedBoard);
     setSelectedFact(square.fact);
-    
-    // Update revealed count
-    const newRevealedCount = revealedCount + 1;
-    setRevealedCount(newRevealedCount);
-    
+
     // Check if all squares are revealed
-    if (newRevealedCount === board.length) {
+    const allRevealed = updatedBoard.every((item) => item.revealed);
+    if (allRevealed) {
       setGameCompleted(true);
     }
   };
+
+  const revealedCount = board.filter((item) => item.revealed).length;
 
   return (
     <div className="board-game-container">
@@ -94,7 +91,7 @@ const FunFacts = ({ language }) => {
           </div>
         </div>
       </div>
-      
+
       <div className="game-board">
         {board.map((square) => (
           <div
@@ -121,7 +118,7 @@ const FunFacts = ({ language }) => {
           </div>
         ))}
       </div>
-      
+
       {selectedFact && (
         <div className="fact-display">
           <div className="fact-card">
@@ -131,7 +128,7 @@ const FunFacts = ({ language }) => {
           </div>
         </div>
       )}
-      
+
       {gameCompleted && (
         <div className="game-completed">
           <div className="completion-message">
@@ -144,7 +141,7 @@ const FunFacts = ({ language }) => {
           </div>
         </div>
       )}
-      
+
       <div className="game-controls">
         <button onClick={resetBoard} className="reset-btn">
           {language === 'English' ? 'New Game' : 'புதிய விளையாட்டு'}

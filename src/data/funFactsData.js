@@ -46,7 +46,7 @@ const funFactsData = [
 
   { en: "Otters have pockets in their armpits to store food.", ta: "ஒட்டர்களுக்கு உணவை சேமிக்க கைக்குழிகளில் பைகள் உள்ளன." },
   { en: "Snails can sleep for three years.", ta: "நத்தைகள் மூன்று ஆண்டுகள் தூங்க முடியும்." },
-  { en: "Penguins propose with pebbles.", ta: "பென்குவின்கள் சிறிய கற்களைக் கொண்டு求 திருமண முன்மொழிவு செய்கின்றன." },
+  { en: "Penguins propose with pebbles.", ta: "பென்குவின்கள் சிறிய கற்களைக் கொண்டு திருமண முன்மொழிவு செய்கின்றன." },
   { en: "Camels store fat, not water, in their humps.", ta: "ஒட்டகங்கள் தங்கள் கம்பங்களில் தண்ணீர் அல்ல, கொழுப்பை சேமிக்கின்றன." },
   { en: "Goldfish have a memory span of three months, not three seconds.", ta: "கோல்ட்ஃபிஷ் மூன்று விநாடிகள் அல்ல, மூன்று மாத நினைவாற்றல் கொண்டது." },
   { en: "Dolphins call each other by name.", ta: "டால்பின்கள் ஒருவருக்கொருவர் பெயரால் அழைக்கின்றன." },

@@ -13,7 +13,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
       case "home":
         return "முகப்பு";
       case "about":
-        return (<>எங்கள் <br />செயலியைப்<br/> பற்றி</>);
+        return "பற்றி";
       case "help":
         return "உதவி";
       case "leaderboard":
@@ -72,7 +72,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
           <div className="user-info">
             <span className="username">{user.username}</span>
             <button onClick={onLogout} className="logout-btn">
-              {language === "English" ? "Logout" : "வெளியேறு"}
+              {language === "English" ? (<>Logout <br></br> [Once You Completed]</>)  : (<>வெளியேறு <br></br> [நீங்கள் முடித்தவுடன்]</>)}
             </button>
           </div>
         )}
