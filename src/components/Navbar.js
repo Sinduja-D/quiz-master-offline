@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React from "react";
 import './Navbar.css';
-import logo from "../assets/logo.png";
+import logo from "../assets/app-logo.png";
 
 const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
   const navItems = ["home", "about", "help", "leaderboard"];
@@ -29,10 +29,9 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
       <div className="nav-brand" onClick={() => setActivePage("home")} style={{ cursor: "pointer" }}>
         <img src={logo} alt="App Logo" className="nav-logo" />
         <span className="brand-text">
-          {language === "English" ? (<> Science Quiz for Young <br /> Achievers  </>): (
+          {language === "English" ? (<> VigyaanXpo </>): (
     <>
-      இளைய <br />சிந்தனையாளர்களுக்கான <br />
-      அறிவியல் வினாடி வினா
+      VigyaanXpo
     </>
   )}
         </span>

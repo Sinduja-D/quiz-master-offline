@@ -7,8 +7,8 @@ const HelpPage = ({ language }) => {
       title: " Help & Guide",
       sections: [
         {
-          heading: "Welcome to our app!",
-          content: "This app is an interactive educational platform designed to test your knowledge across various subjects. With multiple difficulty levels, detailed performance tracking, and a competitive leaderboard, it offers a comprehensive learning experience."
+          heading: "Welcome to VigyaanXpo!",
+          content: "VigyaanXpo is an interactive educational platform designed to test your knowledge across various subjects. With multiple difficulty levels, detailed performance tracking, and a competitive leaderboard, it offers a comprehensive learning experience."
         },
         {
           heading: "Getting Started",
@@ -40,8 +40,8 @@ const HelpPage = ({ language }) => {
       title: "உதவி & வழிகாட்டி",
       sections: [
         {
-          heading: "எங்கள் செயலிக்கு வரவேற்கிறோம்!",
-          content: "இந்த செயலி என்பது பல்வேறு பாடங்களில் உங்கள் அறிவைச் சோதிக்க வடிவமைக்கப்பட்ட ஒரு ஊடாடும் கல்வி தளம். பல சிரம நிலைகள், விரிவான செயல்திறன் கண்காணிப்பு மற்றும் போட்டி முன்னணி பட்டியல் ஆகியவற்றுடன், இது ஒரு விரிவான கற்றல் அனுபவத்தை வழங்குகிறது."
+          heading: "VigyaanXpo வரவேற்கிறோம்!",
+          content: "VigyaanXpo என்பது பல்வேறு பாடங்களில் உங்கள் அறிவைச் சோதிக்க வடிவமைக்கப்பட்ட ஒரு ஊடாடும் கல்வி தளம். பல சிரம நிலைகள், விரிவான செயல்திறன் கண்காணிப்பு மற்றும் போட்டி முன்னணி பட்டியல் ஆகியவற்றுடன், இது ஒரு விரிவான கற்றல் அனுபவத்தை வழங்குகிறது."
         },
         {
           heading: "தொடங்குதல்",

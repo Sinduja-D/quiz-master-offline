@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Login.css';
 import tamilNaduLogo from '../assets/tamil-nadu-logo.png'; // Add your logo path
 import rmkLogo from '../assets/rmk.gif';
+import appLogo from '../assets/app-logo.png';
 //import rmkLogo from '../assets/rmk.jpeg'; // Add your logo path
 
 const Login = ({ onLogin, language, toggleLanguage }) => {
@@ -99,6 +100,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
           
           <div className="college-info">
             <h3 className="designed-by">
+              <h2>{language === 'English' ? 'Science Quiz for Young Achievers' : (<>இளைய சிந்தனையாளர்களுக்கான <br></br>அறிவியல் வினாடி வினா</>)} </h2>
+              <br></br>
               {language === "English"
                 ? "Designed and Compiled By"
                 : "வடிவமைத்து உருவாக்கியவர்கள்"}
@@ -144,7 +147,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
       <div className="login-section">
         <div className="login-card glass-effect">
           <div className="login-header">
-            <h2>{language === 'English' ? 'Welcome to Science Quiz for Young Achievers' : 'இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினாவிற்கு வரவேற்கிறோம்'}</h2>
+              <img src={appLogo} alt="App Logo" className="app-logo" />
+            <h2>{language === 'English' ? 'VigyaanXpo' : 'VigyaanXpo'}</h2>
             <p>{language === 'English'
               ? 'Please enter your details to continue'
               : 'தொடர்வதற்கு தயவுசெய்து உங்கள் விவரங்களை உள்ளிடவும்'}</p>

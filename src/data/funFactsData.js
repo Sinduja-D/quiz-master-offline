@@ -12,13 +12,13 @@ const funFactsData = [
   { en: "If you could fold paper 42 times, it would reach the Moon.", ta: "நீங்கள் ஒரு காகிதத்தை 42 மடங்கு மடித்தால், அது நிலவுக்கு சென்று சேரும்." },
 
   { en: "Butterflies taste with their feet.", ta: "வண்ணத்துப்பூச்சிகள் தங்கள் கால்களால் சுவைக்கின்றன." },
-  { en: "Sloths can hold their breath longer than dolphins.", ta: "தாமரைப்புள்ளிகள் டால்பின்களை விட அதிக நேரம் மூச்சை பிடித்து நிற்க முடியும்." },
+  { en: "Sloths can hold their breath longer than dolphins.", ta: "ஸ்லாத்துகள் டால்பின்களை விட அதிக நேரம் மூச்சை பிடித்து நிற்க முடியும்." },
   { en: "A day on Venus is longer than a year on Venus.", ta: "சுக்கிரனில் ஒரு நாள், சுக்கிரனில் ஒரு ஆண்டை விட நீண்டது." },
   { en: "Some turtles can breathe through their butts.", ta: "சில ஆமைகள் தங்கள் பின்புறம் வழியாக சுவாசிக்க முடியும்." },
   { en: "There are more stars in the universe than grains of sand on Earth.", ta: "பிரபஞ்சத்தில் பூமியில் உள்ள மணற்பருக்களை விட அதிக நட்சத்திரங்கள் உள்ளன." },
   { en: "Koalas sleep up to 22 hours a day.", ta: "கோவாலாக்கள் ஒரு நாளில் 22 மணி நேரம் தூங்குகின்றன." },
   { en: "A group of flamingos is called a 'flamboyance'.", ta: "ஒரு கூட்டம் ஃப்ளாமிங்கோக்களை 'ஃபிளாம்பாயன்ஸ்' என்று அழைக்கின்றனர்." },
-  { en: "Wombat poop is cube-shaped.", ta: "வொம்பாட் மலச்சிக்கல் கட்டம் வடிவில் இருக்கும்." },
+  { en: "Wombat poop is cube-shaped.", ta: "வொம்பாட் மலக்கட்டிகள் கட்டம் வடிவில் இருக்கும்." },
   { en: "Some frogs can freeze solid and come back to life when thawed.", ta: "சில தவளைகள் முழுமையாக உறைந்து, உருகும்போது மீண்டும் உயிர்ப்பிக்கின்றன." },
   { en: "A shrimp’s heart is located in its head.", ta: "ஒரு இறாலின் இதயம் அதன் தலையில் உள்ளது." },
 
@@ -36,7 +36,7 @@ const funFactsData = [
   { en: "Rats and mice laugh when tickled.", ta: "எலிகள் மற்றும் சுண்டெலிகள் குளிர்ச்சியடிக்கும் போது சிரிக்கின்றன." },
   { en: "Giraffes have the same number of neck bones as humans.", ta: "ஒட்டகச்சிவிங்கிகளுக்கு மனிதர்களைப் போலவே கழுத்து எலும்புகள் உள்ளன." },
   { en: "The first oranges weren’t orange but green.", ta: "முதல் ஆரஞ்சுகள் ஆரஞ்சு நிறமல்ல, பச்சை நிறம்." },
-  { en: "An octopus can squeeze through any hole larger than its beak.", ta: "ஒரு ஒட்டகச்சிவிங்கி அதன் அலகை விட பெரிய துளையில் நுழைய முடியும்." },
+  { en: "An octopus can squeeze through any hole larger than its beak.", ta: "ஒரு ஒட்டுக்காலி அதன் அலகை விட பெரிய துளையில் நுழைய முடியும்." },
   { en: "Some fish can recognize human faces.", ta: "சில மீன்கள் மனித முகங்களை அடையாளம் காண முடியும்." },
   { en: "Mosquitoes are attracted more to people who just ate bananas.", ta: "வாழைப்பழம் சாப்பிட்டவர்களை கொசுக்கள் அதிகம் விரும்புகின்றன." },
   { en: "There are more plastic flamingos in the world than real ones.", ta: "உலகில் உண்மையானவற்றை விட பிளாஸ்டிக் ஃப்ளாமிங்கோக்கள் அதிகம் உள்ளன." },
@@ -78,7 +78,7 @@ const funFactsData = [
   { en: "Kangaroos can’t walk backwards.", ta: "கங்காருக்கள் பின்புறமாக நடக்க முடியாது." },
   { en: "Sharks don’t get cancer as easily as other animals.", ta: "மற்ற விலங்குகளைவிட சுறாக்கள் புற்றுநோயால் எளிதில் பாதிக்கப்படுவதில்லை." },
 
-  { en: "Octopuses can taste with their arms.", ta: "ஒட்டகச்சிவிங்கிகள் தங்கள் கரங்களால் சுவைக்க முடியும்." },
+  { en: "Octopuses can taste with their arms.", ta: "ஒட்டுக்காலி தங்கள் கரங்களால் சுவைக்க முடியும்." },
   { en: "Some fish can glow in the dark (bioluminescence).", ta: "சில மீன்கள் இருளில் பிரகாசிக்க முடியும் (உயிரொளி)." },
   { en: "The longest recorded flight of a chicken is 13 seconds.", ta: "சரித்திரத்தில் நீண்ட கோழி பறப்பு 13 விநாடிகள்." },
   { en: "Banana plants are herbs, not trees.", ta: "வாழைப்பழச் செடிகள் மரங்கள் அல்ல, மூலிகைகள்." },
