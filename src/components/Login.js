@@ -1,10 +1,9 @@
 // Login.js
 import React, { useState, useEffect } from 'react';
 import './Login.css';
-import tamilNaduLogo from '../assets/tamil-nadu-logo.png'; // Add your logo path
+import tamilNaduLogo from '../assets/tamil-nadu-logo.png'; 
 import rmkLogo from '../assets/rmk.gif';
 import appLogo from '../assets/app-logo.png';
-//import rmkLogo from '../assets/rmk.jpeg'; // Add your logo path
 
 const Login = ({ onLogin, language, toggleLanguage }) => {
   const [username, setUsername] = useState('');
@@ -12,7 +11,6 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
   const [error, setError] = useState('');
   const [users, setUsers] = useState([]);
   
-  // Load users from localStorage
   useEffect(() => {
     const savedUsers = localStorage.getItem('quizAppUsers');
     if (savedUsers) setUsers(JSON.parse(savedUsers));
@@ -36,7 +34,6 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
       return;
     }
     
-    // Check if username exists anywhere
     const usernameExists = users.some(u =>
       u.username.toLowerCase() === username.toLowerCase()
     );
@@ -48,7 +45,6 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
       return;
     }
     
-    // Username is new → create user
     const newUser = {
       id: Date.now(),
       username: username.trim(),
@@ -77,17 +73,15 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
 
   return (
     <div className="login-container">
-      {/* Background decoration */}
       <div className="bg-decoration">
         <div className="bg-circle bg-circle-1"></div>
         <div className="bg-circle bg-circle-2"></div>
         <div className="bg-circle bg-circle-3"></div>
       </div>
       
-      {/* Left Side - Hero Content */}
+      {/* Left Side - Hero Section */}
       <div className="hero-section">
         <div className="hero-box glass-effect">
-          {/* Header with logos on both sides */}
           <div className="hero-header">
             <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="tamilnadu-logo" />
             <h1 className="hero-title">
@@ -100,10 +94,10 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
           
           <div className="college-info">
             <h3 className="designed-by">
-              <h2>{language === 'English' ? 'Science Quiz for Young Achievers' : (<>இளைய சிந்தனையாளர்களுக்கான <br></br>அறிவியல் வினாடி வினா</>)} </h2>
-              <br></br>
+              <h2>{language === 'English' ? 'Science Quiz for Young Achievers' : (<>இளைய சிந்தனையாளர்களுக்கான <br />அறிவியல் வினாடி வினா</>)}</h2>
+              <br />
               {language === "English"
-                ? "Designed and Compiled By"
+                ? "Designed and Compiled by"
                 : "வடிவமைத்து உருவாக்கியவர்கள்"}
             </h3>
             <h2 className="college-name">
@@ -143,15 +137,19 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
         </div>
       </div>
       
-      {/* Right Side - Login Form */}
+      {/* Right Side - Login Section */}
       <div className="login-section">
         <div className="login-card glass-effect">
           <div className="login-header">
+            <div className="app-title-row">
               <img src={appLogo} alt="App Logo" className="app-logo" />
-            <h2>{language === 'English' ? 'VigyaanXpo' : 'VigyaanXpo'}</h2>
-            <p>{language === 'English'
-              ? 'Please enter your details to continue'
-              : 'தொடர்வதற்கு தயவுசெய்து உங்கள் விவரங்களை உள்ளிடவும்'}</p>
+              <h2 className="app-title">{language === 'English' ? 'VigyaanXpo' : 'VigyaanXpo'}</h2>
+            </div>
+            <p>
+              {language === 'English'
+                ? 'Please enter your details to continue'
+                : 'தொடர்வதற்கு தயவுசெய்து உங்கள் விவரங்களை உள்ளிடவும்'}
+            </p>
           </div>
           
           <form onSubmit={handleSubmit} className="login-form">
