@@ -79,7 +79,16 @@ font-weight: bold;
 .view-certificate-btn:hover {
 transform: scale(1.05);
 }
-
+.profile-rank-badge {
+  margin-top: 6px;
+  display: inline-block;
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: #1a2a6c;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
 .badge-count {
   animation: pulse 2s infinite;
 }

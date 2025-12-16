@@ -1,113 +1,44 @@
 .leaderboard-page {
   max-width: 1200px;
-  margin-left: 200px;
-  padding: 0 15px;
+  margin-left: 100px;
+  margin-right: 10px;
+  padding: 20px;
 }
 
-.leaderboard-page h2 {
-  color: #1a2a6c;
-  margin-bottom: 20px;
-  font-size: 2.4rem;
-  font-weight: 700;
-  text-align: center;
-  position: relative;
-}
-
-.leaderboard-page h2:after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: #1a2a6c;
-  border-radius: 2px;
-}
-
-.leaderboard-intro {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #555;
-  font-size: 1.1rem;
-}
-
-.leaderboard-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-}
-
-.loading-spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top: 4px solid #1a2a6c;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 15px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.leaderboard-empty {
-  text-align: center;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  color: #555;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.leaderboard-container {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.leaderboard-header {
+/* ===== GRID (7 COLUMNS) ===== */
+.leaderboard-header,
+.leaderboard-item {
   display: grid;
-  grid-template-columns: 60px 1fr 1.5fr 100px 100px 120px;
-  gap: 15px;
-  padding: 15px 20px;
+  grid-template-columns:
+    60px
+    0.9fr
+    1fr
+    140px
+    100px
+    100px
+    120px;
+  gap: 12px;
+  align-items: center;
+}
+
+/* ===== HEADER ===== */
+.leaderboard-header {
   background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
   color: white;
+  padding: 14px 16px;
   font-weight: 600;
   text-align: center;
-  align-items: center;
 }
 
-.header-rank {
-  text-align: center;
-}
-
-.header-user {
-  text-align: left;
-}
-
+.header-user,
 .header-school {
   text-align: left;
 }
 
-.leaderboard-list {
-  max-height: 500px;
-  overflow-y: auto;
-}
-
+/* ===== ROWS ===== */
 .leaderboard-item {
-  display: grid;
-  grid-template-columns: 60px 1fr 1.5fr 100px 100px 120px;
-  gap: 15px;
-  padding: 15px 20px;
+  padding: 14px 16px;
   border-bottom: 1px solid #eee;
-  align-items: center;
-  transition: background 0.3s;
 }
 
 .leaderboard-item:hover {
@@ -115,156 +46,96 @@
 }
 
 .leaderboard-item.current-user {
-  background: rgba(26, 42, 108, 0.1);
+  background: rgba(26, 42, 108, 0.12);
   font-weight: 600;
 }
 
-.leaderboard-item.rank-1 {
-  background: rgba(255, 215, 0, 0.1);
-}
-
-.leaderboard-item.rank-2 {
-  background: rgba(192, 192, 192, 0.1);
-}
-
-.leaderboard-item.rank-3 {
-  background: rgba(205, 127, 50, 0.1);
-}
-
-.user-rank {
-  font-size: 1.5rem;
-  font-weight: bold;
+/* ===== CELLS ===== */
+.user-rank,
+.user-points,
+.user-quizzes,
+.user-score,
+.header-rank,
+.header-points,
+.header-quizzes,
+.header-score,
+.header-place,
+.user-place {
   text-align: center;
-  min-width: 60px;
-}
-
-.user-info-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+  white-space: nowrap;
 }
 
 .user-name {
   font-weight: 600;
   color: #1a2a6c;
-  word-break: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.user-school-container {
-  min-width: 0;
+  overflow: hidden;
+  gap:1px;
+  text-overflow: ellipsis;
 }
 
 .user-school {
-  font-size: 0.9rem;
   color: #555;
-  word-break: break-word;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 500;
 }
 
 .current-user-badge {
-  display: inline-block;
+  margin-left: 8px;
   background: #1a2a6c;
   color: white;
-  font-size: 0.75rem;
-  padding: 2px 8px;
+  font-size: 0.7rem;
+  padding: 2px 6px;
   border-radius: 10px;
-  margin-top: 5px;
-  align-self: flex-start;
-  white-space: nowrap;
 }
 
-.user-points, .user-quizzes, .user-score {
-  text-align: center;
-  font-weight: 600;
-  color: #1a2a6c;
-  white-space: nowrap;
-}
-
-.leaderboard-footer {
-  text-align: center;
-  margin-top: 20px;
-  color: #555;
-  font-size: 1rem;
-}
-
-/* Tamil language specific adjustments */
+/* ===== TAMIL SUPPORT ===== */
 .leaderboard-page.tamil-language .leaderboard-header,
 .leaderboard-page.tamil-language .leaderboard-item {
-  grid-template-columns: 80px 1.5fr 2fr 100px 100px 120px;
+  grid-template-columns:
+    80px
+    1.5fr
+    1.8fr
+    120px
+    100px
+    100px
+    120px;
 }
 
-.leaderboard-page.tamil-language .user-name,
-.leaderboard-page.tamil-language .user-school {
-  font-size: 0.9rem;
-}
-
-/* Responsive adjustments */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
-  .leaderboard-header, .leaderboard-item {
-    grid-template-columns: 60px 1fr 1.2fr 100px 100px;
+  .leaderboard-header,
+  .leaderboard-item {
+    grid-template-columns:
+      60px
+      1fr
+      1.2fr
+      100px
+      100px
+      100px;
   }
-  
-  .header-score, .user-score {
+
+  .header-score,
+  .user-score {
     display: none;
-  }
-  
-  .leaderboard-page.tamil-language .leaderboard-header,
-  .leaderboard-page.tamil-language .leaderboard-item {
-    grid-template-columns: 80px 1.5fr 1.5fr 100px 100px;
   }
 }
 
 @media (max-width: 768px) {
-  .leaderboard-header, .leaderboard-item {
-    grid-template-columns: 50px 1fr 80px;
-    gap: 10px;
+  .leaderboard-header,
+  .leaderboard-item {
+    grid-template-columns: 50px 1fr 90px;
   }
-  
-  .header-school, .header-quizzes, .header-score, 
-  .user-school-container, .user-quizzes, .user-score {
-    display: none;
-  }
-  
-  .user-info-container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .current-user-badge {
-    margin-top: 0;
-    margin-left: 10px;
-  }
-  
-  /* Tamil language specific adjustments for mobile */
-  .leaderboard-page.tamil-language .leaderboard-header,
-  .leaderboard-page.tamil-language .leaderboard-item {
-    grid-template-columns: 60px 1fr 80px;
-  }
-}
 
-@media (max-width: 576px) {
-  .leaderboard-page {
-    padding: 0 10px;
-  }
-  
-  .leaderboard-header, .leaderboard-item {
-    padding: 12px 15px;
-  }
-  
-  .user-rank {
-    font-size: 1.2rem;
-    min-width: 50px;
-  }
-  
-  .leaderboard-page.tamil-language .leaderboard-header,
-  .leaderboard-page.tamil-language .leaderboard-item {
-    grid-template-columns: 60px 1fr 80px;
+  .header-school,
+  .header-place,
+  .header-quizzes,
+  .header-score,
+  .user-school,
+  .user-place,
+  .user-quizzes,
+  .user-score {
+    display: none;
   }
 }

@@ -37,7 +37,7 @@ const CertificateCard = ({ user }) => {
 
         {/* Top Ribbon */}
         <div className="certificate-ribbon">
-          VIGYAAN EXPO
+          VIGYAANEXPO
         </div>
 
         {/* Header */}
@@ -57,6 +57,7 @@ const CertificateCard = ({ user }) => {
         <div className="student-details">
           <p><strong>School:</strong> {user.schoolName}</p>
           <p><strong>Place:</strong> {user.memberPlace}</p>
+           <p><strong>Date:</strong> {user.memberSince}</p>
         </div>
 
         {/* Main Text */}
@@ -77,9 +78,9 @@ const CertificateCard = ({ user }) => {
           {/* Principal */}
           <div className="signature">
             <div className="signature-text">
-              Dr. K.A. Mohamed Junaid
+              <bold>Dr. K.A. Mohamed Junaid</bold>
+       
             </div>
-            <div className="line"></div>
             <p>Principal</p>
             <span>R.M.K. Engineering College</span>
           </div>
@@ -99,11 +100,10 @@ const CertificateCard = ({ user }) => {
           {/* Chairman */}
           <div className="signature">
             <div className="signature-text">
-              Thiru. R.S. Munirathinam
+             <bold> Thiru. R.S. Munirathinam</bold>
             </div>
-            <div className="line"></div>
             <p>Founder & Chairman</p>
-            <span>R.M.K. Engineering College</span>
+            <span>R.M.K Group of Institutions</span>
           </div>
 
         </div>

@@ -55,10 +55,11 @@
 }
 
 /* Signatures */
-.signature-section {
+.signature {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+
 }
 
 .signature-box {
@@ -66,7 +67,8 @@
   text-align: center;
 }
 
-.sign-name {
+.signature-text {
   font-size: 14px;
   margin-top: 4px;
+  color: #1de720;
 }
