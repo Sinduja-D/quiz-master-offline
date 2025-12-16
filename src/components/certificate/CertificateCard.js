@@ -22,7 +22,7 @@ const CertificateCard = ({ user }) => {
 
     const link = document.createElement("a");
     link.href = image;
-    link.download = "VigyaanExpo_Certificate.png";
+    link.download = "VigyaanXpo_Certificate.png";
     link.click();
   };
 
@@ -37,7 +37,7 @@ const CertificateCard = ({ user }) => {
 
         {/* Top Ribbon */}
         <div className="certificate-ribbon">
-          VIGYAANEXPO
+          VigyaanXpo
         </div>
 
         {/* Header */}
@@ -64,7 +64,7 @@ const CertificateCard = ({ user }) => {
         <p className="certificate-text">
           for successfully participating and demonstrating enthusiasm and
           excellence in science quizzes conducted as part of the
-          <strong> VigyaanExpo Science Quiz</strong>.
+          <strong> VigyaanXpo Science Quiz</strong>.
         </p>
 
         {/* Achievements */}
