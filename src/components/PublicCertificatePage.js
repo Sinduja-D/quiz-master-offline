@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import "../CertificatePage.css"; // reuse your existing styles
@@ -35,9 +35,18 @@ const PublicCertificatePage = () => {
     link.click();
   };
 
+  // ✅ Auto-download on page load
+  useEffect(() => {
+    // Delay slightly to ensure the certificate renders before download
+    const timer = setTimeout(() => {
+      downloadCertificate();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="certificate-container">
-
       <div
         id="public-certificate"
         className="certificate-card realistic"
@@ -79,10 +88,10 @@ const PublicCertificatePage = () => {
         </div>
       </div>
 
+      {/* Keep the button as fallback */}
       <button className="download-btn" onClick={downloadCertificate}>
         📥 Download Certificate
       </button>
-
     </div>
   );
 };
