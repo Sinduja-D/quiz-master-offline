@@ -1,9 +1,10 @@
 /* src/components/AboutPage.css */
 .about-page {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
-  margin-left:200px;
-  padding: 20px;
+  margin-left:20px;
+  margin-right: 20px;
+  padding: 5px;
 }
 
 .page-title {

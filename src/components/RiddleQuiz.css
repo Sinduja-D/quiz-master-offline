@@ -1,17 +1,23 @@
 /* Multiple Choice Riddle Styles */
 .multiple-choice-container {
-  margin: 0 auto;
   max-width: 800px;
   align-items: center;
-  padding: 0px;
+
+  margin-left: 200px;
+  margin-right: 100px;
+     /* ✅ ADD THIS */
+  padding-bottom: 10px;
 }
+
 
 .game-header {
   display: flex;
-  justify-content: fixed;
+  top : -10px;
   align-items: center;
   margin-bottom: 0px;
-  margin-top: 0%;
+  margin-top: 0px;
+  padding-top: 0px;
+
 }
 
 .game-header h2 {
@@ -19,6 +25,8 @@
   font-weight: 700;
   color: #1a2a6c;
   margin: 0;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .score-board {
@@ -310,4 +318,8 @@
   text-align: center;
   color: #1a2a6c;
   font-weight: 500;
+}
+section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }

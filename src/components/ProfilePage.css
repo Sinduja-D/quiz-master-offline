@@ -1,7 +1,8 @@
 /* ProfilePage.css */
 .profile-page {
   max-width: 800px;
-  margin-left: 250px;
+  margin-left: 200px;
+  margin-right: 100px;
 }
 
 .profile-header {

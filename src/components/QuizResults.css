@@ -1,10 +1,11 @@
 /* src/components/QuizResults.css */
+
 .results-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin-left: 200px;
+  margin-left: 200px; /* Adjust if your sidebar width is different */
   padding: 0;
   background: #f9fbff; /* Light background */
   text-align: center;
@@ -29,6 +30,25 @@
   margin: 0 0 20px;
   font-size: 2rem;
   font-weight: 700;
+}
+
+/* --- NEW: Perfect Score Celebration --- */
+.perfect-score-celebration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.perfect-score-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.perfect-score-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f39c12; /* Gold color for celebration */
 }
 
 /* Performance message */
@@ -66,13 +86,7 @@
   animation: rotate 1.5s linear infinite;
   box-shadow: 0 0 20px rgba(26, 42, 108, 0.4);
 }
-/*
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-*/
+
 @keyframes rotate {
   0% {
     transform: rotate(-45deg);
@@ -84,7 +98,6 @@
     transform: rotate(-45deg);
   }
 }
-
 
 .score-circle::before {
   content: '';
@@ -157,6 +170,42 @@
   text-transform: uppercase;
 }
 
+/* --- NEW: Weak Topics Section --- */
+.weak-topics {
+  width: 100%;
+  text-align: left;
+  background-color: #fdf2f2; /* Light red background */
+  border: 1px solid #f5c6cb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.weak-topics h3 {
+  color: #c53030; /* Darker red for the title */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.weak-topics p {
+  margin: 0 0 15px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.weak-topics ul {
+  list-style-type: '✓  '; /* Custom list marker */
+  padding-left: 20px;
+  margin: 0;
+}
+
+.weak-topics li {
+  margin-bottom: 8px;
+  color: #333;
+}
+
 /* Buttons */
 .results-actions {
   display: flex;
@@ -164,6 +213,7 @@
   width: 100%;
   margin-top: 15px;
   gap: 15px;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
 
 .action-button {
@@ -176,6 +226,17 @@
   transition: all 0.3s ease;
   border: none;
   color: #fff;
+  min-width: 120px; /* Ensure buttons have a minimum width */
+}
+
+/* --- NEW: Style for the Review Answers button --- */
+.action-button.review {
+  background: linear-gradient(135deg, #5d4fb8, #8a7cc3); /* Purple color to distinguish it */
+}
+
+.action-button.review:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(93, 79, 184, 0.3);
 }
 
 .action-button.restart {
@@ -193,8 +254,30 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .score-circle { width: 150px; height: 150px; }
-  .score-percentage { font-size: 2.2rem; }
-  .results-stats { flex-direction: column; }
-  .results-actions { flex-direction: column; }
+  .results-container {
+    margin-left: 0; /* Remove margin on mobile for full width */
+  }
+
+  .results-card {
+    padding: 30px 20px;
+    border-radius: 15px;
+  }
+  
+  .score-circle { 
+    width: 150px; 
+    height: 150px; 
+  }
+  .score-percentage { 
+    font-size: 2.2rem; 
+  }
+  .results-stats { 
+    flex-direction: column; 
+    gap: 10px;
+  }
+  .results-actions { 
+    flex-direction: column; 
+  }
+  .action-button {
+    width: 100%; /* Full-width buttons on mobile */
+  }
 }

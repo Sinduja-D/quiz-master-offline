@@ -1,9 +1,10 @@
 /* src/components/DailySciencePage.css */
 .daily-science-container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  margin-left:200px;
-  padding: 20px;
+  margin-left:150px;
+  margin-right: 100px;
+  padding: 0px;
   min-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;

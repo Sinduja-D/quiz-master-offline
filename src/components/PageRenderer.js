@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
-import HomePage from "./HomePage.js";
-import AboutPage from "./AboutPage.js";
-import HelpPage from "./HelpPage.js";
-import ProfilePage from "./ProfilePage.js";
-import AchievementsPage from "./AchievementsPage.js";
-import LeaderboardPage from "./LeaderboardPage.js";
-import FunFactsPage from "./FunFacts.js";
-import QuizSetup from "./QuizSetup.js";
-import Quiz from "./Quiz.js";
-import RiddleQuiz from "./RiddleQuiz.js";
-import QuizResults from "./QuizResults.js";
-import DailySciencePage from "./DailySciencePage.js";
-import SpinWheel from "./SpinWheel.js";
-import StoryMenu from "./StoryMenu.js";
-import EscapeRoom from "./EscapeRoom.js";
+
+/* Pages */
+import HomePage from "./HomePage";
+import AboutPage from "./AboutPage";
+import ContactPage from "./ContactPage";
+import HelpPage from "./HelpPage";
+import ProfilePage from "./ProfilePage";
+import AchievementsPage from "./AchievementsPage";
+import LeaderboardPage from "./LeaderboardPage";
+import FunFactsPage from "./FunFacts";
+import QuizSetup from "./QuizSetup";
+import Quiz from "./Quiz";
+import RiddleQuiz from "./RiddleQuiz";
+import QuizResults from "./QuizResults";
+import DailySciencePage from "./DailySciencePage";
+import SpinWheel from "./SpinWheel";
+import StoryMenu from "./StoryMenu";
+import EscapeRoom from "./EscapeRoom";
 import CertificatePage from "./certificate/CertificatePage";
-import { useQuizApp } from "../hooks/useQuizApp.js";
+
+/* Hook */
+import { useQuizApp } from "../hooks/useQuizApp";
 
 const PageRenderer = ({
   language,
@@ -25,9 +30,14 @@ const PageRenderer = ({
   updateUser,
   toggleLanguage,
   candidateName,
-  setIsQuizInProgress
+  setIsQuizInProgress,
 }) => {
   const [selectedStory, setSelectedStory] = useState(null);
+
+  /* 🔍 Quiz review state */
+  const [lastQuizQuestions, setLastQuizQuestions] = useState([]);
+  const [lastQuizUserAnswers, setLastQuizUserAnswers] = useState([]);
+
   const {
     selectedLevel,
     quizSettings,
@@ -40,24 +50,27 @@ const PageRenderer = ({
     newlyUnlockedAchievements,
   } = useQuizApp(setActivePage, user, updateUser, setIsQuizInProgress);
 
+  /* 🚫 Prevent language change during quiz */
   const safeToggleLanguage = () => {
     if (activePage === "quiz") {
       alert(
         language === "English"
-          ? "You are not allowed to change the language after starting the quiz"
-          : "வினா தொடங்கிய பிறகு மொழியை மாற்ற அனுமதியில்லை"
+          ? "You cannot change language during the quiz"
+          : "வினா நடக்கும் போது மொழியை மாற்ற முடியாது"
       );
       return;
     }
     toggleLanguage();
   };
 
+  /* 💾 Save selected difficulty */
   useEffect(() => {
     if (selectedLevel) {
       sessionStorage.setItem("selectedDifficulty", selectedLevel.id);
     }
   }, [selectedLevel]);
 
+  /* 🔒 Prevent direct quizsetup access */
   useEffect(() => {
     if (activePage === "quizsetup") {
       const difficulty = sessionStorage.getItem("selectedDifficulty");
@@ -67,15 +80,7 @@ const PageRenderer = ({
     }
   }, [activePage, setActivePage]);
 
-  if (activePage === "certificate") {
-  return (
-    <CertificatePage
-      user={user}
-      setActivePage={setActivePage}
-      language={language}
-    />
-  );
-}
+  /* 🧩 Escape room handlers */
   const handleStorySelect = (story) => {
     setSelectedStory(story);
     setActivePage("escapeRoom");
@@ -83,21 +88,23 @@ const PageRenderer = ({
 
   const handleEscapeRoomComplete = (storyId) => {
     const updatedUser = { ...user };
-    if (!updatedUser.escapeRoomsCompleted) {
-      updatedUser.escapeRoomsCompleted = [];
-    }
+    updatedUser.escapeRoomsCompleted = updatedUser.escapeRoomsCompleted || [];
+
     if (!updatedUser.escapeRoomsCompleted.includes(storyId)) {
       updatedUser.escapeRoomsCompleted.push(storyId);
+      updatedUser.totalPoints = (updatedUser.totalPoints || 0) + 50;
     }
-    updatedUser.totalPoints = (updatedUser.totalPoints || 0) + 50;
+
     updateUser(updatedUser);
     localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
     const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
-    const userIndex = users.findIndex((u) => u.id === user.id);
-    if (userIndex !== -1) {
-      users[userIndex] = updatedUser;
+    const index = users.findIndex((u) => u.id === user.id);
+    if (index !== -1) {
+      users[index] = updatedUser;
       localStorage.setItem("quizAppUsers", JSON.stringify(users));
     }
+
     setActivePage("storyMenu");
   };
 
@@ -106,15 +113,27 @@ const PageRenderer = ({
     setActivePage("storyMenu");
   };
 
+  /* ⏳ Loading state */
   if (!user) {
     return (
       <div className="loading-container">
-        <div className="loading-spinner"></div>
         <p>{language === "English" ? "Loading..." : "ஏற்றப்படுகிறது..."}</p>
       </div>
     );
   }
 
+  /* 🧾 Certificate page (early return) */
+  if (activePage === "certificate") {
+    return (
+      <CertificatePage
+        user={user}
+        language={language}
+        setActivePage={setActivePage}
+      />
+    );
+  }
+
+  /* 🔀 PAGE SWITCH */
   switch (activePage) {
     case "home":
       return (
@@ -126,18 +145,25 @@ const PageRenderer = ({
           user={user}
         />
       );
+
     case "about":
       return <AboutPage language={language} />;
+
+    case "contact":
+      return <ContactPage language={language} />;
+
     case "help":
       return <HelpPage language={language} />;
-   case "profile":
-  return (
-    <ProfilePage
-      language={language}
-      user={user}
-      setActivePage={setActivePage}
-    />
-  );
+
+    case "profile":
+      return (
+        <ProfilePage
+          language={language}
+          user={user}
+          setActivePage={setActivePage}
+        />
+      );
+
     case "achievements":
       return (
         <AchievementsPage
@@ -146,16 +172,13 @@ const PageRenderer = ({
           newlyUnlockedAchievements={newlyUnlockedAchievements}
         />
       );
+
     case "leaderboard":
       return <LeaderboardPage language={language} currentUser={user} />;
+
     case "riddles":
-      return (
-        <RiddleQuiz
-          language={language}
-          userName={user.name}
-          schoolName={user.schoolName}
-        />
-      );
+      return <RiddleQuiz language={language} />;
+
     case "storyMenu":
       return (
         <StoryMenu
@@ -164,6 +187,7 @@ const PageRenderer = ({
           completedStories={user.escapeRoomsCompleted || []}
         />
       );
+
     case "escapeRoom":
       return (
         <EscapeRoom
@@ -173,10 +197,22 @@ const PageRenderer = ({
           onComplete={handleEscapeRoomComplete}
         />
       );
+
     case "dailyScience":
-      return <DailySciencePage language={language} user={user} updateUser={updateUser} />;
+      return (
+        <DailySciencePage
+          language={language}
+          user={user}
+          updateUser={updateUser}
+        />
+      );
+
     case "funFacts":
       return <FunFactsPage language={language} />;
+
+    case "spin":
+      return <SpinWheel language={language} user={user} />;
+
     case "quizsetup":
       return (
         <QuizSetup
@@ -186,6 +222,7 @@ const PageRenderer = ({
           onBack={() => setActivePage("home")}
         />
       );
+
     case "quiz":
       return (
         <Quiz
@@ -194,11 +231,16 @@ const PageRenderer = ({
           numberOfQuestions={quizSettings?.numberOfQuestions || 10}
           subject={quizSettings?.subject}
           grade={quizSettings?.grade}
-          onQuizComplete={handleQuizComplete}
-          onBack={() => setActivePage("quizsetup")}
           candidateName={candidateName}
+          onQuizComplete={(questions, answers) => {
+            setLastQuizQuestions(questions);
+            setLastQuizUserAnswers(answers);
+            handleQuizComplete(questions, answers);
+            setIsQuizInProgress(false);
+          }}
         />
       );
+
     case "quizresults":
       return (
         <QuizResults
@@ -206,8 +248,11 @@ const PageRenderer = ({
           language={language}
           onRestart={handleRestartQuiz}
           onHome={handleBackToHome}
+          questions={lastQuizQuestions}
+          userAnswers={lastQuizUserAnswers}
         />
       );
+
     default:
       return <HomePage language={language} setActivePage={setActivePage} />;
   }
