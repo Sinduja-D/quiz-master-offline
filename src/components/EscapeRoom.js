@@ -1,238 +1,150 @@
-// src/components/EscapeRoom.jsx
-import React, { useState, useEffect } from 'react';
-import './EscapeRoom.css';
-// Import stories separately
-import lab from '../data/lab.json';
-import space from '../data/space.json';
-import jungle from '../data/jungle.json';
+import React, { useState, useEffect } from "react";
+import "./EscapeRoom.css";
 
-// Story mapping
-const storyMap = { lab, space, jungle };
+/* ---------- STORIES ---------- */
+import lab from "../data/lab.json";
+import space from "../data/space.json";
+import jungle from "../data/jungle.json";
+import ocean from "../data/ocean.json";
+import desert from "../data/desert.json";
+import forest from "../data/forest.json";
+import pyramid from "../data/pyramid.json";
+import castle from "../data/castle.json";
+import arctic from "../data/arctic.json";
+import volcano from "../data/volcano.json";
+import cyber from "../data/cyber.json";
+import haunted from "../data/haunted.json";
+import underwater from "../data/underwater.json";
+import sky from "../data/sky.json";
+import time from "../data/time.json";
 
-// Background colors for each story (fallbacks)
-const backgroundColors = {
-  lab: {
-    intro: '#2c3e50',
-    transition1: '#34495e',
-    ending: '#3498db'
-  },
-  space: {
-    intro: '#0f0c29',
-    transition1: '#24243e',
-    ending: '#0f3460'
-  },
-  jungle: {
-    intro: '#1a5f3f',
-    transition1: '#2d8659',
-    ending: '#27ae60'
-  }
-};
+/* ---------- SOUNDS ---------- */
+import correctSound from "../assets/sounds/correct.mp3";
+import wrongSound from "../assets/sounds/wrong.mp3";
 
-// Image paths - using placeholder images for now
-const imagePaths = {
-  lab: {
-    intro: "/assets/images/lab_intro.jpg",
-    transition1: "/assets/images/lab_transition.jpg",
-    ending: "/assets/images/lab_ending.jpg"
-  },
-  space: {
-    intro: "/assets/images/space_intro.jpg",
-    transition1: "/assets/images/space_transition.jpg",
-    ending: "/assets/images/space_ending.jpg"
-  },
-  jungle: {
-    intro: "/assets/images/jungle_intro.jpg",
-    transition1: "/assets/images/jungle_transition.jpg",
-    ending: "/assets/images/jungle_ending.jpg"
-  }
+const storyMap = {
+  lab, space, jungle, ocean, desert, forest,
+  pyramid, castle, arctic, volcano, cyber, haunted,
+  underwater, sky, time,
 };
 
 const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
-  const [currentScene, setCurrentScene] = useState(0);
+  const story = storyMap[storyId];
+  const [currentSceneId, setCurrentSceneId] = useState(story.startScene);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
-  const [imageError, setImageError] = useState({});
-  
-  // Load the correct story
-  const story = storyMap[storyId];
-  const scenes = story ? story.scenes : [];
-  const currentSceneData = scenes[currentScene];
-  
-  // Handle image loading errors
-  const handleImageError = (sceneId) => {
-    setImageError(prev => ({
-      ...prev,
-      [sceneId]: true
-    }));
-  };
-  
-  // Handle scene transitions for intro/transition
+  const [gaveWrong, setGaveWrong] = useState(false);
+
+  const currentScene = story.scenes[currentSceneId];
+
   useEffect(() => {
-    if (currentSceneData && 
-       (currentSceneData.type === "intro" || currentSceneData.type === "transition")) {
-      const timer = setTimeout(() => {
-        setCurrentScene(prev => prev + 1);
-      }, currentSceneData.duration || 4000);
-      return () => clearTimeout(timer);
+    setCurrentSceneId(story.startScene);
+    setSelectedOption(null);
+    setIsCorrect(null);
+    setGaveWrong(false);
+  }, [storyId, story.startScene]);
+
+  useEffect(() => {
+    if (!currentScene) return;
+    if (currentScene.type === "intro" || currentScene.type === "transition") {
+      const t = setTimeout(() => setCurrentSceneId(currentScene.next), currentScene.duration || 2500);
+      return () => clearTimeout(t);
     }
-  }, [currentSceneData]);
-  
-  // Handle riddle answers
+  }, [currentScene]);
+
+  const totalRiddles = Object.values(story.scenes).filter(s => s.type === "riddle").length;
+  const solvedIndex = Object.keys(story.scenes).indexOf(currentSceneId);
+  const progress = currentScene?.type === "ending" ? 100 : Math.min((solvedIndex / totalRiddles) * 100, 100);
+
+  const playSound = src => {
+    const audio = new Audio(src);
+    audio.volume = 0.5;
+    audio.play();
+  };
+
   const handleAnswer = (option) => {
-    setSelectedOption(option);
-    const isAnswerCorrect = option === currentSceneData.answer;
-    setIsCorrect(isAnswerCorrect);
-    
-    if (isAnswerCorrect) {
-      setTimeout(() => {
-        setCurrentScene(prev => prev + 1);
-        setIsCorrect(null);
-        setSelectedOption(null);
-      }, 2000);
+    setSelectedOption(option.English);
+    const correct = option.English === currentScene.answer;
+    setIsCorrect(correct);
+
+    if (!correct) {
+      setGaveWrong(true);
+      playSound(wrongSound);
     } else {
-      setTimeout(() => {
-        setIsCorrect(null);
-        setSelectedOption(null);
-      }, 1500);
+      playSound(correctSound);
     }
+
+    setTimeout(() => {
+      setCurrentSceneId(option.next);
+      setSelectedOption(null);
+      setIsCorrect(null);
+    }, 600);
   };
-  
-  // Handle story completion
-  useEffect(() => {
-    if (currentScene === scenes.length - 1 && currentSceneData?.type === "ending") {
-      const timer = setTimeout(() => {
-        onComplete(storyId);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [currentScene, scenes.length, onComplete, storyId, currentSceneData]);
-  
-  // Render current scene
+
+  const handleExit = () => {
+    let status = "partial";
+    if (currentSceneId === "good" && !gaveWrong) status = "completed";
+    onComplete(storyId, status);
+    onBack();
+  };
+
   const renderScene = () => {
-    if (!currentSceneData) return null;
-    
-    // 🎬 Intro / Transition scenes
-    if (currentSceneData.type === "intro" || currentSceneData.type === "transition") {
-      const backgroundColor = backgroundColors[storyId]?.[currentSceneData.id] || '#333';
-      const imageUrl = imagePaths[storyId]?.[currentSceneData.id];
-      const hasError = imageError[currentSceneData.id];
-      
-      return (
-        <div className="scene-container">
-          <div 
-            className="scene-image-container"
-            style={{ 
-              backgroundImage: hasError ? 'none' : `url(${imageUrl})`,
-              backgroundColor
-            }}
-          >
-            {hasError && (
-              <div className="image-error-message">
-                {language === "English" ? "Image not available" : "படம் இல்லை"}
-              </div>
-            )}
-            
-            <div className="scene-text">
-              {currentSceneData.text[language]}
-            </div>
-          </div>
-        </div>
-      );
+    if (!currentScene) return null;
+
+    if (currentScene.type === "intro" || currentScene.type === "transition") {
+      return <div className="scene-text">{currentScene.text[language]}</div>;
     }
-    
-    // ❓ Riddle scene
-    if (currentSceneData.type === "riddle") {
+
+    if (currentScene.type === "riddle") {
       return (
         <div className="riddle-container">
-          <h2 className="riddle-question">
-            {currentSceneData.question[language]}
-          </h2>
-          
+          <div className="riddle-question">{currentScene.question[language]}</div>
           <div className="options-container">
-            {currentSceneData.options.map((option, index) => (
+            {currentScene.options.map((opt, idx) => (
               <button
-                key={index}
-                onClick={() => handleAnswer(option.English)}
-                className={`option-button ${
-                  selectedOption === option.English 
-                    ? (isCorrect ? 'correct' : 'incorrect') 
-                    : ''
-                }`}
+                key={idx}
+                className={`option-button ${selectedOption === opt.English ? (isCorrect ? "correct" : "incorrect") : ""}`}
                 disabled={selectedOption !== null}
+                onClick={() => handleAnswer(opt)}
               >
-                {option[language]}
+                {opt[language]}
               </button>
             ))}
           </div>
-          
           {selectedOption && (
-            <div className={`feedback ${isCorrect ? 'correct-feedback' : 'incorrect-feedback'}`}>
-              <div 
-                className="feedback-image"
-                style={{ backgroundColor: isCorrect ? '#4CAF50' : '#F44336' }}
-              >
-                {isCorrect ? '✓' : '✗'}
-              </div>
-              <p>
-                {isCorrect 
-                  ? (language === "English" ? "Correct!" : "சரியான பதில்!")
-                  : (language === "English" ? "Try Again!" : "மீண்டும் முயற்சிக்கவும்!")}
-              </p>
+            <div className={`feedback ${isCorrect ? "ok" : "no"}`}>
+              {isCorrect
+                ? language === "English" ? "✔ Correct!" : "✔ சரி!"
+                : language === "English" ? "✖ Wrong!" : "✖ தவறு!"}
             </div>
           )}
         </div>
       );
     }
-    
-    // 🏆 Ending scene
-    if (currentSceneData.type === "ending") {
-      const backgroundColor = backgroundColors[storyId]?.[currentSceneData.id] || '#333';
-      const imageUrl = imagePaths[storyId]?.[currentSceneData.id];
-      const hasError = imageError[currentSceneData.id];
-      
+
+    if (currentScene.type === "ending") {
       return (
-        <div className="scene-container">
-          <div 
-            className="ending-image-container"
-            style={{ 
-              backgroundImage: hasError ? 'none' : `url(${imageUrl})`,
-              backgroundColor
-            }}
-          >
-            {hasError && (
-              <div className="image-error-message">
-                {language === "English" ? "Image not available" : "படம் இல்லை"}
-              </div>
-            )}
-            
-            <h1 className="ending-title">
-              {currentSceneData.text[language]}
-            </h1>
-            <p className="fun-fact">
-              {currentSceneData.funFact[language]}
-            </p>
-            <button
-              onClick={() => onComplete(storyId)}
-              className="complete-button"
-            >
-              {language === "English" ? "Complete" : "முடிக்க"}
-            </button>
-          </div>
+        <div className="scene-container ending">
+          <h1>{currentScene.text[language]}</h1>
+          <div className="gift">{currentScene.gift}</div>
         </div>
       );
     }
-    
+
     return null;
   };
-  
+
   return (
-    <div className="escape-room">
-      {/*}
-      <button onClick={onBack} className="back-button">
-        {language === "English" ? "Back" : "திரும்ப"}
+    <div className={`escape-room ${storyId}`}>
+      <button className="back-btn-top-left" onClick={handleExit}>
+        {language === "English" ? "← Back" : "← மெனுவிற்கு திரும்ப"}
       </button>
-      */}
-      <div className="scene-container">
+
+      <div className="progress-wrapper">
+        <div className="progress-bar" style={{ width: `${progress}%` }} />
+      </div>
+
+      <div className="scene-wrapper">
         {renderScene()}
       </div>
     </div>

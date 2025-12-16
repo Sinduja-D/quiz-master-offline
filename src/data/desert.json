@@ -1,0 +1,101 @@
+{
+  "id": "desert",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You are lost in a hot desert.",
+        "Tamil": "நீங்கள் வெப்பமான பாலைவனத்தில் சிக்கியுள்ளீர்கள்."
+      },
+      "duration": 3000,
+      "next": "q1"
+    },
+    "q1": {
+      "type": "riddle",
+      "question": {
+        "English": "Deserts receive very little?",
+        "Tamil": "பாலைவனங்களில் குறைவாக கிடைப்பது?"
+      },
+      "answer": "Rain",
+      "options": [
+        {"English":"Rain","Tamil":"மழை","next":"q2"},
+        {"English":"Sunlight","Tamil":"சூரியஒளி","next":"bad"},
+        {"English":"Heat","Tamil":"வெப்பம்","next":"bad"},
+        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+      ]
+    },
+    "q2": {
+      "type": "riddle",
+      "question": {
+        "English": "Which animal stores water?",
+        "Tamil": "நீரை சேமிக்கும் விலங்கு?"
+      },
+      "answer": "Camel",
+      "options": [
+        {"English":"Camel","Tamil":"ஒட்டகம்","next":"q3"},
+        {"English":"Horse","Tamil":"குதிரை","next":"bad"},
+        {"English":"Dog","Tamil":"நாய்","next":"bad"},
+        {"English":"Cow","Tamil":"மாடு","next":"bad"}
+      ]
+    },
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "Deserts are mostly?",
+        "Tamil": "பாலைவனங்கள் பெரும்பாலும்?"
+      },
+      "answer": "Dry",
+      "options": [
+        {"English":"Dry","Tamil":"வறண்ட","next":"q4"},
+        {"English":"Wet","Tamil":"ஈரமான","next":"bad"},
+        {"English":"Frozen","Tamil":"உறைந்த","next":"bad"},
+        {"English":"Green","Tamil":"பச்சை","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "What protects desert animals?",
+        "Tamil": "பாலைவன விலங்குகளை பாதுகாப்பது?"
+      },
+      "answer": "Thick skin",
+      "options": [
+        {"English":"Thick skin","Tamil":"தடித்த தோல்","next":"q5"},
+        {"English":"Fur","Tamil":"முடி","next":"bad"},
+        {"English":"Feathers","Tamil":"இறகுகள்","next":"bad"},
+        {"English":"Scales","Tamil":"அளவைகள்","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Desert nights are?",
+        "Tamil": "பாலைவன இரவுகள் எப்படி இருக்கும்?"
+      },
+      "answer": "Cold",
+      "options": [
+        {"English":"Cold","Tamil":"குளிர்","next":"good"},
+        {"English":"Hot","Tamil":"வெப்பம்","next":"bad"},
+        {"English":"Humid","Tamil":"ஈரப்பதம்","next":"bad"},
+        {"English":"Rainy","Tamil":"மழை","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "🏜️ Desert Survivor",
+      "text": {
+        "English": "You crossed the desert!",
+        "Tamil": "நீங்கள் பாலைவனத்தை கடந்து விட்டீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "☀️ Heat Exhausted",
+      "text": {
+        "English": "You collapsed in the desert heat.",
+        "Tamil": "பாலைவன வெப்பத்தில் நீங்கள் வீழ்ந்துவிட்டீர்கள்."
+      }
+    }
+  }
+}

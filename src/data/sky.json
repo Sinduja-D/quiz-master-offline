@@ -1,0 +1,96 @@
+{
+  "id": "sky",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "Reach the floating Sky Island by solving cloud puzzles.",
+        "Tamil": "மேகப் புதிர்களைத் தீர்த்து வான்தீவுக்குச் செல்லுங்கள்."
+      },
+      "duration": 4000,
+      "next": "riddle1"
+    },
+    "riddle1": {
+      "type": "riddle",
+      "question": {
+        "English": "I am always above you but never fall. What am I?",
+        "Tamil": "நான் எப்போதும் உங்களுக்குமேல் இருக்கிறேன் ஆனால் விழவில்லை. நான் யார்?"
+      },
+      "answer": "Sky",
+      "options": [
+        {"English":"Sky","Tamil":"வானம்","next":"riddle2"},
+        {"English":"Sun","Tamil":"சூரியன்","next":"riddle1"},
+        {"English":"Cloud","Tamil":"மேகம்","next":"riddle1"},
+        {"English":"Bird","Tamil":"பறவை","next":"riddle1"}
+      ]
+    },
+    "riddle2": {
+      "type": "riddle",
+      "question": {
+        "English": "I float but I’m not a boat. I can bring rain. What am I?",
+        "Tamil": "நான் மிதக்கிறேன் ஆனால் கப்பல் இல்லை. நான் மழை தரலாம். நான் யார்?"
+      },
+      "answer": "Cloud",
+      "options": [
+        {"English":"Cloud","Tamil":"மேகம்","next":"riddle3"},
+        {"English":"Balloon","Tamil":"பலூன்","next":"riddle2"},
+        {"English":"Leaf","Tamil":"இலை","next":"riddle2"},
+        {"English":"Feather","Tamil":"இலை","next":"riddle2"}
+      ]
+    },
+    "riddle3": {
+      "type": "riddle",
+      "question": {
+        "English": "I rise in the morning and set at night. What am I?",
+        "Tamil": "நான் காலை எழுகிறேன் மற்றும் இரவில் மறைகிறேன். நான் யார்?"
+      },
+      "answer": "Sun",
+      "options": [
+        {"English":"Sun","Tamil":"சூரியன்","next":"riddle4"},
+        {"English":"Moon","Tamil":"சந்திரன்","next":"bad"},
+        {"English":"Star","Tamil":"நட்சத்திரம்","next":"bad"},
+        {"English":"Cloud","Tamil":"மேகம்","next":"bad"}
+      ]
+    },
+    "riddle4": {
+      "type": "riddle",
+      "question": {
+        "English": "I twinkle at night but am far away. What am I?",
+        "Tamil": "நான் இரவில் மின்னி மின்னி ஒளிர்கிறேன் ஆனால் தொலைவில் இருக்கிறேன். நான் யார்?"
+      },
+      "answer": "Star",
+      "options": [
+        {"English":"Star","Tamil":"நட்சத்திரம்","next":"riddle5"},
+        {"English":"Moon","Tamil":"சந்திரன்","next":"bad"},
+        {"English":"Sun","Tamil":"சூரியன்","next":"bad"},
+        {"English":"Cloud","Tamil":"மேகம்","next":"bad"}
+      ]
+    },
+    "riddle5": {
+      "type": "riddle",
+      "question": {
+        "English": "I am bright at night and change my shape. What am I?",
+        "Tamil": "நான் இரவில் பிரகாசமாக இருக்கிறேன் மற்றும் என் வடிவத்தை மாற்றுகிறேன். நான் யார்?"
+      },
+      "answer": "Moon",
+      "options": [
+        {"English":"Moon","Tamil":"சந்திரன்","next":"ending"},
+        {"English":"Star","Tamil":"நட்சத்திரம்","next":"bad"},
+        {"English":"Cloud","Tamil":"மேகம்","next":"bad"},
+        {"English":"Sun","Tamil":"சூரியன்","next":"bad"}
+      ]
+    },
+    "ending": {
+      "type": "ending",
+      "gift": {
+        "English":"🏆 Sky Voyager Badge",
+        "Tamil":"🏆 வான பயணி பதக்கம்"
+      },
+      "text": {
+        "English": "You reached the Sky Island safely!",
+        "Tamil": "நீங்கள் வான்தீவுக்கு பாதுகாப்பாக சென்றீர்கள்!"
+      }
+    }
+  }
+}

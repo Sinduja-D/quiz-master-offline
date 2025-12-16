@@ -1,0 +1,96 @@
+{
+  "id": "time",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "Travel through time! Solve puzzles from different eras to return safely.",
+        "Tamil": "காலத்தின் பல்வேறு யுகங்களில் மூழ்குங்கள்! பாதுகாப்பாக திரும்ப புதிர்களைத் தீர்க்கவும்."
+      },
+      "duration": 4000,
+      "next": "riddle1"
+    },
+    "riddle1": {
+      "type": "riddle",
+      "question": {
+        "English": "I mark history but I have no hands. What am I?",
+        "Tamil": "நான் வரலாற்றைக் குறிக்கிறேன் ஆனால் கைகள் இல்லை. நான் யார்?"
+      },
+      "answer": "Clock",
+      "options": [
+        {"English":"Clock","Tamil":"மணி","next":"riddle2"},
+        {"English":"Calendar","Tamil":"காலண்டர்","next":"riddle2"},
+        {"English":"Book","Tamil":"புத்தகம்","next":"riddle2"},
+        {"English":"Stone","Tamil":"கல்","next":"riddle1"}
+      ]
+    },
+    "riddle2": {
+      "type": "riddle",
+      "question": {
+        "English": "I can fly without wings, see without eyes. What am I?",
+        "Tamil": "நான் இறக்கைகளை இல்லாமல் பறக்க முடியும், கண்கள் இல்லாமல் பார்க்க முடியும். நான் யார்?"
+      },
+      "answer": "Time",
+      "options": [
+        {"English":"Time","Tamil":"காலம்","next":"riddle3"},
+        {"English":"Wind","Tamil":"காற்று","next":"riddle2"},
+        {"English":"Shadow","Tamil":"நிழல்","next":"riddle2"},
+        {"English":"Dream","Tamil":"கனவு","next":"riddle2"}
+      ]
+    },
+    "riddle3": {
+      "type": "riddle",
+      "question": {
+        "English": "I have a beginning but no end. What am I?",
+        "Tamil": "எனக்கு தொடக்கம் உள்ளது ஆனால் முடிவு இல்லை. நான் யார்?"
+      },
+      "answer": "Circle of Time",
+      "options": [
+        {"English":"Circle of Time","Tamil":"கால வட்டம்","next":"riddle4"},
+        {"English":"Sun","Tamil":"சூரியன்","next":"bad"},
+        {"English":"Moon","Tamil":"சந்திரன்","next":"bad"},
+        {"English":"Clock","Tamil":"மணி","next":"bad"}
+      ]
+    },
+    "riddle4": {
+      "type": "riddle",
+      "question": {
+        "English": "I am always moving but never rest. What am I?",
+        "Tamil": "நான் எப்போதும் நகர்கிறேன் ஆனால் ஓய்வு எடுக்க மாட்டேன். நான் யார்?"
+      },
+      "answer": "Time",
+      "options": [
+        {"English":"Time","Tamil":"காலம்","next":"riddle5"},
+        {"English":"River","Tamil":"நதி","next":"bad"},
+        {"English":"Wind","Tamil":"காற்று","next":"bad"},
+        {"English":"Clock","Tamil":"மணி","next":"bad"}
+      ]
+    },
+    "riddle5": {
+      "type": "riddle",
+      "question": {
+        "English": "I am invisible but affect everything. What am I?",
+        "Tamil": "நான் கண்களில் தெரியவில்லை ஆனால் எல்லாவற்றையும் பாதிக்கிறேன். நான் யார்?"
+      },
+      "answer": "Time",
+      "options": [
+        {"English":"Time","Tamil":"காலம்","next":"ending"},
+        {"English":"Wind","Tamil":"காற்று","next":"bad"},
+        {"English":"Shadow","Tamil":"நிழல்","next":"bad"},
+        {"English":"Dream","Tamil":"கனவு","next":"bad"}
+      ]
+    },
+    "ending": {
+      "type": "ending",
+      "gift": {
+        "English":"🏆 Time Traveler Badge",
+        "Tamil":"🏆 கால பயணி பதக்கம்"
+      },
+      "text": {
+        "English": "You traveled through time safely!",
+        "Tamil": "நீங்கள் காலத்தினூடே பாதுகாப்பாக பயணம் செய்தீர்கள்!"
+      }
+    }
+  }
+}

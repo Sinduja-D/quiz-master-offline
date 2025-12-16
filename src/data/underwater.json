@@ -1,0 +1,103 @@
+{
+  "id": "underwater",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "Dive into the underwater cave! Solve riddles to explore safely.",
+        "Tamil": "கடல்கீழ் குகையில் மூழ்குங்கள்! பாதுகாப்பாக ஆராய புதிர்களைத் தீர்க்கவும்."
+      },
+      "duration": 3000,
+      "next": "q1"
+    },
+    "q1": {
+      "type": "riddle",
+      "question": {
+        "English": "I have a heart that doesn’t beat. What am I?",
+        "Tamil": "எனக்கு துடிக்கும் இதயம் இல்லை. நான் யார்?"
+      },
+      "answer": "Artichoke",
+      "options": [
+        {"English":"Artichoke","Tamil":"கலைச்சோக்கு","next":"q2"},
+        {"English":"Stone","Tamil":"கல்","next":"bad"},
+        {"English":"Fish","Tamil":"மீன்","next":"bad"},
+        {"English":"Coral","Tamil":"மணல்கல்","next":"bad"}
+      ]
+    },
+    "q2": {
+      "type": "riddle",
+      "question": {
+        "English": "I move silently, carry treasure inside, yet I have no legs. What am I?",
+        "Tamil": "நான் மௌனமாக நகர்கிறேன், உள்ளே திரூகம் கொண்டு செல்கிறேன், ஆனால் கால்கள் இல்லை. நான் யார்?"
+      },
+      "answer": "Clam",
+      "options": [
+        {"English":"Clam","Tamil":"முத்துக்கல்","next":"q3"},
+        {"English":"Crab","Tamil":"நண்டு","next":"bad"},
+        {"English":"Octopus","Tamil":"அக்டோபஸ்","next":"bad"},
+        {"English":"Seahorse","Tamil":"கடல் குதிரை","next":"bad"}
+      ]
+    },
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "I am colorful and float in water, yet I sting. What am I?",
+        "Tamil": "நான் நிறமுடையவன், நீரில் மிதக்கிறேன், ஆனால் கடிக்கிறேன். நான் யார்?"
+      },
+      "answer": "Jellyfish",
+      "options": [
+        {"English":"Jellyfish","Tamil":"ஜெல்லிபிஷ்","next":"q4"},
+        {"English":"Fish","Tamil":"மீன்","next":"bad"},
+        {"English":"Crab","Tamil":"நண்டு","next":"bad"},
+        {"English":"Coral","Tamil":"மணல்கல்","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "I build my house on the seabed and walk sideways. What am I?",
+        "Tamil": "நான் கடல்மேல் என் வீடு கட்டுகிறேன் மற்றும் பக்கமாக நடக்கிறேன். நான் யார்?"
+      },
+      "answer": "Crab",
+      "options": [
+        {"English":"Crab","Tamil":"நண்டு","next":"q5"},
+        {"English":"Clam","Tamil":"முத்துக்கல்","next":"bad"},
+        {"English":"Octopus","Tamil":"அக்டோபஸ்","next":"bad"},
+        {"English":"Starfish","Tamil":"நட்சத்திர மீன்","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "I have eight arms and ink to hide. What am I?",
+        "Tamil": "எனக்கு எட்டு கைகள் உள்ளன மற்றும் மறைக்க மலம் உள்ளது. நான் யார்?"
+      },
+      "answer": "Octopus",
+      "options": [
+        {"English":"Octopus","Tamil":"அக்டோபஸ்","next":"good"},
+        {"English":"Clam","Tamil":"முத்துக்கல்","next":"bad"},
+        {"English":"Crab","Tamil":"நண்டு","next":"bad"},
+        {"English":"Jellyfish","Tamil":"ஜெல்லிபிஷ்","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "🏆 Deep Sea Explorer Badge",
+      "text": {
+        "English": "You explored the underwater cave safely!",
+        "Tamil": "நீங்கள் கடல்கீழ் குகையை பாதுகாப்பாக ஆராய்ந்தீர்கள்!"
+      }
+    }
+  },
+
+    "bad": {
+      "type": "ending",
+      "gift":"🌊 Lost Diver",
+      "text": {
+        "English": "You got lost in the underwater cave.",
+        "Tamil": "நீங்கள் கடல்கீழ் குகையில் சிக்கிவிட்டீர்கள்."
+      }
+    }
+  }
+

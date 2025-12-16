@@ -1,0 +1,101 @@
+{
+  "id": "ocean",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You are trapped deep inside the ocean.",
+        "Tamil": "நீங்கள் ஆழ்கடலில் சிக்கியுள்ளீர்கள்."
+      },
+      "duration": 3000,
+      "next": "q1"
+    },
+    "q1": {
+      "type": "riddle",
+      "question": {
+        "English": "Largest ocean on Earth?",
+        "Tamil": "பூமியில் மிகப்பெரிய கடல் எது?"
+      },
+      "answer": "Pacific",
+      "options": [
+        {"English":"Pacific","Tamil":"பசிபிக்","next":"q2"},
+        {"English":"Indian","Tamil":"இந்திய","next":"bad"},
+        {"English":"Atlantic","Tamil":"அட்லாண்டிக்","next":"bad"},
+        {"English":"Arctic","Tamil":"ஆர்க்டிக்","next":"bad"}
+      ]
+    },
+    "q2": {
+      "type": "riddle",
+      "question": {
+        "English": "Which animal is the largest?",
+        "Tamil": "மிகப்பெரிய விலங்கு எது?"
+      },
+      "answer": "Blue Whale",
+      "options": [
+        {"English":"Blue Whale","Tamil":"நீல திமிங்கிலம்","next":"q3"},
+        {"English":"Shark","Tamil":"சுறா","next":"bad"},
+        {"English":"Dolphin","Tamil":"டால்பின்","next":"bad"},
+        {"English":"Octopus","Tamil":"ஆக்டோபஸ்","next":"bad"}
+      ]
+    },
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "Ocean water is?",
+        "Tamil": "கடல் நீர் எப்படி இருக்கும்?"
+      },
+      "answer": "Salty",
+      "options": [
+        {"English":"Salty","Tamil":"உப்பு","next":"q4"},
+        {"English":"Sweet","Tamil":"இனிப்பு","next":"bad"},
+        {"English":"Bitter","Tamil":"கசப்பு","next":"bad"},
+        {"English":"Plain","Tamil":"சாதாரணம்","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "Who studies oceans?",
+        "Tamil": "கடல்களை ஆய்வு செய்வோர்?"
+      },
+      "answer": "Oceanographer",
+      "options": [
+        {"English":"Oceanographer","Tamil":"கடல் ஆய்வாளர்","next":"q5"},
+        {"English":"Astronaut","Tamil":"விண்வெளி வீரர்","next":"bad"},
+        {"English":"Doctor","Tamil":"மருத்துவர்","next":"bad"},
+        {"English":"Pilot","Tamil":"விமானி","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Corals are?",
+        "Tamil": "பவழப்பாறைகள் என்ன?"
+      },
+      "answer": "Living organisms",
+      "options": [
+        {"English":"Living organisms","Tamil":"உயிருள்ளவை","next":"good"},
+        {"English":"Rocks","Tamil":"பாறைகள்","next":"bad"},
+        {"English":"Plants","Tamil":"தாவரங்கள்","next":"bad"},
+        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "🌊 Ocean Master Badge",
+      "text": {
+        "English": "You escaped the ocean!",
+        "Tamil": "நீங்கள் கடலிலிருந்து தப்பித்தீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "⚓ Sunk Explorer",
+      "text": {
+        "English": "You sank into the deep ocean.",
+        "Tamil": "நீங்கள் ஆழ்கடலில் மூழ்கிவிட்டீர்கள்."
+      }
+    }
+  }
+}

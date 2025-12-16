@@ -1,50 +1,17 @@
 [
-  {
-    "id": "lab",
-    "title": {
-      "English": "Lab Escape",
-      "Tamil": "ஆய்வகம் தப்பித்தல்"
-    },
-    "description": {
-      "English": "Escape from a science laboratory by solving puzzles.",
-      "Tamil": "புதிர்களைத் தீர்த்து அறிவியல் ஆய்வகத்திலிருந்து தப்பிக்கவும்."
-    },
-    "difficulty": {
-      "English": "Easy",
-      "Tamil": "எளிதான"
-    },
-    "icon": "🔬"
-  },
-  {
-    "id": "space",
-    "title": {
-      "English": "Space Escape",
-      "Tamil": "விண்வெளி தப்பித்தல்"
-    },
-    "description": {
-      "English": "Solve space-themed puzzles to return to Earth.",
-      "Tamil": "பூமிக்குத் திரும்ப விண்வெளி தொடர்பான புதிர்களைத் தீர்க்கவும்."
-    },
-    "difficulty": {
-      "English": "Medium",
-      "Tamil": "நடுத்தர"
-    },
-    "icon": "🚀"
-  },
-  {
-    "id": "jungle",
-    "title": {
-      "English": "Jungle Escape",
-      "Tamil": "காட்டுத் தப்பித்தல்"
-    },
-    "description": {
-      "English": "Navigate through the jungle by solving nature puzzles.",
-      "Tamil": "இயற்கை புதிர்களைத் தீர்த்து காட்டினூடே செல்லவும்."
-    },
-    "difficulty": {
-      "English": "Hard",
-      "Tamil": "கடினமான"
-    },
-    "icon": "🌴"
-  }
+  {"id":"lab","title":{"English":"Lab Escape","Tamil":"ஆய்வகம் தப்பித்தல்"},"description":{"English":"Escape from a science lab by solving puzzles.","Tamil":"புதிர்களைத் தீர்த்து அறிவியல் ஆய்வகத்திலிருந்து தப்பிக்கவும்."},"difficulty":{"English":"Easy","Tamil":"எளிதான"},"icon":"🔬"},
+  {"id":"space","title":{"English":"Space Escape","Tamil":"விண்வெளி தப்பித்தல்"},"description":{"English":"Solve space-themed puzzles to return to Earth.","Tamil":"பூமிக்குத் திரும்ப விண்வெளி தொடர்பான புதிர்களைத் தீர்க்கவும்."},"difficulty":{"English":"Medium","Tamil":"நடுத்தர"},"icon":"🚀"},
+  {"id":"jungle","title":{"English":"Jungle Escape","Tamil":"காட்டுத் தப்பித்தல்"},"description":{"English":"Navigate through the jungle by solving nature puzzles.","Tamil":"இயற்கை புதிர்களைத் தீர்த்து காட்டினூடே செல்லவும்."},"difficulty":{"English":"Hard","Tamil":"கடினமான"},"icon":"🌴"},
+  {"id":"ocean","title":{"English":"Ocean Escape","Tamil":"கடல் தப்பித்தல்"},"description":{"English":"Solve ocean-themed puzzles to escape the deep sea.","Tamil":"ஆழ்கடல் புதிர்களைத் தீர்த்து தப்பிக்கவும்."},"difficulty":{"English":"Medium","Tamil":"நடுத்தர"},"icon":"🌊"},
+  {"id":"pyramid","title":{"English":"Pyramid Escape","Tamil":"பிரமிட் தப்பித்தல்"},"description":{"English":"Find your way out of the ancient pyramid.","Tamil":"பழங்கால பிரமிட் வழியாக வெளியேறவும்."},"difficulty":{"English":"Hard","Tamil":"கடினமான"},"icon":"🛕"},
+  {"id":"castle","title":{"English":"Castle Escape","Tamil":"கேஸில் தப்பித்தல்"},"description":{"English":"Solve medieval puzzles to escape the castle.","Tamil":"நடுத்தர புதிர்களைத் தீர்த்து கோட்டையிலிருந்து தப்பிக்கவும்."},"difficulty":{"English":"Medium","Tamil":"நடுத்தர"},"icon":"🏰"},
+  {"id":"arctic","title":{"English":"Arctic Escape","Tamil":"அர்க்டிக் தப்பித்தல்"},"description":{"English":"Survive the frozen world by solving icy riddles.","Tamil":"பனிச்சரிவு புதிர்களைத் தீர்த்து குளிர்ந்த உலகத்தில் உயிர்வாழுங்கள்."},"difficulty":{"English":"Hard","Tamil":"கடினமான"},"icon":"❄️"},
+  {"id":"volcano","title":{"English":"Volcano Escape","Tamil":"தீப் புயல் தப்பித்தல்"},"description":{"English":"Escape the erupting volcano by solving puzzles.","Tamil":"உருகும் எரிமலை புதிர்களைத் தீர்த்து தப்பிக்கவும்."},"difficulty":{"English":"Hard","Tamil":"கடினமான"},"icon":"🌋"},
+  {"id":"cyber","title":{"English":"Cyber Escape","Tamil":"சைபர் தப்பித்தல்"},"description":{"English":"Solve cyber riddles to escape the digital world.","Tamil":"சைபர் புதிர்களைத் தீர்த்து டிஜிட்டல் உலகில் இருந்து தப்பிக்கவும்."},"difficulty":{"English":"Medium","Tamil":"நடுத்தர"},"icon":"💻"},
+  {"id":"forest","title":{"English":"Forest Escape","Tamil":"காடு தப்பித்தல்"},"description":{"English":"Find your way through the mysterious forest.","Tamil":"மர்மமான காடு வழியாக உங்கள் வழியை கண்டறியவும்."},"difficulty":{"English":"Medium","Tamil":"நடுத்தர"},"icon":"🌲"},
+  {"id":"haunted","title":{"English":"Haunted Mansion","Tamil":"மயக்கமான மாளிகை"},"description":{"English":"Escape from a spooky haunted mansion.","Tamil":"மயக்கமான மாளிகையில் இருந்து தப்பிக்கவும்."},"difficulty":{"English":"Hard","Tamil":"கடினமான"},"icon":"👻"},
+  {"id":"desert","title":{"English":"Desert Adventure","Tamil":"மணல் அனுபவம்"},"description":{"English":"Solve puzzles to survive the scorching desert.","Tamil":"சுடும் மணலாட்டில் உயிர்வாழ புதிர்களைத் தீர்க்கவும்."},"difficulty":{"English":"Medium","Tamil":"நடுத்தர"},"icon":"🏜️"},
+  {"id":"underwater","title":{"English":"Underwater Cave","Tamil":"கடல்கீழ் குகை"},"description":{"English":"Explore deep underwater caves and solve riddles.","Tamil":"ஆழ்கடல் குகைகளை ஆராய்ந்து புதிர்களைத் தீர்க்கவும்."},"difficulty":{"English":"Hard","Tamil":"கடினமான"},"icon":"🦑"},
+  {"id":"sky","title":{"English":"Sky Island","Tamil":"வான்தீவு"},"description":{"English":"Reach the floating island in the clouds by solving puzzles.","Tamil":"மேகங்களில் தொங்கும் தீவுக்குச் செல்ல புதிர்களைத் தீர்க்கவும்."},"difficulty":{"English":"Medium","Tamil":"நடுத்தர"},"icon":"☁️"},
+  {"id":"time","title":{"English":"Time Machine","Tamil":"கால இயந்திரம்"},"description":{"English":"Travel through time by solving era-based puzzles.","Tamil":"காலத்தின் பல்வேறு யுகங்களைக் கடந்துப் புதிர்களைத் தீர்க்கவும்."},"difficulty":{"English":"Hard","Tamil":"கடினமான"},"icon":"⏳"}
 ]

@@ -1,63 +1,101 @@
 {
   "id": "jungle",
-  "scenes": [
-    {
-      "id": "intro",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
       "type": "intro",
       "text": {
-        "English": "You are lost in the jungle! Solve riddles to find your way out.",
-        "Tamil": "நீங்கள் காட்டில் தவறி விட்டீர்கள்! வெளியேற புதிர்களைத் தீர்க்கவும்."
+        "English": "You are deep inside a dense jungle.",
+        "Tamil": "நீங்கள் அடர்ந்த காட்டில் சிக்கியுள்ளீர்கள்."
       },
-      "duration": 3000
+      "duration": 3000,
+      "next": "q1"
     },
-    {
-      "id": "riddle1",
+    "q1": {
       "type": "riddle",
       "question": {
-        "English": "I roar but I am not thunder. I am the king of the jungle. Who am I?",
-        "Tamil": "நான் முழங்குகிறேன் ஆனால் இடிமுழக்கம் அல்ல. நான் காட்டின் ராஜா. நான் யார்?"
+        "English": "Which animal is called the king of the jungle?",
+        "Tamil": "காட்டின் ராஜா என அழைக்கப்படும் விலங்கு?"
       },
+      "answer": "Lion",
       "options": [
-        { "English": "Tiger", "Tamil": "புலி" },
-        { "English": "Lion", "Tamil": "சிங்கம்" },
-        { "English": "Elephant", "Tamil": "யானை" }
-      ],
-      "answer": "Lion"
+        {"English":"Lion","Tamil":"சிங்கம்","next":"q2"},
+        {"English":"Elephant","Tamil":"யானை","next":"bad"},
+        {"English":"Tiger","Tamil":"புலி","next":"bad"},
+        {"English":"Bear","Tamil":"கரடி","next":"bad"}
+      ]
     },
-    {
-      "id": "transition1",
-      "type": "transition",
-      "text": {
-        "English": "You crossed the animal’s territory. One more riddle remains...",
-        "Tamil": "நீங்கள் விலங்கின் பிரதேசத்தை கடந்துவிட்டீர்கள். இன்னும் ஒரு புதிர் உள்ளது..."
-      },
-      "duration": 2500
-    },
-    {
-      "id": "riddle2",
+    "q2": {
       "type": "riddle",
       "question": {
-        "English": "I flow without legs, I sing without a mouth. What am I?",
-        "Tamil": "எனக்கு கால்கள் இல்லை ஆனாலும் ஓடுகிறேன், வாய் இல்லை ஆனாலும் பாடுகிறேன். நான் யார்?"
+        "English": "Largest land animal?",
+        "Tamil": "மிகப்பெரிய நில விலங்கு?"
       },
+      "answer": "Elephant",
       "options": [
-        { "English": "Wind", "Tamil": "காற்று" },
-        { "English": "River", "Tamil": "ஆறு" },
-        { "English": "Bird", "Tamil": "பறவை" }
-      ],
-      "answer": "River"
+        {"English":"Elephant","Tamil":"யானை","next":"q3"},
+        {"English":"Giraffe","Tamil":"ஒட்டகச்சிவிங்கி","next":"bad"},
+        {"English":"Rhino","Tamil":"காட்டெருமை","next":"bad"},
+        {"English":"Hippo","Tamil":"நீர்யானை","next":"bad"}
+      ]
     },
-    {
-      "id": "ending",
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "Which animal swings on trees?",
+        "Tamil": "மரங்களில் தொங்கும் விலங்கு?"
+      },
+      "answer": "Monkey",
+      "options": [
+        {"English":"Monkey","Tamil":"குரங்கு","next":"q4"},
+        {"English":"Snake","Tamil":"பாம்பு","next":"bad"},
+        {"English":"Tiger","Tamil":"புலி","next":"bad"},
+        {"English":"Elephant","Tamil":"யானை","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "Which plant gives oxygen?",
+        "Tamil": "ஆக்சிஜன் வழங்கும் தாவரம்?"
+      },
+      "answer": "Trees",
+      "options": [
+        {"English":"Trees","Tamil":"மரங்கள்","next":"q5"},
+        {"English":"Rocks","Tamil":"பாறைகள்","next":"bad"},
+        {"English":"Sand","Tamil":"மணல்","next":"bad"},
+        {"English":"Plastic","Tamil":"பிளாஸ்டிக்","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Jungles receive heavy?",
+        "Tamil": "காடுகளில் அதிகமாக கிடைப்பது?"
+      },
+      "answer": "Rainfall",
+      "options": [
+        {"English":"Rainfall","Tamil":"மழை","next":"good"},
+        {"English":"Snow","Tamil":"பனி","next":"bad"},
+        {"English":"Sand","Tamil":"மணல்","next":"bad"},
+        {"English":"Ice","Tamil":"பனிக்கட்டி","next":"bad"}
+      ]
+    },
+    "good": {
       "type": "ending",
+      "gift": "🌿 Jungle Survivor Badge",
       "text": {
         "English": "You escaped the jungle safely!",
-        "Tamil": "நீங்கள் பாதுகாப்பாக காட்டிலிருந்து தப்பித்தீர்கள்!"
-      },
-      "funFact": {
-        "English": "Did you know? Jungles produce more than 20% of the world’s oxygen.",
-        "Tamil": "தெரியுமா? உலகின் ஆக்சிஜனில் 20% க்கும் மேற்பட்டவை காடுகள் உற்பத்தி செய்கின்றன."
+        "Tamil": "நீங்கள் காட்டிலிருந்து பாதுகாப்பாக தப்பித்தீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "🐾 Lost in Jungle Mark",
+      "text": {
+        "English": "You are lost in the jungle.",
+        "Tamil": "நீங்கள் காட்டில் வழி தவறிவிட்டீர்கள்."
       }
     }
-  ]
+  }
 }

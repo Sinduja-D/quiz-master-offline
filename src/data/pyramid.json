@@ -1,0 +1,101 @@
+{
+  "id": "pyramid",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You entered an ancient Egyptian pyramid.",
+        "Tamil": "நீங்கள் பழமையான எகிப்திய பீரமிடில் உள்ளீர்கள்."
+      },
+      "duration": 3000,
+      "next": "q1"
+    },
+    "q1": {
+      "type": "riddle",
+      "question": {
+        "English": "Who built the pyramids?",
+        "Tamil": "பீரமிடுகளை யார் கட்டினார்கள்?"
+      },
+      "answer": "Egyptians",
+      "options": [
+        {"English":"Egyptians","Tamil":"எகிப்தியர்கள்","next":"q2"},
+        {"English":"Romans","Tamil":"ரோமர்கள்","next":"bad"},
+        {"English":"Greeks","Tamil":"கிரேக்கர்கள்","next":"bad"},
+        {"English":"Mayans","Tamil":"மாயாஸ்","next":"bad"}
+      ]
+    },
+    "q2": {
+      "type": "riddle",
+      "question": {
+        "English": "Pyramids are mostly?",
+        "Tamil": "பீரமிடுகள் பெரும்பாலும்?"
+      },
+      "answer": "Tombs",
+      "options": [
+        {"English":"Tombs","Tamil":"கல்லறைகள்","next":"q3"},
+        {"English":"Palaces","Tamil":"மாளிகைகள்","next":"bad"},
+        {"English":"Temples","Tamil":"கோவில்கள்","next":"bad"},
+        {"English":"Huts","Tamil":"சிறிய குடிசைகள்","next":"bad"}
+      ]
+    },
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "The Sphinx is?",
+        "Tamil": "ஸ்பிங்க்ஸ் என்ன?"
+      },
+      "answer": "A statue",
+      "options": [
+        {"English":"A statue","Tamil":"ஒரு சிலை","next":"q4"},
+        {"English":"A river","Tamil":"ஒரு ஆறு","next":"bad"},
+        {"English":"A mountain","Tamil":"ஒரு மலை","next":"bad"},
+        {"English":"A temple","Tamil":"ஒரு கோவில்","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "Pyramids are made of?",
+        "Tamil": "பீரமிடுகள் எதனால் செய்யப்பட்டவை?"
+      },
+      "answer": "Stone",
+      "options": [
+        {"English":"Stone","Tamil":"கல்","next":"q5"},
+        {"English":"Wood","Tamil":"மரம்","next":"bad"},
+        {"English":"Clay","Tamil":"மண்","next":"bad"},
+        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Pyramids are located in?",
+        "Tamil": "பீரமிடுகள் எங்கு உள்ளன?"
+      },
+      "answer": "Egypt",
+      "options": [
+        {"English":"Egypt","Tamil":"எகிப்து","next":"good"},
+        {"English":"China","Tamil":"சீனா","next":"bad"},
+        {"English":"India","Tamil":"இந்தியா","next":"bad"},
+        {"English":"Mexico","Tamil":"மெக்சிகோ","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "🏺 Pyramid Explorer Badge",
+      "text": {
+        "English": "You uncovered the secrets of the pyramid!",
+        "Tamil": "நீங்கள் பீரமிட் இரகசியங்களை கண்டறிந்தீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "🕳️ Lost in Pyramid",
+      "text": {
+        "English": "You are trapped inside the pyramid.",
+        "Tamil": "நீங்கள் பீரமிட் உள்ளே சிக்கிவிட்டீர்கள்."
+      }
+    }
+  }
+}

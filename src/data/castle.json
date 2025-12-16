@@ -1,0 +1,101 @@
+{
+  "id": "castle",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You are inside a medieval castle.",
+        "Tamil": "நீங்கள் நடுத்தர காலக் கோட்டில் உள்ளீர்கள்."
+      },
+      "duration": 3000,
+      "next": "q1"
+    },
+    "q1": {
+      "type": "riddle",
+      "question": {
+        "English": "Who ruled castles?",
+        "Tamil": "கோட்டுகளை யார் ஆள்ந்தனர்?"
+      },
+      "answer": "Kings",
+      "options": [
+        {"English":"Kings","Tamil":"அரசர்கள்","next":"q2"},
+        {"English":"Farmers","Tamil":"விவசாயிகள்","next":"bad"},
+        {"English":"Soldiers","Tamil":"சிப்பாய்கள்","next":"bad"},
+        {"English":"Merchants","Tamil":"வர்த்தகர்கள்","next":"bad"}
+      ]
+    },
+    "q2": {
+      "type": "riddle",
+      "question": {
+        "English": "Castles were made of?",
+        "Tamil": "கோட்டுகள் எதனால் செய்யப்பட்டவை?"
+      },
+      "answer": "Stone",
+      "options": [
+        {"English":"Stone","Tamil":"கல்","next":"q3"},
+        {"English":"Wood","Tamil":"மரம்","next":"bad"},
+        {"English":"Mud","Tamil":"மண்","next":"bad"},
+        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+      ]
+    },
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "Who defended castles?",
+        "Tamil": "கோட்டுகளை யார் பாதுகாத்தனர்?"
+      },
+      "answer": "Knights",
+      "options": [
+        {"English":"Knights","Tamil":"அழகாளர்கள்","next":"q4"},
+        {"English":"Peasants","Tamil":"உழவர்","next":"bad"},
+        {"English":"Monks","Tamil":"சித்தர்கள்","next":"bad"},
+        {"English":"Merchants","Tamil":"வர்த்தகர்கள்","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "Castles had high?",
+        "Tamil": "கோட்டுகளுக்கு உயரமானது எது?"
+      },
+      "answer": "Walls",
+      "options": [
+        {"English":"Walls","Tamil":"சுவர்கள்","next":"q5"},
+        {"English":"Floors","Tamil":"மாடிகள்","next":"bad"},
+        {"English":"Gates","Tamil":"கதவுகள்","next":"bad"},
+        {"English":"Windows","Tamil":"ஜன்னல்கள்","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Who lived in castles?",
+        "Tamil": "யார் கோட்டுகளில் வாழ்ந்தனர்?"
+      },
+      "answer": "Royalty",
+      "options": [
+        {"English":"Royalty","Tamil":"அரச குடும்பம்","next":"good"},
+        {"English":"Farmers","Tamil":"விவசாயிகள்","next":"bad"},
+        {"English":"Soldiers","Tamil":"சிப்பாய்கள்","next":"bad"},
+        {"English":"Merchants","Tamil":"வர்த்தகர்கள்","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "🏰 Castle Conqueror Badge",
+      "text": {
+        "English": "You explored the castle safely!",
+        "Tamil": "நீங்கள் கோட்டை பாதுகாப்பாக ஆய்வு செய்தீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "🔒 Locked in Castle",
+      "text": {
+        "English": "You are trapped in the castle.",
+        "Tamil": "நீங்கள் கோட்டில் சிக்கிவிட்டீர்கள்."
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You are stranded in the Arctic cold.",
+        "Tamil": "நீங்கள் ஆர்க்டிக் குளிரில் சிக்கியுள்ளீர்கள்."
+      },
+      "duration": 3000,
+      "next": "q1"
+    },
+
+    "q1": {
+      "type": "riddle",
+      "question": {
+        "English": "Polar bears live in?",
+        "Tamil": "போலார் கருகள் எங்கு வாழ்கிறார்கள்?"
+      },
+      "answer": "Arctic",
+      "options": [
+        { "English": "Arctic", "Tamil": "ஆர்க்டிக்", "next": "q2" },
+        { "English": "Antarctica", "Tamil": "ஆண்டார்க்டிகா", "next": "fail" },
+        { "English": "Sahara", "Tamil": "சஹாரா", "next": "fail" },
+        { "English": "Amazon", "Tamil": "அமேசான்", "next": "fail" }
+      ]
+    },
+
+    "q2": {
+      "type": "riddle",
+      "question": {
+        "English": "What is frozen water called?",
+        "Tamil": "உறைந்த நீர் எப்படிச் சொல்லப்படுகிறது?"
+      },
+      "answer": "Ice",
+      "options": [
+        { "English": "Ice", "Tamil": "பனி", "next": "q3" },
+        { "English": "Snow", "Tamil": "பனி தூண்டு", "next": "fail" },
+        { "English": "Hail", "Tamil": "மழை பனி", "next": "fail" },
+        { "English": "Frost", "Tamil": "உறைந்த தன்மை", "next": "fail" }
+      ]
+    },
+
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "Which animal lives in igloos?",
+        "Tamil": "ஐக்லூவில் எந்த விலங்கு வாழ்கிறது?"
+      },
+      "answer": "Penguins",
+      "options": [
+        { "English": "Penguins", "Tamil": "பென்குவின்கள்", "next": "q4" },
+        { "English": "Polar bears", "Tamil": "போலார் கருகள்", "next": "fail" },
+        { "English": "Seals", "Tamil": "முத்துக்கள்", "next": "fail" },
+        { "English": "Wolves", "Tamil": "நரிகள்", "next": "fail" }
+      ]
+    },
+
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "Arctic is mostly?",
+        "Tamil": "ஆர்க்டிக் பெரும்பாலும்?"
+      },
+      "answer": "Cold",
+      "options": [
+        { "English": "Cold", "Tamil": "குளிர்", "next": "q5" },
+        { "English": "Hot", "Tamil": "வெப்பம்", "next": "fail" },
+        { "English": "Humid", "Tamil": "ஈரப்பதம்", "next": "fail" },
+        { "English": "Rainy", "Tamil": "மழை", "next": "fail" }
+      ]
+    },
+
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Icebergs are made of?",
+        "Tamil": "ஐஸ்பெர்க்கள் எதனால் உருவாகின்றன?"
+      },
+      "answer": "Freshwater",
+      "options": [
+        { "English": "Freshwater", "Tamil": "தூய நீர்", "next": "final" },
+        { "English": "Saltwater", "Tamil": "கடல் நீர்", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" },
+        { "English": "Rocks", "Tamil": "பாறைகள்", "next": "fail" }
+      ]
+    },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You survive the final icy blast...",
+        "Tamil": "இறுதி பனிப்புயலை நீங்கள் கடக்கிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "The Arctic cold overwhelms you...",
+        "Tamil": "ஆர்க்டிக் குளிர் உங்களை வீழ்த்துகிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
+    "good": {
+      "type": "ending",
+      "gift": "❄️ Arctic Explorer Badge",
+      "text": {
+        "English": "You survived the Arctic cold!",
+        "Tamil": "நீங்கள் ஆர்க்டிக் குளிரில் உயிருடன் இருக்கின்றீர்கள்!"
+      }
+    },
+
+    "bad": {
+      "type": "ending",
+      "gift": "🧊 Frozen Adventurer",
+      "text": {
+        "English": "You froze in the Arctic.",
+        "Tamil": "நீங்கள் ஆர்க்டிக்-ல் உறைந்துவிட்டீர்கள்."
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "cyber",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You are trapped inside a futuristic cyber world.",
+        "Tamil": "நீங்கள் எதிர்கால சைபர் உலகில் சிக்கியுள்ளீர்கள்."
+      },
+      "duration": 3000,
+      "next": "q1"
+    },
+    "q1": {
+      "type": "riddle",
+      "question": {
+        "English": "The main programming language for web is?",
+        "Tamil": "வலைக்கான முக்கிய நிரலாக்க மொழி எது?"
+      },
+      "answer": "JavaScript",
+      "options": [
+        {"English":"JavaScript","Tamil":"ஜாவாஸ்கிரிப்ட்","next":"q2"},
+        {"English":"Python","Tamil":"பைதான்","next":"bad"},
+        {"English":"C++","Tamil":"சி++","next":"bad"},
+        {"English":"Java","Tamil":"ஜாவா","next":"bad"}
+      ]
+    },
+    "q2": {
+      "type": "riddle",
+      "question": {
+        "English": "Cyber security protects from?",
+        "Tamil": "சைபர் பாதுகாப்பு எதிலிருந்து பாதுகாக்கிறது?"
+      },
+      "answer": "Hackers",
+      "options": [
+        {"English":"Hackers","Tamil":"ஹேக்கர்கள்","next":"q3"},
+        {"English":"Aliens","Tamil":"வெளிப்பிரதேசிகள்","next":"bad"},
+        {"English":"Animals","Tamil":"விலங்குகள்","next":"bad"},
+        {"English":"Weather","Tamil":"வானிலை","next":"bad"}
+      ]
+    },
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "What is AI?",
+        "Tamil": "AI என்றால் என்ன?"
+      },
+      "answer": "Artificial Intelligence",
+      "options": [
+        {"English":"Artificial Intelligence","Tamil":"கற்பனை நுண்ணறிவு","next":"q4"},
+        {"English":"Automatic Internet","Tamil":"தானியங்கி இணையம்","next":"bad"},
+        {"English":"Active Input","Tamil":"செயல்பாட்டுச் சுட்டி","next":"bad"},
+        {"English":"Advanced Interface","Tamil":"மேம்பட்ட இடைமுகம்","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "A firewall protects?",
+        "Tamil": "ஃபயர் வால் பாதுகாப்பது என்ன?"
+      },
+      "answer": "Network",
+      "options": [
+        {"English":"Network","Tamil":"நெட்வொர்க்","next":"q5"},
+        {"English":"Buildings","Tamil":"கட்டிடங்கள்","next":"bad"},
+        {"English":"Cars","Tamil":"கார்கள்","next":"bad"},
+        {"English":"Animals","Tamil":"விலங்குகள்","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Cyber attacks are prevented by?",
+        "Tamil": "சைபர் தாக்குதல்களை எதனால் தடுப்பது?"
+      },
+      "answer": "Security Software",
+      "options": [
+        {"English":"Security Software","Tamil":"பாதுகாப்பு மென்பொருள்","next":"good"},
+        {"English":"Vacuum Cleaner","Tamil":"வெற்றிட சுத்தி இயந்திரம்","next":"bad"},
+        {"English":"Fans","Tamil":"ஏர்ப்பன்","next":"bad"},
+        {"English":"Water","Tamil":"நீர்","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "💻 Cyber Master Badge",
+      "text": {
+        "English": "You mastered the cyber world!",
+        "Tamil": "நீங்கள் சைபர் உலகத்தில் நிபுணத்துவம் பெற்றீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "🔐 Cyber Locked",
+      "text": {
+        "English": "You got trapped in cyberspace.",
+        "Tamil": "நீங்கள் சைபர் இடத்தில் சிக்கிவிட்டீர்கள்."
+      }
+    }
+  }
+}

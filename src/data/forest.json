@@ -1,0 +1,101 @@
+{
+  "id": "forest",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You are deep in the forest! Solve nature riddles to find your way out.",
+        "Tamil": "நீங்கள் காட்டில் ஆழமாக இருக்கிறீர்கள்! வெளியேற இயற்கை புதிர்களைத் தீர்க்கவும்."
+      },
+      "duration": 3000,
+      "next": "riddle1"
+    },
+    "riddle1": {
+      "type": "riddle",
+      "question": {
+        "English": "I have roots but no soil, I have leaves but no wood. What am I?",
+        "Tamil": "எனக்கு வேர்கள் இருக்கின்றன ஆனால் மண் இல்லை, எனக்கு இலைகள் இருக்கின்றன ஆனால் மரம் இல்லை. நான் யார்?"
+      },
+      "answer": "Plant in a pot",
+      "options": [
+        {"English":"Plant in a pot","Tamil":"போட்டில் செடி","next":"riddle2"},
+        {"English":"Mushroom","Tamil":"காளான்","next":"bad"},
+        {"English":"Fern","Tamil":"புச்பான்","next":"bad"},
+        {"English":"Vine","Tamil":"வேன்","next":"bad"}
+      ]
+    },
+    "riddle2": {
+      "type": "riddle",
+      "question": {
+        "English": "I can be cracked, made, told, and played. What am I?",
+        "Tamil": "நான் உடைக்கப்படலாம், உருவாக்கப்படலாம், சொல்லப்படலாம், மற்றும் விளையாடப்படலாம். நான் யார்?"
+      },
+      "answer": "Joke",
+      "options": [
+        {"English":"Joke","Tamil":"கிண்டல்","next":"riddle3"},
+        {"English":"Egg","Tamil":"முட்டை","next":"bad"},
+        {"English":"Leaf","Tamil":"இலை","next":"bad"},
+        {"English":"Story","Tamil":"கதை","next":"bad"}
+      ]
+    },
+    "riddle3": {
+      "type": "riddle",
+      "question": {
+        "English": "I’m tall when I’m young, and short when I’m old. What am I?",
+        "Tamil": "நான் இளம் போது உயரமாக இருக்கிறேன், முதிர்ந்த போது குறுகியதாக இருக்கிறேன். நான் யார்?"
+      },
+      "answer": "Candle",
+      "options": [
+        {"English":"Candle","Tamil":" மெழுகுவர்த்தி","next":"riddle4"},
+        {"English":"Tree","Tamil":"மரம்","next":"bad"},
+        {"English":"Mountain","Tamil":"மலை","next":"bad"},
+        {"English":"Pencil","Tamil":"பென்சில்","next":"bad"}
+      ]
+    },
+    "riddle4": {
+      "type": "riddle",
+      "question": {
+        "English": "I have a face but no eyes, hands but no arms. What am I?",
+        "Tamil": "எனக்கு முகம் இருக்கிறது ஆனால் கண்கள் இல்லை, கை உள்ளது ஆனால் கைகள் இல்லை. நான் யார்?"
+      },
+      "answer": "Clock",
+      "options": [
+        {"English":"Clock","Tamil":"மணி","next":"riddle5"},
+        {"English":"Mirror","Tamil":"கண்ணாடி","next":"bad"},
+        {"English":"Sun","Tamil":"சூரியன்","next":"bad"},
+        {"English":"Book","Tamil":"புத்தகம்","next":"bad"}
+      ]
+    },
+    "riddle5": {
+      "type": "riddle",
+      "question": {
+        "English": "I go up and down but never move. What am I?",
+        "Tamil": "நான் மேலே சென்று கீழே வருகிறேன் ஆனால் நகரவில்லை. நான் யார்?"
+      },
+      "answer": "Stairs",
+      "options": [
+        {"English":"Stairs","Tamil":"தரைகள்","next":"good"},
+        {"English":"River","Tamil":"ஆறு","next":"bad"},
+        {"English":"Tree","Tamil":"மரம்","next":"bad"},
+        {"English":"Elevator","Tamil":"எலிவேட்டர்","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "🏆 Forest Explorer Badge",
+      "text": {
+        "English": "You navigated through the forest safely!",
+        "Tamil": "நீங்கள் காட்டிலிருந்து பாதுகாப்பாக சென்றீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "🌲 Lost in Forest",
+      "text": {
+        "English": "You got lost in the forest.",
+        "Tamil": "நீங்கள் காட்டில் சிக்கிவிட்டீர்கள்."
+      }
+    }
+  }
+}

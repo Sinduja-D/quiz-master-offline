@@ -1,0 +1,101 @@
+{
+  "id": "haunted",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
+      "type": "intro",
+      "text": {
+        "English": "You are trapped in a haunted mansion! Solve riddles to escape the spooky rooms.",
+        "Tamil": "நீங்கள் ஒரு மயக்கமான மாளிகையில் அடைக்கப்பட்டுள்ளீர்கள்! பயங்கர அறைகளில் இருந்து தப்பிக்க புதிர்களைத் தீர்க்கவும்."
+      },
+      "duration": 3000,
+      "next": "riddle1"
+    },
+    "riddle1": {
+      "type": "riddle",
+      "question": {
+        "English": "I have keys but no locks. I have space but no room. What am I?",
+        "Tamil": "எனக்கு திறவுகோல்கள் உள்ளன ஆனால் பூட்டுகள் இல்லை. எனக்கு இடம் உள்ளது ஆனால் அறை இல்லை. நான் யார்?"
+      },
+      "answer": "Piano",
+      "options": [
+        {"English":"Piano","Tamil":"பியானோ","next":"riddle2"},
+        {"English":"Door","Tamil":"கதவு","next":"bad"},
+        {"English":"Box","Tamil":"பெட்டி","next":"bad"},
+        {"English":"Candle","Tamil":"மணல்","next":"bad"}
+      ]
+    },
+    "riddle2": {
+      "type": "riddle",
+      "question": {
+        "English": "I’m always hungry, I must be fed. The finger I touch will soon turn red. What am I?",
+        "Tamil": "நான் எப்போதும் பசிக்கின்றேன், என்னை ஊட்ட வேண்டும். நான் தொடும் விரல் சிவப்பாக மாறும். நான் யார்?"
+      },
+      "answer": "Fire",
+      "options": [
+        {"English":"Fire","Tamil":"தீ","next":"riddle3"},
+        {"English":"Ghost","Tamil":"பேய்","next":"bad"},
+        {"English":"Vampire","Tamil":"வாம்பைர்","next":"bad"},
+        {"English":"Cat","Tamil":"பூனை","next":"bad"}
+      ]
+    },
+    "riddle3": {
+      "type": "riddle",
+      "question": {
+        "English": "The more you take, the more you leave behind. What am I?",
+        "Tamil": "நீங்கள் எவ்வளவு எடுக்கிறீர்கள், அதைவிட அதிகமாக பின்விட்டு விடுகிறீர்கள். நான் யார்?"
+      },
+      "answer": "Footsteps",
+      "options": [
+        {"English":"Footsteps","Tamil":"பாதங்கள்","next":"riddle4"},
+        {"English":"Shadow","Tamil":"நிழல்","next":"bad"},
+        {"English":"Time","Tamil":"காலம்","next":"bad"},
+        {"English":"Sound","Tamil":"ஒலி","next":"bad"}
+      ]
+    },
+    "riddle4": {
+      "type": "riddle",
+      "question": {
+        "English": "I speak without a mouth and hear without ears. What am I?",
+        "Tamil": "நான் வாயில்லாமல் பேசுகிறேன், காது இல்லாமல் கேட்கிறேன். நான் யார்?"
+      },
+      "answer": "Echo",
+      "options": [
+        {"English":"Echo","Tamil":"ஒலிப்பிடிப்பு","next":"riddle5"},
+        {"English":"Ghost","Tamil":"பேய்","next":"bad"},
+        {"English":"Wind","Tamil":"காற்று","next":"bad"},
+        {"English":"Shadow","Tamil":"நிழல்","next":"bad"}
+      ]
+    },
+    "riddle5": {
+      "type": "riddle",
+      "question": {
+        "English": "I have cities but no houses, forests but no trees, and rivers but no water. What am I?",
+        "Tamil": "எனக்கு நகரங்கள் உள்ளன ஆனால் வீடுகள் இல்லை, காடுகள் உள்ளன ஆனால் மரங்கள் இல்லை, நதிகள் உள்ளன ஆனால் நீர் இல்லை. நான் யார்?"
+      },
+      "answer": "Map",
+      "options": [
+        {"English":"Map","Tamil":"வரைபடம்","next":"good"},
+        {"English":"Book","Tamil":"புத்தகம்","next":"bad"},
+        {"English":"Maze","Tamil":"விளையாட்டு பாதை","next":"bad"},
+        {"English":"Picture","Tamil":"படம்","next":"bad"}
+      ]
+    },
+    "good": {
+      "type": "ending",
+      "gift": "🏆 Ghost Detector Badge",
+      "text": {
+        "English": "You escaped the Haunted Mansion safely!",
+        "Tamil": "நீங்கள் மயக்கமான மாளிகையிலிருந்து பாதுகாப்பாக தப்பித்தீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "👻 Haunted Forever",
+      "text": {
+        "English": "You got trapped in the haunted mansion.",
+        "Tamil": "நீங்கள் மயக்கமான மாளிகையில் சிக்கிவிட்டீர்கள்."
+      }
+    }
+  }
+}

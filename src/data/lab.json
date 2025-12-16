@@ -1,63 +1,108 @@
 {
   "id": "lab",
-  "scenes": [
-    {
-      "id": "intro",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
       "type": "intro",
       "text": {
-        "English": "You are locked inside the Science Lab! Solve riddles to escape...",
-        "Tamil": "நீங்கள் அறிவியல் ஆய்வகத்திற்குள் அடைக்கப்பட்டுள்ளீர்கள்! தப்பிக்க புதிர்களை தீர்க்கவும்..."
+        "English": "You are locked inside the Science Lab! Solve riddles to escape.",
+        "Tamil": "நீங்கள் அறிவியல் ஆய்வகத்திற்குள் அடைக்கப்பட்டுள்ளீர்கள்! தப்பிக்க புதிர்களை தீர்க்கவும்."
       },
-      "duration": 3000
+      "duration": 3000,
+      "next": "riddle1"
     },
-    {
-      "id": "riddle1",
+
+    "riddle1": {
       "type": "riddle",
       "question": {
         "English": "I am not alive but I can die. I need power to live. What am I?",
         "Tamil": "நான் உயிருடன் இல்லை ஆனால் நான் இறக்க முடியும். வாழ எனக்கு சக்தி தேவை. நான் யார்?"
       },
+      "answer": "Battery",
       "options": [
-        { "English": "Battery", "Tamil": "பேட்டரி" },
-        { "English": "Bulb", "Tamil": "பல்ப்" },
-        { "English": "Wire", "Tamil": "கம்பி" }
-      ],
-      "answer": "Battery"
+        {"English":"Battery","Tamil":"பேட்டரி","next":"riddle2"},
+        {"English":"Bulb","Tamil":"பல்ப்","next":"bad"},
+        {"English":"Wire","Tamil":"கம்பி","next":"bad"},
+        {"English":"Switch","Tamil":"சுவிட்ச்","next":"bad"}
+      ]
     },
-    {
-      "id": "transition1",
-      "type": "transition",
-      "text": {
-        "English": "You unlocked the first door. But there's more ahead...",
-        "Tamil": "நீங்கள் முதல் கதவைத் திறந்தீர்கள். ஆனால் முன்னால் இன்னும் அதிகம் உள்ளது..."
-      },
-      "duration": 2500
-    },
-    {
-      "id": "riddle2",
+
+    "riddle2": {
       "type": "riddle",
       "question": {
         "English": "The more you take from me, the bigger I become. What am I?",
         "Tamil": "நீங்கள் என்னிடமிருந்து அதிகம் எடுத்தால், நான் அதிகமாக வளர்கிறேன். நான் யார்?"
       },
+      "answer": "Hole",
       "options": [
-        { "English": "Hole", "Tamil": "துளை" },
-        { "English": "Balloon", "Tamil": "பலூன்" },
-        { "English": "Shadow", "Tamil": "நிழல்" }
-      ],
-      "answer": "Hole"
+        {"English":"Hole","Tamil":"துளை","next":"riddle3"},
+        {"English":"Balloon","Tamil":"பலூன்","next":"bad"},
+        {"English":"Shadow","Tamil":"நிழல்","next":"bad"},
+        {"English":"Sand","Tamil":"மண்","next":"bad"}
+      ]
     },
-    {
-      "id": "ending",
-      "type": "ending",
-      "text": {
-        "English": "You Escaped the Science Lab!",
-        "Tamil": "நீங்கள் அறிவியல் ஆய்வகத்திலிருந்து தப்பித்தீர்கள்!"
+
+    "riddle3": {
+      "type": "riddle",
+      "question": {
+        "English": "I have keys but no locks. What am I?",
+        "Tamil": "எனக்கு திறவுகோல்கள் உள்ளன ஆனால் பூட்டுகள் இல்லை. நான் யார்?"
       },
-      "funFact": {
-        "English": "Did you know? Batteries convert chemical energy into electrical energy.",
-        "Tamil": "தெரியுமா? பேட்டரிகள் வேதியியல் ஆற்றலை மின்சார ஆற்றலாக மாற்றுகின்றன."
+      "answer": "Piano",
+      "options": [
+        {"English":"Piano","Tamil":"பியானோ","next":"riddle4"},
+        {"English":"Keyboard","Tamil":"கீபோர்டு","next":"bad"},
+        {"English":"Door","Tamil":"கதவு","next":"bad"},
+        {"English":"Box","Tamil":"பெட்டி","next":"bad"}
+      ]
+    },
+
+    "riddle4": {
+      "type": "riddle",
+      "question": {
+        "English": "I can be hot or cold, sometimes seen in labs. What am I?",
+        "Tamil": "நான் சூடாகவோ குளிராகவோ இருக்க முடியும், சில சமயம் ஆய்வகங்களில் காணப்படுகிறேன். நான் யார்?"
+      },
+      "answer": "Test Tube",
+      "options": [
+        {"English":"Test Tube","Tamil":"சோதனை குழாய்","next":"riddle5"},
+        {"English":"Beaker","Tamil":"பீக்கர்","next":"bad"},
+        {"English":"Microscope","Tamil":"மைக்ரோஸ்கோப்","next":"bad"},
+        {"English":"Flask","Tamil":"பிளாஸ்க்","next":"bad"}
+      ]
+    },
+
+    "riddle5": {
+      "type": "riddle",
+      "question": {
+        "English": "I react with water to produce gas. What am I?",
+        "Tamil": "நான் நீருடன் வேகமாகச் செயற்பட்டு வாயுவை உருவாக்குகிறேன். நான் யார்?"
+      },
+      "answer": "Sodium",
+      "options": [
+        {"English":"Sodium","Tamil":"சோடியம்","next":"good"},
+        {"English":"Iron","Tamil":"இரும்பு","next":"bad"},
+        {"English":"Copper","Tamil":"தாமிரம்","next":"bad"},
+        {"English":"Calcium","Tamil":"கால்சியம்","next":"bad"}
+      ]
+    },
+
+    "good": {
+      "type": "ending",
+      "gift": "🏆 Science Master Badge",
+      "text": {
+        "English": "Congratulations! You escaped the Science Lab!",
+        "Tamil": "வாழ்த்துக்கள்! நீங்கள் அறிவியல் ஆய்வகத்திலிருந்து தப்பித்தீர்கள்!"
+      }
+    },
+
+    "bad": {
+      "type": "ending",
+      "gift": "💀 Lab Fail",
+      "text": {
+        "English": "You failed to escape the lab.",
+        "Tamil": "நீங்கள் ஆய்வகத்திலிருந்து தப்ப முடியவில்லை."
       }
     }
-  ]
+  }
 }

@@ -1,63 +1,101 @@
 {
   "id": "space",
-  "scenes": [
-    {
-      "id": "intro",
+  "startScene": "intro",
+  "scenes": {
+    "intro": {
       "type": "intro",
       "text": {
-        "English": "Your spaceship is stuck in orbit! Solve space puzzles to return to Earth.",
-        "Tamil": "உங்கள் விண்கலம் சுற்றுப்பாதையில் சிக்கியுள்ளது! பூமிக்குத் திரும்ப விண்வெளி புதிர்களைத் தீர்க்கவும்."
+        "English": "Your spacecraft is drifting in outer space.",
+        "Tamil": "உங்கள் விண்கலம் விண்வெளியில் வழி தவறுகிறது."
       },
-      "duration": 3000
+      "duration": 3000,
+      "next": "q1"
     },
-    {
-      "id": "riddle1",
+    "q1": {
       "type": "riddle",
       "question": {
-        "English": "I shine bright but I’m not a bulb. I rise in the east and set in the west. What am I?",
-        "Tamil": "நான் பிரகாசமாக ஒளிர்கிறேன் ஆனால் பல்ப் அல்ல. கிழக்கில் உதித்து மேற்கில் மறைகிறேன். நான் யார்?"
+        "English": "Which planet is closest to the Sun?",
+        "Tamil": "சூரியனுக்கு அருகிலுள்ள கோள் எது?"
       },
+      "answer": "Mercury",
       "options": [
-        { "English": "Moon", "Tamil": "சந்திரன்" },
-        { "English": "Sun", "Tamil": "சூரியன்" },
-        { "English": "Star", "Tamil": "நட்சத்திரம்" }
-      ],
-      "answer": "Sun"
+        {"English":"Mercury","Tamil":"புதன்","next":"q2"},
+        {"English":"Earth","Tamil":"பூமி","next":"bad"},
+        {"English":"Mars","Tamil":"செவ்வாய்","next":"bad"},
+        {"English":"Jupiter","Tamil":"வியாழன்","next":"bad"}
+      ]
     },
-    {
-      "id": "transition1",
-      "type": "transition",
-      "text": {
-        "English": "The spaceship powers are back online. One more puzzle left...",
-        "Tamil": "விண்கலத்தின் சக்தி மீண்டும் இயங்கத் தொடங்கியது. இன்னும் ஒரு புதிர் மட்டுமே உள்ளது..."
-      },
-      "duration": 2500
-    },
-    {
-      "id": "riddle2",
+    "q2": {
       "type": "riddle",
       "question": {
-        "English": "I have no air but I can carry sound waves on Earth. Where am I?",
-        "Tamil": "என்னிடம் காற்று இல்லை ஆனால் பூமியில் ஒலி அலைகளை எடுத்துச் செல்ல முடியும். நான் எங்கே இருக்கிறேன்?"
+        "English": "What force keeps planets in orbit?",
+        "Tamil": "கோள்களை சுற்றுப்பாதையில் வைத்திருப்பது என்ன?"
       },
+      "answer": "Gravity",
       "options": [
-        { "English": "Space", "Tamil": "விண்வெளி" },
-        { "English": "Ocean", "Tamil": "கடல்" },
-        { "English": "Cave", "Tamil": "குகை" }
-      ],
-      "answer": "Space"
+        {"English":"Gravity","Tamil":"ஈர்ப்பு","next":"q3"},
+        {"English":"Wind","Tamil":"காற்று","next":"bad"},
+        {"English":"Magnetism","Tamil":"காந்தம்","next":"bad"},
+        {"English":"Heat","Tamil":"வெப்பம்","next":"bad"}
+      ]
     },
-    {
-      "id": "ending",
+    "q3": {
+      "type": "riddle",
+      "question": {
+        "English": "Which planet has rings?",
+        "Tamil": "வளையங்கள் உள்ள கோள் எது?"
+      },
+      "answer": "Saturn",
+      "options": [
+        {"English":"Saturn","Tamil":"சனி","next":"q4"},
+        {"English":"Venus","Tamil":"சுக்கிரன்","next":"bad"},
+        {"English":"Earth","Tamil":"பூமி","next":"bad"},
+        {"English":"Mars","Tamil":"செவ்வாய்","next":"bad"}
+      ]
+    },
+    "q4": {
+      "type": "riddle",
+      "question": {
+        "English": "Who travels to space?",
+        "Tamil": "விண்வெளிக்கு யார் செல்கிறார்?"
+      },
+      "answer": "Astronaut",
+      "options": [
+        {"English":"Astronaut","Tamil":"விண்வெளி வீரர்","next":"q5"},
+        {"English":"Pilot","Tamil":"விமானி","next":"bad"},
+        {"English":"Sailor","Tamil":"கடலோடி","next":"bad"},
+        {"English":"Driver","Tamil":"ஓட்டுநர்","next":"bad"}
+      ]
+    },
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "Space has no?",
+        "Tamil": "விண்வெளியில் என்ன இல்லை?"
+      },
+      "answer": "Air",
+      "options": [
+        {"English":"Air","Tamil":"காற்று","next":"good"},
+        {"English":"Stars","Tamil":"நட்சத்திரங்கள்","next":"bad"},
+        {"English":"Planets","Tamil":"கோள்கள்","next":"bad"},
+        {"English":"Satellites","Tamil":"செயற்கைக்கோள்கள்","next":"bad"}
+      ]
+    },
+    "good": {
       "type": "ending",
+      "gift": "🚀 Space Explorer Medal",
       "text": {
-        "English": "Congratulations! You safely returned to Earth.",
-        "Tamil": "வாழ்த்துக்கள்! நீங்கள் பாதுகாப்பாக பூமிக்குத் திரும்பிவிட்டீர்கள்."
-      },
-      "funFact": {
-        "English": "Did you know? Space is completely silent because sound cannot travel in a vacuum.",
-        "Tamil": "தெரியுமா? விண்வெளி முற்றிலும் அமைதியானது, ஏனெனில் ஒலி வெற்றிடத்தில் பயணம் செய்ய முடியாது."
+        "English": "You navigated space successfully!",
+        "Tamil": "நீங்கள் விண்வெளியை வெற்றிகரமாக கடந்து விட்டீர்கள்!"
+      }
+    },
+    "bad": {
+      "type": "ending",
+      "gift": "🛰️ Lost Signal Badge",
+      "text": {
+        "English": "Your spacecraft is lost in space.",
+        "Tamil": "உங்கள் விண்கலம் விண்வெளியில் காணாமல் போய்விட்டது."
       }
     }
-  ]
+  }
 }
