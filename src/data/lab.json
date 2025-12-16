@@ -9,10 +9,10 @@
         "Tamil": "நீங்கள் அறிவியல் ஆய்வகத்திற்குள் அடைக்கப்பட்டுள்ளீர்கள்! தப்பிக்க புதிர்களை தீர்க்கவும்."
       },
       "duration": 3000,
-      "next": "riddle1"
+      "next": "q1"
     },
 
-    "riddle1": {
+    "q1": {
       "type": "riddle",
       "question": {
         "English": "I am not alive but I can die. I need power to live. What am I?",
@@ -20,14 +20,14 @@
       },
       "answer": "Battery",
       "options": [
-        {"English":"Battery","Tamil":"பேட்டரி","next":"riddle2"},
-        {"English":"Bulb","Tamil":"பல்ப்","next":"bad"},
-        {"English":"Wire","Tamil":"கம்பி","next":"bad"},
-        {"English":"Switch","Tamil":"சுவிட்ச்","next":"bad"}
+        { "English": "Battery", "Tamil": "பேட்டரி", "next": "q2" },
+        { "English": "Bulb", "Tamil": "பல்ப்", "next": "fail" },
+        { "English": "Wire", "Tamil": "கம்பி", "next": "fail" },
+        { "English": "Switch", "Tamil": "சுவிட்ச்", "next": "fail" }
       ]
     },
 
-    "riddle2": {
+    "q2": {
       "type": "riddle",
       "question": {
         "English": "The more you take from me, the bigger I become. What am I?",
@@ -35,14 +35,14 @@
       },
       "answer": "Hole",
       "options": [
-        {"English":"Hole","Tamil":"துளை","next":"riddle3"},
-        {"English":"Balloon","Tamil":"பலூன்","next":"bad"},
-        {"English":"Shadow","Tamil":"நிழல்","next":"bad"},
-        {"English":"Sand","Tamil":"மண்","next":"bad"}
+        { "English": "Hole", "Tamil": "துளை", "next": "q3" },
+        { "English": "Balloon", "Tamil": "பலூன்", "next": "fail" },
+        { "English": "Shadow", "Tamil": "நிழல்", "next": "fail" },
+        { "English": "Sand", "Tamil": "மண்", "next": "fail" }
       ]
     },
 
-    "riddle3": {
+    "q3": {
       "type": "riddle",
       "question": {
         "English": "I have keys but no locks. What am I?",
@@ -50,55 +50,75 @@
       },
       "answer": "Piano",
       "options": [
-        {"English":"Piano","Tamil":"பியானோ","next":"riddle4"},
-        {"English":"Keyboard","Tamil":"கீபோர்டு","next":"bad"},
-        {"English":"Door","Tamil":"கதவு","next":"bad"},
-        {"English":"Box","Tamil":"பெட்டி","next":"bad"}
+        { "English": "Piano", "Tamil": "பியானோ", "next": "q4" },
+        { "English": "Keyboard", "Tamil": "கீபோர்டு", "next": "fail" },
+        { "English": "Door", "Tamil": "கதவு", "next": "fail" },
+        { "English": "Box", "Tamil": "பெட்டி", "next": "fail" }
       ]
     },
 
-    "riddle4": {
+    "q4": {
       "type": "riddle",
       "question": {
         "English": "I can be hot or cold, sometimes seen in labs. What am I?",
-        "Tamil": "நான் சூடாகவோ குளிராகவோ இருக்க முடியும், சில சமயம் ஆய்வகங்களில் காணப்படுகிறேன். நான் யார்?"
+        "Tamil": "நான் சூடாகவோ குளிராகவோ இருக்க முடியும். நான் யார்?"
       },
       "answer": "Test Tube",
       "options": [
-        {"English":"Test Tube","Tamil":"சோதனை குழாய்","next":"riddle5"},
-        {"English":"Beaker","Tamil":"பீக்கர்","next":"bad"},
-        {"English":"Microscope","Tamil":"மைக்ரோஸ்கோப்","next":"bad"},
-        {"English":"Flask","Tamil":"பிளாஸ்க்","next":"bad"}
+        { "English": "Test Tube", "Tamil": "சோதனை குழாய்", "next": "q5" },
+        { "English": "Beaker", "Tamil": "பீக்கர்", "next": "fail" },
+        { "English": "Microscope", "Tamil": "மைக்ரோஸ்கோப்", "next": "fail" },
+        { "English": "Flask", "Tamil": "பிளாஸ்க்", "next": "fail" }
       ]
     },
 
-    "riddle5": {
+    "q5": {
       "type": "riddle",
       "question": {
         "English": "I react with water to produce gas. What am I?",
-        "Tamil": "நான் நீருடன் வேகமாகச் செயற்பட்டு வாயுவை உருவாக்குகிறேன். நான் யார்?"
+        "Tamil": "நான் நீருடன் வினைபுரிந்து வாயுவை உருவாக்குகிறேன். நான் யார்?"
       },
       "answer": "Sodium",
       "options": [
-        {"English":"Sodium","Tamil":"சோடியம்","next":"good"},
-        {"English":"Iron","Tamil":"இரும்பு","next":"bad"},
-        {"English":"Copper","Tamil":"தாமிரம்","next":"bad"},
-        {"English":"Calcium","Tamil":"கால்சியம்","next":"bad"}
+        { "English": "Sodium", "Tamil": "சோடியம்", "next": "final" },
+        { "English": "Iron", "Tamil": "இரும்பு", "next": "fail" },
+        { "English": "Copper", "Tamil": "தாமிரம்", "next": "fail" },
+        { "English": "Calcium", "Tamil": "கால்சியம்", "next": "fail" }
       ]
+    },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You crack the final experiment...",
+        "Tamil": "இறுதி பரிசோதனையை நீங்கள் வெற்றிகரமாக முடிக்கிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "The experiment goes wrong...",
+        "Tamil": "பரிசோதனை தவறாக செல்கிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
     },
 
     "good": {
       "type": "ending",
       "gift": "🏆 Science Master Badge",
       "text": {
-        "English": "Congratulations! You escaped the Science Lab!",
-        "Tamil": "வாழ்த்துக்கள்! நீங்கள் அறிவியல் ஆய்வகத்திலிருந்து தப்பித்தீர்கள்!"
+        "English": "You escaped the Science Lab!",
+        "Tamil": "நீங்கள் அறிவியல் ஆய்வகத்திலிருந்து தப்பித்தீர்கள்!"
       }
     },
 
     "bad": {
       "type": "ending",
-      "gift": "💀 Lab Fail",
+      "gift": "💀 Lab Failed",
       "text": {
         "English": "You failed to escape the lab.",
         "Tamil": "நீங்கள் ஆய்வகத்திலிருந்து தப்ப முடியவில்லை."

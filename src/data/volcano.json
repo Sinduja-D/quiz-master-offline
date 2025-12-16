@@ -11,6 +11,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +20,13 @@
       },
       "answer": "Magma",
       "options": [
-        {"English":"Magma","Tamil":"மக்மா","next":"q2"},
-        {"English":"Water","Tamil":"நீர்","next":"bad"},
-        {"English":"Air","Tamil":"காற்று","next":"bad"},
-        {"English":"Ice","Tamil":"பனி","next":"bad"}
+        { "English": "Magma", "Tamil": "மக்மா", "next": "q2" },
+        { "English": "Water", "Tamil": "நீர்", "next": "fail" },
+        { "English": "Air", "Tamil": "காற்று", "next": "fail" },
+        { "English": "Ice", "Tamil": "பனி", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +35,13 @@
       },
       "answer": "Lava rock",
       "options": [
-        {"English":"Lava rock","Tamil":"லாவா கல்","next":"q3"},
-        {"English":"Sandstone","Tamil":"மணல் கல்","next":"bad"},
-        {"English":"Granite","Tamil":"கிரானைட்","next":"bad"},
-        {"English":"Marble","Tamil":"மார்பிள்","next":"bad"}
+        { "English": "Lava rock", "Tamil": "லாவா கல்", "next": "q3" },
+        { "English": "Sandstone", "Tamil": "மணல் கல்", "next": "fail" },
+        { "English": "Granite", "Tamil": "கிரானைட்", "next": "fail" },
+        { "English": "Marble", "Tamil": "மார்பிள்", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,12 +50,13 @@
       },
       "answer": "Mountains",
       "options": [
-        {"English":"Mountains","Tamil":"மலைகள்","next":"q4"},
-        {"English":"Rivers","Tamil":"ஆறுகள்","next":"bad"},
-        {"English":"Plains","Tamil":"மிதவை","next":"bad"},
-        {"English":"Caves","Tamil":"குகைகள்","next":"bad"}
+        { "English": "Mountains", "Tamil": "மலைகள்", "next": "q4" },
+        { "English": "Rivers", "Tamil": "ஆறுகள்", "next": "fail" },
+        { "English": "Plains", "Tamil": "சமவெளி", "next": "fail" },
+        { "English": "Caves", "Tamil": "குகைகள்", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
@@ -61,26 +65,48 @@
       },
       "answer": "Molten rock",
       "options": [
-        {"English":"Molten rock","Tamil":"இரும்புக் கல்","next":"q5"},
-        {"English":"Water","Tamil":"நீர்","next":"bad"},
-        {"English":"Ice","Tamil":"பனி","next":"bad"},
-        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+        { "English": "Molten rock", "Tamil": "உருகிய பாறை", "next": "q5" },
+        { "English": "Water", "Tamil": "நீர்", "next": "fail" },
+        { "English": "Ice", "Tamil": "பனி", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
         "English": "Volcano eruptions are?",
-        "Tamil": "எரிமலை வெடிப்புகள் என்ன?"
+        "Tamil": "எரிமலை வெடிப்புகள் எப்படி இருக்கும்?"
       },
       "answer": "Hot",
       "options": [
-        {"English":"Hot","Tamil":"வெப்பமான","next":"good"},
-        {"English":"Cold","Tamil":"குளிரான","next":"bad"},
-        {"English":"Wet","Tamil":"ஈரமான","next":"bad"},
-        {"English":"Dry","Tamil":"வறண்ட","next":"bad"}
+        { "English": "Hot", "Tamil": "வெப்பமான", "next": "final" },
+        { "English": "Cold", "Tamil": "குளிரான", "next": "fail" },
+        { "English": "Wet", "Tamil": "ஈரமான", "next": "fail" },
+        { "English": "Dry", "Tamil": "வறண்ட", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You outrun the lava and reach safety...",
+        "Tamil": "நீங்கள் லாவாவை தவிர்த்து பாதுகாப்பாக அடைகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "The volcano erupts violently...",
+        "Tamil": "எரிமலை பயங்கரமாக வெடிக்கிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🌋 Volcano Explorer Badge",
@@ -89,6 +115,7 @@
         "Tamil": "நீங்கள் எரிமலையை பாதுகாப்பாக கடந்து விட்டீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
       "gift": "🔥 Lava Victim",

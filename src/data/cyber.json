@@ -11,6 +11,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +20,13 @@
       },
       "answer": "JavaScript",
       "options": [
-        {"English":"JavaScript","Tamil":"ஜாவாஸ்கிரிப்ட்","next":"q2"},
-        {"English":"Python","Tamil":"பைதான்","next":"bad"},
-        {"English":"C++","Tamil":"சி++","next":"bad"},
-        {"English":"Java","Tamil":"ஜாவா","next":"bad"}
+        { "English": "JavaScript", "Tamil": "ஜாவாஸ்கிரிப்ட்", "next": "q2" },
+        { "English": "Python", "Tamil": "பைதான்", "next": "fail" },
+        { "English": "C++", "Tamil": "சி++", "next": "fail" },
+        { "English": "Java", "Tamil": "ஜாவா", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +35,13 @@
       },
       "answer": "Hackers",
       "options": [
-        {"English":"Hackers","Tamil":"ஹேக்கர்கள்","next":"q3"},
-        {"English":"Aliens","Tamil":"வெளிப்பிரதேசிகள்","next":"bad"},
-        {"English":"Animals","Tamil":"விலங்குகள்","next":"bad"},
-        {"English":"Weather","Tamil":"வானிலை","next":"bad"}
+        { "English": "Hackers", "Tamil": "ஹேக்கர்கள்", "next": "q3" },
+        { "English": "Aliens", "Tamil": "வெளிப்பிரதேசிகள்", "next": "fail" },
+        { "English": "Animals", "Tamil": "விலங்குகள்", "next": "fail" },
+        { "English": "Weather", "Tamil": "வானிலை", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,26 +50,28 @@
       },
       "answer": "Artificial Intelligence",
       "options": [
-        {"English":"Artificial Intelligence","Tamil":"கற்பனை நுண்ணறிவு","next":"q4"},
-        {"English":"Automatic Internet","Tamil":"தானியங்கி இணையம்","next":"bad"},
-        {"English":"Active Input","Tamil":"செயல்பாட்டுச் சுட்டி","next":"bad"},
-        {"English":"Advanced Interface","Tamil":"மேம்பட்ட இடைமுகம்","next":"bad"}
+        { "English": "Artificial Intelligence", "Tamil": "செயற்கை நுண்ணறிவு", "next": "q4" },
+        { "English": "Automatic Internet", "Tamil": "தானியங்கி இணையம்", "next": "fail" },
+        { "English": "Active Input", "Tamil": "செயலில் உள்ள உள்ளீடு", "next": "fail" },
+        { "English": "Advanced Interface", "Tamil": "மேம்பட்ட இடைமுகம்", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
         "English": "A firewall protects?",
-        "Tamil": "ஃபயர் வால் பாதுகாப்பது என்ன?"
+        "Tamil": "ஃபயர்வால் பாதுகாப்பது என்ன?"
       },
       "answer": "Network",
       "options": [
-        {"English":"Network","Tamil":"நெட்வொர்க்","next":"q5"},
-        {"English":"Buildings","Tamil":"கட்டிடங்கள்","next":"bad"},
-        {"English":"Cars","Tamil":"கார்கள்","next":"bad"},
-        {"English":"Animals","Tamil":"விலங்குகள்","next":"bad"}
+        { "English": "Network", "Tamil": "நெட்வொர்க்", "next": "q5" },
+        { "English": "Buildings", "Tamil": "கட்டிடங்கள்", "next": "fail" },
+        { "English": "Cars", "Tamil": "கார்கள்", "next": "fail" },
+        { "English": "Animals", "Tamil": "விலங்குகள்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
@@ -75,12 +80,33 @@
       },
       "answer": "Security Software",
       "options": [
-        {"English":"Security Software","Tamil":"பாதுகாப்பு மென்பொருள்","next":"good"},
-        {"English":"Vacuum Cleaner","Tamil":"வெற்றிட சுத்தி இயந்திரம்","next":"bad"},
-        {"English":"Fans","Tamil":"ஏர்ப்பன்","next":"bad"},
-        {"English":"Water","Tamil":"நீர்","next":"bad"}
+        { "English": "Security Software", "Tamil": "பாதுகாப்பு மென்பொருள்", "next": "final" },
+        { "English": "Vacuum Cleaner", "Tamil": "வெற்றிட இயந்திரம்", "next": "fail" },
+        { "English": "Fans", "Tamil": "விசிறிகள்", "next": "fail" },
+        { "English": "Water", "Tamil": "நீர்", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You break free from the cyber grid...",
+        "Tamil": "நீங்கள் சைபர் வலைப்பின்னலிலிருந்து விடுபடுகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "The system locks you out...",
+        "Tamil": "அமைப்பு உங்களை பூட்டுகிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "💻 Cyber Master Badge",
@@ -89,6 +115,7 @@
         "Tamil": "நீங்கள் சைபர் உலகத்தில் நிபுணத்துவம் பெற்றீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
       "gift": "🔐 Cyber Locked",

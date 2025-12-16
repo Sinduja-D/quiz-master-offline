@@ -1,95 +1,126 @@
 {
-  "id": "time",
   "startScene": "intro",
   "scenes": {
     "intro": {
       "type": "intro",
       "text": {
-        "English": "Travel through time! Solve puzzles from different eras to return safely.",
-        "Tamil": "காலத்தின் பல்வேறு யுகங்களில் மூழ்குங்கள்! பாதுகாப்பாக திரும்ப புதிர்களைத் தீர்க்கவும்."
+        "English": "You are traveling through time itself.",
+        "Tamil": "நீங்கள் காலத்தின் வழியாக பயணம் செய்கிறீர்கள்."
       },
-      "duration": 4000,
-      "next": "riddle1"
+      "duration": 3000,
+      "next": "q1"
     },
-    "riddle1": {
+
+    "q1": {
       "type": "riddle",
       "question": {
-        "English": "I mark history but I have no hands. What am I?",
-        "Tamil": "நான் வரலாற்றைக் குறிக்கிறேன் ஆனால் கைகள் இல்லை. நான் யார்?"
+        "English": "What shows time but has no mouth?",
+        "Tamil": "வாயில்லாமல் நேரத்தை காட்டுவது என்ன?"
       },
       "answer": "Clock",
       "options": [
-        {"English":"Clock","Tamil":"மணி","next":"riddle2"},
-        {"English":"Calendar","Tamil":"காலண்டர்","next":"riddle2"},
-        {"English":"Book","Tamil":"புத்தகம்","next":"riddle2"},
-        {"English":"Stone","Tamil":"கல்","next":"riddle1"}
+        { "English": "Clock", "Tamil": "மணி", "next": "q2" },
+        { "English": "Calendar", "Tamil": "காலண்டர்", "next": "fail" },
+        { "English": "Book", "Tamil": "புத்தகம்", "next": "fail" },
+        { "English": "Stone", "Tamil": "கல்", "next": "fail" }
       ]
     },
-    "riddle2": {
+
+    "q2": {
       "type": "riddle",
       "question": {
-        "English": "I can fly without wings, see without eyes. What am I?",
-        "Tamil": "நான் இறக்கைகளை இல்லாமல் பறக்க முடியும், கண்கள் இல்லாமல் பார்க்க முடியும். நான் யார்?"
+        "English": "What flies without wings?",
+        "Tamil": "இறக்கைகள் இல்லாமல் பறப்பது என்ன?"
       },
       "answer": "Time",
       "options": [
-        {"English":"Time","Tamil":"காலம்","next":"riddle3"},
-        {"English":"Wind","Tamil":"காற்று","next":"riddle2"},
-        {"English":"Shadow","Tamil":"நிழல்","next":"riddle2"},
-        {"English":"Dream","Tamil":"கனவு","next":"riddle2"}
+        { "English": "Time", "Tamil": "காலம்", "next": "q3" },
+        { "English": "Wind", "Tamil": "காற்று", "next": "fail" },
+        { "English": "Shadow", "Tamil": "நிழல்", "next": "fail" },
+        { "English": "Dream", "Tamil": "கனவு", "next": "fail" }
       ]
     },
-    "riddle3": {
+
+    "q3": {
       "type": "riddle",
       "question": {
-        "English": "I have a beginning but no end. What am I?",
-        "Tamil": "எனக்கு தொடக்கம் உள்ளது ஆனால் முடிவு இல்லை. நான் யார்?"
-      },
-      "answer": "Circle of Time",
-      "options": [
-        {"English":"Circle of Time","Tamil":"கால வட்டம்","next":"riddle4"},
-        {"English":"Sun","Tamil":"சூரியன்","next":"bad"},
-        {"English":"Moon","Tamil":"சந்திரன்","next":"bad"},
-        {"English":"Clock","Tamil":"மணி","next":"bad"}
-      ]
-    },
-    "riddle4": {
-      "type": "riddle",
-      "question": {
-        "English": "I am always moving but never rest. What am I?",
-        "Tamil": "நான் எப்போதும் நகர்கிறேன் ஆனால் ஓய்வு எடுக்க மாட்டேன். நான் யார்?"
+        "English": "What has a beginning but no end?",
+        "Tamil": "தொடக்கம் உள்ளது ஆனால் முடிவு இல்லை?"
       },
       "answer": "Time",
       "options": [
-        {"English":"Time","Tamil":"காலம்","next":"riddle5"},
-        {"English":"River","Tamil":"நதி","next":"bad"},
-        {"English":"Wind","Tamil":"காற்று","next":"bad"},
-        {"English":"Clock","Tamil":"மணி","next":"bad"}
+        { "English": "Time", "Tamil": "காலம்", "next": "q4" },
+        { "English": "River", "Tamil": "நதி", "next": "fail" },
+        { "English": "Circle", "Tamil": "வட்டம்", "next": "fail" },
+        { "English": "Clock", "Tamil": "மணி", "next": "fail" }
       ]
     },
-    "riddle5": {
+
+    "q4": {
       "type": "riddle",
       "question": {
-        "English": "I am invisible but affect everything. What am I?",
-        "Tamil": "நான் கண்களில் தெரியவில்லை ஆனால் எல்லாவற்றையும் பாதிக்கிறேன். நான் யார்?"
+        "English": "What never stops moving?",
+        "Tamil": "எது ஒருபோதும் நிற்காது?"
       },
       "answer": "Time",
       "options": [
-        {"English":"Time","Tamil":"காலம்","next":"ending"},
-        {"English":"Wind","Tamil":"காற்று","next":"bad"},
-        {"English":"Shadow","Tamil":"நிழல்","next":"bad"},
-        {"English":"Dream","Tamil":"கனவு","next":"bad"}
+        { "English": "Time", "Tamil": "காலம்", "next": "q5" },
+        { "English": "Wind", "Tamil": "காற்று", "next": "fail" },
+        { "English": "River", "Tamil": "நதி", "next": "fail" },
+        { "English": "Shadow", "Tamil": "நிழல்", "next": "fail" }
       ]
     },
-    "ending": {
-      "type": "ending",
-      "gift": {
-        "English":"🏆 Time Traveler Badge",
-        "Tamil":"🏆 கால பயணி பதக்கம்"
+
+    "q5": {
+      "type": "riddle",
+      "question": {
+        "English": "What affects everything but is invisible?",
+        "Tamil": "எல்லாவற்றையும் பாதிக்கும் ஆனால் காண முடியாதது என்ன?"
       },
+      "answer": "Time",
+      "options": [
+        { "English": "Time", "Tamil": "காலம்", "next": "final" },
+        { "English": "Wind", "Tamil": "காற்று", "next": "fail" },
+        { "English": "Dream", "Tamil": "கனவு", "next": "fail" },
+        { "English": "Shadow", "Tamil": "நிழல்", "next": "fail" }
+      ]
+    },
+
+    "final": {
+      "type": "transition",
       "text": {
-        "English": "You traveled through time safely!",
-        "Tamil": "நீங்கள் காலத்தினூடே பாதுகாப்பாக பயணம் செய்தீர்கள்!"
+        "English": "Time slows down around you...",
+        "Tamil": "காலம் உங்களைச் சுற்றி மெதுவாகிறது..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "You are lost between timelines...",
+        "Tamil": "நீங்கள் கால வரிசைகளுக்குள் சிக்குகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
+    "good": {
+      "type": "ending",
+      "gift": "⏳ Time Traveler Badge",
+      "text": {
+        "English": "You mastered the flow of time!",
+        "Tamil": "நீங்கள் காலத்தை கட்டுப்படுத்தியுள்ளீர்கள்!"
+      }
+    },
+
+    "bad": {
+      "type": "ending",
+      "gift": "⌛ Lost in Time",
+      "text": {
+        "English": "You are trapped in time forever.",
+        "Tamil": "நீங்கள் காலத்தில் என்றென்றும் சிக்கியுள்ளீர்கள்."
       }
     }
   }

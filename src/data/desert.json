@@ -11,6 +11,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +20,13 @@
       },
       "answer": "Rain",
       "options": [
-        {"English":"Rain","Tamil":"மழை","next":"q2"},
-        {"English":"Sunlight","Tamil":"சூரியஒளி","next":"bad"},
-        {"English":"Heat","Tamil":"வெப்பம்","next":"bad"},
-        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+        { "English": "Rain", "Tamil": "மழை", "next": "q2" },
+        { "English": "Sunlight", "Tamil": "சூரியஒளி", "next": "fail" },
+        { "English": "Heat", "Tamil": "வெப்பம்", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +35,13 @@
       },
       "answer": "Camel",
       "options": [
-        {"English":"Camel","Tamil":"ஒட்டகம்","next":"q3"},
-        {"English":"Horse","Tamil":"குதிரை","next":"bad"},
-        {"English":"Dog","Tamil":"நாய்","next":"bad"},
-        {"English":"Cow","Tamil":"மாடு","next":"bad"}
+        { "English": "Camel", "Tamil": "ஒட்டகம்", "next": "q3" },
+        { "English": "Horse", "Tamil": "குதிரை", "next": "fail" },
+        { "English": "Dog", "Tamil": "நாய்", "next": "fail" },
+        { "English": "Cow", "Tamil": "மாடு", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,12 +50,13 @@
       },
       "answer": "Dry",
       "options": [
-        {"English":"Dry","Tamil":"வறண்ட","next":"q4"},
-        {"English":"Wet","Tamil":"ஈரமான","next":"bad"},
-        {"English":"Frozen","Tamil":"உறைந்த","next":"bad"},
-        {"English":"Green","Tamil":"பச்சை","next":"bad"}
+        { "English": "Dry", "Tamil": "வறண்ட", "next": "q4" },
+        { "English": "Wet", "Tamil": "ஈரமான", "next": "fail" },
+        { "English": "Frozen", "Tamil": "உறைந்த", "next": "fail" },
+        { "English": "Green", "Tamil": "பச்சை", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
@@ -61,12 +65,13 @@
       },
       "answer": "Thick skin",
       "options": [
-        {"English":"Thick skin","Tamil":"தடித்த தோல்","next":"q5"},
-        {"English":"Fur","Tamil":"முடி","next":"bad"},
-        {"English":"Feathers","Tamil":"இறகுகள்","next":"bad"},
-        {"English":"Scales","Tamil":"அளவைகள்","next":"bad"}
+        { "English": "Thick skin", "Tamil": "தடித்த தோல்", "next": "q5" },
+        { "English": "Fur", "Tamil": "முடி", "next": "fail" },
+        { "English": "Feathers", "Tamil": "இறகுகள்", "next": "fail" },
+        { "English": "Scales", "Tamil": "அளவைகள்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
@@ -75,12 +80,33 @@
       },
       "answer": "Cold",
       "options": [
-        {"English":"Cold","Tamil":"குளிர்","next":"good"},
-        {"English":"Hot","Tamil":"வெப்பம்","next":"bad"},
-        {"English":"Humid","Tamil":"ஈரப்பதம்","next":"bad"},
-        {"English":"Rainy","Tamil":"மழை","next":"bad"}
+        { "English": "Cold", "Tamil": "குளிர்", "next": "final" },
+        { "English": "Hot", "Tamil": "வெப்பம்", "next": "fail" },
+        { "English": "Humid", "Tamil": "ஈரப்பதம்", "next": "fail" },
+        { "English": "Rainy", "Tamil": "மழை", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You find shelter and survive the heat...",
+        "Tamil": "நீங்கள் அடைக்கலம் கண்டுபிடித்து உயிர்தப்புகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "The desert heat drains your strength...",
+        "Tamil": "பாலைவன வெப்பம் உங்கள் சக்தியை இழக்கச் செய்கிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🏜️ Desert Survivor",
@@ -89,6 +115,7 @@
         "Tamil": "நீங்கள் பாலைவனத்தை கடந்து விட்டீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
       "gift": "☀️ Heat Exhausted",

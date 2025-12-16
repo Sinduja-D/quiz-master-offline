@@ -11,6 +11,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +20,13 @@
       },
       "answer": "Kings",
       "options": [
-        {"English":"Kings","Tamil":"அரசர்கள்","next":"q2"},
-        {"English":"Farmers","Tamil":"விவசாயிகள்","next":"bad"},
-        {"English":"Soldiers","Tamil":"சிப்பாய்கள்","next":"bad"},
-        {"English":"Merchants","Tamil":"வர்த்தகர்கள்","next":"bad"}
+        { "English": "Kings", "Tamil": "அரசர்கள்", "next": "q2" },
+        { "English": "Farmers", "Tamil": "விவசாயிகள்", "next": "fail" },
+        { "English": "Soldiers", "Tamil": "சிப்பாய்கள்", "next": "fail" },
+        { "English": "Merchants", "Tamil": "வர்த்தகர்கள்", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +35,13 @@
       },
       "answer": "Stone",
       "options": [
-        {"English":"Stone","Tamil":"கல்","next":"q3"},
-        {"English":"Wood","Tamil":"மரம்","next":"bad"},
-        {"English":"Mud","Tamil":"மண்","next":"bad"},
-        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+        { "English": "Stone", "Tamil": "கல்", "next": "q3" },
+        { "English": "Wood", "Tamil": "மரம்", "next": "fail" },
+        { "English": "Mud", "Tamil": "மண்", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,12 +50,13 @@
       },
       "answer": "Knights",
       "options": [
-        {"English":"Knights","Tamil":"அழகாளர்கள்","next":"q4"},
-        {"English":"Peasants","Tamil":"உழவர்","next":"bad"},
-        {"English":"Monks","Tamil":"சித்தர்கள்","next":"bad"},
-        {"English":"Merchants","Tamil":"வர்த்தகர்கள்","next":"bad"}
+        { "English": "Knights", "Tamil": "சிறந்த வீரர்கள்", "next": "q4" },
+        { "English": "Peasants", "Tamil": "உழவர்கள்", "next": "fail" },
+        { "English": "Monks", "Tamil": "துறவிகள்", "next": "fail" },
+        { "English": "Merchants", "Tamil": "வர்த்தகர்கள்", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
@@ -61,12 +65,13 @@
       },
       "answer": "Walls",
       "options": [
-        {"English":"Walls","Tamil":"சுவர்கள்","next":"q5"},
-        {"English":"Floors","Tamil":"மாடிகள்","next":"bad"},
-        {"English":"Gates","Tamil":"கதவுகள்","next":"bad"},
-        {"English":"Windows","Tamil":"ஜன்னல்கள்","next":"bad"}
+        { "English": "Walls", "Tamil": "சுவர்கள்", "next": "q5" },
+        { "English": "Floors", "Tamil": "மாடிகள்", "next": "fail" },
+        { "English": "Gates", "Tamil": "கதவுகள்", "next": "fail" },
+        { "English": "Windows", "Tamil": "ஜன்னல்கள்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
@@ -75,12 +80,33 @@
       },
       "answer": "Royalty",
       "options": [
-        {"English":"Royalty","Tamil":"அரச குடும்பம்","next":"good"},
-        {"English":"Farmers","Tamil":"விவசாயிகள்","next":"bad"},
-        {"English":"Soldiers","Tamil":"சிப்பாய்கள்","next":"bad"},
-        {"English":"Merchants","Tamil":"வர்த்தகர்கள்","next":"bad"}
+        { "English": "Royalty", "Tamil": "அரச குடும்பம்", "next": "final" },
+        { "English": "Farmers", "Tamil": "விவசாயிகள்", "next": "fail" },
+        { "English": "Soldiers", "Tamil": "சிப்பாய்கள்", "next": "fail" },
+        { "English": "Merchants", "Tamil": "வர்த்தகர்கள்", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You conquer the castle walls...",
+        "Tamil": "நீங்கள் கோட்டையை வெற்றிகொள்கிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "You are captured inside the castle...",
+        "Tamil": "நீங்கள் கோட்டையில் பிடிபடுகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🏰 Castle Conqueror Badge",
@@ -89,6 +115,7 @@
         "Tamil": "நீங்கள் கோட்டை பாதுகாப்பாக ஆய்வு செய்தீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
       "gift": "🔒 Locked in Castle",

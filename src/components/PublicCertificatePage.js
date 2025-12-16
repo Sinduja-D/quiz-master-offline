@@ -1,23 +1,29 @@
 import React from "react";
-import { QRCodeCanvas } from "qrcode.react";
+import { useSearchParams } from "react-router-dom";
 import html2canvas from "html2canvas";
-import "./CertificatePage.css";
+import "../CertificatePage.css"; // reuse your existing styles
 
-const CertificateCard = ({ user }) => {
+const PublicCertificatePage = () => {
+  const [params] = useSearchParams();
 
-  // ✅ PUBLIC QR URL (mobile-friendly, no localStorage needed)
-  const certificateUrl =
-    `https://694115ea4a2f12036dc406e4--soft-taiyaki-37c5d5.netlify.app/certificate?` +
-    `name=${encodeURIComponent(user.username)}` +
-    `&school=${encodeURIComponent(user.schoolName || "")}` +
-    `&place=${encodeURIComponent(user.memberPlace || "")}` +
-    `&date=${encodeURIComponent(user.memberSince || "")}`;
+  const name = params.get("name");
+  const school = params.get("school");
+  const place = params.get("place");
+  const date = params.get("date");
+
+  if (!name) {
+    return (
+      <div style={{ textAlign: "center", padding: 30 }}>
+        ❌ Invalid Certificate Link
+      </div>
+    );
+  }
 
   const downloadCertificate = async () => {
-    const certificate = document.getElementById("certificate-download");
-    if (!certificate) return;
+    const cert = document.getElementById("public-certificate");
+    if (!cert) return;
 
-    const canvas = await html2canvas(certificate, {
+    const canvas = await html2canvas(cert, {
       scale: 2,
       useCORS: true,
     });
@@ -33,7 +39,7 @@ const CertificateCard = ({ user }) => {
     <div className="certificate-container">
 
       <div
-        id="certificate-download"
+        id="public-certificate"
         className="certificate-card realistic"
       >
         <div className="certificate-ribbon">VigyaanXpo</div>
@@ -45,41 +51,24 @@ const CertificateCard = ({ user }) => {
           </p>
         </div>
 
-        <div className="student-name">
-          {user.username}
-        </div>
+        <div className="student-name">{name}</div>
 
         <div className="student-details">
-          <p><strong>School:</strong> {user.schoolName}</p>
-          <p><strong>Place:</strong> {user.memberPlace}</p>
-          <p><strong>Date:</strong> {user.memberSince}</p>
+          <p><strong>School:</strong> {school}</p>
+          <p><strong>Place:</strong> {place}</p>
+          <p><strong>Date:</strong> {date}</p>
         </div>
 
         <p className="certificate-text">
-          for successfully participating and demonstrating enthusiasm and
-          excellence in science quizzes conducted as part of the
+          for successfully participating in the
           <strong> VigyaanXpo Science Quiz</strong>.
         </p>
 
-        <div className="achievement-box">
-          Achievements Earned: {user.achievements.length}
-        </div>
-
         <div className="certificate-footer">
-
           <div className="signature">
             <p><strong>Dr. K.A. Mohamed Junaid</strong></p>
             <p>Principal</p>
             <span>R.M.K. Engineering College</span>
-          </div>
-
-          <div className="qr-section">
-            <p className="qr-text">Scan to view / download</p>
-            <QRCodeCanvas
-              value={certificateUrl}
-              size={130}
-              level="H"
-            />
           </div>
 
           <div className="signature">
@@ -87,7 +76,6 @@ const CertificateCard = ({ user }) => {
             <p>Founder & Chairman</p>
             <span>R.M.K Group of Institutions</span>
           </div>
-
         </div>
       </div>
 
@@ -99,4 +87,4 @@ const CertificateCard = ({ user }) => {
   );
 };
 
-export default CertificateCard;
+export default PublicCertificatePage;

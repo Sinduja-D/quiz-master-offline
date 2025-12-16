@@ -11,6 +11,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,26 +20,28 @@
       },
       "answer": "Artichoke",
       "options": [
-        {"English":"Artichoke","Tamil":"கலைச்சோக்கு","next":"q2"},
-        {"English":"Stone","Tamil":"கல்","next":"bad"},
-        {"English":"Fish","Tamil":"மீன்","next":"bad"},
-        {"English":"Coral","Tamil":"மணல்கல்","next":"bad"}
+        { "English": "Artichoke", "Tamil": "கலைச்சோக்கு", "next": "q2" },
+        { "English": "Stone", "Tamil": "கல்", "next": "fail" },
+        { "English": "Fish", "Tamil": "மீன்", "next": "fail" },
+        { "English": "Coral", "Tamil": "பவளம்", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
         "English": "I move silently, carry treasure inside, yet I have no legs. What am I?",
-        "Tamil": "நான் மௌனமாக நகர்கிறேன், உள்ளே திரூகம் கொண்டு செல்கிறேன், ஆனால் கால்கள் இல்லை. நான் யார்?"
+        "Tamil": "நான் மௌனமாக நகர்கிறேன், உள்ளே பொக்கிஷம் வைத்துள்ளேன், ஆனால் கால்கள் இல்லை. நான் யார்?"
       },
       "answer": "Clam",
       "options": [
-        {"English":"Clam","Tamil":"முத்துக்கல்","next":"q3"},
-        {"English":"Crab","Tamil":"நண்டு","next":"bad"},
-        {"English":"Octopus","Tamil":"அக்டோபஸ்","next":"bad"},
-        {"English":"Seahorse","Tamil":"கடல் குதிரை","next":"bad"}
+        { "English": "Clam", "Tamil": "முத்துச் சிப்பி", "next": "q3" },
+        { "English": "Crab", "Tamil": "நண்டு", "next": "fail" },
+        { "English": "Octopus", "Tamil": "அக்டோபஸ்", "next": "fail" },
+        { "English": "Seahorse", "Tamil": "கடல் குதிரை", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,40 +50,63 @@
       },
       "answer": "Jellyfish",
       "options": [
-        {"English":"Jellyfish","Tamil":"ஜெல்லிபிஷ்","next":"q4"},
-        {"English":"Fish","Tamil":"மீன்","next":"bad"},
-        {"English":"Crab","Tamil":"நண்டு","next":"bad"},
-        {"English":"Coral","Tamil":"மணல்கல்","next":"bad"}
+        { "English": "Jellyfish", "Tamil": "ஜெல்லி மீன்", "next": "q4" },
+        { "English": "Fish", "Tamil": "மீன்", "next": "fail" },
+        { "English": "Crab", "Tamil": "நண்டு", "next": "fail" },
+        { "English": "Coral", "Tamil": "பவளம்", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
         "English": "I build my house on the seabed and walk sideways. What am I?",
-        "Tamil": "நான் கடல்மேல் என் வீடு கட்டுகிறேன் மற்றும் பக்கமாக நடக்கிறேன். நான் யார்?"
+        "Tamil": "நான் கடல்தளத்தில் என் வீட்டை கட்டி பக்கமாக நடக்கிறேன். நான் யார்?"
       },
       "answer": "Crab",
       "options": [
-        {"English":"Crab","Tamil":"நண்டு","next":"q5"},
-        {"English":"Clam","Tamil":"முத்துக்கல்","next":"bad"},
-        {"English":"Octopus","Tamil":"அக்டோபஸ்","next":"bad"},
-        {"English":"Starfish","Tamil":"நட்சத்திர மீன்","next":"bad"}
+        { "English": "Crab", "Tamil": "நண்டு", "next": "q5" },
+        { "English": "Clam", "Tamil": "முத்துச் சிப்பி", "next": "fail" },
+        { "English": "Octopus", "Tamil": "அக்டோபஸ்", "next": "fail" },
+        { "English": "Starfish", "Tamil": "நட்சத்திர மீன்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
         "English": "I have eight arms and ink to hide. What am I?",
-        "Tamil": "எனக்கு எட்டு கைகள் உள்ளன மற்றும் மறைக்க மலம் உள்ளது. நான் யார்?"
+        "Tamil": "எனக்கு எட்டு கைகள் உள்ளன, மறைய மை வெளியிடுகிறேன். நான் யார்?"
       },
       "answer": "Octopus",
       "options": [
-        {"English":"Octopus","Tamil":"அக்டோபஸ்","next":"good"},
-        {"English":"Clam","Tamil":"முத்துக்கல்","next":"bad"},
-        {"English":"Crab","Tamil":"நண்டு","next":"bad"},
-        {"English":"Jellyfish","Tamil":"ஜெல்லிபிஷ்","next":"bad"}
+        { "English": "Octopus", "Tamil": "அக்டோபஸ்", "next": "final" },
+        { "English": "Clam", "Tamil": "முத்துச் சிப்பி", "next": "fail" },
+        { "English": "Crab", "Tamil": "நண்டு", "next": "fail" },
+        { "English": "Jellyfish", "Tamil": "ஜெல்லி மீன்", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You escape the deep waters safely...",
+        "Tamil": "ஆழமான நீரிலிருந்து பாதுகாப்பாக வெளியேறுகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "You lose your way in the dark waters...",
+        "Tamil": "இருண்ட நீரில் வழி தவறுகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🏆 Deep Sea Explorer Badge",
@@ -88,16 +114,15 @@
         "English": "You explored the underwater cave safely!",
         "Tamil": "நீங்கள் கடல்கீழ் குகையை பாதுகாப்பாக ஆராய்ந்தீர்கள்!"
       }
-    }
-  },
+    },
 
     "bad": {
       "type": "ending",
-      "gift":"🌊 Lost Diver",
+      "gift": "🌊 Lost Diver",
       "text": {
         "English": "You got lost in the underwater cave.",
         "Tamil": "நீங்கள் கடல்கீழ் குகையில் சிக்கிவிட்டீர்கள்."
       }
     }
   }
-
+}

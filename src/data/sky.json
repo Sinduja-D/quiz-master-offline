@@ -1,5 +1,4 @@
 {
-  "id": "sky",
   "startScene": "intro",
   "scenes": {
     "intro": {
@@ -8,10 +7,11 @@
         "English": "Reach the floating Sky Island by solving cloud puzzles.",
         "Tamil": "மேகப் புதிர்களைத் தீர்த்து வான்தீவுக்குச் செல்லுங்கள்."
       },
-      "duration": 4000,
-      "next": "riddle1"
+      "duration": 3000,
+      "next": "q1"
     },
-    "riddle1": {
+
+    "q1": {
       "type": "riddle",
       "question": {
         "English": "I am always above you but never fall. What am I?",
@@ -19,27 +19,29 @@
       },
       "answer": "Sky",
       "options": [
-        {"English":"Sky","Tamil":"வானம்","next":"riddle2"},
-        {"English":"Sun","Tamil":"சூரியன்","next":"riddle1"},
-        {"English":"Cloud","Tamil":"மேகம்","next":"riddle1"},
-        {"English":"Bird","Tamil":"பறவை","next":"riddle1"}
+        { "English": "Sky", "Tamil": "வானம்", "next": "q2" },
+        { "English": "Sun", "Tamil": "சூரியன்", "next": "fail" },
+        { "English": "Cloud", "Tamil": "மேகம்", "next": "fail" },
+        { "English": "Bird", "Tamil": "பறவை", "next": "fail" }
       ]
     },
-    "riddle2": {
+
+    "q2": {
       "type": "riddle",
       "question": {
-        "English": "I float but I’m not a boat. I can bring rain. What am I?",
-        "Tamil": "நான் மிதக்கிறேன் ஆனால் கப்பல் இல்லை. நான் மழை தரலாம். நான் யார்?"
+        "English": "I float and bring rain. What am I?",
+        "Tamil": "நான் மிதக்கிறேன் மற்றும் மழை தருகிறேன். நான் யார்?"
       },
       "answer": "Cloud",
       "options": [
-        {"English":"Cloud","Tamil":"மேகம்","next":"riddle3"},
-        {"English":"Balloon","Tamil":"பலூன்","next":"riddle2"},
-        {"English":"Leaf","Tamil":"இலை","next":"riddle2"},
-        {"English":"Feather","Tamil":"இலை","next":"riddle2"}
+        { "English": "Cloud", "Tamil": "மேகம்", "next": "q3" },
+        { "English": "Balloon", "Tamil": "பலூன்", "next": "fail" },
+        { "English": "Leaf", "Tamil": "இலை", "next": "fail" },
+        { "English": "Feather", "Tamil": "இறகு", "next": "fail" }
       ]
     },
-    "riddle3": {
+
+    "q3": {
       "type": "riddle",
       "question": {
         "English": "I rise in the morning and set at night. What am I?",
@@ -47,49 +49,78 @@
       },
       "answer": "Sun",
       "options": [
-        {"English":"Sun","Tamil":"சூரியன்","next":"riddle4"},
-        {"English":"Moon","Tamil":"சந்திரன்","next":"bad"},
-        {"English":"Star","Tamil":"நட்சத்திரம்","next":"bad"},
-        {"English":"Cloud","Tamil":"மேகம்","next":"bad"}
+        { "English": "Sun", "Tamil": "சூரியன்", "next": "q4" },
+        { "English": "Moon", "Tamil": "சந்திரன்", "next": "fail" },
+        { "English": "Star", "Tamil": "நட்சத்திரம்", "next": "fail" },
+        { "English": "Cloud", "Tamil": "மேகம்", "next": "fail" }
       ]
     },
-    "riddle4": {
+
+    "q4": {
       "type": "riddle",
       "question": {
-        "English": "I twinkle at night but am far away. What am I?",
-        "Tamil": "நான் இரவில் மின்னி மின்னி ஒளிர்கிறேன் ஆனால் தொலைவில் இருக்கிறேன். நான் யார்?"
+        "English": "I twinkle at night. What am I?",
+        "Tamil": "நான் இரவில் மின்னுகிறேன். நான் யார்?"
       },
       "answer": "Star",
       "options": [
-        {"English":"Star","Tamil":"நட்சத்திரம்","next":"riddle5"},
-        {"English":"Moon","Tamil":"சந்திரன்","next":"bad"},
-        {"English":"Sun","Tamil":"சூரியன்","next":"bad"},
-        {"English":"Cloud","Tamil":"மேகம்","next":"bad"}
+        { "English": "Star", "Tamil": "நட்சத்திரம்", "next": "q5" },
+        { "English": "Moon", "Tamil": "சந்திரன்", "next": "fail" },
+        { "English": "Sun", "Tamil": "சூரியன்", "next": "fail" },
+        { "English": "Cloud", "Tamil": "மேகம்", "next": "fail" }
       ]
     },
-    "riddle5": {
+
+    "q5": {
       "type": "riddle",
       "question": {
-        "English": "I am bright at night and change my shape. What am I?",
-        "Tamil": "நான் இரவில் பிரகாசமாக இருக்கிறேன் மற்றும் என் வடிவத்தை மாற்றுகிறேன். நான் யார்?"
+        "English": "I change my shape at night. What am I?",
+        "Tamil": "நான் இரவில் வடிவம் மாறுகிறேன். நான் யார்?"
       },
       "answer": "Moon",
       "options": [
-        {"English":"Moon","Tamil":"சந்திரன்","next":"ending"},
-        {"English":"Star","Tamil":"நட்சத்திரம்","next":"bad"},
-        {"English":"Cloud","Tamil":"மேகம்","next":"bad"},
-        {"English":"Sun","Tamil":"சூரியன்","next":"bad"}
+        { "English": "Moon", "Tamil": "சந்திரன்", "next": "final" },
+        { "English": "Star", "Tamil": "நட்சத்திரம்", "next": "fail" },
+        { "English": "Cloud", "Tamil": "மேகம்", "next": "fail" },
+        { "English": "Sun", "Tamil": "சூரியன்", "next": "fail" }
       ]
     },
-    "ending": {
-      "type": "ending",
-      "gift": {
-        "English":"🏆 Sky Voyager Badge",
-        "Tamil":"🏆 வான பயணி பதக்கம்"
-      },
+
+    "final": {
+      "type": "transition",
       "text": {
-        "English": "You reached the Sky Island safely!",
-        "Tamil": "நீங்கள் வான்தீவுக்கு பாதுகாப்பாக சென்றீர்கள்!"
+        "English": "You rise through the clouds...",
+        "Tamil": "நீங்கள் மேகங்களை தாண்டுகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "You fall from the sky...",
+        "Tamil": "நீங்கள் வானத்திலிருந்து விழுகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
+    "good": {
+      "type": "ending",
+      "gift": "🏆 Sky Voyager Badge",
+      "text": {
+        "English": "You reached Sky Island!",
+        "Tamil": "நீங்கள் வான்தீவை அடைந்தீர்கள்!"
+      }
+    },
+
+    "bad": {
+      "type": "ending",
+      "gift": "☁️ Fallen Flyer",
+      "text": {
+        "English": "You failed to reach Sky Island.",
+        "Tamil": "நீங்கள் வான்தீவை அடைய முடியவில்லை."
       }
     }
   }

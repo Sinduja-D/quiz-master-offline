@@ -11,6 +11,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +20,13 @@
       },
       "answer": "Lion",
       "options": [
-        {"English":"Lion","Tamil":"சிங்கம்","next":"q2"},
-        {"English":"Elephant","Tamil":"யானை","next":"bad"},
-        {"English":"Tiger","Tamil":"புலி","next":"bad"},
-        {"English":"Bear","Tamil":"கரடி","next":"bad"}
+        { "English": "Lion", "Tamil": "சிங்கம்", "next": "q2" },
+        { "English": "Elephant", "Tamil": "யானை", "next": "fail" },
+        { "English": "Tiger", "Tamil": "புலி", "next": "fail" },
+        { "English": "Bear", "Tamil": "கரடி", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +35,13 @@
       },
       "answer": "Elephant",
       "options": [
-        {"English":"Elephant","Tamil":"யானை","next":"q3"},
-        {"English":"Giraffe","Tamil":"ஒட்டகச்சிவிங்கி","next":"bad"},
-        {"English":"Rhino","Tamil":"காட்டெருமை","next":"bad"},
-        {"English":"Hippo","Tamil":"நீர்யானை","next":"bad"}
+        { "English": "Elephant", "Tamil": "யானை", "next": "q3" },
+        { "English": "Giraffe", "Tamil": "ஒட்டகச்சிவிங்கி", "next": "fail" },
+        { "English": "Rhino", "Tamil": "காட்டெருமை", "next": "fail" },
+        { "English": "Hippo", "Tamil": "நீர்யானை", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,12 +50,13 @@
       },
       "answer": "Monkey",
       "options": [
-        {"English":"Monkey","Tamil":"குரங்கு","next":"q4"},
-        {"English":"Snake","Tamil":"பாம்பு","next":"bad"},
-        {"English":"Tiger","Tamil":"புலி","next":"bad"},
-        {"English":"Elephant","Tamil":"யானை","next":"bad"}
+        { "English": "Monkey", "Tamil": "குரங்கு", "next": "q4" },
+        { "English": "Snake", "Tamil": "பாம்பு", "next": "fail" },
+        { "English": "Tiger", "Tamil": "புலி", "next": "fail" },
+        { "English": "Elephant", "Tamil": "யானை", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
@@ -61,12 +65,13 @@
       },
       "answer": "Trees",
       "options": [
-        {"English":"Trees","Tamil":"மரங்கள்","next":"q5"},
-        {"English":"Rocks","Tamil":"பாறைகள்","next":"bad"},
-        {"English":"Sand","Tamil":"மணல்","next":"bad"},
-        {"English":"Plastic","Tamil":"பிளாஸ்டிக்","next":"bad"}
+        { "English": "Trees", "Tamil": "மரங்கள்", "next": "q5" },
+        { "English": "Rocks", "Tamil": "பாறைகள்", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" },
+        { "English": "Plastic", "Tamil": "பிளாஸ்டிக்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
@@ -75,12 +80,33 @@
       },
       "answer": "Rainfall",
       "options": [
-        {"English":"Rainfall","Tamil":"மழை","next":"good"},
-        {"English":"Snow","Tamil":"பனி","next":"bad"},
-        {"English":"Sand","Tamil":"மணல்","next":"bad"},
-        {"English":"Ice","Tamil":"பனிக்கட்டி","next":"bad"}
+        { "English": "Rainfall", "Tamil": "மழை", "next": "final" },
+        { "English": "Snow", "Tamil": "பனி", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" },
+        { "English": "Ice", "Tamil": "பனிக்கட்டி", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You find a safe path through the jungle...",
+        "Tamil": "நீங்கள் காட்டில் பாதுகாப்பான பாதையை கண்டுபிடிக்கிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "The jungle overwhelms you...",
+        "Tamil": "காடு உங்களை வழிதவறச் செய்கிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🌿 Jungle Survivor Badge",
@@ -89,9 +115,10 @@
         "Tamil": "நீங்கள் காட்டிலிருந்து பாதுகாப்பாக தப்பித்தீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
-      "gift": "🐾 Lost in Jungle Mark",
+      "gift": "🐾 Lost in Jungle",
       "text": {
         "English": "You are lost in the jungle.",
         "Tamil": "நீங்கள் காட்டில் வழி தவறிவிட்டீர்கள்."

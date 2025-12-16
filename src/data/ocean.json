@@ -11,6 +11,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +20,13 @@
       },
       "answer": "Pacific",
       "options": [
-        {"English":"Pacific","Tamil":"பசிபிக்","next":"q2"},
-        {"English":"Indian","Tamil":"இந்திய","next":"bad"},
-        {"English":"Atlantic","Tamil":"அட்லாண்டிக்","next":"bad"},
-        {"English":"Arctic","Tamil":"ஆர்க்டிக்","next":"bad"}
+        { "English": "Pacific", "Tamil": "பசிபிக்", "next": "q2" },
+        { "English": "Indian", "Tamil": "இந்திய", "next": "fail" },
+        { "English": "Atlantic", "Tamil": "அட்லாண்டிக்", "next": "fail" },
+        { "English": "Arctic", "Tamil": "ஆர்க்டிக்", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +35,13 @@
       },
       "answer": "Blue Whale",
       "options": [
-        {"English":"Blue Whale","Tamil":"நீல திமிங்கிலம்","next":"q3"},
-        {"English":"Shark","Tamil":"சுறா","next":"bad"},
-        {"English":"Dolphin","Tamil":"டால்பின்","next":"bad"},
-        {"English":"Octopus","Tamil":"ஆக்டோபஸ்","next":"bad"}
+        { "English": "Blue Whale", "Tamil": "நீல திமிங்கிலம்", "next": "q3" },
+        { "English": "Shark", "Tamil": "சுறா", "next": "fail" },
+        { "English": "Dolphin", "Tamil": "டால்பின்", "next": "fail" },
+        { "English": "Octopus", "Tamil": "ஆக்டோபஸ்", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,12 +50,13 @@
       },
       "answer": "Salty",
       "options": [
-        {"English":"Salty","Tamil":"உப்பு","next":"q4"},
-        {"English":"Sweet","Tamil":"இனிப்பு","next":"bad"},
-        {"English":"Bitter","Tamil":"கசப்பு","next":"bad"},
-        {"English":"Plain","Tamil":"சாதாரணம்","next":"bad"}
+        { "English": "Salty", "Tamil": "உப்பு", "next": "q4" },
+        { "English": "Sweet", "Tamil": "இனிப்பு", "next": "fail" },
+        { "English": "Bitter", "Tamil": "கசப்பு", "next": "fail" },
+        { "English": "Plain", "Tamil": "சாதாரணம்", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
@@ -61,12 +65,13 @@
       },
       "answer": "Oceanographer",
       "options": [
-        {"English":"Oceanographer","Tamil":"கடல் ஆய்வாளர்","next":"q5"},
-        {"English":"Astronaut","Tamil":"விண்வெளி வீரர்","next":"bad"},
-        {"English":"Doctor","Tamil":"மருத்துவர்","next":"bad"},
-        {"English":"Pilot","Tamil":"விமானி","next":"bad"}
+        { "English": "Oceanographer", "Tamil": "கடல் ஆய்வாளர்", "next": "q5" },
+        { "English": "Astronaut", "Tamil": "விண்வெளி வீரர்", "next": "fail" },
+        { "English": "Doctor", "Tamil": "மருத்துவர்", "next": "fail" },
+        { "English": "Pilot", "Tamil": "விமானி", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
@@ -75,12 +80,33 @@
       },
       "answer": "Living organisms",
       "options": [
-        {"English":"Living organisms","Tamil":"உயிருள்ளவை","next":"good"},
-        {"English":"Rocks","Tamil":"பாறைகள்","next":"bad"},
-        {"English":"Plants","Tamil":"தாவரங்கள்","next":"bad"},
-        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+        { "English": "Living organisms", "Tamil": "உயிருள்ளவை", "next": "final" },
+        { "English": "Rocks", "Tamil": "பாறைகள்", "next": "fail" },
+        { "English": "Plants", "Tamil": "தாவரங்கள்", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You swim toward the surface...",
+        "Tamil": "நீங்கள் மேலே நோக்கி நீந்துகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "The ocean pulls you deeper...",
+        "Tamil": "கடல் உங்களை ஆழத்திற்கு இழுக்கிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🌊 Ocean Master Badge",
@@ -89,6 +115,7 @@
         "Tamil": "நீங்கள் கடலிலிருந்து தப்பித்தீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
       "gift": "⚓ Sunk Explorer",

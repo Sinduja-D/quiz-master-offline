@@ -1,5 +1,4 @@
 {
-  "id": "pyramid",
   "startScene": "intro",
   "scenes": {
     "intro": {
@@ -11,6 +10,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +19,13 @@
       },
       "answer": "Egyptians",
       "options": [
-        {"English":"Egyptians","Tamil":"எகிப்தியர்கள்","next":"q2"},
-        {"English":"Romans","Tamil":"ரோமர்கள்","next":"bad"},
-        {"English":"Greeks","Tamil":"கிரேக்கர்கள்","next":"bad"},
-        {"English":"Mayans","Tamil":"மாயாஸ்","next":"bad"}
+        { "English": "Egyptians", "Tamil": "எகிப்தியர்கள்", "next": "q2" },
+        { "English": "Romans", "Tamil": "ரோமர்கள்", "next": "fail" },
+        { "English": "Greeks", "Tamil": "கிரேக்கர்கள்", "next": "fail" },
+        { "English": "Mayans", "Tamil": "மாயாஸ்", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +34,13 @@
       },
       "answer": "Tombs",
       "options": [
-        {"English":"Tombs","Tamil":"கல்லறைகள்","next":"q3"},
-        {"English":"Palaces","Tamil":"மாளிகைகள்","next":"bad"},
-        {"English":"Temples","Tamil":"கோவில்கள்","next":"bad"},
-        {"English":"Huts","Tamil":"சிறிய குடிசைகள்","next":"bad"}
+        { "English": "Tombs", "Tamil": "கல்லறைகள்", "next": "q3" },
+        { "English": "Palaces", "Tamil": "மாளிகைகள்", "next": "fail" },
+        { "English": "Temples", "Tamil": "கோவில்கள்", "next": "fail" },
+        { "English": "Huts", "Tamil": "குடிசைகள்", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,12 +49,13 @@
       },
       "answer": "A statue",
       "options": [
-        {"English":"A statue","Tamil":"ஒரு சிலை","next":"q4"},
-        {"English":"A river","Tamil":"ஒரு ஆறு","next":"bad"},
-        {"English":"A mountain","Tamil":"ஒரு மலை","next":"bad"},
-        {"English":"A temple","Tamil":"ஒரு கோவில்","next":"bad"}
+        { "English": "A statue", "Tamil": "ஒரு சிலை", "next": "q4" },
+        { "English": "River", "Tamil": "ஆறு", "next": "fail" },
+        { "English": "Mountain", "Tamil": "மலை", "next": "fail" },
+        { "English": "Temple", "Tamil": "கோவில்", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
@@ -61,12 +64,13 @@
       },
       "answer": "Stone",
       "options": [
-        {"English":"Stone","Tamil":"கல்","next":"q5"},
-        {"English":"Wood","Tamil":"மரம்","next":"bad"},
-        {"English":"Clay","Tamil":"மண்","next":"bad"},
-        {"English":"Sand","Tamil":"மணல்","next":"bad"}
+        { "English": "Stone", "Tamil": "கல்", "next": "q5" },
+        { "English": "Wood", "Tamil": "மரம்", "next": "fail" },
+        { "English": "Clay", "Tamil": "மண்", "next": "fail" },
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
@@ -75,12 +79,33 @@
       },
       "answer": "Egypt",
       "options": [
-        {"English":"Egypt","Tamil":"எகிப்து","next":"good"},
-        {"English":"China","Tamil":"சீனா","next":"bad"},
-        {"English":"India","Tamil":"இந்தியா","next":"bad"},
-        {"English":"Mexico","Tamil":"மெக்சிகோ","next":"bad"}
+        { "English": "Egypt", "Tamil": "எகிப்து", "next": "final" },
+        { "English": "China", "Tamil": "சீனா", "next": "fail" },
+        { "English": "India", "Tamil": "இந்தியா", "next": "fail" },
+        { "English": "Mexico", "Tamil": "மெக்சிகோ", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You escape the pyramid with ancient knowledge...",
+        "Tamil": "பழமையான அறிவுடன் நீங்கள் பீரமிடிலிருந்து வெளியேறுகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "You are lost inside the pyramid...",
+        "Tamil": "நீங்கள் பீரமிட் உள்ளே சிக்கிவிட்டீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🏺 Pyramid Explorer Badge",
@@ -89,12 +114,13 @@
         "Tamil": "நீங்கள் பீரமிட் இரகசியங்களை கண்டறிந்தீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
       "gift": "🕳️ Lost in Pyramid",
       "text": {
-        "English": "You are trapped inside the pyramid.",
-        "Tamil": "நீங்கள் பீரமிட் உள்ளே சிக்கிவிட்டீர்கள்."
+        "English": "You are trapped forever inside the pyramid.",
+        "Tamil": "நீங்கள் நிரந்தரமாக பீரமிடில் சிக்கிவிட்டீர்கள்."
       }
     }
   }

@@ -1,5 +1,4 @@
 {
-  "id": "space",
   "startScene": "intro",
   "scenes": {
     "intro": {
@@ -11,6 +10,7 @@
       "duration": 3000,
       "next": "q1"
     },
+
     "q1": {
       "type": "riddle",
       "question": {
@@ -19,12 +19,13 @@
       },
       "answer": "Mercury",
       "options": [
-        {"English":"Mercury","Tamil":"புதன்","next":"q2"},
-        {"English":"Earth","Tamil":"பூமி","next":"bad"},
-        {"English":"Mars","Tamil":"செவ்வாய்","next":"bad"},
-        {"English":"Jupiter","Tamil":"வியாழன்","next":"bad"}
+        { "English": "Mercury", "Tamil": "புதன்", "next": "q2" },
+        { "English": "Earth", "Tamil": "பூமி", "next": "fail" },
+        { "English": "Mars", "Tamil": "செவ்வாய்", "next": "fail" },
+        { "English": "Jupiter", "Tamil": "வியாழன்", "next": "fail" }
       ]
     },
+
     "q2": {
       "type": "riddle",
       "question": {
@@ -33,12 +34,13 @@
       },
       "answer": "Gravity",
       "options": [
-        {"English":"Gravity","Tamil":"ஈர்ப்பு","next":"q3"},
-        {"English":"Wind","Tamil":"காற்று","next":"bad"},
-        {"English":"Magnetism","Tamil":"காந்தம்","next":"bad"},
-        {"English":"Heat","Tamil":"வெப்பம்","next":"bad"}
+        { "English": "Gravity", "Tamil": "ஈர்ப்பு", "next": "q3" },
+        { "English": "Wind", "Tamil": "காற்று", "next": "fail" },
+        { "English": "Magnetism", "Tamil": "காந்தம்", "next": "fail" },
+        { "English": "Heat", "Tamil": "வெப்பம்", "next": "fail" }
       ]
     },
+
     "q3": {
       "type": "riddle",
       "question": {
@@ -47,12 +49,13 @@
       },
       "answer": "Saturn",
       "options": [
-        {"English":"Saturn","Tamil":"சனி","next":"q4"},
-        {"English":"Venus","Tamil":"சுக்கிரன்","next":"bad"},
-        {"English":"Earth","Tamil":"பூமி","next":"bad"},
-        {"English":"Mars","Tamil":"செவ்வாய்","next":"bad"}
+        { "English": "Saturn", "Tamil": "சனி", "next": "q4" },
+        { "English": "Venus", "Tamil": "சுக்கிரன்", "next": "fail" },
+        { "English": "Earth", "Tamil": "பூமி", "next": "fail" },
+        { "English": "Mars", "Tamil": "செவ்வாய்", "next": "fail" }
       ]
     },
+
     "q4": {
       "type": "riddle",
       "question": {
@@ -61,12 +64,13 @@
       },
       "answer": "Astronaut",
       "options": [
-        {"English":"Astronaut","Tamil":"விண்வெளி வீரர்","next":"q5"},
-        {"English":"Pilot","Tamil":"விமானி","next":"bad"},
-        {"English":"Sailor","Tamil":"கடலோடி","next":"bad"},
-        {"English":"Driver","Tamil":"ஓட்டுநர்","next":"bad"}
+        { "English": "Astronaut", "Tamil": "விண்வெளி வீரர்", "next": "q5" },
+        { "English": "Pilot", "Tamil": "விமானி", "next": "fail" },
+        { "English": "Sailor", "Tamil": "கடலோடி", "next": "fail" },
+        { "English": "Driver", "Tamil": "ஓட்டுநர்", "next": "fail" }
       ]
     },
+
     "q5": {
       "type": "riddle",
       "question": {
@@ -75,20 +79,42 @@
       },
       "answer": "Air",
       "options": [
-        {"English":"Air","Tamil":"காற்று","next":"good"},
-        {"English":"Stars","Tamil":"நட்சத்திரங்கள்","next":"bad"},
-        {"English":"Planets","Tamil":"கோள்கள்","next":"bad"},
-        {"English":"Satellites","Tamil":"செயற்கைக்கோள்கள்","next":"bad"}
+        { "English": "Air", "Tamil": "காற்று", "next": "final" },
+        { "English": "Stars", "Tamil": "நட்சத்திரங்கள்", "next": "fail" },
+        { "English": "Planets", "Tamil": "கோள்கள்", "next": "fail" },
+        { "English": "Satellites", "Tamil": "செயற்கைக்கோள்கள்", "next": "fail" }
       ]
     },
+
+    "final": {
+      "type": "transition",
+      "text": {
+        "English": "You stabilize the spacecraft and regain control...",
+        "Tamil": "நீங்கள் விண்கலத்தை கட்டுப்பாட்டில் கொண்டு வருகிறீர்கள்..."
+      },
+      "duration": 2000,
+      "next": "good"
+    },
+
+    "fail": {
+      "type": "transition",
+      "text": {
+        "English": "Your spacecraft drifts out of control...",
+        "Tamil": "உங்கள் விண்கலம் கட்டுப்பாட்டை இழக்கிறது..."
+      },
+      "duration": 2000,
+      "next": "bad"
+    },
+
     "good": {
       "type": "ending",
       "gift": "🚀 Space Explorer Medal",
       "text": {
-        "English": "You navigated space successfully!",
+        "English": "You successfully navigated through space!",
         "Tamil": "நீங்கள் விண்வெளியை வெற்றிகரமாக கடந்து விட்டீர்கள்!"
       }
     },
+
     "bad": {
       "type": "ending",
       "gift": "🛰️ Lost Signal Badge",
