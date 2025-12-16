@@ -232,10 +232,16 @@ const PageRenderer = ({
           subject={quizSettings?.subject}
           grade={quizSettings?.grade}
           candidateName={candidateName}
-          onQuizComplete={(questions, answers) => {
-            setLastQuizQuestions(questions);
-            setLastQuizUserAnswers(answers);
-            handleQuizComplete(questions, answers);
+          onQuizComplete={(results, payload) => {
+            // payload contains { questions, userAnswers }
+            if (payload && Array.isArray(payload.questions)) {
+              setLastQuizQuestions(payload.questions);
+            } else {
+              setLastQuizQuestions([]);
+            }
+            setLastQuizUserAnswers(payload && payload.userAnswers ? payload.userAnswers : {});
+            // Pass only the results object to the app-level handler
+            handleQuizComplete(results);
             setIsQuizInProgress(false);
           }}
         />

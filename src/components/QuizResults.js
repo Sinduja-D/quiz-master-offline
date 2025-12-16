@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+// src/components/QuizResults.js (modified)
+import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
+import QuizReview from './QuizReview';
 import './QuizResults.css';
 
-const QuizResults = ({ results, language, onRestart, onHome }) => {
+const QuizResults = ({ results, questions, userAnswers, language, onRestart, onHome }) => {
+  const [showReview, setShowReview] = useState(false);
+  
   // Calculate percentage safely
   const percentage = results.totalQuestions > 0 
     ? Math.round((results.correctAnswers / results.totalQuestions) * 100)
@@ -68,6 +72,18 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
   const perfectScoreMessage = language === 'English' 
     ? 'Perfect Score!' 
     : 'முழு மதிப்பெண்! அற்புதமான செயல்!';
+    
+  // If showReview is true, render the QuizReview component
+  if (showReview) {
+    return (
+      <QuizReview 
+        questions={questions}
+        userAnswers={userAnswers}
+        language={language}
+        onBack={() => setShowReview(false)}
+      />
+    );
+  }
     
   return (
     <div className="results-container">
@@ -138,6 +154,11 @@ const QuizResults = ({ results, language, onRestart, onHome }) => {
         
         {/* Actions */}
         <div className="results-actions">
+          <button className="action-button review" onClick={() => setShowReview(true)}>
+            {language === 'English'
+              ? 'Review Answers'
+              : 'பதில்களை மதிப்பாய்வு செய்யுங்கள்'}
+          </button>
           <button className="action-button restart" onClick={onRestart}>
             {language === 'English'
               ? 'Restart Quiz'

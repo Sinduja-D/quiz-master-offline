@@ -301,7 +301,12 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         timeTaken: totalTimeTaken,
         allottedTime: allottedTime
       };
-      onQuizComplete(finalResults);
+      // Pass final results along with the questions and userAnswers so the parent
+      // can render a review screen showing questions and the user's answers.
+      onQuizComplete(finalResults, {
+        questions: quizQuestions,
+        userAnswers: userAnswers,
+      });
     }
   };
   
