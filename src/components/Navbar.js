@@ -4,7 +4,7 @@ import './Navbar.css';
 import logo from "../assets/app-logo.png";
 
 const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
-  const navItems = ["home", "about", "help", "leaderboard"];
+  const navItems = ["home", "about", "contact", "help", "leaderboard"];
   
   const getNavLabel = (page) => {
     if (language === "English")
@@ -13,7 +13,9 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
       case "home":
         return "முகப்பு";
       case "about":
-        return "பற்றி";
+        return "எங்களைப் பற்றி";
+      case "contact":
+        return "தொடர்பு";
       case "help":
         return "உதவி";
       case "leaderboard":
@@ -23,7 +25,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
     }
   };
   
-  return (
+   return (
     <nav className="navbar">
       {/* Brand (Logo + Text) */}
       <div className="nav-brand" onClick={() => setActivePage("home")} style={{ cursor: "pointer" }}>
@@ -36,7 +38,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
   )}
         </span>
       </div>
-      
+
       {/* Navigation Links */}
       <div className="nav-links">
         {navItems.map((page) => (
@@ -49,7 +51,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
           </button>
         ))}
       </div>
-      
+
       {/* Actions */}
       <div className="nav-actions">
         <button
@@ -71,7 +73,7 @@ const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onL
           <div className="user-info">
             <span className="username">{user.username}</span>
             <button onClick={onLogout} className="logout-btn">
-              {language === "English" ? (<>Logout <br></br> [Once You Completed]</>)  : (<>வெளியேறு <br></br> [நீங்கள் முடித்தவுடன்]</>)}
+              {language === "English" ? "Logout" : "வெளியேறு"}
             </button>
           </div>
         )}

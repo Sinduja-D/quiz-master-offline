@@ -1,0 +1,166 @@
+/* src/components/QuizReview.css */
+
+/* Main container for the entire review page */
+.review-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* A light grey background */
+  font-family: sans-serif;
+}
+
+/* The card that holds all the review content */
+.review-card {
+  background-color: #ffffff;
+  padding: 25px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px; /* Max width for readability on large screens */
+  box-sizing: border-box;
+}
+
+/* Title of the review page */
+.review-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+/* Container for a single question block */
+.question-item {
+  border-left: 5px solid #ccc; /* Default border color */
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: box-shadow 0.3s ease;
+}
+
+.question-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Style for correctly answered questions */
+.question-item.correct {
+  border-left-color: #28a745; /* Green */
+}
+
+/* Style for incorrectly answered questions */
+.question-item.wrong {
+  border-left-color: #dc3545; /* Red */
+}
+
+/* The question text itself */
+.question-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+/* Container for the user's and correct answers */
+.answers {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 20px; /* Space between the two answer divs */
+  margin-bottom: 15px;
+}
+
+/* Styling for the user's answer and the correct answer blocks */
+.user-answer,
+.correct-answer {
+  flex: 1; /* Each takes up equal space */
+  min-width: 250px; /* Minimum width before wrapping */
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.user-answer {
+  background-color: #e9ecef; /* Light grey */
+}
+
+.correct-answer {
+  background-color: #d4edda; /* Light green */
+  border: 1px solid #c3e6cb;
+}
+
+/* Container for the concept/ explanation section */
+.concept-review {
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Button to show/hide the concept */
+.toggle-concept-btn {
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-concept-btn:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* The content of the concept, shown when the button is clicked */
+.concept-content {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #fff3cd; /* Light yellow for info */
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #856404;
+}
+
+/* The 'Back to Results' button at the bottom */
+.back-btn {
+  display: block; /* To make margin auto work */
+  margin: 30px auto 0 auto; /* Center the button */
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .review-card {
+    padding: 20px;
+  }
+
+  .review-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .answers {
+    flex-direction: column; /* Stack answers vertically */
+    gap: 10px;
+  }
+
+  .user-answer,
+  .correct-answer {
+    min-width: auto; /* Reset min-width for mobile */
+  }
+}

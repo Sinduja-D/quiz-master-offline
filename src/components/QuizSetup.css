@@ -1,12 +1,14 @@
 /* src/components/QuizSetup.css */
 .quiz-setup-container {
   display: block;
-  width: 100vh;
-  padding: 20px;
-  background-color: #f8f9fa;
-  min-height: 100vh;
+ /* width: 150vh;*/
+  padding-top: 5px;
+
+  /*background-color: #f8f9fa;*/
+  /*min-height: 80vh;*/
   overflow-y: auto;
-  margin-left: 250px;
+  /*margin-left: 150px;*/
+  
 }
 
 .quiz-setup-card {
@@ -17,7 +19,7 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
 }
 
 .setup-header {
@@ -165,7 +167,7 @@
 
 .grade-select {
   width: 100%;
-  padding: 12px 15px;
+  padding: 10px 15px;
   border: 2px solid #ddd;
   border-radius: 8px;
   background: white;
@@ -189,7 +191,7 @@
 }
 
 .question-selector {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .question-selector label {
@@ -201,8 +203,8 @@
 
 .question-slider {
   width: 100%;
-  margin-bottom: 10px;
-  height: 8px;
+  margin-bottom: 5px;
+  height: 6px;
   border-radius: 5px;
   background: #d3d3d3;
   outline: none;
@@ -235,8 +237,8 @@
 }
 
 .start-button-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .start-quiz-button {

@@ -1,169 +1,125 @@
-/* src/components/Navbar.css */
-
-/* Navbar Styles - Left Side Navigation */
+/* =========================
+   NAVBAR BASE
+========================= */
 .navbar {
-  background: #f8faff;
-  border-bottom: none;
-  border-right: 3px solid transparent;
-  border-image: linear-gradient(to bottom, #1a2a6c, #1a2a6c) 1;
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
-  padding: 15px 10px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 200px;
-  z-index: 100;
-  border-radius: 0 6px 6px 0;
-  font-family: 'Noto Sans', 'Noto Sans Tamil', Arial, sans-serif;
-  color: #1a2a6c;
-  white-space: nowrap;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transition: all 0.3s ease;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 12px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
 }
 
+/* =========================
+   BRAND
+========================= */
 .nav-brand {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  color: #1a2a6c;
+  gap: 10px;
   cursor: pointer;
-  flex-shrink: 0;
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
 }
 
 .nav-logo {
-  width: 50px;
+  width: 40px;
   height: auto;
 }
 
 .brand-text {
-  font-size: 0.85rem;
-  font-weight: 900;
-  line-height: 1.2;
-  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
 }
 
+/* =========================
+   NAV LINKS (CENTER)
+========================= */
 .nav-links {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex-shrink: 1;
-  min-width: 0;
-  width: 100%;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  
-  box-sizing: border-box;
+  align-items: center;
+  gap: 22px;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .nav-link {
+  padding: 8px 14px;
+  border-radius: 8px;
   background: none;
   border: none;
   color: #555;
-  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 8px 12px;
-  padding-top: 30px;
-  border-radius: 8px;
+  font-size: 0.95rem;
   transition: all 0.2s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  text-align: left;
-  box-sizing: border-box;
 }
 
-.nav-link:hover,
-.nav-link.active {
-  background: rgba(26, 42, 108, 0.1);
+.nav-link:hover {
+  background: #f5f5f5;
   color: #1a2a6c;
 }
 
+.nav-link.active {
+  background: #eef3ff;
+  color: #1a2a6c;
+}
+
+/* =========================
+   ACTIONS (RIGHT)
+========================= */
 .nav-actions {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex-shrink: 0;
-  width: 100%;
-  margin-top: auto;
-  padding-top: 15px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
+  align-items: center;
+  gap: 14px;
 }
 
 .lang-btn {
-  background: #1a2a6c;
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: #f0f0f0;
   border: none;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 8px;
+  color: #333;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: bold;
+  font-size: 0.85rem;
   transition: all 0.2s ease;
-  white-space: nowrap;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
 }
 
 .lang-btn:hover {
-  background: #2a3a7c;
-  transform: translateY(-1px);
+  background: #e0e0e0;
 }
 
+/* =========================
+   USER INFO
+========================= */
 .user-info {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 10px 0;
-  width: 100%;
-  box-sizing: border-box;
+  gap: 10px;
+  padding-left: 12px;
+  border-left: 1px solid #eee;
 }
 
 .username {
-  font-weight: 600;
-  color: #1a2a6c;
+  font-weight: 500;
+  color: #333;
   font-size: 0.9rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  text-align: center;
 }
 
 .logout-btn {
-  background: none;
-  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
   color: #555;
-  font-size: 0.8rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 8px;
+  font-size: 0.85rem;
   transition: all 0.2s ease;
-  white-space: nowrap;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
 }
 
 .logout-btn:hover {
@@ -171,40 +127,20 @@
   color: #1a2a6c;
 }
 
-/* Tamil text styling - Ultra compact with minimal padding */
+/* =========================
+   TAMIL LANGUAGE SUPPORT
+========================= */
 html[lang="ta"] .navbar {
-  padding: 12px 8px;
-}
-
-html[lang="ta"] .nav-brand {
-  gap: 6px;
-  margin-bottom: 15px;
-  padding-bottom: 12px;
-}
-
-html[lang="ta"] .nav-logo {
-  width: 45px;
+  padding: 10px 18px;
 }
 
 html[lang="ta"] .brand-text {
-  font-size: 0.8rem;
-  line-height: 1.1;
-}
-
-html[lang="ta"] .nav-links {
-  gap: 6px;
-  margin-bottom: 15px;
+  font-size: 0.85rem;
 }
 
 html[lang="ta"] .nav-link {
   font-size: 0.85rem;
-  padding: 8px 12px;
-  padding-top: 30px;
-}
-
-html[lang="ta"] .nav-actions {
-  gap: 8px;
-  padding-top: 12px;
+  padding: 6px 10px;
 }
 
 html[lang="ta"] .lang-btn {
@@ -212,304 +148,58 @@ html[lang="ta"] .lang-btn {
   padding: 6px 10px;
 }
 
-html[lang="ta"] .user-info {
-  gap: 6px;
-  padding: 8px 0;
-}
-
 html[lang="ta"] .username {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 html[lang="ta"] .logout-btn {
   font-size: 0.75rem;
-  padding: 5px 8px;
+  padding: 5px 10px;
 }
 
-/* Responsive adjustments for navbar */
-@media (max-width: 1024px) {
-  .navbar {
-    width: 160px;
-    padding: 12px 8px;
-  }
-
-  .nav-brand {
-    margin-bottom: 15px;
-    padding-bottom: 12px;
-  }
-
-  .brand-text {
-    font-size: 0.8rem;
-  }
-
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 992px) {
   .nav-links {
-    gap: 6px;
-    margin-bottom: 15px;
+    gap: 14px;
   }
 
   .nav-link {
-    font-size: 0.85rem;
-    padding: 6px 10px;
-  }
-
-  .nav-actions {
-    gap: 8px;
-    padding-top: 12px;
-  }
-
-  .lang-btn {
-    font-size: 0.75rem;
-    padding: 6px 10px;
-  }
-
-  .username {
-    font-size: 0.85rem;
-  }
-
-  .logout-btn {
-    font-size: 0.75rem;
-    padding: 5px 8px;
+    font-size: 0.9rem;
   }
 }
 
+/* =========================
+   MOBILE
+========================= */
 @media (max-width: 768px) {
   .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: auto;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 15px;
-    border-right: none;
-    border-bottom: 3px solid transparent;
-    border-image: linear-gradient(to right, #4f8cff, #9ec9ff) 1;
-    border-radius: 0;
-    z-index: 1000;
-  }
-
-  .nav-brand {
-    flex-direction: row;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    padding-right: 15px;
-    width: auto;
-  }
-
-  .nav-logo {
-    width: 35px;
-  }
-
-  .brand-text {
-    font-size: 0.75rem;
-    text-align: left;
-  }
-
-  .nav-links {
-    flex-direction: row;
-    gap: 5px;
-    margin-bottom: 0;
-    margin-top: 0;
-    width: auto;
-  }
-
-  .nav-link {
-    font-size: 0.8rem;
-    padding: 4px 8px;
-  }
-
-  .nav-actions {
-    flex-direction: row;
-    gap: 5px;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-    width: auto;
-  }
-
-  .lang-btn {
-    width: auto;
-    font-size: 0.7rem;
-    padding: 4px 8px;
-  }
-
-  .user-info {
-    flex-direction: row;
-    gap: 5px;
-    padding: 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    padding-left: 10px;
-    width: auto;
-  }
-
-  .username {
-    font-size: 0.75rem;
-    width: auto;
-  }
-
-  .logout-btn {
-    width: auto;
-    font-size: 0.7rem;
-    padding: 4px 6px;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar {
-    padding: 6px 10px;
-  }
-
-  .nav-brand {
-    padding-right: 10px;
-  }
-
-  .nav-logo {
-    width: 30px;
-  }
-
-  .brand-text {
-    font-size: 0.7rem;
-  }
-
-  .nav-link {
-    font-size: 0.75rem;
-    padding: 3px 6px;
-  }
-
-  .lang-btn {
-    font-size: 0.65rem;
-    padding: 3px 6px;
-  }
-
-  .username {
-    font-size: 0.7rem;
-  }
-
-  .logout-btn {
-    font-size: 0.65rem;
-    padding: 3px 5px;
-  }
-}
-
-/* Add a media query for TV screens */
-@media (min-width: 1200px) {
-  .navbar {
-    width: 200px;
-  }
-}
-
-/* Add a media query for very large screens (TVs) */
-@media (min-width: 1920px) {
-  .navbar {
-    width: 250px;
-    padding: 20px 15px;
-  }
-  
-  .nav-brand {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-  }
-  
-  .nav-logo {
-    width: 60px;
-  }
-  
-  .brand-text {
-    font-size: 1rem;
-  }
-  
-  .nav-links {
-    gap: 12px;
-    margin-bottom: 25px;
-    margin-top: 150px;
-  }
-  
-  .nav-link {
-    font-size: 1rem;
-    padding: 10px 15px;
-  }
-  
-  .nav-actions {
+    flex-wrap: wrap;
     gap: 15px;
-    padding-top: 20px;
   }
-  
-  .lang-btn {
-    font-size: 0.9rem;
-    padding: 10px 15px;
+
+  .nav-brand {
+    width: 100%;
+    justify-content: center;
   }
-  
+
+  .nav-links {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
   .user-info {
-    gap: 10px;
-    padding: 15px 0;
-  }
-  
-  .username {
-    font-size: 1rem;
-  }
-  
-  .logout-btn {
-    font-size: 0.9rem;
-    padding: 8px 12px;
-  }
-}
-
-/* Tamil text styling for very large screens */
-@media (min-width: 1920px) {
-  html[lang="ta"] .navbar {
-    padding: 18px 12px;
-  }
-
-  html[lang="ta"] .nav-brand {
-    gap: 8px;
-    margin-bottom: 20px;
-    padding-bottom: 18px;
-  }
-
-  html[lang="ta"] .nav-logo {
-    width: 55px;
-  }
-
-  html[lang="ta"] .brand-text {
-    font-size: 0.95rem;
-    line-height: 1.2;
-  }
-
-  html[lang="ta"] .nav-links {
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  html[lang="ta"] .nav-link {
-    font-size: 0.95rem;
-    padding: 8px 12px;
-  }
-
-  html[lang="ta"] .nav-actions {
-    gap: 12px;
-    padding-top: 18px;
-  }
-
-  html[lang="ta"] .lang-btn {
-    font-size: 0.85rem;
-    padding: 8px 12px;
-  }
-
-  html[lang="ta"] .user-info {
-    gap: 8px;
-    padding: 12px 0;
-  }
-
-  html[lang="ta"] .username {
-    font-size: 0.95rem;
-  }
-
-  html[lang="ta"] .logout-btn {
-    font-size: 0.85rem;
-    padding: 6px 10px;
+    border-left: none;
+    padding-left: 0;
   }
 }
