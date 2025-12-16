@@ -1,13 +1,50 @@
+// ProfilePage.js
 import React from 'react';
 import './ProfilePage.css';
 
-const ProfilePage = ({ language, user }) => {
+const ProfilePage = ({ language, user,setActivePage }) => {
+  // Function to determine emoji based on user's achievements
+  const getProfileEmoji = (user) => {
+    const achievementCount = user.achievements ? user.achievements.length : 0;
+    
+    // Emoji sets based on achievement levels
+    const beginnerEmojis = ['🐣', '🌱', '🐢', '🦋', '🐙', '🍄', '🐶', '🐱'];
+    const intermediateEmojis = ['🦸', '🧙', '👩‍🚀', '👨‍🔬', '🧑‍🎨', '🦄', '🐲', '🦜'];
+    const advancedEmojis = ['🏆', '👑', '🌟', '💎', '🔥', '🚀', '🧠', '🏅'];
+    
+    let emojiArray;
+    if (achievementCount <= 2) {
+      emojiArray = beginnerEmojis;
+    } else if (achievementCount <= 5) {
+      emojiArray = intermediateEmojis;
+    } else {
+      emojiArray = advancedEmojis;
+    }
+    
+    // Generate consistent index based on username
+    let index = 0;
+    if (user.username) {
+      for (let i = 0; i < user.username.length; i++) {
+        index = (index + user.username.charCodeAt(i)) % emojiArray.length;
+      }
+    }
+    
+    return emojiArray[index];
+  };
+
   return (
     <div className="page-content profile-page">
       <h2>{language === 'English' ? 'User Profile' : 'பயனர் சுயவிவரம்'}</h2>
 
       <div className="profile-header">
-        <div className="profile-avatar">👤</div>
+        <div className="profile-avatar">
+          {getProfileEmoji(user)}
+          <div className="avatar-badge">
+            {user.achievements && user.achievements.length > 0 && (
+              <span className="badge-count">{user.achievements.length}</span>
+            )}
+          </div>
+        </div>
         <div className="profile-details">
           <h3>{user.username}</h3>
           <p className="profile-school">
@@ -17,14 +54,31 @@ const ProfilePage = ({ language, user }) => {
             {user.schoolName ||
               (language === 'English' ? 'Not specified' : 'குறிப்பிடப்படவில்லை')}
           </p>
+          <p className="profile-place">
+            <span className="profile-label">
+              {language === 'English' ? 'Member Place:' : 'உறுப்பினர் இடம்:'}
+            </span>
+            {user.memberPlace}
+          </p>
           <p className="profile-member-since">
             <span className="profile-label">
               {language === 'English' ? 'Member Since:' : 'உறுப்பினர் முதல்:'}
             </span>
             {user.memberSince}
           </p>
+
         </div>
       </div>
+       {user.quizHistory.length > 0 && (
+<div style={{ textAlign: 'center', marginTop: '20px' }}>
+<button
+  className="view-certificate-btn"
+  onClick={() => setActivePage("certificate")}
+>
+  🎓 View Certificate
+</button>
+</div>
+)}
 
       <div className="profile-stats">
         <h3>{language === 'English' ? 'Quiz Statistics' : 'வினா புள்ளிவிவரங்கள்'}</h3>
@@ -35,6 +89,7 @@ const ProfilePage = ({ language, user }) => {
               {language === 'English' ? 'Total Points' : 'மொத்த புள்ளிகள்'}
             </div>
           </div>
+         
           <div className="stat-item">
             <div className="stat-value">{user.totalQuizzes}</div>
             <div className="stat-label">

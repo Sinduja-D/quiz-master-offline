@@ -14,6 +14,7 @@ import DailySciencePage from "./DailySciencePage.js";
 import SpinWheel from "./SpinWheel.js";
 import StoryMenu from "./StoryMenu.js";
 import EscapeRoom from "./EscapeRoom.js";
+import CertificatePage from "./certificate/CertificatePage";
 import { useQuizApp } from "../hooks/useQuizApp.js";
 
 const PageRenderer = ({
@@ -66,6 +67,15 @@ const PageRenderer = ({
     }
   }, [activePage, setActivePage]);
 
+  if (activePage === "certificate") {
+  return (
+    <CertificatePage
+      user={user}
+      setActivePage={setActivePage}
+      language={language}
+    />
+  );
+}
   const handleStorySelect = (story) => {
     setSelectedStory(story);
     setActivePage("escapeRoom");
@@ -120,8 +130,14 @@ const PageRenderer = ({
       return <AboutPage language={language} />;
     case "help":
       return <HelpPage language={language} />;
-    case "profile":
-      return <ProfilePage language={language} user={user} />;
+   case "profile":
+  return (
+    <ProfilePage
+      language={language}
+      user={user}
+      setActivePage={setActivePage}
+    />
+  );
     case "achievements":
       return (
         <AchievementsPage

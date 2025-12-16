@@ -5,7 +5,7 @@ import "./SpinWheel.css";
 const SpinWheel = ({ language = "English", onSpinComplete }) => {
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
-  const [windowDimension, setWindowDimension] = useState({
+  const [Dimension, setWindowDimension] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });

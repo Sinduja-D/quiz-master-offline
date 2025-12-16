@@ -8,6 +8,7 @@ import appLogo from '../assets/app-logo.png';
 const Login = ({ onLogin, language, toggleLanguage }) => {
   const [username, setUsername] = useState('');
   const [schoolName, setSchoolName] = useState('');
+    const [memberPlace, setmemberPlace] = useState('');
   const [error, setError] = useState('');
   const [users, setUsers] = useState([]);
   
@@ -33,6 +34,12 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
         : 'தயவுசெய்து உங்கள் பள்ளியின் பெயரை உள்ளிடவும்');
       return;
     }
+    if (!memberPlace.trim()) {
+      setError(language === 'English'
+        ? 'Please enter your place'
+        : 'தயவுசெய்து உங்கள் இடத்தை உள்ளிடவும்');
+      return;
+    }
     
     const usernameExists = users.some(u =>
       u.username.toLowerCase() === username.toLowerCase()
@@ -49,6 +56,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
       id: Date.now(),
       username: username.trim(),
       schoolName: schoolName.trim(),
+      memberPlace: memberPlace.trim(),
       memberSince: new Date().toLocaleDateString(),
       totalPoints: 0,
       totalQuizzes: 0,
@@ -180,6 +188,18 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
               />
             </div>
             
+            <div className="form-group">
+              <label htmlFor="memberPlace">
+                {language === 'English' ? 'Place' : 'இடம்'} <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="place"
+                value={memberPlace}
+                onChange={(e) => setmemberPlace(e.target.value)}
+                placeholder={language === 'English' ? 'Enter your Place' : 'உங்கள் இடத்தை உள்ளிடவும்'}
+              />
+            </div>
             {error && <div className="error-message">{error}</div>}
             
             <button type="submit" className="login-button">
