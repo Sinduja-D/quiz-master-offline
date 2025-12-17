@@ -36,7 +36,7 @@ const games = [
       English: "Flip cards to reveal science facts",
       Tamil: "அறிவியல் தகவல்களை அறிந்து கொள்ளுங்கள்",
     },
-    image: "/assets/images/facts.png",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYHr5LOz9AiaOMpZQaOhigP-5lrk52-37dUBQuyJiaFtmm7-K_pSBg6sAydfNYyTVdjqY&s",
   },
   {
     key: "bombDefusal",
@@ -47,6 +47,16 @@ const games = [
     },
     image: "/assets/images/bomb.png",
   },
+  {
+  key: "detective",
+  title: { English: "Science Detective", Tamil: "அறிவியல் விசாரணையாளர்" },
+  desc: {
+    English: "Solve science mysteries like a detective",
+    Tamil: "விசாரணையாளர் போல அறிவியல் மர்மங்களை தீர்க்கவும்"
+  },
+  image: "/assets/images/detective.png" // you can add your own image here
+}
+
 ];
 
 const GamesMenu = ({ language, setActivePage }) => {

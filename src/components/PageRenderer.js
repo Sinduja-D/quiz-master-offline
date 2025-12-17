@@ -17,6 +17,8 @@ import DailySciencePage from "./DailySciencePage";
 import SpinWheel from "./SpinWheel";
 import StoryMenu from "./StoryMenu";
 import EscapeRoom from "./EscapeRoom";
+import DetectiveMenu from "./detective/DetectiveMenu";
+import DetectiveGame from "./detective/DetectiveGame";
 import CertificatePage from "./certificate/CertificatePage";
 import GamesMenu from "./GamesMenu";
 
@@ -35,6 +37,8 @@ const PageRenderer = ({
   setIsQuizInProgress,
 }) => {
   const [selectedStory, setSelectedStory] = useState(null);
+    const [selectedCase, setSelectedCase] = useState(null);
+
 
   // Store last quiz state for review
   const [lastQuizQuestions, setLastQuizQuestions] = useState([]);
@@ -211,6 +215,14 @@ const PageRenderer = ({
 
     case "spin":
       return <SpinWheel language={language} user={user} />;
+
+     case "detective":
+return selectedCase ? (
+<DetectiveGame caseData={selectedCase} onExit={() => setSelectedCase(null)} />
+) : (
+<DetectiveMenu onSelect={setSelectedCase} />
+);
+
 
     // NEW: Add a case for the games page
     case "games":
