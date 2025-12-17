@@ -1,84 +1,99 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { Howl } from "howler";
 import bombQuestions from "../data/bombDefusalQuestions.json";
 import "./ScienceBombDefusal.css";
 
-/* ================= CONFIG ================= */
-const TIME_LIMIT = 12;
-const SWIPE_DISTANCE = 70;
+const TIME_LIMIT = 15;
+const CONFETTI_DURATION = 3000;
 
-/* ================= SOUNDS ================= */
 const blastSound = new Howl({ src: ["/sounds/blast.mp3"] });
 const successSound = new Howl({ src: ["/sounds/success.mp3"] });
 
-/* ================= BILINGUAL TEXT ================= */
-/* SAME PATTERN AS EscapeRoom */
 const bombText = {
   English: {
     title: "Defuse the Bomb",
     instructions: [
       "Read all the statements carefully",
-      "Timer starts after reading all clues",
-      "Swipe the correct wire to defuse the bomb"
+      "Timer starts after viewing all wires",
+      "Click the correct wire to defuse the bomb"
     ],
     start: "Start Mission",
-    tap: "Tap to reveal",
-    successTitle: "Congratulations!",
-    successMsg: "You successfully defused the bomb!",
-    retry: "Retry",
-    next: "Next Bomb",
-    back: "← Back"
+    read: "Click the wire to read",
+    continue: "Continue",
+    back: "← Back",
+    defusedTitle: "🎉 Bomb Defused!",
+    defusedMsg: "Excellent work. The device is now safe.",
+    blastTitle: "💥 BOOM!",
+    blastMsg: "The bomb has exploded.",
+    retryTitle: "Mission Failed",
+    retryMsg: "Try again from start.",
+    retryBtn: "Try Again"
   },
   Tamil: {
     title: "குண்டை செயலிழக்கச் செய்",
     instructions: [
       "அனைத்து குறிப்புகளையும் கவனமாக வாசிக்கவும்",
       "அனைத்தையும் வாசித்த பின் நேரம் தொடங்கும்",
-      "சரியான கம்பியை ஸ்வைப் செய்து குண்டை நிறுத்தவும்"
+      "சரியான கம்பியை அழுத்தி குண்டை செயலிழக்கச் செய்க"
     ],
     start: "தொடங்கு",
-    tap: "தொடத் திற",
-    successTitle: "வாழ்த்துகள்!",
-    successMsg: "நீங்கள் குண்டை வெற்றிகரமாக செயலிழக்கச் செய்தீர்கள்!",
-    retry: "மீண்டும் முயற்சி",
-    next: "அடுத்த குண்டு",
-    back: "← மெனுவிற்கு திரும்ப"
+    read: "கம்பியை அழுத்தி வாசிக்கவும்",
+    continue: "தொடர்க",
+    back: "← திரும்ப",
+    defusedTitle: "🎉 குண்டு செயலிழக்கப்பட்டது!",
+    defusedMsg: "சிறந்த வேலை! சாதனம் பாதுகாப்பாக உள்ளது.",
+    blastTitle: "💥 வெடிப்பு!",
+    blastMsg: "குண்டு வெடித்துவிட்டது.",
+    retryTitle: "பணித் தோல்வி",
+    retryMsg: "மீண்டும் தொடங்க முயற்சி செய்யவும்.",
+    retryBtn: "மீண்டும் முயற்சி"
   }
 };
 
-export default function ScienceBombDefusal({ language, onBack, onComplete }) {
+export default function ScienceBombDefusal({ language, onBack }) {
+  const [qIndex, setQIndex] = useState(0);
   const [question, setQuestion] = useState(null);
   const [clicked, setClicked] = useState([false, false, false]);
   const [activeStatement, setActiveStatement] = useState(null);
   const [status, setStatus] = useState("instructions");
   const [timer, setTimer] = useState(TIME_LIMIT);
+  const [timerActive, setTimerActive] = useState(false);
   const [streak, setStreak] = useState(0);
-  const swipeStart = useRef({});
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [confettiParams, setConfettiParams] = useState({});
+  const [showInstructions, setShowInstructions] = useState(true);
 
-  /* INIT */
+  // Load current question
   useEffect(() => {
-    const q = bombQuestions[Math.floor(Math.random() * bombQuestions.length)];
-    setQuestion({
-      ...q,
-      options: q.statements[language].slice(0, 3)
-    });
-  }, [language]);
-
-  /* TIMER */
-  useEffect(() => {
-    if (status !== "playing") return;
-    if (timer === 0) triggerBoom();
-
-    const i = setInterval(() => setTimer(t => t - 1), 1000);
-    return () => clearInterval(i);
-  }, [timer, status]);
-
-  /* STATEMENT FLOW */
-  const revealStatement = (i) => {
-    if (status === "reading" && !clicked[i]) {
-      setActiveStatement(i);
+    const q = bombQuestions[qIndex];
+    if (!q) {
+      onBack(); // No more questions, go back to menu
+      return;
     }
+    setQuestion({ ...q, options: q.statements[language] });
+    setClicked([false, false, false]);
+    setTimer(TIME_LIMIT);
+    setTimerActive(false);
+    setStatus(showInstructions ? "instructions" : "playing");
+  }, [qIndex, language, onBack, showInstructions]);
+
+  // Timer
+  useEffect(() => {
+    if (!timerActive) return;
+    if (timer <= 0) handleBoom();
+
+    const id = setInterval(() => setTimer(t => t - 1), 1000);
+    return () => clearInterval(id);
+  }, [timerActive, timer]);
+
+  const onWireClick = (i) => {
+    if (status !== "playing") return;
+    if (!clicked[i]) {
+      setActiveStatement(i);
+      return;
+    }
+    if (clicked.every(Boolean)) cutWire(i);
   };
 
   const closeStatement = () => {
@@ -86,131 +101,123 @@ export default function ScienceBombDefusal({ language, onBack, onComplete }) {
     updated[activeStatement] = true;
     setClicked(updated);
     setActiveStatement(null);
-
-    if (updated.every(Boolean)) {
-      setStatus("playing");
-      setTimer(TIME_LIMIT);
-    }
-  };
-
-  /* SWIPE CUT */
-  const swipeStartHandler = (e, i) => {
-    if (status !== "playing") return;
-    swipeStart.current[i] = e.clientX || e.touches?.[0]?.clientX;
-  };
-
-  const swipeEndHandler = (e, i) => {
-    if (status !== "playing") return;
-    const endX = e.clientX || e.changedTouches?.[0]?.clientX;
-    if (endX - swipeStart.current[i] > SWIPE_DISTANCE) {
-      cutWire(i);
-    }
+    if (updated.every(Boolean)) setTimerActive(true);
   };
 
   const cutWire = (i) => {
+    setTimerActive(false);
     if (i === question.correctIndex) {
       successSound.play();
       setStatus("success");
+      setConfettiParams({
+        numberOfPieces: 300,
+        gravity: 0.5,
+        colors: ["#4caf50", "#81c784", "#c8e6c9"]
+      });
+      setShowConfetti(true);
+      setTimeout(() => {
+        setShowConfetti(false);
+        setStatus("playing");
+        setQIndex(prev => prev + 1); // load next question
+      }, 2000);
       setStreak(s => s + 1);
-      onComplete?.("bomb", "completed");
-    } else {
-      triggerBoom();
-    }
+    } else handleBoom();
   };
 
-  const triggerBoom = () => {
+  const handleBoom = () => {
     blastSound.play();
+    setTimerActive(false);
     setStatus("boom");
-    setStreak(0);
-    onComplete?.("bomb", "failed");
+    setConfettiParams({
+      numberOfPieces: 200,
+      gravity: 0.6,
+      colors: ["#ff0000", "#ff9800", "#ffc107"]
+    });
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), CONFETTI_DURATION);
+  };
+
+  const retryGame = () => {
+    onBack(); // Go back to main menu
   };
 
   if (!question) return null;
 
   return (
-    <div className={`bomb-overlay ${status}`}>
-
-      {/* HUD */}
-      <div className="hud-left">⏱ {status === "playing" ? timer : "--"}</div>
-      <div className="hud-right">🔥 {streak}</div>
-
-      {/* BACK */}
+    <div className="bomb-overlay">
+      {showConfetti && <Confetti {...confettiParams} recycle={false} />}
       <button className="back-btn" onClick={onBack}>
         {bombText[language].back}
       </button>
+      <div className="hud-right">🔥 {streak}</div>
 
-      {/* GAME */}
-      <div className="game-area">
-
-        {/* WIRES */}
-        <div className="wires">
-          {question.options.map((text, i) => (
-            <div className="wire-row" key={i}>
-              <div
-                className={`wire wire-${i}`}
-                onClick={() => revealStatement(i)}
-                onPointerDown={(e) => swipeStartHandler(e, i)}
-                onPointerUp={(e) => swipeEndHandler(e, i)}
-              />
-              <div className="statement-box">
-                {clicked[i] ? text : bombText[language].tap}
-              </div>
+      <div className="game-area-horizontal">
+        {/* Instructions shown only once */}
+        {status === "instructions" && showInstructions && (
+          <div className="overlay">
+            <div className="statement-modal">
+              <h2>{bombText[language].title}</h2>
+              <ul>
+                {bombText[language].instructions.map((t,i) => <li key={i}>💡 {t}</li>)}
+              </ul>
+              <button onClick={() => { setStatus("playing"); setShowInstructions(false); }}>
+                {bombText[language].start}
+              </button>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
 
-        {/* BOMB */}
-        <div className={`bomb ${status}`} />
+        {/* Game area */}
+        {(status === "playing" || status === "success") && (
+          <div className="wires-container">
+            {question.options.map((text, i) => (
+              <div className="wire-block" key={i}>
+                <div className="statement-box">{clicked[i] ? text : bombText[language].read}</div>
+                <div className={`wire wire-${i}`} onClick={() => onWireClick(i)} />
+              </div>
+            ))}
+
+            <div className={`bomb ${timer <= 5 && timerActive ? "danger" : ""}`}>
+              <div className="bomb-timer">{timerActive ? timer : "--"}</div>
+            </div>
+
+            <div className="main-wire" />
+          </div>
+        )}
       </div>
 
-      {/* CONFETTI */}
-      {status === "success" && <Confetti />}
-      {status === "boom" && <Confetti colors={["#ff0000", "#ff9800"]} />}
-
-      {/* INSTRUCTIONS */}
-      {status === "instructions" && (
-        <div className="overlay instructions">
-          <div className="instruction-card">
-            <h2>{bombText[language].title}</h2>
-            <ul>
-              {bombText[language].instructions.map((t, i) => (
-                <li key={i}>💡 {t}</li>
-              ))}
-            </ul>
-            <button className="start-btn" onClick={() => setStatus("reading")}>
-              🚀 {bombText[language].start}
-            </button>
+      {/* Active statement modal */}
+      {activeStatement !== null && (
+        <div className="overlay">
+          <div className="statement-modal">
+            <h3>{question.options[activeStatement]}</h3>
+            <button onClick={closeStatement}>{bombText[language].continue}</button>
           </div>
         </div>
       )}
 
-      {/* STATEMENT */}
-      {activeStatement !== null && (
-        <div className="overlay">
-          <h3>{question.options[activeStatement]}</h3>
-          <button onClick={closeStatement}>Next</button>
-        </div>
-      )}
-
-      {/* SUCCESS */}
+      {/* Success overlay */}
       {status === "success" && (
         <div className="overlay success">
-          <h1>{bombText[language].successTitle}</h1>
-          <p>{bombText[language].successMsg}</p>
-          <button onClick={() => window.location.reload()}>
-            {bombText[language].next}
-          </button>
+          <div className="result-card success-card">
+            <h1>{bombText[language].defusedTitle}</h1>
+            <p>{bombText[language].defusedMsg}</p>
+          </div>
         </div>
       )}
 
-      {/* BOOM */}
+      {/* Boom overlay with clickable retry */}
       {status === "boom" && (
-        <div className="overlay boom">
-          <h1>💥 BOOM!</h1>
-          <button onClick={() => window.location.reload()}>
-            {bombText[language].retry}
-          </button>
-        </div>
+        <>
+          <div className="explosion-flash" />
+          <div className="overlay retry">
+            <div className="retry-card">
+              <h2>{bombText[language].retryTitle}</h2>
+              <p>{bombText[language].retryMsg}</p>
+              <button onClick={retryGame}>{bombText[language].retryBtn}</button>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

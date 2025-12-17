@@ -224,7 +224,7 @@ return selectedCase ? (
 <DetectiveMenu onSelect={setSelectedCase} />
 );
 case "bombDefusal":
-      return <ScienceBombDefusal language={language} setActivePage={setActivePage} />;
+      return <ScienceBombDefusal language={language} setActivePage={setActivePage} onBack={() => setActivePage("games") }/>;
 
 
 
