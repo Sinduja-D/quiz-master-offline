@@ -52,6 +52,14 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
     }
   }, [currentScene]);
 
+  // Auto-navigate 5 seconds after ending scene
+  useEffect(() => {
+    if (currentScene?.type === "ending") {
+      const t = setTimeout(() => handleExit(), 5000);
+      return () => clearTimeout(t);
+    }
+  }, [currentScene]);
+
   const totalRiddles = Object.values(story.scenes).filter(s => s.type === "riddle").length;
   const solvedIndex = Object.keys(story.scenes).indexOf(currentSceneId);
   const progress = currentScene?.type === "ending" ? 100 : Math.min((solvedIndex / totalRiddles) * 100, 100);

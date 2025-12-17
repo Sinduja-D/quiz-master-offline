@@ -34,9 +34,12 @@ const PageRenderer = ({
 }) => {
   const [selectedStory, setSelectedStory] = useState(null);
 
-  /* 🔍 Quiz review state */
+  // Store last quiz state for review
   const [lastQuizQuestions, setLastQuizQuestions] = useState([]);
   const [lastQuizUserAnswers, setLastQuizUserAnswers] = useState([]);
+
+  // Track story completion statuses
+  const [completedStories, setCompletedStories] = useState(user.escapeRoomsCompletedMap || {});
 
   const {
     selectedLevel,
@@ -50,27 +53,27 @@ const PageRenderer = ({
     newlyUnlockedAchievements,
   } = useQuizApp(setActivePage, user, updateUser, setIsQuizInProgress);
 
-  /* 🚫 Prevent language change during quiz */
+  // Prevent language change during quiz or escape room
   const safeToggleLanguage = () => {
-    if (activePage === "quiz") {
+    if (activePage === "quiz" || activePage === "escapeRoom") {
       alert(
         language === "English"
-          ? "You cannot change language during the quiz"
-          : "வினா நடக்கும் போது மொழியை மாற்ற முடியாது"
+          ? "You cannot change the language during this activity."
+          : "இந்த செயல்பாட்டின் போது மொழியை மாற்ற முடியாது."
       );
       return;
     }
     toggleLanguage();
   };
 
-  /* 💾 Save selected difficulty */
+  // Save selected difficulty
   useEffect(() => {
     if (selectedLevel) {
       sessionStorage.setItem("selectedDifficulty", selectedLevel.id);
     }
   }, [selectedLevel]);
 
-  /* 🔒 Prevent direct quizsetup access */
+  // Prevent direct access to quiz setup
   useEffect(() => {
     if (activePage === "quizsetup") {
       const difficulty = sessionStorage.getItem("selectedDifficulty");
@@ -80,31 +83,43 @@ const PageRenderer = ({
     }
   }, [activePage, setActivePage]);
 
-  /* 🧩 Escape room handlers */
+  // Escape Room: select story
   const handleStorySelect = (story) => {
     setSelectedStory(story);
     setActivePage("escapeRoom");
   };
 
-  const handleEscapeRoomComplete = (storyId) => {
+  // Escape Room: complete story
+  const handleEscapeRoomComplete = (storyId, status = "completed") => {
     const updatedUser = { ...user };
-    updatedUser.escapeRoomsCompleted = updatedUser.escapeRoomsCompleted || [];
+    if (!updatedUser.escapeRoomsCompleted) updatedUser.escapeRoomsCompleted = [];
+    if (!updatedUser.escapeRoomsCompletedMap) updatedUser.escapeRoomsCompletedMap = {};
 
+    updatedUser.escapeRoomsCompletedMap[storyId] = status;
     if (!updatedUser.escapeRoomsCompleted.includes(storyId)) {
       updatedUser.escapeRoomsCompleted.push(storyId);
+    }
+
+    // Award points only if fully completed
+    if (status === "completed") {
       updatedUser.totalPoints = (updatedUser.totalPoints || 0) + 50;
     }
 
+    // Update user state & localStorage
     updateUser(updatedUser);
     localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-
     const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
-    const index = users.findIndex((u) => u.id === user.id);
-    if (index !== -1) {
-      users[index] = updatedUser;
+    const userIndex = users.findIndex((u) => u.id === user.id);
+    if (userIndex !== -1) {
+      users[userIndex] = updatedUser;
       localStorage.setItem("quizAppUsers", JSON.stringify(users));
     }
 
+    // Update local state to reflect immediately in StoryMenu
+    setCompletedStories({ ...updatedUser.escapeRoomsCompletedMap });
+
+    // Return to story menu
+    setSelectedStory(null);
     setActivePage("storyMenu");
   };
 
@@ -113,7 +128,7 @@ const PageRenderer = ({
     setActivePage("storyMenu");
   };
 
-  /* ⏳ Loading state */
+  // Loading state
   if (!user) {
     return (
       <div className="loading-container">
@@ -122,18 +137,12 @@ const PageRenderer = ({
     );
   }
 
-  /* 🧾 Certificate page (early return) */
+  // Certificate page (early return)
   if (activePage === "certificate") {
-    return (
-      <CertificatePage
-        user={user}
-        language={language}
-        setActivePage={setActivePage}
-      />
-    );
+    return <CertificatePage user={user} language={language} setActivePage={setActivePage} />;
   }
 
-  /* 🔀 PAGE SWITCH */
+  // Page switch
   switch (activePage) {
     case "home":
       return (
@@ -156,13 +165,7 @@ const PageRenderer = ({
       return <HelpPage language={language} />;
 
     case "profile":
-      return (
-        <ProfilePage
-          language={language}
-          user={user}
-          setActivePage={setActivePage}
-        />
-      );
+      return <ProfilePage language={language} user={user} setActivePage={setActivePage} />;
 
     case "achievements":
       return (
@@ -184,7 +187,7 @@ const PageRenderer = ({
         <StoryMenu
           language={language}
           onStorySelect={handleStorySelect}
-          completedStories={user.escapeRoomsCompleted || []}
+          completedStories={completedStories}
         />
       );
 
@@ -199,13 +202,7 @@ const PageRenderer = ({
       );
 
     case "dailyScience":
-      return (
-        <DailySciencePage
-          language={language}
-          user={user}
-          updateUser={updateUser}
-        />
-      );
+      return <DailySciencePage language={language} user={user} updateUser={updateUser} />;
 
     case "funFacts":
       return <FunFactsPage language={language} />;
@@ -233,14 +230,8 @@ const PageRenderer = ({
           grade={quizSettings?.grade}
           candidateName={candidateName}
           onQuizComplete={(results, payload) => {
-            // payload contains { questions, userAnswers }
-            if (payload && Array.isArray(payload.questions)) {
-              setLastQuizQuestions(payload.questions);
-            } else {
-              setLastQuizQuestions([]);
-            }
-            setLastQuizUserAnswers(payload && payload.userAnswers ? payload.userAnswers : {});
-            // Pass only the results object to the app-level handler
+            if (payload && Array.isArray(payload.questions)) setLastQuizQuestions(payload.questions);
+            setLastQuizUserAnswers(payload?.userAnswers || {});
             handleQuizComplete(results);
             setIsQuizInProgress(false);
           }}
