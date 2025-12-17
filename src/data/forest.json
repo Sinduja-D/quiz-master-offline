@@ -35,10 +35,11 @@
       },
       "answer": "Joke",
       "options": [
-        { "English": "Joke", "Tamil": "நகைச்சுவை", "next": "riddle3" },
+        
         { "English": "Egg", "Tamil": "முட்டை", "next": "fail" },
         { "English": "Leaf", "Tamil": "இலை", "next": "fail" },
-        { "English": "Story", "Tamil": "கதை", "next": "fail" }
+        { "English": "Story", "Tamil": "கதை", "next": "fail" },
+        { "English": "Joke", "Tamil": "நகைச்சுவை", "next": "riddle3" }
       ]
     },
 
@@ -50,8 +51,9 @@
       },
       "answer": "Candle",
       "options": [
-        { "English": "Candle", "Tamil": "மெழுகுவர்த்தி", "next": "riddle4" },
+        
         { "English": "Tree", "Tamil": "மரம்", "next": "fail" },
+        { "English": "Candle", "Tamil": "மெழுகுவர்த்தி", "next": "riddle4" },
         { "English": "Mountain", "Tamil": "மலை", "next": "fail" },
         { "English": "Pencil", "Tamil": "பென்சில்", "next": "fail" }
       ]
@@ -80,9 +82,10 @@
       },
       "answer": "Stairs",
       "options": [
-        { "English": "Stairs", "Tamil": "படிகள்", "next": "final" },
+        
         { "English": "River", "Tamil": "ஆறு", "next": "fail" },
         { "English": "Tree", "Tamil": "மரம்", "next": "fail" },
+        { "English": "Stairs", "Tamil": "படிகள்", "next": "final" },
         { "English": "Elevator", "Tamil": "லிப்ட்", "next": "fail" }
       ]
     },

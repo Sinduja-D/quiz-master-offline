@@ -20,10 +20,11 @@
       },
       "answer": "Magma",
       "options": [
-        { "English": "Magma", "Tamil": "மக்மா", "next": "q2" },
+        
         { "English": "Water", "Tamil": "நீர்", "next": "fail" },
         { "English": "Air", "Tamil": "காற்று", "next": "fail" },
-        { "English": "Ice", "Tamil": "பனி", "next": "fail" }
+        { "English": "Ice", "Tamil": "பனி", "next": "fail" },
+        { "English": "Magma", "Tamil": "மக்மா", "next": "q2" }
       ]
     },
 
@@ -50,9 +51,10 @@
       },
       "answer": "Mountains",
       "options": [
-        { "English": "Mountains", "Tamil": "மலைகள்", "next": "q4" },
+        
         { "English": "Rivers", "Tamil": "ஆறுகள்", "next": "fail" },
         { "English": "Plains", "Tamil": "சமவெளி", "next": "fail" },
+        { "English": "Mountains", "Tamil": "மலைகள்", "next": "q4" },
         { "English": "Caves", "Tamil": "குகைகள்", "next": "fail" }
       ]
     },
@@ -65,8 +67,9 @@
       },
       "answer": "Molten rock",
       "options": [
-        { "English": "Molten rock", "Tamil": "உருகிய பாறை", "next": "q5" },
+        
         { "English": "Water", "Tamil": "நீர்", "next": "fail" },
+        { "English": "Molten rock", "Tamil": "உருகிய பாறை", "next": "q5" },
         { "English": "Ice", "Tamil": "பனி", "next": "fail" },
         { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
       ]

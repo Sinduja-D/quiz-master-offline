@@ -35,9 +35,10 @@
       },
       "answer": "Hole",
       "options": [
-        { "English": "Hole", "Tamil": "துளை", "next": "q3" },
+        
         { "English": "Balloon", "Tamil": "பலூன்", "next": "fail" },
         { "English": "Shadow", "Tamil": "நிழல்", "next": "fail" },
+        { "English": "Hole", "Tamil": "துளை", "next": "q3" },
         { "English": "Sand", "Tamil": "மண்", "next": "fail" }
       ]
     },
@@ -50,10 +51,11 @@
       },
       "answer": "Piano",
       "options": [
-        { "English": "Piano", "Tamil": "பியானோ", "next": "q4" },
+        
         { "English": "Keyboard", "Tamil": "கீபோர்டு", "next": "fail" },
         { "English": "Door", "Tamil": "கதவு", "next": "fail" },
-        { "English": "Box", "Tamil": "பெட்டி", "next": "fail" }
+        { "English": "Box", "Tamil": "பெட்டி", "next": "fail" },
+        { "English": "Piano", "Tamil": "பியானோ", "next": "q4" }
       ]
     },
 
@@ -80,8 +82,9 @@
       },
       "answer": "Sodium",
       "options": [
-        { "English": "Sodium", "Tamil": "சோடியம்", "next": "final" },
+        
         { "English": "Iron", "Tamil": "இரும்பு", "next": "fail" },
+        { "English": "Sodium", "Tamil": "சோடியம்", "next": "final" },
         { "English": "Copper", "Tamil": "தாமிரம்", "next": "fail" },
         { "English": "Calcium", "Tamil": "கால்சியம்", "next": "fail" }
       ]

@@ -19,8 +19,9 @@
       },
       "answer": "Clock",
       "options": [
-        { "English": "Clock", "Tamil": "மணி", "next": "q2" },
+        
         { "English": "Calendar", "Tamil": "காலண்டர்", "next": "fail" },
+        { "English": "Clock", "Tamil": "மணி", "next": "q2" },
         { "English": "Book", "Tamil": "புத்தகம்", "next": "fail" },
         { "English": "Stone", "Tamil": "கல்", "next": "fail" }
       ]
@@ -49,10 +50,11 @@
       },
       "answer": "Time",
       "options": [
-        { "English": "Time", "Tamil": "காலம்", "next": "q4" },
+        
         { "English": "River", "Tamil": "நதி", "next": "fail" },
         { "English": "Circle", "Tamil": "வட்டம்", "next": "fail" },
-        { "English": "Clock", "Tamil": "மணி", "next": "fail" }
+        { "English": "Clock", "Tamil": "மணி", "next": "fail" },
+        { "English": "Time", "Tamil": "காலம்", "next": "q4" }
       ]
     },
 
@@ -64,9 +66,10 @@
       },
       "answer": "Time",
       "options": [
-        { "English": "Time", "Tamil": "காலம்", "next": "q5" },
+        
         { "English": "Wind", "Tamil": "காற்று", "next": "fail" },
         { "English": "River", "Tamil": "நதி", "next": "fail" },
+        { "English": "Time", "Tamil": "காலம்", "next": "q5" },
         { "English": "Shadow", "Tamil": "நிழல்", "next": "fail" }
       ]
     },

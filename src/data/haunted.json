@@ -20,10 +20,11 @@
       },
       "answer": "Piano",
       "options": [
-        { "English": "Piano", "Tamil": "பியானோ", "next": "riddle2" },
+        
         { "English": "Door", "Tamil": "கதவு", "next": "fail" },
         { "English": "Box", "Tamil": "பெட்டி", "next": "fail" },
-        { "English": "Candle", "Tamil": "மெழுகுவர்த்தி", "next": "fail" }
+        { "English": "Candle", "Tamil": "மெழுகுவர்த்தி", "next": "fail" },
+        { "English": "Piano", "Tamil": "பியானோ", "next": "riddle2" }
       ]
     },
 
@@ -35,8 +36,9 @@
       },
       "answer": "Fire",
       "options": [
-        { "English": "Fire", "Tamil": "தீ", "next": "riddle3" },
+        
         { "English": "Ghost", "Tamil": "பேய்", "next": "fail" },
+        { "English": "Fire", "Tamil": "தீ", "next": "riddle3" },
         { "English": "Cat", "Tamil": "பூனை", "next": "fail" },
         { "English": "Wind", "Tamil": "காற்று", "next": "fail" }
       ]
@@ -65,9 +67,10 @@
       },
       "answer": "Echo",
       "options": [
-        { "English": "Echo", "Tamil": "எதிரொலி", "next": "riddle5" },
+        
         { "English": "Ghost", "Tamil": "பேய்", "next": "fail" },
         { "English": "Wind", "Tamil": "காற்று", "next": "fail" },
+        { "English": "Echo", "Tamil": "எதிரொலி", "next": "riddle5" },
         { "English": "Shadow", "Tamil": "நிழல்", "next": "fail" }
       ]
     },

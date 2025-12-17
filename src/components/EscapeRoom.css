@@ -1,5 +1,5 @@
 /* =====================================================
-   GLOBAL RESET FOR ESCAPE ROOM
+   ESCAPE ROOM ROOT
 ===================================================== */
 .escape-room {
   position: fixed;
@@ -282,6 +282,42 @@
   z-index: -1;
 }
 
+/* PYRAMID */
+.escape-room.pyramid {
+  background: linear-gradient(135deg, #fef3c7, #fff7ed);
+}
+.escape-room.pyramid::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(245,158,11,0.15) 0,
+    rgba(245,158,11,0.15) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  animation: slideBg 10s linear infinite;
+  z-index: -1;
+}
+
+/* CASTLE */
+.escape-room.castle {
+  background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+}
+.escape-room.castle::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(129,140,248,0.15) 0,
+    transparent 15px
+  );
+  animation: floatBg 12s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
 /* ARCTIC */
 .escape-room.arctic {
   background: linear-gradient(135deg, #e0f2fe, #f8fafc);
@@ -330,6 +366,40 @@
     transparent 15px
   );
   animation: scan 6s linear infinite;
+  z-index: -1;
+}
+
+/* HAUNTED */
+.escape-room.haunted {
+  background: linear-gradient(135deg, #f3e8ff, #fdf4ff);
+}
+.escape-room.haunted::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image: radial-gradient(
+    rgba(107,33,168,0.2) 2px,
+    transparent 2px
+  );
+  background-size: 50px 50px;
+  animation: floatBg 12s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+/* UNDERWATER */
+.escape-room.underwater {
+  background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+}
+.escape-room.underwater::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image: radial-gradient(
+    rgba(14,165,233,0.2) 3px,
+    transparent 3px
+  );
+  background-size: 50px 50px;
+  animation: wave 12s ease-in-out infinite;
   z-index: -1;
 }
 

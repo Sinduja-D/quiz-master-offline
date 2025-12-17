@@ -35,9 +35,9 @@
       },
       "answer": "Stone",
       "options": [
-        { "English": "Stone", "Tamil": "கல்", "next": "q3" },
         { "English": "Wood", "Tamil": "மரம்", "next": "fail" },
         { "English": "Mud", "Tamil": "மண்", "next": "fail" },
+        { "English": "Stone", "Tamil": "கல்", "next": "q3" },
         { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
       ]
     },
@@ -50,9 +50,9 @@
       },
       "answer": "Knights",
       "options": [
-        { "English": "Knights", "Tamil": "சிறந்த வீரர்கள்", "next": "q4" },
         { "English": "Peasants", "Tamil": "உழவர்கள்", "next": "fail" },
         { "English": "Monks", "Tamil": "துறவிகள்", "next": "fail" },
+        { "English": "Knights", "Tamil": "சிறந்த வீரர்கள்", "next": "q4" },
         { "English": "Merchants", "Tamil": "வர்த்தகர்கள்", "next": "fail" }
       ]
     },
@@ -65,10 +65,10 @@
       },
       "answer": "Walls",
       "options": [
-        { "English": "Walls", "Tamil": "சுவர்கள்", "next": "q5" },
         { "English": "Floors", "Tamil": "மாடிகள்", "next": "fail" },
         { "English": "Gates", "Tamil": "கதவுகள்", "next": "fail" },
-        { "English": "Windows", "Tamil": "ஜன்னல்கள்", "next": "fail" }
+        { "English": "Windows", "Tamil": "ஜன்னல்கள்", "next": "fail" },
+        { "English": "Walls", "Tamil": "சுவர்கள்", "next": "q5" }
       ]
     },
 
@@ -80,8 +80,8 @@
       },
       "answer": "Royalty",
       "options": [
-        { "English": "Royalty", "Tamil": "அரச குடும்பம்", "next": "final" },
         { "English": "Farmers", "Tamil": "விவசாயிகள்", "next": "fail" },
+        { "English": "Royalty", "Tamil": "அரச குடும்பம்", "next": "final" },
         { "English": "Soldiers", "Tamil": "சிப்பாய்கள்", "next": "fail" },
         { "English": "Merchants", "Tamil": "வர்த்தகர்கள்", "next": "fail" }
       ]

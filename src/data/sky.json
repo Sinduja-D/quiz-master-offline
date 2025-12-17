@@ -34,8 +34,9 @@
       },
       "answer": "Cloud",
       "options": [
-        { "English": "Cloud", "Tamil": "மேகம்", "next": "q3" },
+        
         { "English": "Balloon", "Tamil": "பலூன்", "next": "fail" },
+        { "English": "Cloud", "Tamil": "மேகம்", "next": "q3" },
         { "English": "Leaf", "Tamil": "இலை", "next": "fail" },
         { "English": "Feather", "Tamil": "இறகு", "next": "fail" }
       ]
@@ -64,10 +65,11 @@
       },
       "answer": "Star",
       "options": [
-        { "English": "Star", "Tamil": "நட்சத்திரம்", "next": "q5" },
+        
         { "English": "Moon", "Tamil": "சந்திரன்", "next": "fail" },
         { "English": "Sun", "Tamil": "சூரியன்", "next": "fail" },
-        { "English": "Cloud", "Tamil": "மேகம்", "next": "fail" }
+        { "English": "Cloud", "Tamil": "மேகம்", "next": "fail" },
+        { "English": "Star", "Tamil": "நட்சத்திரம்", "next": "q5" }
       ]
     },
 
@@ -79,10 +81,11 @@
       },
       "answer": "Moon",
       "options": [
-        { "English": "Moon", "Tamil": "சந்திரன்", "next": "final" },
+        
         { "English": "Star", "Tamil": "நட்சத்திரம்", "next": "fail" },
         { "English": "Cloud", "Tamil": "மேகம்", "next": "fail" },
-        { "English": "Sun", "Tamil": "சூரியன்", "next": "fail" }
+        { "English": "Sun", "Tamil": "சூரியன்", "next": "fail" },
+        { "English": "Moon", "Tamil": "சந்திரன்", "next": "final" }
       ]
     },
 

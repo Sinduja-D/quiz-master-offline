@@ -20,10 +20,11 @@
       },
       "answer": "Artichoke",
       "options": [
-        { "English": "Artichoke", "Tamil": "கலைச்சோக்கு", "next": "q2" },
+        
         { "English": "Stone", "Tamil": "கல்", "next": "fail" },
         { "English": "Fish", "Tamil": "மீன்", "next": "fail" },
-        { "English": "Coral", "Tamil": "பவளம்", "next": "fail" }
+        { "English": "Coral", "Tamil": "பவளம்", "next": "fail" },
+        { "English": "Artichoke", "Tamil": "கலைச்சோக்கு", "next": "q2" }
       ]
     },
 
@@ -50,9 +51,10 @@
       },
       "answer": "Jellyfish",
       "options": [
-        { "English": "Jellyfish", "Tamil": "ஜெல்லி மீன்", "next": "q4" },
+        
         { "English": "Fish", "Tamil": "மீன்", "next": "fail" },
         { "English": "Crab", "Tamil": "நண்டு", "next": "fail" },
+        { "English": "Jellyfish", "Tamil": "ஜெல்லி மீன்", "next": "q4" },
         { "English": "Coral", "Tamil": "பவளம்", "next": "fail" }
       ]
     },
@@ -80,8 +82,9 @@
       },
       "answer": "Octopus",
       "options": [
-        { "English": "Octopus", "Tamil": "அக்டோபஸ்", "next": "final" },
+        
         { "English": "Clam", "Tamil": "முத்துச் சிப்பி", "next": "fail" },
+        { "English": "Octopus", "Tamil": "அக்டோபஸ்", "next": "final" },
         { "English": "Crab", "Tamil": "நண்டு", "next": "fail" },
         { "English": "Jellyfish", "Tamil": "ஜெல்லி மீன்", "next": "fail" }
       ]

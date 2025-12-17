@@ -35,10 +35,10 @@
       },
       "answer": "Camel",
       "options": [
-        { "English": "Camel", "Tamil": "ஒட்டகம்", "next": "q3" },
         { "English": "Horse", "Tamil": "குதிரை", "next": "fail" },
         { "English": "Dog", "Tamil": "நாய்", "next": "fail" },
-        { "English": "Cow", "Tamil": "மாடு", "next": "fail" }
+        { "English": "Cow", "Tamil": "மாடு", "next": "fail" },
+        { "English": "Camel", "Tamil": "ஒட்டகம்", "next": "q3" }
       ]
     },
 
@@ -50,8 +50,8 @@
       },
       "answer": "Dry",
       "options": [
-        { "English": "Dry", "Tamil": "வறண்ட", "next": "q4" },
         { "English": "Wet", "Tamil": "ஈரமான", "next": "fail" },
+        { "English": "Dry", "Tamil": "வறண்ட", "next": "q4" },
         { "English": "Frozen", "Tamil": "உறைந்த", "next": "fail" },
         { "English": "Green", "Tamil": "பச்சை", "next": "fail" }
       ]
@@ -80,10 +80,11 @@
       },
       "answer": "Cold",
       "options": [
-        { "English": "Cold", "Tamil": "குளிர்", "next": "final" },
-        { "English": "Hot", "Tamil": "வெப்பம்", "next": "fail" },
         { "English": "Humid", "Tamil": "ஈரப்பதம்", "next": "fail" },
-        { "English": "Rainy", "Tamil": "மழை", "next": "fail" }
+        { "English": "Rainy", "Tamil": "மழை", "next": "fail" },
+        { "English": "Cold", "Tamil": "குளிர்", "next": "final" },
+        { "English": "Hot", "Tamil": "வெப்பம்", "next": "fail" }
+        
       ]
     },
 

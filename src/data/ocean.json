@@ -20,8 +20,9 @@
       },
       "answer": "Pacific",
       "options": [
-        { "English": "Pacific", "Tamil": "பசிபிக்", "next": "q2" },
+        
         { "English": "Indian", "Tamil": "இந்திய", "next": "fail" },
+        { "English": "Pacific", "Tamil": "பசிபிக்", "next": "q2" },
         { "English": "Atlantic", "Tamil": "அட்லாண்டிக்", "next": "fail" },
         { "English": "Arctic", "Tamil": "ஆர்க்டிக்", "next": "fail" }
       ]
@@ -50,10 +51,11 @@
       },
       "answer": "Salty",
       "options": [
-        { "English": "Salty", "Tamil": "உப்பு", "next": "q4" },
+        
         { "English": "Sweet", "Tamil": "இனிப்பு", "next": "fail" },
         { "English": "Bitter", "Tamil": "கசப்பு", "next": "fail" },
-        { "English": "Plain", "Tamil": "சாதாரணம்", "next": "fail" }
+        { "English": "Plain", "Tamil": "சாதாரணம்", "next": "fail" },
+        { "English": "Salty", "Tamil": "உப்பு", "next": "q4" }
       ]
     },
 
@@ -65,9 +67,9 @@
       },
       "answer": "Oceanographer",
       "options": [
-        { "English": "Oceanographer", "Tamil": "கடல் ஆய்வாளர்", "next": "q5" },
         { "English": "Astronaut", "Tamil": "விண்வெளி வீரர்", "next": "fail" },
         { "English": "Doctor", "Tamil": "மருத்துவர்", "next": "fail" },
+        { "English": "Oceanographer", "Tamil": "கடல் ஆய்வாளர்", "next": "q5" },
         { "English": "Pilot", "Tamil": "விமானி", "next": "fail" }
       ]
     },

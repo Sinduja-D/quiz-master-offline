@@ -19,8 +19,9 @@
       },
       "answer": "Mercury",
       "options": [
-        { "English": "Mercury", "Tamil": "புதன்", "next": "q2" },
+        
         { "English": "Earth", "Tamil": "பூமி", "next": "fail" },
+        { "English": "Mercury", "Tamil": "புதன்", "next": "q2" },
         { "English": "Mars", "Tamil": "செவ்வாய்", "next": "fail" },
         { "English": "Jupiter", "Tamil": "வியாழன்", "next": "fail" }
       ]
@@ -49,10 +50,11 @@
       },
       "answer": "Saturn",
       "options": [
-        { "English": "Saturn", "Tamil": "சனி", "next": "q4" },
+        
         { "English": "Venus", "Tamil": "சுக்கிரன்", "next": "fail" },
         { "English": "Earth", "Tamil": "பூமி", "next": "fail" },
-        { "English": "Mars", "Tamil": "செவ்வாய்", "next": "fail" }
+        { "English": "Mars", "Tamil": "செவ்வாய்", "next": "fail" },
+        { "English": "Saturn", "Tamil": "சனி", "next": "q4" }
       ]
     },
 
@@ -64,9 +66,10 @@
       },
       "answer": "Astronaut",
       "options": [
-        { "English": "Astronaut", "Tamil": "விண்வெளி வீரர்", "next": "q5" },
+       
         { "English": "Pilot", "Tamil": "விமானி", "next": "fail" },
         { "English": "Sailor", "Tamil": "கடலோடி", "next": "fail" },
+         { "English": "Astronaut", "Tamil": "விண்வெளி வீரர்", "next": "q5" },
         { "English": "Driver", "Tamil": "ஓட்டுநர்", "next": "fail" }
       ]
     },
@@ -79,9 +82,10 @@
       },
       "answer": "Air",
       "options": [
-        { "English": "Air", "Tamil": "காற்று", "next": "final" },
+        
         { "English": "Stars", "Tamil": "நட்சத்திரங்கள்", "next": "fail" },
         { "English": "Planets", "Tamil": "கோள்கள்", "next": "fail" },
+        { "English": "Air", "Tamil": "காற்று", "next": "final" },
         { "English": "Satellites", "Tamil": "செயற்கைக்கோள்கள்", "next": "fail" }
       ]
     },

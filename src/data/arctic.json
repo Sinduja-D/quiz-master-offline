@@ -19,8 +19,8 @@
       },
       "answer": "Arctic",
       "options": [
-        { "English": "Arctic", "Tamil": "ஆர்க்டிக்", "next": "q2" },
         { "English": "Antarctica", "Tamil": "ஆண்டார்க்டிகா", "next": "fail" },
+        { "English": "Arctic", "Tamil": "ஆர்க்டிக்", "next": "q2" },
         { "English": "Sahara", "Tamil": "சஹாரா", "next": "fail" },
         { "English": "Amazon", "Tamil": "அமேசான்", "next": "fail" }
       ]
@@ -49,9 +49,9 @@
       },
       "answer": "Penguins",
       "options": [
-        { "English": "Penguins", "Tamil": "பென்குவின்கள்", "next": "q4" },
         { "English": "Polar bears", "Tamil": "போலார் கருகள்", "next": "fail" },
         { "English": "Seals", "Tamil": "முத்துக்கள்", "next": "fail" },
+        { "English": "Penguins", "Tamil": "பென்குவின்கள்", "next": "q4" },
         { "English": "Wolves", "Tamil": "நரிகள்", "next": "fail" }
       ]
     },
@@ -79,8 +79,8 @@
       },
       "answer": "Freshwater",
       "options": [
-        { "English": "Freshwater", "Tamil": "தூய நீர்", "next": "final" },
         { "English": "Saltwater", "Tamil": "கடல் நீர்", "next": "fail" },
+        { "English": "Freshwater", "Tamil": "தூய நீர்", "next": "final" },
         { "English": "Sand", "Tamil": "மணல்", "next": "fail" },
         { "English": "Rocks", "Tamil": "பாறைகள்", "next": "fail" }
       ]

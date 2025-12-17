@@ -20,8 +20,9 @@
       },
       "answer": "Lion",
       "options": [
-        { "English": "Lion", "Tamil": "சிங்கம்", "next": "q2" },
+        
         { "English": "Elephant", "Tamil": "யானை", "next": "fail" },
+        { "English": "Lion", "Tamil": "சிங்கம்", "next": "q2" },
         { "English": "Tiger", "Tamil": "புலி", "next": "fail" },
         { "English": "Bear", "Tamil": "கரடி", "next": "fail" }
       ]
@@ -50,10 +51,11 @@
       },
       "answer": "Monkey",
       "options": [
-        { "English": "Monkey", "Tamil": "குரங்கு", "next": "q4" },
+        
         { "English": "Snake", "Tamil": "பாம்பு", "next": "fail" },
         { "English": "Tiger", "Tamil": "புலி", "next": "fail" },
-        { "English": "Elephant", "Tamil": "யானை", "next": "fail" }
+        { "English": "Elephant", "Tamil": "யானை", "next": "fail" },
+        { "English": "Monkey", "Tamil": "குரங்கு", "next": "q4" }
       ]
     },
 
@@ -65,9 +67,10 @@
       },
       "answer": "Trees",
       "options": [
-        { "English": "Trees", "Tamil": "மரங்கள்", "next": "q5" },
+        
         { "English": "Rocks", "Tamil": "பாறைகள்", "next": "fail" },
         { "English": "Sand", "Tamil": "மணல்", "next": "fail" },
+        { "English": "Trees", "Tamil": "மரங்கள்", "next": "q5" },
         { "English": "Plastic", "Tamil": "பிளாஸ்டிக்", "next": "fail" }
       ]
     },

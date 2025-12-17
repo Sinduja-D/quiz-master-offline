@@ -34,9 +34,10 @@
       },
       "answer": "Tombs",
       "options": [
-        { "English": "Tombs", "Tamil": "கல்லறைகள்", "next": "q3" },
+        
         { "English": "Palaces", "Tamil": "மாளிகைகள்", "next": "fail" },
         { "English": "Temples", "Tamil": "கோவில்கள்", "next": "fail" },
+        { "English": "Tombs", "Tamil": "கல்லறைகள்", "next": "q3" },
         { "English": "Huts", "Tamil": "குடிசைகள்", "next": "fail" }
       ]
     },
@@ -49,8 +50,9 @@
       },
       "answer": "A statue",
       "options": [
-        { "English": "A statue", "Tamil": "ஒரு சிலை", "next": "q4" },
+        
         { "English": "River", "Tamil": "ஆறு", "next": "fail" },
+        { "English": "A statue", "Tamil": "ஒரு சிலை", "next": "q4" },
         { "English": "Mountain", "Tamil": "மலை", "next": "fail" },
         { "English": "Temple", "Tamil": "கோவில்", "next": "fail" }
       ]
@@ -64,10 +66,11 @@
       },
       "answer": "Stone",
       "options": [
-        { "English": "Stone", "Tamil": "கல்", "next": "q5" },
+       
         { "English": "Wood", "Tamil": "மரம்", "next": "fail" },
         { "English": "Clay", "Tamil": "மண்", "next": "fail" },
-        { "English": "Sand", "Tamil": "மணல்", "next": "fail" }
+        { "English": "Sand", "Tamil": "மணல்", "next": "fail" },
+         { "English": "Stone", "Tamil": "கல்", "next": "q5" }
       ]
     },
 
@@ -79,10 +82,11 @@
       },
       "answer": "Egypt",
       "options": [
-        { "English": "Egypt", "Tamil": "எகிப்து", "next": "final" },
+        
         { "English": "China", "Tamil": "சீனா", "next": "fail" },
         { "English": "India", "Tamil": "இந்தியா", "next": "fail" },
-        { "English": "Mexico", "Tamil": "மெக்சிகோ", "next": "fail" }
+        { "English": "Mexico", "Tamil": "மெக்சிகோ", "next": "fail" },
+        { "English": "Egypt", "Tamil": "எகிப்து", "next": "final" }
       ]
     },
 

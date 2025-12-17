@@ -20,9 +20,10 @@
       },
       "answer": "JavaScript",
       "options": [
-        { "English": "JavaScript", "Tamil": "ஜாவாஸ்கிரிப்ட்", "next": "q2" },
+        
         { "English": "Python", "Tamil": "பைதான்", "next": "fail" },
         { "English": "C++", "Tamil": "சி++", "next": "fail" },
+        { "English": "JavaScript", "Tamil": "ஜாவாஸ்கிரிப்ட்", "next": "q2" },
         { "English": "Java", "Tamil": "ஜாவா", "next": "fail" }
       ]
     },
@@ -50,10 +51,11 @@
       },
       "answer": "Artificial Intelligence",
       "options": [
-        { "English": "Artificial Intelligence", "Tamil": "செயற்கை நுண்ணறிவு", "next": "q4" },
+        
         { "English": "Automatic Internet", "Tamil": "தானியங்கி இணையம்", "next": "fail" },
         { "English": "Active Input", "Tamil": "செயலில் உள்ள உள்ளீடு", "next": "fail" },
-        { "English": "Advanced Interface", "Tamil": "மேம்பட்ட இடைமுகம்", "next": "fail" }
+        { "English": "Advanced Interface", "Tamil": "மேம்பட்ட இடைமுகம்", "next": "fail" },
+        { "English": "Artificial Intelligence", "Tamil": "செயற்கை நுண்ணறிவு", "next": "q4" }
       ]
     },
 
@@ -80,8 +82,9 @@
       },
       "answer": "Security Software",
       "options": [
-        { "English": "Security Software", "Tamil": "பாதுகாப்பு மென்பொருள்", "next": "final" },
+        
         { "English": "Vacuum Cleaner", "Tamil": "வெற்றிட இயந்திரம்", "next": "fail" },
+        { "English": "Security Software", "Tamil": "பாதுகாப்பு மென்பொருள்", "next": "final" },
         { "English": "Fans", "Tamil": "விசிறிகள்", "next": "fail" },
         { "English": "Water", "Tamil": "நீர்", "next": "fail" }
       ]
