@@ -1,0 +1,127 @@
+/* ===============================
+   GAMES MENU
+   =============================== */
+
+.games-menu {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.games-menu h1 {
+  font-size: 2.3rem;
+  margin-bottom: 30px;
+  color: #1e293b;
+}
+
+/* ---------- GRID (3 per row) ---------- */
+
+.games-grid {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ---------- CARD ---------- */
+
+.game-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+/* ---------- IMAGE ---------- */
+
+.game-image {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* ---------- TEXT ---------- */
+
+.game-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #0f172a;
+}
+
+.game-card p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 15px;
+}
+
+/* ---------- PLAY BUTTON ---------- */
+
+.play-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.5);
+}
+
+.play-btn:active {
+  transform: scale(0.95);
+}
+
+/* ---------- BACK BUTTON ---------- */
+
+.back-btn {
+  margin-top: 40px;
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  color: white;
+}
+
+/* ---------- ANIMATION ---------- */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+}

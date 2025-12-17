@@ -113,7 +113,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           </div>
           <button
             className="games-btn"
-            onClick={() => setActivePage("gamesPage")}
+            onClick={() => setActivePage("games")}
           >
             {language === "English" ? "All Games" : "அனைத்து விளையாட்டுகள்"}
           </button>

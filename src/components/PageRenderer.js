@@ -18,7 +18,8 @@ import SpinWheel from "./SpinWheel";
 import StoryMenu from "./StoryMenu";
 import EscapeRoom from "./EscapeRoom";
 import CertificatePage from "./certificate/CertificatePage";
-import GamesPage from "./GamesPage"; // <-- IMPORT THE NEW GAMES PAGE
+import GamesMenu from "./GamesMenu";
+
 
 /* Hook */
 import { useQuizApp } from "../hooks/useQuizApp";
@@ -212,13 +213,14 @@ const PageRenderer = ({
       return <SpinWheel language={language} user={user} />;
 
     // NEW: Add a case for the games page
-    case "gamesPage":
-      return (
-        <GamesPage
-          language={language}
-          setActivePage={setActivePage}
-        />
-      );
+    case "games":
+  return (
+    <GamesMenu
+      language={language}
+      setActivePage={setActivePage}
+    />
+  );
+
 
     case "quizsetup":
       return (
