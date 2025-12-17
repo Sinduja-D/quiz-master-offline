@@ -17,8 +17,8 @@ import DailySciencePage from "./DailySciencePage";
 import SpinWheel from "./SpinWheel";
 import StoryMenu from "./StoryMenu";
 import EscapeRoom from "./EscapeRoom";
-import DetectiveMenu from "./detective/DetectiveMenu";
-import DetectiveGame from "./detective/DetectiveGame";
+import DetectivePage from "./detective/DetectivePage";
+
 import CertificatePage from "./certificate/CertificatePage";
 import GamesMenu from "./GamesMenu";
 import ScienceBombDefusal from "./ScienceBombDefusal";
@@ -216,13 +216,14 @@ const PageRenderer = ({
 
     case "spin":
       return <SpinWheel language={language} user={user} />;
+case "detective":
+      return (
+        <DetectivePage
+          language={language}
+          onBack={() => setActivePage("games") }
+        />
+      );
 
-     case "detective":
-return selectedCase ? (
-<DetectiveGame caseData={selectedCase} onExit={() => setSelectedCase(null)} />
-) : (
-<DetectiveMenu onSelect={setSelectedCase} />
-);
 case "bombDefusal":
       return <ScienceBombDefusal language={language} setActivePage={setActivePage} onBack={() => setActivePage("games") }/>;
 

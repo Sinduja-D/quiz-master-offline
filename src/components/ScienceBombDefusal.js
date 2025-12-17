@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Confetti from "react-confetti";
-import { Howl } from "howler";
 import bombQuestions from "../data/bombDefusalQuestions.json";
 import "./ScienceBombDefusal.css";
 
 const TIME_LIMIT = 15;
 const CONFETTI_DURATION = 3000;
-
-const blastSound = new Howl({ src: ["/sounds/blast.mp3"] });
-const successSound = new Howl({ src: ["/sounds/success.mp3"] });
 
 const bombText = {
   English: {
@@ -64,6 +60,15 @@ export default function ScienceBombDefusal({ language, onBack }) {
   const [confettiParams, setConfettiParams] = useState({});
   const [showInstructions, setShowInstructions] = useState(true);
 
+  // Audio refs
+  const blastAudio = useRef(new Audio(require("../assets/sounds/blast.mp3")));
+  const successAudio = useRef(new Audio(require("../assets/sounds/success.mp3")));
+  const tickingAudio = useRef(new Audio(require("../assets/sounds/ticking.mp3")));
+
+  useEffect(() => {
+    tickingAudio.current.loop = true;
+  }, []);
+
   // Load current question
   useEffect(() => {
     const q = bombQuestions[qIndex];
@@ -80,7 +85,14 @@ export default function ScienceBombDefusal({ language, onBack }) {
 
   // Timer
   useEffect(() => {
-    if (!timerActive) return;
+    if (!timerActive) {
+      tickingAudio.current.pause();
+      tickingAudio.current.currentTime = 0;
+      return;
+    }
+
+    tickingAudio.current.play();
+
     if (timer <= 0) handleBoom();
 
     const id = setInterval(() => setTimer(t => t - 1), 1000);
@@ -106,8 +118,11 @@ export default function ScienceBombDefusal({ language, onBack }) {
 
   const cutWire = (i) => {
     setTimerActive(false);
+    tickingAudio.current.pause();
+    tickingAudio.current.currentTime = 0;
+
     if (i === question.correctIndex) {
-      successSound.play();
+      successAudio.current.play();
       setStatus("success");
       setConfettiParams({
         numberOfPieces: 300,
@@ -115,18 +130,22 @@ export default function ScienceBombDefusal({ language, onBack }) {
         colors: ["#4caf50", "#81c784", "#c8e6c9"]
       });
       setShowConfetti(true);
+      setStreak(s => s + 1);
+
+      // Wait for 5 seconds (success sound duration) before loading next question
       setTimeout(() => {
         setShowConfetti(false);
         setStatus("playing");
-        setQIndex(prev => prev + 1); // load next question
-      }, 2000);
-      setStreak(s => s + 1);
+        setQIndex(prev => prev + 1);
+      }, 5000);
     } else handleBoom();
   };
 
   const handleBoom = () => {
-    blastSound.play();
     setTimerActive(false);
+    tickingAudio.current.pause();
+    tickingAudio.current.currentTime = 0;
+    blastAudio.current.play();
     setStatus("boom");
     setConfettiParams({
       numberOfPieces: 200,
@@ -134,7 +153,11 @@ export default function ScienceBombDefusal({ language, onBack }) {
       colors: ["#ff0000", "#ff9800", "#ffc107"]
     });
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), CONFETTI_DURATION);
+
+    // Wait for 2 seconds (blast sound duration) before showing retry button
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 2000);
   };
 
   const retryGame = () => {
@@ -152,7 +175,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
       <div className="hud-right">🔥 {streak}</div>
 
       <div className="game-area-horizontal">
-        {/* Instructions shown only once */}
         {status === "instructions" && showInstructions && (
           <div className="overlay">
             <div className="statement-modal">
@@ -167,7 +189,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
           </div>
         )}
 
-        {/* Game area */}
         {(status === "playing" || status === "success") && (
           <div className="wires-container">
             {question.options.map((text, i) => (
@@ -186,7 +207,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
         )}
       </div>
 
-      {/* Active statement modal */}
       {activeStatement !== null && (
         <div className="overlay">
           <div className="statement-modal">
@@ -196,7 +216,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
         </div>
       )}
 
-      {/* Success overlay */}
       {status === "success" && (
         <div className="overlay success">
           <div className="result-card success-card">
@@ -206,7 +225,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
         </div>
       )}
 
-      {/* Boom overlay with clickable retry */}
       {status === "boom" && (
         <>
           <div className="explosion-flash" />

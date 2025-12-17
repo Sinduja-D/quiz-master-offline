@@ -8,7 +8,7 @@ export default function DetectiveMenu({ cases, language, onSelect, onClose }) {
         <header className="menu-header header-with-back">
           <div>
             <h2>🕵️ Detective Case Files</h2>
-            <p className="lead">Pick a case to investigate — no scrolling, five files only.</p>
+            <p className="lead">Pick a case to investigate</p>
           </div>
 
           <div>
