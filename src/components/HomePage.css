@@ -1,7 +1,5 @@
 /* src/components/HomePage.css */
 
-
-
 .home-container {
   display: flex;
   flex-direction: column;
@@ -229,6 +227,26 @@
   animation: shimmer 2s infinite;
 }
 
+/* Games button under the section title */
+.home-container .games-btn {
+  margin: 18px auto 0;
+  display: block;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #1a2a6c 0%, #2a3a8c 50%, #3b4aa0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(26, 42, 108, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-container .games-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(26, 42, 108, 0.25);
+}
+
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: calc(200px + 100%) 0; }
@@ -390,120 +408,6 @@
   100% { transform: scale(1); }
 }
 
-/* Explore Section */
-.home-container .explore-section {
-  background: white;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
-  margin-top: 8px;
-  max-width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.home-container .explore-section::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #6366f1, #8b5cf6);
-  opacity: 0.1;
-}
-
-.home-container .explore-header {
-  text-align: center;
-  margin-bottom: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.home-container .explore-header h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #1a2a6c;
-}
-
-.home-container .adventure-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-.home-container .adventure-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 8px;
-  border-radius: 10px;
-  background: white;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
-  height: 90px;
-}
-
-.home-container .adventure-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  transition: all 0.3s ease;
-}
-
-.home-container .adventure-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
-}
-
-.home-container .adventure-card:hover::before {
-  height: 100%;
-  opacity: 0.1;
-}
-
-.home-container .adventure-card .card-icon {
-  font-size: 1.8rem;
-  margin-bottom: 6px;
-}
-
-.home-container .adventure-card span {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #1a2a6c;
-  text-align: center;
-}
-
-/* Individual adventure card styles */
-.home-container .story-menu::before {
-  background: #f59e0b;
-}
-
-.home-container .fun-facts::before {
-  background: #10b981;
-}
-
-.home-container .daily-science::before {
-  background: #ef4444;
-}
-
-.home-container .riddles::before {
-  background: #8b5cf6;
-}
 
 /* Welcome Popup */
 .home-container .welcome-popup {

@@ -111,45 +111,12 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
               </div>
             ))}
           </div>
-        </div>
-        <div className="explore-section">
-          <div className="explore-header">
-            <h2>
-              {language === "English"
-                ? "Explore More Adventures"
-                : "மேலும் சாகசங்களை ஆராயுங்கள்"}
-            </h2>
-          </div>
-          <div className="adventure-grid">
-            <button
-              onClick={() => setActivePage("riddles")}
-              className="adventure-card riddles"
-            >
-              <div className="card-icon">🤔</div>
-              <span>{language === "English" ? "Riddles" : "புதிர்கள்"}</span>
-            </button>
-            <button
-              onClick={() => setActivePage("dailyScience")}
-              className="adventure-card daily-science"
-            >
-              <div className="card-icon">🎡</div>
-              <span>{language === "English" ? "Spin Wheel" : "சுழலும் சக்கரம்"}</span>
-            </button>
-            <button
-              onClick={() => setActivePage("funFacts")}
-              className="adventure-card fun-facts"
-            >
-              <div className="card-icon">💡</div>
-              <span>{language === "English" ? "Fun Facts" : "சுவாரஸ்யங்கள்"}</span>
-            </button>
-            <button
-              onClick={() => setActivePage("storyMenu")}
-              className="adventure-card story-menu"
-            >
-              <div className="card-icon">🔍</div>
-              <span>{language === "English" ? "Escape Room" : "தப்பிப்பிழைத்தல் அறை"}</span>
-            </button>
-          </div>
+          <button
+            className="games-btn"
+            onClick={() => setActivePage("gamesPage")}
+          >
+            {language === "English" ? "All Games" : "அனைத்து விளையாட்டுகள்"}
+          </button>
         </div>
       </div>
     </div>
