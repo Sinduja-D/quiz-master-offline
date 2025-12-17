@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   padding: 40px;
+  margin-right:100px;
+  margin-left: 80px;
   background: #f4f6f8;
 }
 
@@ -19,13 +21,16 @@
 
 .back-btn {
   align-self: flex-start;
-  margin-bottom: 12px;
-  padding: 6px 12px;
-  margin-left: -20px;
+  position: absolute;
+  top: 40px;
+  left: 110px; /* just right of navbar */
+  padding: 12px 20px;
+  margin-left: 0%;
   font-size: 14px;
   font-weight: 500;
-  background-color:  #c9a227;      /* light grey */
-  color: #0a0b0b;
+ /* background-color:  #7d8de8;      /* light grey */
+  color: #ecf4f4;
+  background: linear-gradient(135deg, #1a2a6c 0%, #2a3a8c 50%, #3b4aa0 100%);
   border: 1px solid #cbd5e1;
   border-radius: 4px;
   cursor: pointer;
