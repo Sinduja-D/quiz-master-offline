@@ -15,7 +15,6 @@ export default function ScienceBombDefusal({ language = "English", setActivePage
   const [status, setStatus] = useState("playing"); // playing | success | boom
   const [streak, setStreak] = useState(0);
 
-  // Start or reset game
   const startGame = () => {
     const q = bombQuestions[Math.floor(Math.random() * bombQuestions.length)];
     const { time, wires } = LEVEL_CONFIG[level];
@@ -29,10 +28,12 @@ export default function ScienceBombDefusal({ language = "English", setActivePage
     setStatus("playing");
   };
 
-  // Timer countdown
+  useEffect(() => {
+    startGame();
+  }, [level]);
+
   useEffect(() => {
     if (status !== "playing") return;
-
     if (timer === 0) {
       setStatus("boom");
       setStreak(0);
@@ -43,12 +44,6 @@ export default function ScienceBombDefusal({ language = "English", setActivePage
     return () => clearInterval(interval);
   }, [timer, status]);
 
-  // Initialize game on level change
-  useEffect(() => {
-    startGame();
-  }, [level]);
-
-  // Wire click handler
   const cutWire = (index) => {
     if (status !== "playing") return;
 
@@ -64,15 +59,13 @@ export default function ScienceBombDefusal({ language = "English", setActivePage
   if (!question) return null;
 
   return (
-    <div className={`bomb-game ${timer <= 3 ? "panic" : ""}`}>
-      {/* Header: Timer + Streak */}
-      <div className="bomb-header">
+    <div className={`science-bomb-defusal ${timer <= 3 ? "panic" : ""}`}>
+      <div className="sbd-header">
         <span>⏱ {timer}s</span>
         <span>🔥 Streak: {streak}</span>
       </div>
 
-      {/* Level Selector */}
-      <div className="level-selector">
+      <div className="sbd-level-selector">
         {["easy", "medium", "hard"].map(l => (
           <button
             key={l}
@@ -84,12 +77,11 @@ export default function ScienceBombDefusal({ language = "English", setActivePage
         ))}
       </div>
 
-      {/* Wires */}
-      <div className="bomb-body">
+      <div className="sbd-body">
         {question.options.map((text, index) => (
           <button
             key={index}
-            className="wire"
+            className="sbd-wire"
             onClick={() => cutWire(index)}
             disabled={status !== "playing"}
           >
@@ -98,15 +90,14 @@ export default function ScienceBombDefusal({ language = "English", setActivePage
         ))}
       </div>
 
-      {/* Overlay after success or boom */}
       {status !== "playing" && (
-        <div className={`bomb-overlay ${status}`}>
+        <div className={`sbd-overlay ${status}`}>
           <h1>
             {status === "success"
               ? language === "Tamil" ? "குண்டு செயலிழக்கப்பட்டது!" : "BOMB DEFUSED!"
               : language === "Tamil" ? "வெடிப்பு!" : "BOOM!"}
           </h1>
-          <div className="overlay-buttons">
+          <div className="sbd-overlay-buttons">
             <button onClick={startGame}>
               {language === "Tamil" ? "மீண்டும்" : "Next Bomb"}
             </button>
