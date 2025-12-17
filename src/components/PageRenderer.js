@@ -21,6 +21,7 @@ import DetectiveMenu from "./detective/DetectiveMenu";
 import DetectiveGame from "./detective/DetectiveGame";
 import CertificatePage from "./certificate/CertificatePage";
 import GamesMenu from "./GamesMenu";
+import ScienceBombDefusal from "./ScienceBombDefusal";
 
 
 /* Hook */
@@ -222,6 +223,9 @@ return selectedCase ? (
 ) : (
 <DetectiveMenu onSelect={setSelectedCase} />
 );
+case "bombDefusal":
+      return <ScienceBombDefusal language={language} setActivePage={setActivePage} />;
+
 
 
     // NEW: Add a case for the games page

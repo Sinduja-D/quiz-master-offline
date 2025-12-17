@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'H₂O freezes at 0°C'",
+        "Cut the wire labeled 'The Sun is a planet'",
+        "Cut the wire labeled 'Electrons have a negative charge'"
+      ],
+      "Tamil": [
+        "0°C-ல் பனியாகும் H₂O கம்பியை வெட்டு",
+        "சூரியன் ஒரு கிரகம் ஆகும் கம்பியை வெட்டு",
+        "எலெக்ட்ரான்கள் எதிர்மறை சார்ஜ் கொண்டன கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 2,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Newton discovered gravity'",
+        "Cut the wire labeled 'Water boils at -100°C'",
+        "Cut the wire labeled 'Sound travels faster than light'"
+      ],
+      "Tamil": [
+        "நியூட்டன் ஈர்ப்பு விசையை கண்டுபிடித்தார் கம்பியை வெட்டு",
+        "நீர் -100°C-ல் கொதிக்கும் கம்பியை வெட்டு",
+        "ஒலி ஒளியைவிட வேகமாக பயணிக்கிறது கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 3,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The Earth orbits the Sun'",
+        "Cut the wire labeled 'Helium is highly reactive'",
+        "Cut the wire labeled 'Plants produce oxygen through photosynthesis'"
+      ],
+      "Tamil": [
+        "பூமி சூரியனைச் சுற்றுகிறது கம்பியை வெட்டு",
+        "ஹீலியம் மிகவும் எதிர்வினை செய்கிறது கம்பியை வெட்டு",
+        "செடிகள் ஒளிச்சேர்க்கை மூலம் ஆக்சிஜன் உற்பத்தி செய்கிறது கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 4,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Electrons orbit the nucleus'",
+        "Cut the wire labeled 'Gold has atomic number 8'",
+        "Cut the wire labeled 'Gravity is weaker on Earth than Moon'"
+      ],
+      "Tamil": [
+        "எலெக்ட்ரான்கள் நியூக்ளியஸைச் சுற்றுகின்றன கம்பியை வெட்டு",
+        "தங்கம் அணு எண் 8 கொண்டது கம்பியை வெட்டு",
+        "பூமியில் ஈர்ப்பு விசை சந்திரனைவிட பலவீனமாக உள்ளது கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 5,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Water is made of hydrogen and oxygen'",
+        "Cut the wire labeled 'Nitrogen is a metal'",
+        "Cut the wire labeled 'The Moon emits light by itself'"
+      ],
+      "Tamil": [
+        "நீர் ஹைட்ரஜன் மற்றும் ஆக்சிஜனிலிருந்து உருவானது கம்பியை வெட்டு",
+        "நைட்ரஜன் ஒரு உலோகம் ஆகும் கம்பியை வெட்டு",
+        "சந்திரன் தனக்கே ஒளி வெளிப்படுத்துகிறது கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 6,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Photosynthesis requires sunlight'",
+        "Cut the wire labeled 'Mammals lay eggs'",
+        "Cut the wire labeled 'The chemical symbol for Sodium is S'"
+      ],
+      "Tamil": [
+        "ஒளிச்சேர்க்கைக்கு வெள்ளி தேவையாகிறது கம்பியை வெட்டு",
+        "மிருகங்கள் முட்டைகள் வை்கின்றன கம்பியை வெட்டு",
+        "சோடியம் ரசாயன குறியீடு S கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 7,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Sound needs a medium to travel'",
+        "Cut the wire labeled 'Light travels slower than sound'",
+        "Cut the wire labeled 'Electrons are positively charged'"
+      ],
+      "Tamil": [
+        "ஒலி பயணிக்க ஒரு நடுத்தர நிலை தேவை கம்பியை வெட்டு",
+        "ஒளி ஒலியைவிட மெதுவாக பயணிக்கிறது கம்பியை வெட்டு",
+        "எலெக்ட்ரான்கள் நேர்மறை சார்ஜ் கொண்டன கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 8,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Mercury is a liquid at room temperature'",
+        "Cut the wire labeled 'Iron is a gas at room temperature'",
+        "Cut the wire labeled 'Oxygen is heavier than gold'"
+      ],
+      "Tamil": [
+        "மெர்குரி அறை வெப்பநிலையில் திரவமாக இருக்கும் கம்பியை வெட்டு",
+        "இரும்பு அறை வெப்பநிலையில் வாயு ஆகும் கம்பியை வெட்டு",
+        "ஆக்சிஜன் தங்கத்தைவிட கனமாகும் கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 9,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Lightning is a discharge of electricity'",
+        "Cut the wire labeled 'Rain forms from clouds of hydrogen'",
+        "Cut the wire labeled 'Sound travels in vacuum faster than light'"
+      ],
+      "Tamil": [
+        "மின்னல் மின்சார வெளியீடு ஆகும் கம்பியை வெட்டு",
+        "மழை ஹைட்ரஜன் மேகங்களில் இருந்து உருவாகிறது கம்பியை வெட்டு",
+        "ஒலி வெற்றிடத்தில் ஒளியைவிட வேகமாக பயணிக்கிறது கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 10,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The boiling point of water is 100°C'",
+        "Cut the wire labeled 'Helium is highly reactive'",
+        "Cut the wire labeled 'The Earth is flat'"
+      ],
+      "Tamil": [
+        "நீர் கொதிக்கும் வெப்பநிலை 100°C கம்பியை வெட்டு",
+        "ஹீலியம் மிகவும் எதிர்வினை செய்கிறது கம்பியை வெட்டு",
+        "பூமி சதுரமாக உள்ளது கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  }
+]
