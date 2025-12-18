@@ -18,7 +18,6 @@ import SpinWheel from "./SpinWheel";
 import StoryMenu from "./StoryMenu";
 import EscapeRoom from "./EscapeRoom";
 import DetectivePage from "./detective/DetectivePage";
-
 import CertificatePage from "./certificate/CertificatePage";
 import GamesMenu from "./GamesMenu";
 import ScienceBombDefusal from "./ScienceBombDefusal";
@@ -266,7 +265,14 @@ case "bombDefusal":
           }}
         />
       );
-
+      case "certificate":
+  return (
+    <CertificatePage
+      user={user}
+      language={language}
+      setActivePage={setActivePage}
+    />
+  );
     case "quizresults":
       return (
         <QuizResults

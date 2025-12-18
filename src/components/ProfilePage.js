@@ -106,7 +106,7 @@ const ProfilePage = ({ language, user, setActivePage }) => {
         </div>
       </div>
 
-      {/* ---------- CERTIFICATE BUTTON ---------- */}
+      {/* ---------- CERTIFICATE BUTTON ---------- 
       {user.quizHistory?.length > 0 && (
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <button
@@ -117,6 +117,16 @@ const ProfilePage = ({ language, user, setActivePage }) => {
           </button>
         </div>
       )}
+        */}
+        <button
+  className="certificate-btn"
+  onClick={() => setActivePage("certificate")}
+>
+  {language === "English"
+    ? "Generate Certificate"
+    : "சான்றிதழ் உருவாக்கவும்"}
+</button>
+
 
       {/* ---------- STATS ---------- */}
       <div className="profile-stats">
