@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 /* Pages */
 import HomePage from "./HomePage";
@@ -17,11 +17,11 @@ import DailySciencePage from "./DailySciencePage";
 import SpinWheel from "./SpinWheel";
 import StoryMenu from "./StoryMenu";
 import EscapeRoom from "./EscapeRoom";
-import DetectivePage from "./detective/DetectivePage";
+import DetectiveMenu from "./detective/DetectiveMenu";
+import DetectiveGame from "./detective/DetectiveGame";
 import CertificatePage from "./certificate/CertificatePage";
 import GamesMenu from "./GamesMenu";
 import ScienceBombDefusal from "./ScienceBombDefusal";
-
 
 /* Hook */
 import { useQuizApp } from "../hooks/useQuizApp";
@@ -37,15 +37,16 @@ const PageRenderer = ({
   setIsQuizInProgress,
 }) => {
   const [selectedStory, setSelectedStory] = useState(null);
-    const [selectedCase, setSelectedCase] = useState(null);
-
+  const [selectedCase, setSelectedCase] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // Store last quiz state for review
   const [lastQuizQuestions, setLastQuizQuestions] = useState([]);
   const [lastQuizUserAnswers, setLastQuizUserAnswers] = useState([]);
 
-  // Track story completion statuses
-  const [completedStories, setCompletedStories] = useState(user.escapeRoomsCompletedMap || {});
+  // Track story completion statuses - using optional chaining for safety
+  const [completedStories, setCompletedStories] = useState(user?.escapeRoomsCompletedMap || {});
 
   const {
     selectedLevel,
@@ -59,8 +60,14 @@ const PageRenderer = ({
     newlyUnlockedAchievements,
   } = useQuizApp(setActivePage, user, updateUser, setIsQuizInProgress);
 
+  // Debug logging for troubleshooting
+  useEffect(() => {
+    console.log('PageRenderer activePage:', activePage);
+    console.log('PageRenderer setActivePage:', typeof setActivePage);
+  }, [activePage]);
+
   // Prevent language change during quiz or escape room
-  const safeToggleLanguage = () => {
+  const safeToggleLanguage = useCallback(() => {
     if (activePage === "quiz" || activePage === "escapeRoom") {
       alert(
         language === "English"
@@ -70,7 +77,7 @@ const PageRenderer = ({
       return;
     }
     toggleLanguage();
-  };
+  }, [activePage, language, toggleLanguage]);
 
   // Save selected difficulty
   useEffect(() => {
@@ -90,62 +97,78 @@ const PageRenderer = ({
   }, [activePage, setActivePage]);
 
   // Escape Room: select story
-  const handleStorySelect = (story) => {
+  const handleStorySelect = useCallback((story) => {
     setSelectedStory(story);
     setActivePage("escapeRoom");
-  };
+  }, [setActivePage]);
 
   // Escape Room: complete story
-  const handleEscapeRoomComplete = (storyId, status = "completed") => {
-    const updatedUser = { ...user };
-    if (!updatedUser.escapeRoomsCompleted) updatedUser.escapeRoomsCompleted = [];
-    if (!updatedUser.escapeRoomsCompletedMap) updatedUser.escapeRoomsCompletedMap = {};
+  const handleEscapeRoomComplete = useCallback((storyId, status = "completed") => {
+    try {
+      setIsLoading(true);
+      const updatedUser = { ...user };
+      if (!updatedUser.escapeRoomsCompleted) updatedUser.escapeRoomsCompleted = [];
+      if (!updatedUser.escapeRoomsCompletedMap) updatedUser.escapeRoomsCompletedMap = {};
 
-    updatedUser.escapeRoomsCompletedMap[storyId] = status;
-    if (!updatedUser.escapeRoomsCompleted.includes(storyId)) {
-      updatedUser.escapeRoomsCompleted.push(storyId);
+      updatedUser.escapeRoomsCompletedMap[storyId] = status;
+      if (!updatedUser.escapeRoomsCompleted.includes(storyId)) {
+        updatedUser.escapeRoomsCompleted.push(storyId);
+      }
+
+      // Award points only if fully completed
+      if (status === "completed") {
+        updatedUser.totalPoints = (updatedUser.totalPoints || 0) + 50;
+      }
+
+      // Update user state & localStorage
+      updateUser(updatedUser);
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+      const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
+      const userIndex = users.findIndex((u) => u.id === user.id);
+      if (userIndex !== -1) {
+        users[userIndex] = updatedUser;
+        localStorage.setItem("quizAppUsers", JSON.stringify(users));
+      }
+
+      // Update local state to reflect immediately in StoryMenu
+      setCompletedStories({ ...updatedUser.escapeRoomsCompletedMap });
+
+      // Return to story menu
+      setSelectedStory(null);
+      setActivePage("storyMenu");
+    } catch (err) {
+      setError(err.message || "Failed to update escape room completion status");
+      console.error("Error in handleEscapeRoomComplete:", err);
+    } finally {
+      setIsLoading(false);
     }
+  }, [user, updateUser, setActivePage]);
 
-    // Award points only if fully completed
-    if (status === "completed") {
-      updatedUser.totalPoints = (updatedUser.totalPoints || 0) + 50;
-    }
-
-    // Update user state & localStorage
-    updateUser(updatedUser);
-    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-    const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
-    const userIndex = users.findIndex((u) => u.id === user.id);
-    if (userIndex !== -1) {
-      users[userIndex] = updatedUser;
-      localStorage.setItem("quizAppUsers", JSON.stringify(users));
-    }
-
-    // Update local state to reflect immediately in StoryMenu
-    setCompletedStories({ ...updatedUser.escapeRoomsCompletedMap });
-
-    // Return to story menu
+  const handleEscapeRoomBack = useCallback(() => {
     setSelectedStory(null);
     setActivePage("storyMenu");
-  };
+  }, [setActivePage]);
 
-  const handleEscapeRoomBack = () => {
-    setSelectedStory(null);
-    setActivePage("storyMenu");
-  };
+  // Error boundary
+  if (error) {
+    return (
+      <div className="error-container">
+        <h2>{language === "English" ? "Something went wrong" : "ஏதோ தவறு நடந்தது"}</h2>
+        <p>{error}</p>
+        <button onClick={() => setError(null)}>
+          {language === "English" ? "Try again" : "மீண்டும் முயற்சிக்கவும்"}
+        </button>
+      </div>
+    );
+  }
 
   // Loading state
-  if (!user) {
+  if (!user || isLoading) {
     return (
       <div className="loading-container">
         <p>{language === "English" ? "Loading..." : "ஏற்றப்படுகிறது..."}</p>
       </div>
     );
-  }
-
-  // Certificate page (early return)
-  if (activePage === "certificate") {
-    return <CertificatePage user={user} language={language} setActivePage={setActivePage} />;
   }
 
   // Page switch
@@ -186,7 +209,7 @@ const PageRenderer = ({
       return <LeaderboardPage language={language} currentUser={user} />;
 
     case "riddles":
-      return <RiddleQuiz language={language} />;
+      return <RiddleQuiz language={language} setActivePage={setActivePage} />;
 
     case "storyMenu":
       return (
@@ -204,6 +227,7 @@ const PageRenderer = ({
           storyId={selectedStory?.id}
           onBack={handleEscapeRoomBack}
           onComplete={handleEscapeRoomComplete}
+          setActivePage={setActivePage}
         />
       );
 
@@ -211,32 +235,47 @@ const PageRenderer = ({
       return <DailySciencePage language={language} user={user} updateUser={updateUser} />;
 
     case "funFacts":
-      return <FunFactsPage language={language} />;
+      return <FunFactsPage language={language} setActivePage={setActivePage} />;
 
     case "spin":
-      return <SpinWheel language={language} user={user} />;
-case "detective":
+      console.log('Rendering SpinWheel with setActivePage:', typeof setActivePage);
       return (
-        <DetectivePage
-          language={language}
-          onBack={() => setActivePage("games") }
+        <SpinWheel 
+          language={language} 
+          user={user} 
+          setActivePage={setActivePage}
+          onSpinComplete={(result) => {
+            // Handle spin completion if needed
+            console.log('Spin completed with result:', result);
+          }}
         />
       );
 
-case "bombDefusal":
+    case "detective":
+      return selectedCase ? (
+        <DetectiveGame 
+          caseData={selectedCase} 
+          onExit={() => setSelectedCase(null)}
+          setActivePage={setActivePage}
+        />
+      ) : (
+        <DetectiveMenu 
+          onSelect={setSelectedCase}
+          setActivePage={setActivePage}
+        />
+      );
+      
+    case "bombDefusal":
       return <ScienceBombDefusal language={language} setActivePage={setActivePage} onBack={() => setActivePage("games") }/>;
 
-
-
-    // NEW: Add a case for the games page
+    // Games page
     case "games":
-  return (
-    <GamesMenu
-      language={language}
-      setActivePage={setActivePage}
-    />
-  );
-
+      return (
+        <GamesMenu
+          language={language}
+          setActivePage={setActivePage}
+        />
+      );
 
     case "quizsetup":
       return (
@@ -265,14 +304,7 @@ case "bombDefusal":
           }}
         />
       );
-      case "certificate":
-  return (
-    <CertificatePage
-      user={user}
-      language={language}
-      setActivePage={setActivePage}
-    />
-  );
+
     case "quizresults":
       return (
         <QuizResults
@@ -284,6 +316,9 @@ case "bombDefusal":
           userAnswers={lastQuizUserAnswers}
         />
       );
+
+    case "certificate":
+      return <CertificatePage user={user} language={language} setActivePage={setActivePage} />;
 
     default:
       return <HomePage language={language} setActivePage={setActivePage} />;
