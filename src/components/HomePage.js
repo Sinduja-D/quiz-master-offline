@@ -1,11 +1,11 @@
-// src/components/HomePage.jsx
-import React, { useEffect, useState } from "react";
+// src/components/HomePage.js
+import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 import rmkLogo from "../assets/rmk.gif";
 import tamilNaduLogo from "../assets/tamil-nadu-logo.png";
 import { levels } from "../levels.js";
 
-const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
+const HomePage = ({ language, setActivePage, onLevelSelect, toggleLanguage, user }) => {
   const [showWelcome, setShowWelcome] = useState(false);
   
   useEffect(() => {
@@ -14,14 +14,14 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
       const timer = setTimeout(() => setShowWelcome(false), 3000);
       return () => clearTimeout(timer);
     }
-  }, [user]);
+  }, [user?.username]);
   
   return (
     <div className="home-container">
       {showWelcome && (
         <div className="welcome-popup">
-          {language === "English"
-            ? `Welcome to HomePage, ${user.username}!`
+          {language === "English" 
+            ? `Welcome to HomePage, ${user.username}!` 
             : `முகப்புப்பக்கத்திற்கு வரவேற்கிறோம், ${user.username}!`}
         </div>
       )}
@@ -33,8 +33,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           </div>
           <div className="text-container">
             <h3 className="hero-main-title">
-              {language === "English"
-                ? "Science Park-Tiruvallur District"
+              {language === "English" 
+                ? "Science Park-Tiruvallur District" 
                 : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
             </h3>
           </div>
@@ -46,52 +46,47 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           </div>
           <div className="text-container">
             <p className="hero-developer-label">
-              {language === "English"
-                ? "Designed And Compiled by"
-                : "வடிவமைத்து உருவாக்கியவர்கள்"}
+              {language === "English" 
+                ? "Designed And Compiled by" 
+                : "வடிவமைப்பு செய்யுள்ளர்"}
             </p>
             <h3 className="hero-main-title">
-              {language === "English"
-                ? "R.M.K. Engineering College"
-                : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
+              {language === "English" 
+                ? "R.M.K. Engineering College" 
+                : "ஆர்.எம்.கே. பொறியியல் கல்லூர்"}
             </h3>
             <p className="hero-sub-title">
-              {language === "English"
-                ? "(An Autonomous Institution)"
-                : "(ஒரு தன்னாட்சி நிறுவனம்)"}
+              {language === "English" 
+                ? "(An Autonomous Institution)" 
+                : "(ஒரு தன்னாட்டு நிறுவனம்)"}
             </p>
-            
-          </div>
-        </div>
-        
-        <div className="hero-column">
-          <div className="text-container full-width">
             <p className="hero-developers">
-              {language === "English"
-                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
-                : (<>உருவாக்கியவர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி.ரா</>)}
+              {language === "English" 
+                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R" 
+                : "உருவாக்கள்: சிந்துஜா டி, ரீது பி, விஜயலட்சுமி சிஆர்"}
             </p>
             <p className="hero-department">
-              {language === "English"
-                ? "Department of Information Technology Batch [2023-2027]"
-                : "தகவல் தொழில்நுட்பத் துறை தொகுப்பு [2023-2027]"}
+              {language === "English" 
+                ? "Department of Information Technology Batch [2023-2027]" 
+                : "தகவல் தொழில்நுட்பத் துறை துறை [2023-2027]"}
             </p>
             <p className="hero-mentor">
-              {language === "English"
-                ? "Mentor: Ms. M. Rekha, M.E.(Ph.D), Assistant Professor"
-                : "வழிகாட்டி: திருமதி.ம.ரேகா, M.E.(Ph.D), உதவி பேராசிரியர்"}
+              {language === "English" 
+                ? "Mentor: Ms. M. Rekha, M.E.(Ph.D), Assistant Professor" 
+                : "வழிகாட்டு: திருமதி. ரேகா, எம்.இ. பேராசிரியர், உதவியியர் பேராசிரியர்"}
             </p>
           </div>
         </div>
       </div>
       
       <div className="content-wrapper">
+        {/* --- QUIZ LEVELS CONTAINER --- */}
         <div className="level-container">
           <div className="section-title">
             <h2>
-              {language === "English"
-                ? "Science Quiz for Young Achievers"
-                : "இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினா"}
+              {language === "English" 
+                ? "Science Quiz for Young Achievers" 
+                : "இளைய சிந்தனையாட்டுகளுக்கள்"}
             </h2>
           </div>
           <div className="level-cards">
@@ -111,12 +106,27 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
               </div>
             ))}
           </div>
-          <button
-            className="games-btn"
+        </div>
+
+        {/* --- NEW, SEPARATE FULL-WIDTH CONTAINER FOR THE GAMES CARD --- */}
+        <div className="all-games-container">
+          <div
+            className="games-preview-card"
             onClick={() => setActivePage("games")}
           >
-            {language === "English" ? "All Games" : "அனைத்து விளையாட்டுகள்"}
-          </button>
+            <span className="card-icon">🎮</span>
+            <div className="card-text-content">
+              <h3 className="card-title">
+                {language === "English" ? "Explore All Games" : "அனைத்து விளையாட்டுகள்"}
+              </h3>
+              <div className="card-game-icons">
+                <span className="mini-game-icon">🤔</span>
+                <span className="mini-game-icon">🎡</span>
+                <span className="mini-game-icon">💡</span>
+                <span className="mini-game-icon">🔍</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

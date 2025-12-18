@@ -2,14 +2,14 @@
 
 /* Main container */
 .board-game-container {
-  /*max-width: 1100px;*/
-  /*margin: 0 auto;*/
+  /*max-width: 1100px;/
+  /margin: 0 auto;/
   padding: 10px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #1a2a6c, #2a3a7c, #3a4a8c);
   min-height: 100vh;
   color: white;
-  /*position: relative;*/
+  /position: relative;/
   overflow: hidden;
   width: 0;
   box-sizing: border-box;
@@ -378,4 +378,5 @@
     padding: 6px 12px;
     font-size: 0.8rem;
   }
+}
 }

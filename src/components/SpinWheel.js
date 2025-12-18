@@ -1,18 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-//import Confetti from "react-confetti";
 import "./SpinWheel.css";
 
-const SpinWheel = ({ language = "English", onSpinComplete }) => {
+const SpinWheel = ({ language, onSpinComplete, setActivePage, user, updateUser }) => {
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
-  const [Dimension, setWindowDimension] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
   const [spinBase, setSpinBase] = useState(0);
   const wheelRef = useRef(null);
 
-  // Rewards in the exact CLOCKWISE order from the pointer (top)
+  // Rewards in CLOCKWISE order
   const rewards = [
     { id: "5_points", points: 5, label: { english: "5 Points", tamil: "5 புள்ளிகள்" } },
     { id: "10_points", points: 10, label: { english: "10 Points", tamil: "10 புள்ளிகள்" } },
@@ -23,26 +18,17 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
     { id: "50_points", points: 50, label: { english: "50 Points", tamil: "50 புள்ளிகள்" } },
   ];
 
-  // Colors in the same order
   const rainbowColors = [
-    "#01356d", // 5
-    "#016ca5", // 10
-    "#0396c7", // 15
-    "#04bbdf", // 20
-    "#90e0ef", // 25
-    "#beedf4", // 30
-    "#051460", // 50
+    "#01356d",
+    "#016ca5",
+    "#0396c7",
+    "#04bbdf",
+    "#90e0ef",
+    "#beedf4",
+    "#051460",
   ];
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowDimension({ width: window.innerWidth, height: window.innerHeight });
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Reset wheel at mount
+  // Reset wheel on mount
   useEffect(() => {
     if (wheelRef.current) {
       wheelRef.current.style.transition = "none";
@@ -58,13 +44,11 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
     setSpinning(true);
     setResult(null);
 
-    const segmentAngle = 360 / rewards.length; // 51.43° for 7 segments
+    const segmentAngle = 360 / rewards.length;
     const randomRewardIndex = Math.floor(Math.random() * rewards.length);
 
-    // Each segment center is offset by index * segmentAngle
-    const targetAngle = randomRewardIndex * segmentAngle + segmentAngle / 2;
-
-    // We want that center to align with the pointer at top (0°)
+    const targetAngle =
+      randomRewardIndex * segmentAngle + segmentAngle / 2;
     const stopAngle = 360 - targetAngle;
 
     const extraSpins = 5;
@@ -72,24 +56,67 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
     const totalRotation = newBase * 360 + stopAngle;
 
     if (wheelRef.current) {
-      wheelRef.current.style.transition = "transform 4s cubic-bezier(0.34, 1.56, 0.64, 1)";
+      wheelRef.current.style.transition =
+        "transform 4s cubic-bezier(0.34, 1.56, 0.64, 1)";
       wheelRef.current.style.transform = `rotate(${totalRotation}deg)`;
     }
+
     setSpinBase(newBase);
 
     setTimeout(() => {
-      setResult(rewards[randomRewardIndex]);
+      const reward = rewards[randomRewardIndex];
+      setResult(reward);
       setSpinning(false);
+
+      // Update user points
+      if (user && updateUser) {
+        const updatedUser = { ...user };
+        updatedUser.totalPoints =
+          (updatedUser.totalPoints || 0) + reward.points;
+
+        updateUser(updatedUser);
+        localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+        const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
+        const index = users.findIndex((u) => u.id === user.id);
+        if (index !== -1) {
+          users[index] = updatedUser;
+          localStorage.setItem("quizAppUsers", JSON.stringify(users));
+        }
+      }
     }, 4000);
+  };
+
+  const handleBackToGames = () => {
+    if (typeof setActivePage === "function") {
+      setActivePage("games");
+    }
+  };
+
+  const handleContinue = () => {
+    if (typeof onSpinComplete === "function") {
+      onSpinComplete(result);
+    } else {
+      handleBackToGames();
+    }
   };
 
   return (
     <div className="spin-wheel-container">
 
+      {/* Back Button */}
+      <button className="back-btn-games-fixed" onClick={handleBackToGames}>
+        <span className="back-icon">←</span>
+        <span className="back-text">
+          {language === "English" ? "Games" : "விளையாட்டுகள்"}
+        </span>
+      </button>
+
       <h3>{t("Spin the Wheel!", "சக்கரத்தை சுழற்றுங்கள்!")}</h3>
 
       <div className="wheel-wrapper">
         <div className="wheel-pointer"></div>
+
         <div
           ref={wheelRef}
           className="spin-wheel"
@@ -112,6 +139,7 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
             const midAngle = (startAngle + endAngle) / 2;
             const midRad = (midAngle * Math.PI) / 180;
             const textRadius = 35;
+
             const textX = 50 + textRadius * Math.cos(midRad);
             const textY = 50 + textRadius * Math.sin(midRad);
 
@@ -133,7 +161,9 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
                   }}
                 >
                   <span className="segment-text">
-                    {language === "English" ? reward.label.english : reward.label.tamil}
+                    {language === "English"
+                      ? reward.label.english
+                      : reward.label.tamil}
                   </span>
                 </div>
               </div>
@@ -148,15 +178,32 @@ const SpinWheel = ({ language = "English", onSpinComplete }) => {
         </button>
       )}
 
+      {spinning && (
+        <div className="action-area">
+          <div className="spinning-message">
+            <div className="spinner-icon">🎯</div>
+            <p>{t("Spinning...", "சுழற்றுகிறது...")}</p>
+          </div>
+        </div>
+      )}
+
       {result && (
-        <div className="spin-result">
-          <h4>{t("You have received:", "நீங்கள் பெற்றுள்ளீர்கள்:")}</h4>
-          <p className="reward-text">
-            {language === "English" ? result.label.english : result.label.tamil}
-          </p>
-          <button className="continue-button" onClick={() => onSpinComplete?.(result)}>
-            {t("Continue", "தொடரவும்")}
-          </button>
+        <div className="action-area">
+          <div className="spin-result">
+            <h4>{t("You have received:", "நீங்கள் பெற்றுள்ளீர்கள்:")}</h4>
+            <p className="reward-text">
+              {language === "English"
+                ? result.label.english
+                : result.label.tamil}
+            </p>
+
+            <div className="result-buttons">
+              <button className="continue-button" onClick={handleContinue}>
+                {t("Continue", "தொடரவும்")}
+              </button>
+
+            </div>
+          </div>
         </div>
       )}
     </div>

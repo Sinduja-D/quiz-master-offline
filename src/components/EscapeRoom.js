@@ -1,3 +1,4 @@
+// src/components/EscapeRoom.js
 import React, { useState, useEffect } from "react";
 import "./EscapeRoom.css";
 
@@ -28,8 +29,9 @@ const storyMap = {
   underwater, sky, time,
 };
 
-const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
+const EscapeRoom = ({ language, storyId, onBack, onComplete, setActivePage }) => {
   const story = storyMap[storyId];
+
   const [currentSceneId, setCurrentSceneId] = useState(story.startScene);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
@@ -46,25 +48,40 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
 
   useEffect(() => {
     if (!currentScene) return;
+
     if (currentScene.type === "intro" || currentScene.type === "transition") {
-      const t = setTimeout(() => setCurrentSceneId(currentScene.next), currentScene.duration || 2500);
+      const t = setTimeout(
+        () => setCurrentSceneId(currentScene.next),
+        currentScene.duration || 2500
+      );
       return () => clearTimeout(t);
     }
   }, [currentScene]);
 
-  // Auto-navigate 5 seconds after ending scene
   useEffect(() => {
     if (currentScene?.type === "ending") {
-      const t = setTimeout(() => handleExit(), 5000);
+      const t = setTimeout(() => {
+        let status = "partial";
+        if (currentSceneId === "good" && !gaveWrong) status = "completed";
+        onComplete(storyId, status);
+        onBack();
+      }, 5000);
       return () => clearTimeout(t);
     }
   }, [currentScene]);
 
-  const totalRiddles = Object.values(story.scenes).filter(s => s.type === "riddle").length;
-  const solvedIndex = Object.keys(story.scenes).indexOf(currentSceneId);
-  const progress = currentScene?.type === "ending" ? 100 : Math.min((solvedIndex / totalRiddles) * 100, 100);
+  const totalRiddles = Object.values(story.scenes).filter(
+    s => s.type === "riddle"
+  ).length;
 
-  const playSound = src => {
+  const solvedIndex = Object.keys(story.scenes).indexOf(currentSceneId);
+
+  const progress =
+    currentScene?.type === "ending"
+      ? 100
+      : Math.min((solvedIndex / totalRiddles) * 100, 100);
+
+  const playSound = (src) => {
     const audio = new Audio(src);
     audio.volume = 0.5;
     audio.play();
@@ -75,11 +92,11 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
     const correct = option.English === currentScene.answer;
     setIsCorrect(correct);
 
-    if (!correct) {
+    if (correct) {
+      playSound(correctSound);
+    } else {
       setGaveWrong(true);
       playSound(wrongSound);
-    } else {
-      playSound(correctSound);
     }
 
     setTimeout(() => {
@@ -100,18 +117,31 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
     if (!currentScene) return null;
 
     if (currentScene.type === "intro" || currentScene.type === "transition") {
-      return <div className="scene-text">{currentScene.text[language]}</div>;
+      return (
+        <div className="scene-text">
+          {currentScene.text[language]}
+        </div>
+      );
     }
 
     if (currentScene.type === "riddle") {
       return (
         <div className="riddle-container">
-          <div className="riddle-question">{currentScene.question[language]}</div>
+          <div className="riddle-question">
+            {currentScene.question[language]}
+          </div>
+
           <div className="options-container">
             {currentScene.options.map((opt, idx) => (
               <button
                 key={idx}
-                className={`option-button ${selectedOption === opt.English ? (isCorrect ? "correct" : "incorrect") : ""}`}
+                className={`option-button ${
+                  selectedOption === opt.English
+                    ? isCorrect
+                      ? "correct"
+                      : "incorrect"
+                    : ""
+                }`}
                 disabled={selectedOption !== null}
                 onClick={() => handleAnswer(opt)}
               >
@@ -119,6 +149,7 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
               </button>
             ))}
           </div>
+
           {selectedOption && (
             <div className={`feedback ${isCorrect ? "ok" : "no"}`}>
               {isCorrect
@@ -144,12 +175,27 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete }) => {
 
   return (
     <div className={`escape-room ${storyId}`}>
+      
+      {/* Fixed back button */}
+      <button
+        className="back-btn-games-fixed"
+        onClick={() => setActivePage && setActivePage("games")}
+      >
+        <span className="back-icon">←</span>
+        <span className="back-text">
+          {language === "English" ? "Games" : "விளையாட்டுகள்"}
+        </span>
+      </button>
+
       <button className="back-btn-top-left" onClick={handleExit}>
-        {language === "English" ? "← Back" : "← மெனுவிற்கு திரும்ப"}
+        {language === "English" ? "← Exit Story" : "← கதை வெளியேறு"}
       </button>
 
       <div className="progress-wrapper">
-        <div className="progress-bar" style={{ width: `${progress}%` }} />
+        <div
+          className="progress-bar"
+          style={{ width: `${progress}%` }}
+        />
       </div>
 
       <div className="scene-wrapper">

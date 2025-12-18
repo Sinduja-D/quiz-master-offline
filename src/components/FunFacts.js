@@ -2,25 +2,25 @@ import React, { useState, useEffect } from 'react';
 import './FunFacts.css';
 import funFactsData from '../data/funFactsData';
 
-const FunFacts = ({ language }) => {
+const FunFacts = ({ language, setActivePage }) => {
   const [board, setBoard] = useState([]);
   const [selectedFact, setSelectedFact] = useState(null);
   const [gameCompleted, setGameCompleted] = useState(false);
   const [usedIndices, setUsedIndices] = useState([]);
 
-  // Initialize the board with random facts
+  // Initialize board
   useEffect(() => {
     resetBoard();
+    // eslint-disable-next-line
   }, []);
 
   const resetBoard = () => {
-    // If we've used all facts, reshuffle and reset used indices
     let newUsedIndices = [...usedIndices];
+
     if (newUsedIndices.length >= funFactsData.length) {
       newUsedIndices = [];
     }
 
-    // Get 9 unique random facts
     const newFacts = [];
     while (newFacts.length < 9 && newUsedIndices.length < funFactsData.length) {
       const randomIndex = Math.floor(Math.random() * funFactsData.length);
@@ -30,20 +30,17 @@ const FunFacts = ({ language }) => {
       }
     }
 
-    // Update used indices
     setUsedIndices(newUsedIndices);
 
-    // If no facts available, end the game
     if (newFacts.length === 0) {
       setBoard([]);
       setGameCompleted(true);
       return;
     }
 
-    // Create board with new facts
     const newBoard = newFacts.map((fact, index) => ({
       id: index,
-      fact: fact,
+      fact,
       revealed: false,
       position: index + 1,
     }));
@@ -54,23 +51,26 @@ const FunFacts = ({ language }) => {
   };
 
   const handleSquareClick = (square) => {
-    // Allow clicking on revealed squares
     if (square.revealed) {
       setSelectedFact(square.fact);
       return;
     }
 
-    // Update the board to mark this square as revealed
     const updatedBoard = board.map((item) =>
       item.id === square.id ? { ...item, revealed: true } : item
     );
+
     setBoard(updatedBoard);
     setSelectedFact(square.fact);
 
-    // Check if all squares are revealed
-    const allRevealed = updatedBoard.every((item) => item.revealed);
-    if (allRevealed) {
+    if (updatedBoard.every((item) => item.revealed)) {
       setGameCompleted(true);
+    }
+  };
+
+  const handleBackToGames = () => {
+    if (typeof setActivePage === 'function') {
+      setActivePage('games');
     }
   };
 
@@ -78,13 +78,29 @@ const FunFacts = ({ language }) => {
 
   return (
     <div className="board-game-container">
+
+      {/* Back Button */}
+      <button className="back-btn-games-fixed" onClick={handleBackToGames}>
+        <span className="back-icon">←</span>
+        <span className="back-text">
+          {language === 'English' ? 'Games' : 'விளையாட்டுகள்'}
+        </span>
+      </button>
+
+      {/* Header */}
       <div className="game-header">
-        <h1>{language === 'English' ? 'Science Fact Explorer' : 'அறிவியல் உண்மை ஆய்வாளர்'}</h1>
+        <h1>
+          {language === 'English'
+            ? 'Science Fact Explorer'
+            : 'அறிவியல் உண்மை ஆய்வாளர்'}
+        </h1>
+
         <div className="game-stats">
           <div className="stat-item">
             <span className="stat-value">{revealedCount}</span>
             <span>{language === 'English' ? 'Revealed' : 'திறப்பு'}</span>
           </div>
+
           <div className="stat-item">
             <span className="stat-value">{board.length}</span>
             <span>{language === 'English' ? 'Total' : 'மொத்தம்'}</span>
@@ -92,6 +108,7 @@ const FunFacts = ({ language }) => {
         </div>
       </div>
 
+      {/* Game Board */}
       <div className="game-board">
         {board.map((square) => (
           <div
@@ -104,6 +121,7 @@ const FunFacts = ({ language }) => {
                 <span className="square-number">{square.position}</span>
                 <div className="square-icon">❓</div>
               </div>
+
               <div className="square-back">
                 <div className="square-back-content">
                   <div className="fact-icon">💡</div>
@@ -119,6 +137,7 @@ const FunFacts = ({ language }) => {
         ))}
       </div>
 
+      {/* Fact Display */}
       {selectedFact && (
         <div className="fact-display">
           <div className="fact-card">
@@ -129,6 +148,7 @@ const FunFacts = ({ language }) => {
         </div>
       )}
 
+      {/* Game Completed */}
       {gameCompleted && (
         <div className="game-completed">
           <div className="completion-message">
@@ -142,11 +162,13 @@ const FunFacts = ({ language }) => {
         </div>
       )}
 
+      {/* Controls */}
       <div className="game-controls">
         <button onClick={resetBoard} className="reset-btn">
           {language === 'English' ? 'New Game' : 'புதிய விளையாட்டு'}
         </button>
       </div>
+
     </div>
   );
 };

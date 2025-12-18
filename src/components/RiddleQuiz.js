@@ -1,125 +1,126 @@
-// src/components/RiddleQuiz.js
 import React, { useState, useEffect, useRef } from "react";
 import "./RiddleQuiz.css";
 import { ScienceQuestions } from "../data/RiddleDatas.js";
 
-const RiddleQuestions = ({ language }) => {
+const RiddleQuiz = ({ language, setActivePage }) => {
   const [shuffledRiddles, setShuffledRiddles] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [score, setScore] = useState(0);
   const [attempts, setAttempts] = useState(0);
   const [options, setOptions] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState("");
-  
-  // Use a ref to track if we've initialized the questions
+
   const initializedRef = useRef(false);
-  
-  // Get language key (lowercase)
   const langKey = language.toLowerCase();
-  
-  // Initialize 10 random questions only once
+
+  // Initialize quiz only once
   useEffect(() => {
     if (initializedRef.current) return;
-    
-    // Create a copy of all questions
+
     const allQuestions = [...ScienceQuestions];
-    
-    // Shuffle and select 10 unique questions
     const shuffled = [];
+
     while (shuffled.length < 10 && allQuestions.length > 0) {
       const randomIndex = Math.floor(Math.random() * allQuestions.length);
       shuffled.push(allQuestions.splice(randomIndex, 1)[0]);
     }
-    
+
     setShuffledRiddles(shuffled);
     setCurrentIndex(0);
-    setScore(0);
     setAttempts(0);
     initializedRef.current = true;
   }, []);
-  
+
   const currentRiddle = shuffledRiddles[currentIndex] || {};
-  
-  // Generate options whenever currentIndex, shuffledRiddles, or language changes
+
+  // Generate options on question/language change
   useEffect(() => {
     if (shuffledRiddles.length > 0) {
       generateOptions();
     }
   }, [currentIndex, shuffledRiddles, language]);
-  
+
   const generateOptions = () => {
-    if (!shuffledRiddles.length) return;
-    
-    // Get the correct answer in the current language
-    const correctAnswerText = currentRiddle.options[currentRiddle.correctAnswer][langKey];
-    setCorrectAnswer(correctAnswerText);
-    
-    // Get all options in the current language
-    const optionTexts = currentRiddle.options.map(opt => opt[langKey]);
-    
-    // Shuffle the options
-    const shuffledOptions = [...optionTexts].sort(() => 0.5 - Math.random());
-    setOptions(shuffledOptions);
+    if (!currentRiddle.options) return;
+
+    const correctText =
+      currentRiddle.options[currentRiddle.correctAnswer][langKey];
+    setCorrectAnswer(correctText);
+
+    const optionTexts = currentRiddle.options.map(
+      (opt) => opt[langKey]
+    );
+
+    setOptions([...optionTexts].sort(() => 0.5 - Math.random()));
     setSelectedOption(null);
     setShowResult(false);
   };
-  
+
   const handleOptionSelect = (option) => {
-    if (showResult) return;
-    setSelectedOption(option);
+    if (!showResult) setSelectedOption(option);
   };
-  
+
   const handleSubmit = () => {
     if (selectedOption === null) return;
-    const correct = selectedOption === correctAnswer;
-    setIsCorrect(correct);
+    setIsCorrect(selectedOption === correctAnswer);
     setShowResult(true);
     setAttempts((prev) => prev + 1);
-    if (correct) setScore((prev) => prev + 1);
   };
-  
+
   const handleNext = () => {
     if (currentIndex < shuffledRiddles.length - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      // Reset quiz after 10 questions
       initializedRef.current = false;
       const allQuestions = [...ScienceQuestions];
       const shuffled = [];
+
       while (shuffled.length < 10 && allQuestions.length > 0) {
         const randomIndex = Math.floor(Math.random() * allQuestions.length);
         shuffled.push(allQuestions.splice(randomIndex, 1)[0]);
       }
-      
+
       setShuffledRiddles(shuffled);
       setCurrentIndex(0);
-      setScore(0);
       setAttempts(0);
     }
   };
-  
-  // Return loading state if no riddles available
+
   if (!shuffledRiddles.length) {
     return <div>Loading riddles...</div>;
   }
-  
+
   return (
     <div className="multiple-choice-container">
+
+      {/* Back Button */}
+      <button
+        className="back-btn-games-fixed"
+        onClick={() => setActivePage("games")}
+      >
+        <span className="back-icon">←</span>
+        <span className="back-text">
+          {language === "English" ? "Games" : "விளையாட்டுகள்"}
+        </span>
+      </button>
+
+      {/* Header */}
       <div className="game-header">
         <h2>{language === "English" ? "Riddle Challenge" : "புதிர் சவால்"}</h2>
+
         <div className="score-board">
           <div className="score-item">
             <span>{language === "English" ? "Score" : "மதிப்பெண்"}:</span>
             <span className="score-value">
-              {score}/{attempts}
+              {attempts > 0 ? `${attempts - 1}/${attempts}` : "0/0"}
             </span>
           </div>
         </div>
       </div>
-      
+
+      {/* Card */}
       <div className="riddle-card">
         <div className="riddle-header">
           <div className="riddle-number">
@@ -130,12 +131,12 @@ const RiddleQuestions = ({ language }) => {
             {language === "English" ? "Multiple Choice" : "பல தேர்வு"}
           </div>
         </div>
-        
+
         <div className="riddle-content">
           <div className="riddle-question">
-            <p>{currentRiddle.question[langKey]}</p>
+            <p>{currentRiddle.question?.[langKey]}</p>
           </div>
-          
+
           {!showResult ? (
             <div className="options-section">
               <div className="options-grid">
@@ -154,52 +155,68 @@ const RiddleQuestions = ({ language }) => {
                   </div>
                 ))}
               </div>
-              
+
               <button
                 className="submit-btn"
                 onClick={handleSubmit}
                 disabled={selectedOption === null}
               >
-                {language === "English" ? "Submit Answer" : "பதிலை சமர்ப்பி"}
+                {language === "English"
+                  ? "Submit Answer"
+                  : "பதிலை சமர்ப்பு"}
               </button>
             </div>
           ) : (
-            <div className={`result-section ${isCorrect ? "correct" : "incorrect"}`}>
+            <div
+              className={`result-section ${
+                isCorrect ? "correct" : "incorrect"
+              }`}
+            >
               <div className="result-header">
-                <div className={`result-icon ${isCorrect ? "correct-icon" : "incorrect-icon"}`}>
+                <div
+                  className={`result-icon ${
+                    isCorrect ? "correct-icon" : "incorrect-icon"
+                  }`}
+                >
                   {isCorrect ? "✓" : "✗"}
                 </div>
+
                 <div className="result-message">
                   {isCorrect
                     ? language === "English"
                       ? "Correct! Well done!"
-                      : "சரியான பதில்! நன்றாக செய்தீர்கள்!"
+                      : "சரியான பதில்! நன்றாக செய்து!"
                     : language === "English"
-                    ? "Not Right Answer"
-                    : "சரியான பதில் இல்லை"}
+                    ? "Wrong Answer"
+                    : "தவறான பதில்"}
                 </div>
               </div>
-              
+
               <div className="answer-comparison">
                 <div className="answer-row">
                   <span className="answer-label">
-                    {language === "English" ? "Your Answer:" : "உங்கள் பதில்:"}
+                    {language === "English"
+                      ? "Your Answer:"
+                      : "உங்கள் பதில்:"}
                   </span>
                   <span className="user-answer">{selectedOption}</span>
                 </div>
+
                 <div className="answer-row">
                   <span className="answer-label">
-                    {language === "English" ? "Correct Answer:" : "சரியான பதில்:"}
+                    {language === "English"
+                      ? "Correct Answer:"
+                      : "சரியான பதில்:"}
                   </span>
                   <span className="correct-answer">{correctAnswer}</span>
                 </div>
               </div>
-              
+
               <button className="next-btn" onClick={handleNext}>
                 {currentIndex === shuffledRiddles.length - 1
                   ? language === "English"
                     ? "Start New Quiz"
-                    : "புதிய வினாடியைத் தொடங்கு"
+                    : "புதிய வினாடி தொடங்கு"
                   : language === "English"
                   ? "Next Question"
                   : "அடுத்த கேள்வி"}
@@ -208,7 +225,8 @@ const RiddleQuestions = ({ language }) => {
           )}
         </div>
       </div>
-      
+
+      {/* Progress */}
       <div className="progress-container">
         <div className="progress-bar">
           <div
@@ -216,15 +234,16 @@ const RiddleQuestions = ({ language }) => {
             style={{
               width: `${((currentIndex + 1) / shuffledRiddles.length) * 100}%`,
             }}
-          ></div>
+          />
         </div>
+
         <div className="progress-text">
-          {language === "English" ? "Progress" : "முன்னேற்றம்"}: {currentIndex + 1}/
-          {shuffledRiddles.length}
+          {language === "English" ? "Progress" : "முன்னேற்ற"}:{" "}
+          {currentIndex + 1}/{shuffledRiddles.length}
         </div>
       </div>
     </div>
   );
 };
 
-export default RiddleQuestions;
+export default RiddleQuiz;

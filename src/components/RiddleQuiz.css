@@ -323,3 +323,58 @@ section {
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
+/* Back button to games menu - TOP RIGHT CORNER */
+.back-btn-games-fixed {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 999999 !important;
+  padding: 12px 20px !important;
+  border-radius: 25px !important;
+  border: 2px solid #1a2a6c !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #1a2a6c !important;
+  background: linear-gradient(135deg, #ffffff, #f8fafc) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 120px !important;
+  animation: slideInRight 0.5s ease-out !important;
+}
+
+.back-btn-games-fixed:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+  background: linear-gradient(135deg, #f8fafc, #e0f2fe) !important;
+  border-color: #2a3a7c !important;
+}
+
+.back-btn-games-fixed:active {
+  transform: translateY(-1px) !important;
+}
+
+.back-icon {
+  font-size: 1.2rem !important;
+  font-weight: 900 !important;
+}
+
+.back-text {
+  font-weight: 600 !important;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Keep the rest of your RiddleQuiz.css unchanged */
