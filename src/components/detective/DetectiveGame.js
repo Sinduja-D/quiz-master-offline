@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { playCorrect, playWrong } from "./detectiveSounds";
+import { playCorrect, playWrong, startInvestigationAmbience, stopInvestigationAmbience } from "./detectiveSounds";
 
 export default function DetectiveGame({ caseData, language, onFinish, onCancel }) {
   const totalQuestions = caseData.questions.length;
@@ -17,6 +17,12 @@ export default function DetectiveGame({ caseData, language, onFinish, onCancel }
     return () => clearInterval(timerRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
+
+  useEffect(() => {
+    // start ambient "investigation" sound while the quiz is active
+    startInvestigationAmbience();
+    return () => stopInvestigationAmbience();
+  }, []);
 
   function startTimer() {
     clearInterval(timerRef.current);

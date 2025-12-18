@@ -1,6 +1,13 @@
 import React from "react";
 import "./GamesMenu.css";
 
+import riddleImg from "../assets/images/riddle.png";
+import spinwheelImg from "../assets/images/spinwheel.png";
+import escaperoomImg from "../assets/images/escaperoom.png";
+import funfactsImg from "../assets/images/funfacts.png";
+import boomImg from "../assets/images/boom.png";
+import detectiveImg from "../assets/images/detective.png";
+
 const games = [
   {
     key: "riddles",
@@ -9,7 +16,7 @@ const games = [
       English: "Solve science riddles from the periodic table",
       Tamil: "ஆவர்த்தன அட்டவணை அடிப்படையிலான மறுமொழிகள்",
     },
-    image: "/assets/images/riddle.png",
+    image: riddleImg,
   },
   {
     key: "dailyScience",
@@ -18,7 +25,7 @@ const games = [
       English: "Scientists and their inventions",
       Tamil: "அறிஞர்கள் மற்றும் அவர்களின் கண்டுபிடிப்புகள்",
     },
-    image: "/assets/images/spin.png",
+    image: spinwheelImg,
   },
   {
     key: "storyMenu",
@@ -27,7 +34,7 @@ const games = [
       English: "Solve questions to escape rooms",
       Tamil: "வினாக்களைத் தீர்த்து அறையிலிருந்து வெளியேறு",
     },
-    image: "/assets/images/escape.png",
+    image: escaperoomImg,
   },
   {
     key: "funFacts",
@@ -36,7 +43,7 @@ const games = [
       English: "Flip cards to reveal science facts",
       Tamil: "அறிவியல் தகவல்களை அறிந்து கொள்ளுங்கள்",
     },
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYHr5LOz9AiaOMpZQaOhigP-5lrk52-37dUBQuyJiaFtmm7-K_pSBg6sAydfNYyTVdjqY&s",
+    image: funfactsImg,
   },
   {
     key: "bombDefusal",
@@ -45,18 +52,17 @@ const games = [
       English: "Defuse bomb using science knowledge",
       Tamil: "அறிவியலைப் பயன்படுத்தி குண்டை நிறுத்து",
     },
-    image: "/assets/images/bomb.png",
+    image: boomImg,
   },
   {
-  key: "detective",
-  title: { English: "Science Detective", Tamil: "அறிவியல் விசாரணையாளர்" },
-  desc: {
-    English: "Solve science mysteries like a detective",
-    Tamil: "விசாரணையாளர் போல அறிவியல் மர்மங்களை தீர்க்கவும்"
+    key: "detective",
+    title: { English: "Science Detective", Tamil: "அறிவியல் விசாரணையாளர்" },
+    desc: {
+      English: "Solve science mysteries like a detective",
+      Tamil: "விசாரணையாளர் போல அறிவியல் மர்மங்களை தீர்க்கவும்",
+    },
+    image: detectiveImg,
   },
-  image: "/assets/images/detective.png" // you can add your own image here
-}
-
 ];
 
 const GamesMenu = ({ language, setActivePage }) => {
