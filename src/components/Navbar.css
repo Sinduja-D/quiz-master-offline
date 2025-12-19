@@ -1,205 +1,77 @@
-/* =========================
-   NAVBAR BASE
-========================= */
+/* =====================================================
+   NAVBAR – LIGHT, TV SAFE, COMPACT
+   ===================================================== */
+
 .navbar {
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
-  padding: 12px 24px;
+  padding: 0 28px;
   background: #ffffff;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
 }
 
-/* =========================
-   BRAND
-========================= */
 .nav-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
 }
 
 .nav-logo {
-  width: 40px;
-  height: auto;
+  width: 42px;
 }
 
 .brand-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #333;
-  white-space: nowrap;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a237e;
 }
 
-/* =========================
-   NAV LINKS (CENTER)
-========================= */
 .nav-links {
   display: flex;
-  align-items: center;
-  gap: 22px;
-  flex-grow: 1;
-  justify-content: center;
-}
-
-.nav-link {
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: none;
-  border: none;
-  color: #555;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-}
-
-.nav-link:hover {
-  background: #f5f5f5;
-  color: #1a2a6c;
-}
-
-.nav-link.active {
-  background: #eef3ff;
-  color: #1a2a6c;
-}
-
-/* =========================
-   ACTIONS (RIGHT)
-========================= */
-.nav-actions {
-  display: flex;
-  align-items: center;
   gap: 14px;
 }
 
-.lang-btn {
-  padding: 7px 14px;
+.nav-link {
+  font-size: 0.9rem;
+  padding: 6px 14px;
   border-radius: 20px;
-  background: #f0f0f0;
+  background: #f2f4ff;
+  color: #1a237e;
   border: none;
-  color: #333;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s ease;
 }
 
-.lang-btn:hover {
-  background: #e0e0e0;
+.nav-link.active {
+  background: #c5cae9;
+  font-weight: 700;
 }
 
-/* =========================
-   USER INFO
-========================= */
-.user-info {
+.nav-actions {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-left: 12px;
-  border-left: 1px solid #eee;
+}
+
+.lang-btn {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #1a2a6c;
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
 }
 
 .username {
-  font-weight: 500;
-  color: #333;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .logout-btn {
-  padding: 6px 12px;
-  border-radius: 6px;
-  background: #f8f8f8;
-  border: 1px solid #ddd;
-  color: #555;
-  font-weight: 500;
-  cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s ease;
-}
-
-.logout-btn:hover {
-  background: rgba(26, 42, 108, 0.1);
-  color: #1a2a6c;
-}
-
-/* =========================
-   TAMIL LANGUAGE SUPPORT
-========================= */
-html[lang="ta"] .navbar {
-  padding: 10px 18px;
-}
-
-html[lang="ta"] .brand-text {
-  font-size: 0.85rem;
-}
-
-html[lang="ta"] .nav-link {
-  font-size: 0.85rem;
-  padding: 6px 10px;
-}
-
-html[lang="ta"] .lang-btn {
-  font-size: 0.75rem;
-  padding: 6px 10px;
-}
-
-html[lang="ta"] .username {
   font-size: 0.8rem;
-}
-
-html[lang="ta"] .logout-btn {
-  font-size: 0.75rem;
-  padding: 5px 10px;
-}
-
-/* =========================
-   TABLET
-========================= */
-@media (max-width: 992px) {
-  .nav-links {
-    gap: 14px;
-  }
-
-  .nav-link {
-    font-size: 0.9rem;
-  }
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .nav-brand {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .nav-links {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .nav-actions {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .user-info {
-    border-left: none;
-    padding-left: 0;
-  }
+  padding: 4px 10px;
+  border-radius: 16px;
+  background: #f2f4ff;
+  color: #1a2a6c;
+  border: none;
 }

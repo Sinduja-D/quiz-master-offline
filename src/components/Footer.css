@@ -1,23 +1,10 @@
 .footer {
-  width: 100vw;                 /* FULL SCREEN WIDTH */
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-
-  background: #f8faff;
-  border-top: 4px solid transparent;
-  border-image: linear-gradient(to right, #1a2a6c, #9ec9ff) 1;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
-
-  padding: 14px 10px;
-  text-align: center;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1a2a6c;
-
-  font-family: "Noto Sans", "Noto Sans Tamil", Arial, sans-serif;
-  box-sizing: border-box;
-  white-space: nowrap;
+  height: 50px;
+  background: #ffffff;
+  color: #1a237e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
 }

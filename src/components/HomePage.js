@@ -1,13 +1,11 @@
-// src/components/HomePage.js
 import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 import rmkLogo from "../assets/rmk.gif";
 import tamilNaduLogo from "../assets/tamil-nadu-logo.png";
-import { levels } from "../levels.js";
 
-const HomePage = ({ language, setActivePage, onLevelSelect, toggleLanguage, user }) => {
+const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   const [showWelcome, setShowWelcome] = useState(false);
-  
+
   useEffect(() => {
     if (user?.username) {
       setShowWelcome(true);
@@ -15,119 +13,134 @@ const HomePage = ({ language, setActivePage, onLevelSelect, toggleLanguage, user
       return () => clearTimeout(timer);
     }
   }, [user?.username]);
-  
+
+  const levels = [
+    {
+      id: "beginner",
+      name: { English: "Little Scientists", Tamil: "சிறிய விஞ்ஞானிகள்" },
+      icon: "🔬",
+      grade: { English: "Grades 6-7", Tamil: "6-7 ஆம் வகுப்பு" },
+    },
+    {
+      id: "intermediate",
+      name: { English: "Junior Explorers", Tamil: "இளைய ஆராய்ச்சியாளர்கள்" },
+      icon: "🚀",
+      grade: { English: "Grades 8-10", Tamil: "8-10 ஆம் வகுப்பு" },
+    },
+    {
+      id: "advance",
+      name: { English: "Master Minds", Tamil: "மாஸ்டர் மைண்ட்ஸ்" },
+      icon: "🧠",
+      grade: { English: "Grades 11-12", Tamil: "11-12 ஆம் வகுப்பு" },
+    },
+  ];
+
   return (
-    <div className="home-container">
+    <div className={`home-root ${language === "English" ? "lang-en" : "lang-ta"}`}>
       {showWelcome && (
         <div className="welcome-popup">
-          {language === "English" 
-            ? `Welcome to HomePage, ${user.username}!` 
+          {language === "English"
+            ? `Welcome to HomePage, ${user.username}!`
             : `முகப்புப்பக்கத்திற்கு வரவேற்கிறோம், ${user.username}!`}
         </div>
       )}
-      
-      <div className="hero-container">
-        <div className="hero-column">
-          <div className="logo-container">
-            <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="hero-logo" />
-          </div>
-          <div className="text-container">
-            <h3 className="hero-main-title">
-              {language === "English" 
-                ? "Science Park-Tiruvallur District" 
-                : "அறிவியல் பூங்கா-திருவள்ளூர் மாவட்டம்"}
-            </h3>
-          </div>
+
+      {/* HERO SECTION */}
+      <div className="hero-bar">
+        <div className="hero-block">
+          <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="hero-logo" />
+          <h4>
+            {language === "English"
+              ? "Science Park – Tiruvallur District"
+              : "அறிவியல் பூங்கா – திருவள்ளூர் மாவட்டம்"}
+          </h4>
         </div>
-        
-        <div className="hero-column">
-          <div className="logo-container">
-            <img src={rmkLogo} alt="R.M.K Logo" className="hero-logo" />
-          </div>
-          <div className="text-container">
-            <p className="hero-developer-label">
-              {language === "English" 
-                ? "Designed And Compiled by" 
-                : "வடிவமைப்பு செய்யுள்ளர்"}
+
+        <div className="hero-block hero-center">
+          <img src={rmkLogo} alt="RMK Logo" className="hero-logo" />
+          <div>
+            <h4>
+              {language === "English"
+                ? "R.M.K Engineering College"
+                : "ஆர்.எம்.கே. பொறியியல் கல்லூரி"}
+            </h4>
+            <p>
+              {language === "English"
+                ? "(An Autonomous Institution)"
+                : "(ஒரு தன்னாட்சி நிறுவனம்)"}
             </p>
-            <h3 className="hero-main-title">
-              {language === "English" 
-                ? "R.M.K. Engineering College" 
-                : "ஆர்.எம்.கே. பொறியியல் கல்லூர்"}
-            </h3>
-            <p className="hero-sub-title">
-              {language === "English" 
-                ? "(An Autonomous Institution)" 
-                : "(ஒரு தன்னாட்டு நிறுவனம்)"}
-            </p>
-            <p className="hero-developers">
-              {language === "English" 
-                ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R" 
-                : "உருவாக்கள்: சிந்துஜா டி, ரீது பி, விஜயலட்சுமி சிஆர்"}
-            </p>
-            <p className="hero-department">
-              {language === "English" 
-                ? "Department of Information Technology Batch [2023-2027]" 
-                : "தகவல் தொழில்நுட்பத் துறை துறை [2023-2027]"}
-            </p>
-            <p className="hero-mentor">
-              {language === "English" 
-                ? "Mentor: Ms. M. Rekha, M.E.(Ph.D), Assistant Professor" 
-                : "வழிகாட்டு: திருமதி. ரேகா, எம்.இ. பேராசிரியர், உதவியியர் பேராசிரியர்"}
-            </p>
-          </div>
-        </div>
-      </div>
-      
-      <div className="content-wrapper">
-        {/* --- QUIZ LEVELS CONTAINER --- */}
-        <div className="level-container">
-          <div className="section-title">
-            <h2>
-              {language === "English" 
-                ? "Science Quiz for Young Achievers" 
-                : "இளைய சிந்தனையாட்டுகளுக்கள்"}
-            </h2>
-          </div>
-          <div className="level-cards">
-            {levels.map((level) => (
-              <div
-                key={level.id}
-                className="level-card"
-                style={{ backgroundColor: level.color }}
-                onClick={() => {
-                  onLevelSelect(level);
-                  setActivePage("quizsetup");
-                }}
-              >
-                <div className="level-icon">{level.icon}</div>
-                <h3 className="level-name">{level.name[language]}</h3>
-                <p className="level-grade">{level.grade[language]}</p>
-              </div>
-            ))}
           </div>
         </div>
 
-        {/* --- NEW, SEPARATE FULL-WIDTH CONTAINER FOR THE GAMES CARD --- */}
-        <div className="all-games-container">
-          <div
-            className="games-preview-card"
-            onClick={() => setActivePage("games")}
-          >
-            <span className="card-icon">🎮</span>
-            <div className="card-text-content">
-              <h3 className="card-title">
-                {language === "English" ? "Explore All Games" : "அனைத்து விளையாட்டுகள்"}
-              </h3>
-              <div className="card-game-icons">
-                <span className="mini-game-icon">🤔</span>
-                <span className="mini-game-icon">🎡</span>
-                <span className="mini-game-icon">💡</span>
-                <span className="mini-game-icon">🔍</span>
+        <div className="hero-block hero-right">
+          <p>{language === "English" ? "Designed and Compiled by" : "வடிவமைத்து தொகுத்தவர்கள்"}</p>
+          <p>
+            {language === "English"
+              ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
+              : "உருவாக்குநர்கள்: சிந்துஜா, ரீது, விஜயலட்சுமி"}
+          </p>
+          <p>
+            {language === "English"
+              ? "Dept. of Information Technology (2023–2027)"
+              : "தகவல் தொழில்நுட்பத் துறை (2023–2027)"}
+          </p>
+          <p>
+            {language === "English" ? "Mentor: Ms. M. Rekha, M.E.(Ph.D)" : "வழிகாட்டி: திருமதி எம். ரேகா"}
+          </p>
+        </div>
+      </div>
+
+      {/* MAIN TITLE */}
+      <h1 className="main-title">
+        {language === "English"
+          ? "Science Quiz for Young Achievers"
+          : "இளைய சிந்தனையாளர்களுக்கான அறிவியல் வினாடி வினா"}
+      </h1>
+
+      {/* LEVEL BUTTONS */}
+      <div className="levels-row">
+        {levels.map((level) => {
+          let bgGradient = "";
+          switch (level.id) {
+            case "beginner":
+              bgGradient = "linear-gradient(135deg, #1E7B3B, #6FD36F)";
+              break;
+            case "intermediate":
+              bgGradient = "linear-gradient(135deg, #E85A1F, #FFA94D)";
+              break;
+            case "advance":
+              bgGradient = "linear-gradient(135deg, #4B2A7F, #B57CFF)";
+              break;
+            default:
+              bgGradient = "#ccc";
+          }
+          return (
+            <div
+              key={level.id}
+              className={`level-card level-${level.id}`}
+              style={{ background: bgGradient }}
+              onClick={() => {
+                onLevelSelect(level);
+                setActivePage("quizsetup");
+              }}
+            >
+              <div className="level-icon">{level.icon}</div>
+              <div className="level-text">
+                <h3>{level.name[language]}</h3>
+                <span>{level.grade[language]}</span>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
+      </div>
+
+      {/* EXPLORE ALL GAMES BUTTON */}
+      <div
+        className="games-btn"
+        onClick={() => setActivePage("games")}
+        style={{ background: "linear-gradient(135deg, #2B2E83, #7A2E8C)" }}
+      >
+        🎮 {language === "English" ? "Explore All Games" : "அனைத்து விளையாட்டுகளை ஆராயுங்கள்"}
       </div>
     </div>
   );
