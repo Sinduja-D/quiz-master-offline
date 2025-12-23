@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 import rmkLogo from "../assets/rmk.gif";
 import tamilNaduLogo from "../assets/tamil-nadu-logo.png";
+import DemoGuide from "./DemoGuide"; // <-- new import
 
 const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   const [showWelcome, setShowWelcome] = useState(false);
+  const [showDemo, setShowDemo] = useState(false);
 
   useEffect(() => {
     if (user?.username) {
@@ -13,6 +15,26 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
       return () => clearTimeout(timer);
     }
   }, [user?.username]);
+
+  // auto-show demo for newly logged-in user (per-user key)
+  useEffect(() => {
+    if (!user?.username) return;
+    try {
+      const key = `demoSeen_${user.username}`;
+      const seen = localStorage.getItem(key);
+      if (!seen) {
+        // small delay so UI is ready
+        const t = setTimeout(() => setShowDemo(true), 700);
+        return () => clearTimeout(t);
+      }
+    } catch (e) {
+      // ignore storage errors
+    }
+  }, [user?.username]);
+
+  function handleCloseDemo() {
+    setShowDemo(false);
+  }
 
   const levels = [
     {
@@ -36,7 +58,9 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
   ];
 
   return (
-    <div className={`home-root ${language === "English" ? "lang-en" : "lang-ta"}`}>
+    <div className={`home-root ${language === "Tamil" ? "lang-ta" : ""}`}>
+      {showDemo && <DemoGuide user={user} language={language} onCloseProp={handleCloseDemo} />}
+
       {showWelcome && (
         <div className="welcome-popup">
           {language === "English"

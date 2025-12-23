@@ -20,7 +20,7 @@ html, body {
   overflow-x: hidden;
 
   /* BACKGROUND IMAGE FIX */
-  /*background-image: url("../assets/homepage\ background.png");*/
+  background-image: url("../assets/homepage\ background.png");
   background-size: cover;          /* fills screen */
   background-position: center;     /* centers image */
   background-repeat: no-repeat;

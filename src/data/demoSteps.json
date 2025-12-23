@@ -1,0 +1,42 @@
+[
+  {
+    "selector": ".hero-bar",
+    "title": { "English": "📊 Info Bar", "Tamil": "📊 தகவல் பட்டை" },
+    "text": {
+      "English": "Contains College name, developers & mentor names 👩‍🏫👨‍💻",
+      "Tamil": "கல்லூரி பெயர், உருவாக்குநர்கள் & வழிகாட்டி பெயர்களைக் கொண்டுள்ளது 👩‍🏫👨‍💻"
+    }
+  },
+  {
+    "selector": ".navbar, nav, .top-nav",
+    "title": { "English": "🧭 Menu Bar", "Tamil": "🧭 நிரல் அட்டை" },
+    "text": {
+      "English": "Access profile, leaderboard, language toggle, contact info and help options 📂",
+      "Tamil": "சுயவிவரம், தலைவர் பட்டியல், மொழி மாற்றம், தொடர்பு மற்றும் உதவி விருப்பங்கள் 📂"
+    }
+  },
+  {
+    "selector": ".main-title",
+    "title": { "English": "📱 App Title", "Tamil": "📱 செயலி தலைப்பு" },
+    "text": {
+      "English": "Shows who this app is for ✨",
+      "Tamil": "இந்த செயலி யாருக்கானது என்பதை காட்டும் ✨"
+    }
+  },
+  {
+    "selector": ".levels-row",
+    "title": { "English": "📚 Levels", "Tamil": "📚 நிலைகள்" },
+    "text": {
+      "English": "Select your level and take quizzes 🎯",
+      "Tamil": "உங்கள் நிலையை தேர்வு செய்து வினாக்களை எழுதுங்கள் 🎯"
+    }
+  },
+  {
+    "selector": ".games-btn",
+    "title": { "English": "🎮 Games", "Tamil": "🎮 விளையாட்டுகள்" },
+    "text": {
+      "English": "Play many fun learning games 🧠🎉",
+      "Tamil": "பல சுவாரஸ்யமான கற்றல் விளையாட்டுகள் 🧠🎉"
+    }
+  }
+]
