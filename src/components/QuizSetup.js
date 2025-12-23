@@ -7,7 +7,7 @@ const t = (language, eng, tam) => (language === "English" ? eng : tam);
 const LEVELS_META = {
   beginner: {
     id: "beginner",
-    icon: "🌱",
+    icon: "🐣",
     color: "#22c55e",
     name: { English: "Beginner", Tamil: "தொடக்கநிலை" },
     gradeText: { English: "Grades 6–7", Tamil: "6–7 ஆம் வகுப்பு" },
@@ -15,7 +15,7 @@ const LEVELS_META = {
   },
   intermediate: {
     id: "intermediate",
-    icon: "🚀",
+    icon: "👨🏻‍💻",
     color: "#f59e0b",
     name: { English: "Intermediate", Tamil: "இடைநிலை" },
     gradeText: { English: "Grades 8–10", Tamil: "8–10 ஆம் வகுப்பு" },
@@ -24,7 +24,7 @@ const LEVELS_META = {
   // NOTE: DB uses "advance" (not "advanced")
   advance: {
     id: "advance",
-    icon: "🏆",
+    icon: "🧑🏼‍🎓",
     color: "#3b82f6",
     name: { English: "Advance", Tamil: "உயர்நிலை" },
     gradeText: { English: "Grades 11–12", Tamil: "11–12 ஆம் வகுப்பு" },
@@ -35,7 +35,7 @@ const LEVELS_META = {
 const SUBJECTS = {
   Physics: {
     name: { English: "Physics", Tamil: "இயற்பியல்" },
-    icon: "⚛",
+    icon: "🧲",
     levels: ["beginner", "intermediate", "advance"],
   },
   Chemistry: {
