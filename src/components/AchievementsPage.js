@@ -44,8 +44,8 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
     { id: '200_points', icon: '🌟', title: { en: '200 Points Earned', ta: '200 புள்ளிகள் பெற்றது' }, description: { en: 'Accumulate 200 points in total', ta: 'மொத்தமாக 200 புள்ளிகளைச் சேர்க்கவும்' } },
     { id: '500_points', icon: '🌠', title: { en: '500 Points Earned', ta: '500 புள்ளிகள் பெற்றது' }, description: { en: 'Accumulate 500 points in total', ta: 'மொத்தமாக 500 புள்ளிகளைச் சேர்க்கவும்' } },
     { id: '1000_points', icon: '🌠', title: { en: '1000 Points Earned', ta: '1000 புள்ளிகள் பெற்றது' }, description: { en: 'Accumulate 1000 points in total', ta: 'மொத்தமாக 1000 புள்ளிகளைச் சேர்க்கவும்' } },
-    { id: 'quiz_master', icon: '👑', title: { en: 'Quiz Master', ta: 'வினா மாஸ்டர்' }, description: { en: 'Complete 10 quizzes with an average score of 80% or higher', ta: '80% அல்லது அதற்கு மேற்பட்ட சராசரி மதிப்பெண்ணுடன் 10 வினாக்களை முடிக்கவும்' } },
-    { id: 'no_hints', icon: '🤫', title: { en: 'No Hints Used', ta: 'குறிப்பு இல்லாமல்' }, description: { en: 'Complete any quiz without using hints', ta: 'குறிப்புகளைப் பயன்படுத்தாமல் எந்த வினாவையும் முடிக்கவும்' } }
+   /* { id: 'quiz_master', icon: '👑', title: { en: 'Quiz Master', ta: 'வினா மாஸ்டர்' }, description: { en: 'Complete 10 quizzes with an average score of 80% or higher', ta: '80% அல்லது அதற்கு மேற்பட்ட சராசரி மதிப்பெண்ணுடன் 10 வினாக்களை முடிக்கவும்' } },
+    */{ id: 'no_hints', icon: '🤫', title: { en: 'No Hints Used', ta: 'குறிப்பு இல்லாமல்' }, description: { en: 'Complete any quiz without using hints', ta: 'குறிப்புகளைப் பயன்படுத்தாமல் எந்த வினாவையும் முடிக்கவும்' } }
   ];
   
   // Create refs for each achievement card
@@ -164,6 +164,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
   
   return (
     <div className="page-content achievements-page">
+     {/*} <div className="achievements-header"> 
       <h2>{language === 'English' ? 'Achievements' : 'சாதனைகள்'}</h2>
       
       <div className="achievements-intro">
@@ -171,6 +172,7 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
           ? 'Complete challenges to earn achievements and showcase your quiz mastery!' 
           : 'சாதனைகளைப் பெறுவதற்கும் உங்கள் வினா திறமையைக் காட்டுவதற்கும் சவால்களை முடிக்கவும்!'}</p>
       </div>
+      </div>*/}
       
       <div className="achievements-grid">
         {achievements.map(achievement => {
