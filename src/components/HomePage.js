@@ -101,15 +101,15 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <p>
             {language === "English"
               ? "Developers: Sinduja D, Reethu P, Vijayalakshmi S R"
-              : "உருவாக்குநர்கள்: சிந்துஜா, ரீது, விஜயலட்சுமி"}
+              : "உருவாக்குநர்கள்: சிந்துஜா டி, ரீத்து பெ, விஜயலட்சுமி சி ரா"}
           </p>
           <p>
             {language === "English"
-              ? "Dept. of Information Technology (2023–2027)"
+              ? "Department of Information Technology (2023–2027)"
               : "தகவல் தொழில்நுட்பத் துறை (2023–2027)"}
           </p>
           <p>
-            {language === "English" ? "Mentor: Ms. M. Rekha, M.E.(Ph.D)" : "வழிகாட்டி: திருமதி எம். ரேகா"}
+            {language === "English" ? "Mentor: Ms. M. Rekha, M.E.(Ph.D)" : "வழிகாட்டி: திருமதி எம். ரேகா, M.E.(Ph.D)"}
           </p>
         </div>
       </div>
