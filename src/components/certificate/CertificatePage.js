@@ -78,9 +78,9 @@ const CertificateCard = ({ user }) => {
         </div>
       </div>
 
-      <button className="download-btn" onClick={downloadCertificate}>
+      {/*<button className="download-btn" onClick={downloadCertificate}>
         📥 Download Certificate
-      </button>
+      </button>*/}
     </div>
   );
 };
