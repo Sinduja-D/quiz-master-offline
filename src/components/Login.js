@@ -76,6 +76,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
     setUsers(updatedUsers);
     localStorage.setItem('quizAppUsers', JSON.stringify(updatedUsers));
     localStorage.setItem('currentUser', JSON.stringify(newUser));
+    localStorage.removeItem("riddle_progress");
     onLogin(newUser);
   };
 

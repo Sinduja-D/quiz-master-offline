@@ -12,33 +12,16 @@ const RiddleQuiz = ({ language, setActivePage }) => {
   const [selected, setSelected] = useState(null);
   const [showResult, setShowResult] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState("");
-  const [attempts, setAttempts] = useState(0);
 
-  /* Load progress */
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const data = JSON.parse(saved);
-      setRiddles(data.riddles);
-      setIndex(data.index);
-      setAttempts(data.attempts);
-    } else {
-      const shuffled = [...ScienceQuestions]
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 10);
-      setRiddles(shuffled);
-    }
+    localStorage.removeItem(STORAGE_KEY); // clear old student data
+
+    const shuffled = [...ScienceQuestions]
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 10);
+
+    setRiddles(shuffled);
   }, []);
-
-  /* Save progress */
-  useEffect(() => {
-    if (riddles.length) {
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({ riddles, index, attempts })
-      );
-    }
-  }, [riddles, index, attempts]);
 
   if (!riddles.length) return null;
 
@@ -49,20 +32,12 @@ const RiddleQuiz = ({ language, setActivePage }) => {
   const submitAnswer = () => {
     setCorrectAnswer(correct);
     setShowResult(true);
-    setAttempts(a => a + 1);
   };
 
   const nextQuestion = () => {
     setSelected(null);
     setShowResult(false);
-
-    if (index < riddles.length - 1) {
-      setIndex(i => i + 1);
-    } else {
-      localStorage.removeItem(STORAGE_KEY);
-      setIndex(0);
-      setAttempts(0);
-    }
+    if (index < riddles.length - 1) setIndex(i => i + 1);
   };
 
   return (
@@ -77,18 +52,15 @@ const RiddleQuiz = ({ language, setActivePage }) => {
 
       <div className="riddle-box">
 
-        {/* HEADER */}
         <div className="riddle-header">
-          <h3>Riddle Challenge</h3>
-          <span>{index + 1}/{riddles.length}</span>
+          <h3>🧩 Riddle Challenge</h3>
+          <span>{index + 1} / {riddles.length}</span>
         </div>
 
-        {/* QUESTION */}
         <div className="riddle-question">
           {current.question[langKey]}
         </div>
 
-        {/* OPTIONS */}
         <div className="riddle-options">
           {options.map((opt, i) => (
             <button
@@ -102,26 +74,18 @@ const RiddleQuiz = ({ language, setActivePage }) => {
           ))}
         </div>
 
-        {/* RESULT */}
         {showResult && (
           <div className={`result-box ${selected === correct ? "correct" : "wrong"}`}>
-            <span>
-              {selected === correct ? "✔ Correct" : "✖ Wrong"}
-            </span>
+            {selected === correct ? "✔ Correct Answer" : "✖ Wrong Answer"}
             <div className="correct-text">
-              Correct Answer: {correct}
+              Correct: {correct}
             </div>
           </div>
         )}
 
-        {/* ACTION */}
         <div className="riddle-footer">
           {!showResult ? (
-            <button
-              className="submit-btn"
-              disabled={!selected}
-              onClick={submitAnswer}
-            >
+            <button className="submit-btn" disabled={!selected} onClick={submitAnswer}>
               Submit
             </button>
           ) : (

@@ -1,141 +1,95 @@
-.leaderboard-page {
-  max-width: 1200px;
-  margin-left: 100px;
-  margin-right: 10px;
-  padding: 20px;
-}
-
-/* ===== GRID (7 COLUMNS) ===== */
-.leaderboard-header,
-.leaderboard-item {
-  display: grid;
-  grid-template-columns:
-    60px
-    0.9fr
-    1fr
-    140px
-    100px
-    100px
-    120px;
-  gap: 12px;
+/* FULL-PAGE LIGHT-THEME LEADERBOARD */
+.leaderboard-page-full {
+  height: 100vh;
+  width: 100%;
+  background: #f0f4ff;
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* hide extra overflow on main page */
 }
 
-/* ===== HEADER ===== */
+.leaderboard-page-full h1 {
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 30px;
+  padding-top: 50;
+  text-align: center;
+}
+
+/* HEADER */
 .leaderboard-header {
-  background: linear-gradient(135deg, #1a2a6c, #2a3a7c);
-  color: white;
-  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 60px 1.5fr 1.5fr 1fr 1fr 1fr;
+  width: 100%;
+  max-width: 1000px;
+  padding: 12px 16px;
   font-weight: 600;
+  background: #e0e7ff;
+  color: #1e3a8a;
+  border-radius: 12px;
+  margin-bottom: 12px;
   text-align: center;
 }
 
-.header-user,
-.header-school {
-  text-align: left;
+/* LIST */
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  gap: 8px;
+  
+  /* NEW: scrollable */
+  overflow-y: auto;
+  flex-grow: 1;       /* fill available space */
+  padding-right: 4px;
+   padding-bottom: 30px;  /* prevent scrollbar overlap */
+  max-height: calc(100vh - 160px); /* adjust based on header + padding */
 }
 
-/* ===== ROWS ===== */
-.leaderboard-item {
-  padding: 14px 16px;
-  border-bottom: 1px solid #eee;
-}
-
-.leaderboard-item:hover {
-  background: rgba(26, 42, 108, 0.05);
-}
-
-.leaderboard-item.current-user {
-  background: rgba(26, 42, 108, 0.12);
-  font-weight: 600;
-}
-
-/* ===== CELLS ===== */
-.user-rank,
-.user-points,
-.user-quizzes,
-.user-score,
-.header-rank,
-.header-points,
-.header-quizzes,
-.header-score,
-.header-place,
-.user-place {
+/* ROWS */
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 60px 1.5fr 1.5fr 1fr 1fr 1fr;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: white;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
   text-align: center;
-  white-space: nowrap;
 }
 
-.user-name {
+.leaderboard-row:hover {
+  background: #e0e7ff;
+}
+
+.current-user {
+  border: 2px solid #2563eb;
   font-weight: 600;
-  color: #1a2a6c;
-  white-space: nowrap;
-  overflow: hidden;
-  gap:1px;
-  text-overflow: ellipsis;
 }
 
-.user-school {
-  color: #555;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* RANK ICON */
+.leaderboard-row span:first-child {
+  font-weight: 700;
+  color: #1e3a8a;
 }
 
-.current-user-badge {
-  margin-left: 8px;
-  background: #1a2a6c;
-  color: white;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 10px;
-}
-
-/* ===== TAMIL SUPPORT ===== */
-.leaderboard-page.tamil-language .leaderboard-header,
-.leaderboard-page.tamil-language .leaderboard-item {
-  grid-template-columns:
-    80px
-    1.5fr
-    1.8fr
-    120px
-    100px
-    100px
-    120px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 992px) {
-  .leaderboard-header,
-  .leaderboard-item {
-    grid-template-columns:
-      60px
-      1fr
-      1.2fr
-      100px
-      100px
-      100px;
-  }
-
-  .header-score,
-  .user-score {
-    display: none;
-  }
-}
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .leaderboard-header,
-  .leaderboard-item {
-    grid-template-columns: 50px 1fr 90px;
+  .leaderboard-row {
+    grid-template-columns: 40px 1fr 1fr 1fr;
   }
 
-  .header-school,
-  .header-place,
-  .header-quizzes,
-  .header-score,
-  .user-school,
-  .user-place,
-  .user-quizzes,
-  .user-score {
+  .leaderboard-header span:nth-child(5),
+  .leaderboard-header span:nth-child(6),
+  .leaderboard-row span:nth-child(5),
+  .leaderboard-row span:nth-child(6) {
     display: none;
   }
 }

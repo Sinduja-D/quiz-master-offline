@@ -1,173 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import './FunFacts.css';
-import funFactsData from '../data/funFactsData';
+import React, { useEffect, useState } from "react";
+import "./FunFacts.css";
+import funFactsData from "../data/funFactsData";
 
-const FunFacts = ({ language, setActivePage }) => {
+const FunFacts = ({ language,setActivePage }) => {
   const [board, setBoard] = useState([]);
   const [selectedFact, setSelectedFact] = useState(null);
-  const [gameCompleted, setGameCompleted] = useState(false);
-  const [usedIndices, setUsedIndices] = useState([]);
 
-  // Initialize board
   useEffect(() => {
-    resetBoard();
-    // eslint-disable-next-line
+    generateBoard();
   }, []);
 
-  const resetBoard = () => {
-    let newUsedIndices = [...usedIndices];
-
-    if (newUsedIndices.length >= funFactsData.length) {
-      newUsedIndices = [];
-    }
-
-    const newFacts = [];
-    while (newFacts.length < 9 && newUsedIndices.length < funFactsData.length) {
-      const randomIndex = Math.floor(Math.random() * funFactsData.length);
-      if (!newUsedIndices.includes(randomIndex)) {
-        newFacts.push(funFactsData[randomIndex]);
-        newUsedIndices.push(randomIndex);
-      }
-    }
-
-    setUsedIndices(newUsedIndices);
-
-    if (newFacts.length === 0) {
-      setBoard([]);
-      setGameCompleted(true);
-      return;
-    }
-
-    const newBoard = newFacts.map((fact, index) => ({
-      id: index,
-      fact,
-      revealed: false,
-      position: index + 1,
-    }));
-
-    setBoard(newBoard);
-    setSelectedFact(null);
-    setGameCompleted(false);
-  };
-
-  const handleSquareClick = (square) => {
-    if (square.revealed) {
-      setSelectedFact(square.fact);
-      return;
-    }
-
-    const updatedBoard = board.map((item) =>
-      item.id === square.id ? { ...item, revealed: true } : item
+  const generateBoard = () => {
+    const shuffled = [...funFactsData].sort(() => 0.5 - Math.random());
+    setBoard(
+      shuffled.slice(0, 6).map((fact, i) => ({
+        id: i,
+        fact,
+        revealed: false,
+      }))
     );
-
-    setBoard(updatedBoard);
-    setSelectedFact(square.fact);
-
-    if (updatedBoard.every((item) => item.revealed)) {
-      setGameCompleted(true);
-    }
+    setSelectedFact(null);
   };
 
-  const handleBackToGames = () => {
-    if (typeof setActivePage === 'function') {
-      setActivePage('games');
-    }
+  const revealFact = (id) => {
+    setBoard((prev) =>
+      prev.map((b) =>
+        b.id === id ? { ...b, revealed: true } : b
+      )
+    );
+    setSelectedFact(board.find((b) => b.id === id).fact);
   };
-
-  const revealedCount = board.filter((item) => item.revealed).length;
 
   return (
-    <div className="board-game-container">
-
-      {/* Back Button */}
-      <button className="back-btn-games-fixed" onClick={handleBackToGames}>
-        <span className="back-icon">←</span>
-        <span className="back-text">
-          {language === 'English' ? 'Games' : 'விளையாட்டுகள்'}
-        </span>
+    <div className="funfacts-overlay">
+<button
+        className="back-btn-games-fixed"
+        onClick={() => setActivePage("games")}
+      >
+        ← Games
       </button>
+      <h1 className="funfacts-title">
+        {language === "English"
+          ? "Science Fun Facts"
+          : "அறிவியல் சுவாரஸ்ய உண்மைகள்"}
+      </h1>
 
-      {/* Header */}
-      <div className="game-header">
-        <h1>
-          {language === 'English'
-            ? 'Science Fact Explorer'
-            : 'அறிவியல் உண்மை ஆய்வாளர்'}
-        </h1>
-
-        <div className="game-stats">
-          <div className="stat-item">
-            <span className="stat-value">{revealedCount}</span>
-            <span>{language === 'English' ? 'Revealed' : 'திறப்பு'}</span>
-          </div>
-
-          <div className="stat-item">
-            <span className="stat-value">{board.length}</span>
-            <span>{language === 'English' ? 'Total' : 'மொத்தம்'}</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Game Board */}
-      <div className="game-board">
-        {board.map((square) => (
+      <div className="funfacts-grid">
+        {board.map((item) => (
           <div
-            key={square.id}
-            className={`board-square ${square.revealed ? 'revealed' : ''}`}
-            onClick={() => handleSquareClick(square)}
+            key={item.id}
+            className={`funfact-card ${item.revealed ? "revealed" : ""}`}
+            onClick={() => revealFact(item.id)}
           >
-            <div className="square-inner">
-              <div className="square-front">
-                <span className="square-number">{square.position}</span>
-                <div className="square-icon">❓</div>
-              </div>
-
-              <div className="square-back">
-                <div className="square-back-content">
-                  <div className="fact-icon">💡</div>
-                  <span className="fact-preview">
-                    {language === 'English'
-                      ? square.fact.en.substring(0, 30) + '...'
-                      : square.fact.ta.substring(0, 30) + '...'}
-                  </span>
-                </div>
-              </div>
+            <div className="icon">
+              {item.revealed ? "🔬" : "🧠"}
             </div>
+            <span className="label">
+              {item.revealed ? "FACT" : "TAP"}
+            </span>
           </div>
         ))}
       </div>
 
-      {/* Fact Display */}
+      <button className="new-set-btn" onClick={generateBoard}>
+        {language === "English" ? "New Set" : "புதிய தொகுப்பு"}
+      </button>
+
+      {/* FACT POPUP */}
       {selectedFact && (
-        <div className="fact-display">
-          <div className="fact-card">
-            <div className="fact-content">
-              <p>{language === 'English' ? selectedFact.en : selectedFact.ta}</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Game Completed */}
-      {gameCompleted && (
-        <div className="game-completed">
-          <div className="completion-message">
-            <h2>{language === 'English' ? 'Congratulations!' : 'வாழ்த்துக்கள்!'}</h2>
+        <div className="fact-modal" onClick={() => setSelectedFact(null)}>
+          <div className="fact-modal-card">
+            <h2>Did you know?</h2>
             <p>
-              {language === 'English'
-                ? "You've discovered all the science facts!"
-                : 'நீங்கள் அனைத்து அறிவியல் உண்மைகளையும் கண்டறிந்தீர்கள்!'}
+              {language === "English"
+                ? selectedFact.en
+                : selectedFact.ta}
             </p>
+            <span className="tap-close">
+              {language === "English"
+                ? "Tap anywhere to close"
+                : "மூட தட்டவும்"}
+            </span>
           </div>
         </div>
       )}
-
-      {/* Controls */}
-      <div className="game-controls">
-        <button onClick={resetBoard} className="reset-btn">
-          {language === 'English' ? 'New Game' : 'புதிய விளையாட்டு'}
-        </button>
-      </div>
 
     </div>
   );
