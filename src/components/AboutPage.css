@@ -1,10 +1,24 @@
-/* src/components/AboutPage.css */
+/* --- Layout for fixed navbar & footer --- */
+.about-page-wrapper {
+  position: fixed;
+  top: 70px;        /* navbar height */
+  bottom: 60px;     /* footer height */
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.about-scroll-content {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* --- Existing styles --- */
 .about-page {
   max-width: 1200px;
   margin: 0 auto;
-  margin-left:20px;
-  margin-right: 20px;
-  padding: 5px;
+  padding: 10px 20px;
 }
 
 .page-title {
@@ -16,8 +30,8 @@
   position: relative;
 }
 
-.page-title:after {
-  content: '';
+.page-title::after {
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -25,70 +39,27 @@
   width: 100px;
   height: 3px;
   background: #1a2a6c;
-  border-radius: 2px;
 }
 
-.about-content {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
-}
-
-.about-section {
-  margin-bottom: 30px;
-}
-
-.about-section:last-child {
-  margin-bottom: 0;
-}
-
-.section-title {
-  color: #1a2a6c;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid rgba(26, 42, 108, 0.1);
-}
-
-.section-content p {
-  margin-bottom: 10px;
-  line-height: 1.6;
-  color: #333;
-}
-
-.section-content p:last-child {
-  margin-bottom: 0;
-}
-
+.about-content,
 .about-values {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
 }
 
-.values-title {
+.section-title {
   color: #1a2a6c;
-  font-size: 1.8rem;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 25px;
-  position: relative;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid rgba(26, 42, 108, 0.1);
 }
 
-.values-title:after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: #1a2a6c;
-  border-radius: 2px;
+.section-content p {
+  line-height: 1.6;
+  color: #333;
 }
 
 .values-grid {
@@ -102,44 +73,20 @@
   padding: 20px;
   border-radius: 10px;
   background: rgba(26, 42, 108, 0.05);
-  transition: transform 0.3s ease;
-}
-
-.value-item:hover {
-  transform: translateY(-5px);
 }
 
 .value-icon {
   font-size: 2.5rem;
-  margin-bottom: 15px;
 }
 
-.value-item h3 {
-  color: #1a2a6c;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
-.value-item p {
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
+/* --- Mobile --- */
 @media (max-width: 768px) {
   .page-title {
     font-size: 2rem;
   }
-  
-  .about-content {
-    padding: 20px;
-  }
-  
-  .section-title {
-    font-size: 1.3rem;
-  }
-  
-  .values-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+  .about-page-wrapper {
+    top: 60px;
+    bottom: 55px;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./GamesMenu.css";
 
 import riddleImg from "../assets/images/riddle.png";
@@ -66,11 +66,39 @@ const games = [
 ];
 
 const GamesMenu = ({ language, setActivePage }) => {
+  const gridRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (gridRef.current) {
+      gridRef.current.scrollBy({
+        left: -gridRef.current.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (gridRef.current) {
+      gridRef.current.scrollBy({
+        left: gridRef.current.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="games-menu">
       <h1>{language === "English" ? "Games Zone" : "விளையாட்டு பகுதி"}</h1>
 
-      <div className="games-grid">
+      {/* Arrow Buttons */}
+      <div className="arrow-btn arrow-left" onClick={scrollLeft}>
+        {"<"}
+      </div>
+      <div className="arrow-btn arrow-right" onClick={scrollRight}>
+        {">"}
+      </div>
+
+      <div className="games-grid" ref={gridRef}>
         {games.map((game, index) => (
           <div
             key={game.key}

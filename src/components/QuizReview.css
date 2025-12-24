@@ -5,122 +5,205 @@
   justify-content: center;
   padding: 20px;
   min-height: 100vh;
-  /*background-color: #f0f2f5;*/
+  /* "Light blue starry sky" feel using CSS Gradient */
+  background: radial-gradient(circle at top, #e0f7fa, #80deea);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: flex-start;
 }
 
 .review-card {
- /* background-color: #ffffff;*/
-  padding: 25px 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 800px;
+  height: 80vh;
+  overflow-y: hidden;
+
+  /* GAMIFIED NAVIGATION LOGIC (Horizontal Scroll) */
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 20px;
+  
+  /* Hide scrollbar */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
-.review-card h2 {
+.review-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Common styles for all slides */
+.review-card > h2,
+.review-card > .question-item,
+.review-card > button {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  min-width: 0;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+}
+
+/* 1. HIDDEN: The Title Page (Intro) */
+.review-card h2 {
+  display: none; /* This removes the intro page */
+  /* Keeping styles just in case */
+  color: #007bff;
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 2. SHOWN: The Question Cards */
+.question-item {
+  border: none;
+  padding: 30px;
+  background-color: #f8f9fa;
+  margin: 0;
+  /* Restoring display: flex so questions are visible */
+  display: flex !important; 
+}
+
+.question-item.correct {
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+}
+
+.question-item.wrong {
+  background-color: #f8d7da;
+  border: 2px solid #dc3545;
+}
+
+.question-text {
+  font-size: 1.5rem;
+  font-weight: bold;
   color: #333;
   margin-bottom: 30px;
 }
 
-.question-item {
-  border-left: 5px solid #ccc;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-radius: 8px;
-  background-color: #fafafa;
-}
-
-.question-item.correct {
-  border-left-color: #28a745;
-}
-
-.question-item.wrong {
-  border-left-color: #dc3545;
-}
-
-.question-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #2c3e50;
-  margin-bottom: 15px;
-}
-
+/* Restoring visibility of answers */
 .answers {
   display: flex;
   gap: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  justify-content: center;
 }
 
 .user-answer,
 .correct-answer {
   flex: 1;
-  padding: 15px;
-  border-radius: 8px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .user-answer {
-  background-color: #e9ecef;
+  background-color: #fff;
+  border: 2px solid #e9ecef;
+}
+
+.user-answer h4 {
+  color: #6c757d;
+  margin-bottom: 10px;
 }
 
 .correct-answer {
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
+  background-color: #fff;
+  border: 2px solid #28a745;
 }
 
+.correct-answer h4 {
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+/* Restoring visibility of concept review */
 .concept-review {
-  margin-top: 15px;
-  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  display: block;
 }
 
 .toggle-concept-btn {
-  background: none;
-  border: 1px solid #007bff;
-  color: #007bff;
-  padding: 8px 16px;
-  border-radius: 5px;
+  background-color: #ffc107;
+  border: none;
+  color: #212529;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
 
 .toggle-concept-btn:hover {
-  background-color: #007bff;
-  color: white;
+  transform: scale(1.05);
+  background-color: #ffca2c;
 }
 
 .concept-content {
-  margin-top: 15px;
-  padding: 15px;
+  margin-top: 20px;
+  padding: 20px;
   background-color: #fff3cd;
   border: 1px solid #ffeeba;
-  border-radius: 8px;
-  text-align: left;
+  border-radius: 12px;
+  color: #856404;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
+/* 3. SHOWN: The Back Button (Last Slide) */
 .back-btn {
-  display: block;
-  margin: 30px auto 0;
-  padding: 12px 25px;
-  background-color: #007bff;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+  transition: transform 0.2s;
+  text-transform: uppercase;
+  display: flex;
 }
 
 .back-btn:hover {
-  background-color: #0056b3;
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #ff5252, #ff7979);
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
+  .review-container {
+    padding: 10px;
+  }
+
   .review-card {
-    padding: 20px;
+    height: 85vh;
+    padding: 10px;
+    border-radius: 15px;
   }
   
   .answers {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .question-text {
+    font-size: 1.2rem;
   }
 }
