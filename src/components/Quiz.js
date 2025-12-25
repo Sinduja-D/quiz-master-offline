@@ -319,14 +319,32 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     }
   };
   
-  const handleBackClick = () => {
-    const confirmMessage = displayLanguage === 'English'
-      ? 'Are you sure you want to exit the quiz? Your progress will be lost.'
-      : 'நீங்கள் வினாவிலிருந்து வெளியேற விரும்புகிறீர்களா? உங்கள் முன்னேற்றம் இழக்கப்படும்.';
-    if (window.confirm(confirmMessage)) {
-      onBack();
-    }
-  };
+ const handleBackClick = () => {
+  const confirmMessage = displayLanguage === 'English'
+    ? 'Are you sure you want to exit the quiz? Your progress will be lost.'
+    : 'நீங்கள் வினாவிலிருந்து வெளியேற விரும்புகிறீர்களா? உங்கள் முன்னேற்றம் இழக்கப்படும்.';
+
+  if (!window.confirm(confirmMessage)) return;
+
+  // Prefer parent-provided navigation handler
+  if (typeof onBack === 'function') {
+    onBack();
+    return;
+  }
+
+  // Fallbacks: try SPA-friendly navigation first, then history, then full redirect
+  if (window.location.hash !== '#/' && window.location.hash !== '') {
+    window.location.hash = '#/';
+    return;
+  }
+
+  if (window.history.length > 1) {
+    window.history.back();
+    return;
+  }
+
+  window.location.href = '/';
+};
   
   const currentQuestion = quizQuestions[currentQuestionIndex];
   
