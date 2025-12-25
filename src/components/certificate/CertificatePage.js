@@ -35,7 +35,7 @@ const StarIcon = () => (
 
 const CertificateCard = ({ user }) => {
   const certificateUrl =
-    "https://adorable-zuccutto-1c57cc.netlify.app/?" +
+    "https://vigyaanxpo-certificate.netlify.app/?" +
     `name=${encodeURIComponent(user.username)}` +
     `&school=${encodeURIComponent(user.schoolName || "")}` +
     `&place=${encodeURIComponent(user.memberPlace || "")}` +
