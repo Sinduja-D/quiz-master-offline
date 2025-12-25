@@ -33,8 +33,9 @@ const HelpPage = ({ language }) => {
   const toggleSection = (index) => setOpenIndex(openIndex === index ? null : index);
 
   return (
-    <div className="help-page-container">
-      <div className="help-page-scroll">
+    <div className="help-page-wrapper">
+      {/* Scrollable content */}
+      <div className="help-scroll-content">
         <h1 className="help-title">{content.title}</h1>
         <div className="help-content">
           {content.sections.map((section, index) => (
@@ -54,10 +55,7 @@ const HelpPage = ({ language }) => {
         </div>
       </div>
 
-      {/* Footer outside the scrollable area */}
-      <footer className="help-footer">
-        {language === 'English' ? '© 2025 VigyaanXpo. All rights reserved.' : '© 2025 VigyaanXpo. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.'}
-      </footer>
+      
     </div>
   );
 };

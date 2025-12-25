@@ -1,7 +1,12 @@
 .contact-page {
   width: 100%;
+  min-height: 100vh; /* ensure footer always at bottom */
   padding: 40px 20px;
+  padding-bottom: 180px; /* space for footer */
   background: linear-gradient(to bottom, #e0e7ff, #ffffff);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-wrapper {
@@ -10,6 +15,7 @@
   display: flex;
   gap: 40px;
   align-items: flex-start;
+  flex: 1;
 }
 
 .contact-image {
@@ -31,14 +37,25 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Reduce Tamil font size to fit card */
+.contact-card.tamil h1,
+.contact-card.tamil p,
+.contact-card.tamil input,
+.contact-card.tamil textarea,
+.contact-card.tamil button {
+  font-size: 0.9rem; /* smaller for Tamil */
+}
+
 .contact-card h1 {
   color: #1a2a6c;
   margin-bottom: 10px;
+  font-size: 1.8rem;
 }
 
 .contact-card p {
   color: #555;
   margin-bottom: 25px;
+  font-size: 1rem;
 }
 
 .contact-card input,

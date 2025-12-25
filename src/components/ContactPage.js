@@ -1,8 +1,34 @@
 import React, { useState } from "react";
 import "./ContactPage.css";
 import ContactIllustration from "../assets/images/contact-illustration.png";
+import Footer from "../components/Footer"; // adjust path
 
 const ContactPage = ({ language }) => {
+  const content = {
+    english: {
+      title: "Contact Us",
+      subtitle: "We’d love to hear from you",
+      submit: "Send Message",
+      sending: "Sending...",
+      success: "Message sent successfully!",
+      namePlaceholder: "Name",
+      schoolPlaceholder: "School / College",
+      messagePlaceholder: "Message",
+    },
+    tamil: {
+      title: "எங்களை தொடர்பு கொள்ளவும்",
+      subtitle: "உங்களிடமிருந்து கேட்க விரும்புகிறோம்",
+      submit: "செய்தி அனுப்பு",
+      sending: "அனுப்புகிறது...",
+      success: "செய்தி வெற்றிகரமாக அனுப்பப்பட்டது!",
+      namePlaceholder: "பெயர்",
+      schoolPlaceholder: "பள்ளி / கல்லூரி",
+      messagePlaceholder: "செய்தி",
+    },
+  };
+
+  const text = language === "English" ? content.english : content.tamil;
+
   const [formData, setFormData] = useState({
     name: "",
     school: "",
@@ -11,9 +37,8 @@ const ContactPage = ({ language }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +46,8 @@ const ContactPage = ({ language }) => {
 
     const submission = new FormData();
     submission.append("access_key", "c870004f-42e8-4f53-8da9-605edb58250d");
-    submission.append("from_name", "Quiz Master Admin");
+    submission.append("from_name", formData.name); // user's name as sender
+    submission.append("from_email", "admin@example.com"); // admin receives email
     submission.append("subject", "New Contact Message");
     submission.append("name", formData.name);
     submission.append("school", formData.school);
@@ -33,7 +59,6 @@ const ContactPage = ({ language }) => {
         body: submission,
       });
       const data = await res.json();
-
       if (data.success) {
         setIsSubmitted(true);
         setFormData({ name: "", school: "", message: "" });
@@ -46,25 +71,8 @@ const ContactPage = ({ language }) => {
     }
   };
 
-  const text =
-    language === "Tamil"
-      ? {
-          title: "எங்களை தொடர்பு கொள்ளவும்",
-          subtitle: "உங்களிடமிருந்து கேட்க விரும்புகிறோம்",
-          submit: "செய்தி அனுப்பு",
-          sending: "அனுப்புகிறது...",
-          success: "செய்தி வெற்றிகரமாக அனுப்பப்பட்டது!",
-        }
-      : {
-          title: "Contact Us",
-          subtitle: "We’d love to hear from you",
-          submit: "Send Message",
-          sending: "Sending...",
-          success: "Message sent successfully!",
-        };
-
   return (
-    <div className="contact-page">
+    <div className={`contact-page ${language === "Tamil" ? "tamil" : ""}`}>
       <div className="contact-wrapper">
         <div className="contact-image">
           <img src={ContactIllustration} alt="Contact" />
@@ -81,30 +89,27 @@ const ContactPage = ({ language }) => {
               <input
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder={text.namePlaceholder}
                 value={formData.name}
                 onChange={handleChange}
                 required
               />
-
               <input
                 type="text"
                 name="school"
-                placeholder="School / College"
+                placeholder={text.schoolPlaceholder}
                 value={formData.school}
                 onChange={handleChange}
                 required
               />
-
               <textarea
                 name="message"
                 rows="5"
-                placeholder="Message"
+                placeholder={text.messagePlaceholder}
                 value={formData.message}
                 onChange={handleChange}
                 required
               />
-
               <button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? text.sending : text.submit}
               </button>
@@ -112,6 +117,8 @@ const ContactPage = ({ language }) => {
           )}
         </div>
       </div>
+
+      <Footer language={language} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-/* SCROLL AREA */
+/* SCROLL */
 .profile-scroll {
   height: calc(100vh - 140px);
   overflow-y: auto;
@@ -14,7 +14,7 @@
   gap: 25px;
 }
 
-/* 🔥 ID CARD */
+/* CARD */
 .profile-id-card {
   display: grid;
   grid-template-columns: 90px 1fr 90px;
@@ -24,44 +24,37 @@
   border-radius: 20px;
   background: linear-gradient(135deg, #00796b, #26a69a);
   color: white;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 
+/* ✅ EMOJI AVATAR */
 .id-avatar {
   width: 90px;
   height: 90px;
-  background: rgba(255,255,255,0.2);
   border-radius: 50%;
-  font-size: 36px;
-  font-weight: bold;
+  background: white;
+  font-size: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.id-info h2 {
-  margin-bottom: 8px;
-}
-
+/* INFO */
 .id-info p {
   font-size: 14px;
-  opacity: 0.95;
 }
 
+/* RANK */
 .id-rank {
-  background: rgba(255,255,255,0.2);
   border-radius: 14px;
   padding: 12px;
   text-align: center;
   font-weight: bold;
 }
 
-/* TITLES */
-.section-title {
-  text-align: center;
-  font-size: 22px;
-  color: #00796b;
-}
+/* TOP 3 COLORS */
+.rank-1 { background: gold; color: #333; }
+.rank-2 { background: silver; color: #333; }
+.rank-3 { background: #cd7f32; color: white; }
 
 /* STATS */
 .stats-row {
@@ -71,32 +64,22 @@
 }
 
 .stat-box {
-  background: #ffffff;
+  background: white;
   border-radius: 16px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-
-.stat-box span {
-  font-size: 28px;
-  font-weight: bold;
-  color: #00796b;
 }
 
 /* BUTTON */
-.center {
-  text-align: center;
-}
-
 .primary-btn {
   padding: 14px 32px;
   border-radius: 30px;
   border: none;
+  background: #00796b;
+  color: white;
   font-size: 16px;
   cursor: pointer;
-  color: white;
-  background: linear-gradient(135deg, #004d40, #00796b);
+  margin-left: 310px;
 }
 
 /* HISTORY */
