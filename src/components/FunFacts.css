@@ -1,115 +1,132 @@
-/* NAVBAR OVERRIDE + FULL SCREEN */
+/* FULL SCREEN OVERLAY – LIT THEME */
 .funfacts-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: radial-gradient(circle at top, #0d47a1, #000c2d);
+  background: linear-gradient(135deg, #f6f9ff, #e3ecff);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   font-family: "Segoe UI", sans-serif;
-  color: white;
+  color: #1a2a6c;
 }
 
 /* TITLE */
 .funfacts-title {
-  font-size: 2.4rem;
-  margin-bottom: 30px;
+  font-size: 2.6rem;
+  margin-bottom: 35px;
   letter-spacing: 1px;
+  font-weight: 700;
+  color: #1a2a6c;
+  text-shadow: 0 2px 6px rgba(26, 42, 108, 0.15);
 }
 
 /* GRID */
 .funfacts-grid {
   display: grid;
-  grid-template-columns: repeat(3, 180px);
-  gap: 30px;
+  grid-template-columns: repeat(3, 190px);
+  gap: 32px;
 }
 
-/* BIG CARDS */
+/* BIG CARDS – LIT */
 .funfact-card {
-  height: 180px;
-  border-radius: 22px;
-  background: linear-gradient(145deg, #1565c0, #0d47a1);
+  height: 190px;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #ffffff, #f0f4ff);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-  transition: transform 0.25s ease, box-shadow 0.25s;
+  box-shadow: 0 12px 25px rgba(26, 42, 108, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 2px solid #e0e8ff;
 }
 
 .funfact-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 45px rgba(0,0,0,0.6);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 22px 45px rgba(26, 42, 108, 0.3);
 }
 
+/* REVEALED STATE */
 .funfact-card.revealed {
-  background: linear-gradient(145deg, #2e7d32, #1b5e20);
+  background: linear-gradient(145deg, #e8fff0, #d2f5e3);
+  border-color: #2ecc71;
 }
 
 /* ICON */
 .icon {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
+  margin-bottom: 10px;
 }
 
+/* LABEL */
 .label {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  opacity: 0.9;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.85;
 }
 
-/* BUTTON */
+/* BUTTON – LIT */
 .new-set-btn {
-  margin-top: 35px;
-  padding: 12px 40px;
+  margin-top: 40px;
+  padding: 14px 46px;
   border-radius: 30px;
   border: none;
-  background: #00e5ff;
-  color: #002;
-  font-size: 1rem;
+  background: linear-gradient(135deg, #4facfe, #00c6ff);
+  color: white;
+  font-size: 1.05rem;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0, 198, 255, 0.4);
 }
 
-/* MODAL */
+.new-set-btn:hover {
+  transform: scale(1.05);
+}
+
+/* MODAL BACKDROP */
 .fact-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(26, 42, 108, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* MODAL CARD – CLEAN & BRIGHT */
 .fact-modal-card {
-  background: white;
+  background: linear-gradient(145deg, #ffffff, #f3f6ff);
   color: #222;
-  padding: 35px;
-  border-radius: 22px;
-  max-width: 700px;
+  padding: 38px;
+  border-radius: 26px;
+  max-width: 720px;
   width: 85%;
   text-align: center;
   animation: scaleIn 0.3s ease;
+  box-shadow: 0 25px 60px rgba(26, 42, 108, 0.35);
 }
 
 .fact-modal-card h2 {
-  color: #0d47a1;
-  margin-bottom: 15px;
+  color: #1a2a6c;
+  margin-bottom: 18px;
+  font-size: 1.8rem;
 }
 
 .tap-close {
   display: block;
-  margin-top: 18px;
-  font-size: 0.85rem;
+  margin-top: 22px;
+  font-size: 0.9rem;
   color: #555;
 }
 
+/* ANIMATION */
 @keyframes scaleIn {
   from {
-    transform: scale(0.85);
+    transform: scale(0.9);
     opacity: 0;
   }
   to {
@@ -117,15 +134,18 @@
     opacity: 1;
   }
 }
+
+/* CLOSE / BACK BUTTON */
 .back-btn-games-fixed {
   position: fixed;
-  top: 18px;
-  right: 20px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 2px solid #1a2a6c;
-  background: white;
-  color: #1a2a6c;
-  font-weight: 600;
+  top: 20px;
+  right: 24px;
+  padding: 10px 20px;
+  border-radius: 22px;
+  border: none;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #4a1c1c;
+  font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
