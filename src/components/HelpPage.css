@@ -1,8 +1,8 @@
 /* Wrapper fixed for navbar & footer */
 .help-page-wrapper {
   position: fixed;
-  top: 70px;    /* height of navbar */
-  bottom: 60px; /* height of footer */
+  top: 60px;    /* height of navbar */
+  bottom: 50px; /* height of footer */
   left: 0;
   right: 0;
   display: flex;

@@ -85,7 +85,7 @@ const AboutPage = ({ language }) => {
       {/* ✅ Scrollable content only */}
       <div className="about-scroll-content">
         <div className="about-page">
-          <h1 className="page-title">{pageContent.title}</h1>
+          {/*<div><h1 className="page-title">{pageContent.title}</h1></div>*/}
 
           <div className="about-content">
             {pageContent.sections.map((section, index) => (

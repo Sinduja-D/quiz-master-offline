@@ -162,35 +162,7 @@ const achievements = [
       ta: 'மொத்தமாக 1000 புள்ளிகளைச் சேர்க்கவும்' 
     }
   },
-  
-  // Mastery Achievements
-  { 
-    id: 'quiz_master', 
-    icon: '👑', 
-    title: { en: 'Quiz Master', ta: 'வினா மாஸ்டர்' }, 
-    description: { 
-      en: 'Complete 10 quizzes with an average score of 80% or higher', 
-      ta: '80% அல்லது அதற்கு மேற்பட்ட சராசரி மதிப்பெண்ணுடன் 10 வினாக்களை முடிக்கவும்' 
-    }
-  },
-  { 
-    id: 'subject_expert', 
-    icon: '🎓', 
-    title: { en: 'Subject Expert', ta: 'பாடத்துறை நிபுணர்' }, 
-    description: { 
-      en: 'Complete 5 quizzes in the same subject with an average score of 90% or higher', 
-      ta: '90% அல்லது அதற்கு மேற்பட்ட சராசரி மதிப்பெண்ணுடன் ஒரே பாடத்தில் 5 வினாக்களை முடிக்கவும்' 
-    }
-  },
-  { 
-    id: 'speed_demon', 
-    icon: '⚡', 
-    title: { en: 'Speed Demon', ta: 'வேக சாதனை' }, 
-    description: { 
-      en: 'Complete any quiz in less than half the allotted time', 
-      ta: 'ஒதுக்கப்பட்ட நேரத்தில் பாதியில் எந்த வினாவையும் முடிக்கவும்' 
-    }
-  },
+ 
   
   // Special Achievements
   { 
@@ -200,15 +172,6 @@ const achievements = [
     description: { 
       en: 'Complete any quiz without using hints', 
       ta: 'குறிப்புகளைப் பயன்படுத்தாமல் எந்த வினாவையும் முடிக்கவும்' 
-    }
-  },
-  { 
-    id: 'early_bird', 
-    icon: '🐦', 
-    title: { en: 'Early Bird', ta: 'காலை நேர வெற்றி' }, 
-    description: { 
-      en: 'Complete a quiz between 5 AM and 9 AM', 
-      ta: 'காலை 5 மணி முதல் 9 மணி வரை ஒரு வினாவை முடிக்கவும்' 
     }
   }
 ];
@@ -417,7 +380,7 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
     if (newTotalQuizzes >= 10) {
       const allScores = [...user.quizHistory, newQuizHistory].map(q => q.score);
       const averageScore = allScores.reduce((a, b) => a + b, 0) / allScores.length;
-      if (averageScore >= 80) unlockAchievement("quiz_master");
+      //if (averageScore >= 80) unlockAchievement("quiz_master");
     }
     
     // Subject Expert achievement
@@ -426,13 +389,13 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
     if (subjectQuizzes.length >= 5) {
       const subjectScores = subjectQuizzes.map(q => q.score);
       const subjectAverage = subjectScores.reduce((a, b) => a + b, 0) / subjectScores.length;
-      if (subjectAverage >= 90) unlockAchievement("subject_expert");
+      //if (subjectAverage >= 90) unlockAchievement("subject_expert");
     }
     
     // Speed Demon achievement
     if (results.allottedTime && results.timeTaken) {
       if (results.timeTaken < results.allottedTime / 2) {
-        unlockAchievement("speed_demon");
+        //unlockAchievement("speed_demon");
       }
     }
     
@@ -444,7 +407,7 @@ export const useQuizApp = (setActivePage, user, updateUser, setIsQuizInProgress)
     // Early Bird achievement
     const completionHour = new Date().getHours();
     if (completionHour >= 5 && completionHour < 9) {
-      unlockAchievement("early_bird");
+      //unlockAchievement("early_bird");
     }
     
     // Update achievements if there are new ones

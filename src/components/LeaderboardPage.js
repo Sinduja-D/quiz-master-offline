@@ -35,7 +35,7 @@ const LeaderboardPage = ({ language, currentUser }) => {
 
   return (
     <div className="leaderboard-page-full">
-      <h1>{text.title}</h1>
+     <div>{/*} <h1>{text.title}</h1>*/}</div>
       <div className="leaderboard-header">
         <span>{text.rank}</span>
         <span>{text.user}</span>

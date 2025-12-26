@@ -36,7 +36,7 @@ const HelpPage = ({ language }) => {
     <div className="help-page-wrapper">
       {/* Scrollable content */}
       <div className="help-scroll-content">
-        <h1 className="help-title">{content.title}</h1>
+       {/*<div> <h1 className="help-title">{content.title}</h1></div>*/}
         <div className="help-content">
           {content.sections.map((section, index) => (
             <div key={index} className={`help-section ${openIndex === index ? 'open' : ''}`}>

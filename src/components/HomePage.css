@@ -15,7 +15,7 @@ html, body {
 
 /* ROOT */
 .home-root {
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 110px);
   width: 100%;
   overflow-x: hidden;
 

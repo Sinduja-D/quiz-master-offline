@@ -22,7 +22,6 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
     "200_points",
     "500_points",
     "1000_points",
-    "quiz_master",
     "no_hints"
   ];
 
@@ -222,9 +221,9 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
       
       {user.achievements.length === 0 && (
         <div className="achievements-empty">
-          <p>{language === 'English' 
+          {/*<p>{language === 'English' 
             ? 'You haven\'t unlocked any achievements yet. Start taking quizzes to earn them!' 
-            : 'நீங்கள் இதுவரை எந்தச் சாதனையையும் திறக்கவில்லை. அவற்றைப் பெற வினாக்களை எடுக்கத் தொடங்கவும்!'}</p>
+            : 'நீங்கள் இதுவரை எந்தச் சாதனையையும் திறக்கவில்லை. அவற்றைப் பெற வினாக்களை எடுக்கத் தொடங்கவும்!'}</p>*/}
         </div>
       )}
     </div>
