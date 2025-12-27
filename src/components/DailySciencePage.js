@@ -111,7 +111,7 @@ const DailySciencePage = ({ language, user, updateUser }) => {
     return (
       <div className="daily-science-container">
         <div className="already-answered">
-          <h2>{t('Daily Science Challenge', 'தினசரி அறிவியல் சவால்')}</h2>
+          {/*<div><h2>{t('Daily Science Challenge', 'தினசரி அறிவியல் சவால்')}</h2></div>*/}
           <div className="message-box">
             <p>{t('You have already answered today\'s question. Come back tomorrow for a new challenge!', 
                  'நீங்கள் இன்றைய கேள்விக்கு ஏற்கனவே பதிலளித்துள்ளீர்கள். புதிய சவாலுக்கு நாளை வாருங்கள்!')}</p>
@@ -123,8 +123,8 @@ const DailySciencePage = ({ language, user, updateUser }) => {
 
   return (
     <div className="daily-science-container">
-      <h2>{t('Daily Science Challenge', 'தினசரி அறிவியல் சவால்')}</h2>
-      
+      {/*<div><h2>{t('Daily Science Challenge', 'தினசரி அறிவியல் சவால்')}</h2></div>*/}
+          
       {showSpinWheel ? (
         <SpinWheel 
           language={language} 
