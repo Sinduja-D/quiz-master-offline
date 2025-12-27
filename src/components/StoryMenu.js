@@ -5,11 +5,7 @@ import "./StoryMenu.css";
 const StoryMenu = ({ language, onStorySelect, completedStories }) => {
   return (
     <div className="story-menu-container">
-      <h2>
-        {language === "English"
-          ? "Choose Your Escape Room"
-          : "உங்கள் தப்பித்தல் அறையைத் தேர்ந்தெடுக்கவும்"}
-      </h2>
+      
 
       <div className="stories-grid">
         {storiesIndex.map((story) => {
@@ -25,10 +21,7 @@ const StoryMenu = ({ language, onStorySelect, completedStories }) => {
               <div className="story-icon">{story.icon}</div>
               <h3>{story.title[language]}</h3>
               <p>{story.description[language]}</p>
-              <div className="story-difficulty">
-                {language === "English" ? "Difficulty: " : "சிரமம்: "}
-                {story.difficulty[language]}
-              </div>
+              
 
               {completionState === "completed" && (
                 <div className="completed-badge">
