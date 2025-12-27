@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import "./GamesMenu.css";
 
 import riddleImg from "../assets/images/riddle.png";
@@ -19,54 +19,47 @@ const games = [
 
 const GamesMenu = ({ language, setActivePage }) => {
   const gridRef = useRef(null);
-  const [index, setIndex] = useState(0);
+
+  // duplicate once
+  const loopGames = [...games, ...games];
 
   useEffect(() => {
-    const total = games.length;
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cardWidth = grid.children[0].offsetWidth + 24; // gap
+    let position = 0;
+
     const interval = setInterval(() => {
-      if (gridRef.current) {
-        const cardWidth = gridRef.current.children[0].offsetWidth + 20; // gap
-        const nextIndex = (index + 3) % total; // move 3 cards each time
-        gridRef.current.scrollTo({ left: cardWidth * nextIndex, behavior: "smooth" });
-        setIndex(nextIndex);
+      position += cardWidth; // MOVE ONLY ONE CARD
+      grid.scrollTo({ left: position, behavior: "smooth" });
+
+      // when end of first list is crossed → reset
+      if (position >= cardWidth * games.length) {
+        setTimeout(() => {
+          grid.scrollLeft = 0;
+          position = 0;
+        }, 450);
       }
-    }, 3000); // auto-transition 3 sec
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, [index]);
-
-  const scrollLeft = () => {
-    if (gridRef.current) {
-      const cardWidth = gridRef.current.children[0].offsetWidth + 20;
-      const prevIndex = (index - 3 + games.length) % games.length;
-      gridRef.current.scrollTo({ left: cardWidth * prevIndex, behavior: "smooth" });
-      setIndex(prevIndex);
-    }
-  };
-
-  const scrollRight = () => {
-    if (gridRef.current) {
-      const cardWidth = gridRef.current.children[0].offsetWidth + 20;
-      const nextIndex = (index + 3) % games.length;
-      gridRef.current.scrollTo({ left: cardWidth * nextIndex, behavior: "smooth" });
-      setIndex(nextIndex);
-    }
-  };
+  }, []);
 
   return (
     <div className="games-menu">
       <h1>{language === "English" ? "Games Zone" : "விளையாட்டு பகுதி"}</h1>
 
-      <div className="arrow-btn arrow-left" onClick={scrollLeft}>{"<"}</div>
-      <div className="arrow-btn arrow-right" onClick={scrollRight}>{">"}</div>
-
       <div className="games-grid" ref={gridRef}>
-        {games.map((game) => (
-          <div key={game.key} className="game-card">
-            <img src={game.image} alt={game.title[language]} className="game-image" />
+        {loopGames.map((game, i) => (
+          <div key={i} className="game-card">
+            <img src={game.image} alt="" className="game-image" />
             <h3>{game.title[language]}</h3>
             <p>{game.desc[language]}</p>
-            <button className="play-btn" onClick={() => setActivePage(game.key)}>
+            <button
+              className="play-btn"
+              onClick={() => setActivePage(game.key)}
+            >
               {language === "English" ? "Play Now" : "இப்போது விளையாடுங்கள்"}
             </button>
           </div>
