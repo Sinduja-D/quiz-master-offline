@@ -75,8 +75,8 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
           <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="hero-logo" />
           <h4>
             {language === "English"
-              ? "Science Park – Tiruvallur District"
-              : "அறிவியல் பூங்கா – திருவள்ளூர் மாவட்டம்"}
+              ? "Government of Tamil Nadu"
+              : "தமிழ்நாடு அரசு"}
           </h4>
         </div>
 

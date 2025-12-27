@@ -15,16 +15,17 @@
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0px;
 }
 
 .nav-logo {
-  width: 42px;
+  width: 90px;
 }
 
 .brand-text {
   font-size: 1.1rem;
   font-weight: 700;
+  gap:0px;
   color: #1a237e;
 }
 

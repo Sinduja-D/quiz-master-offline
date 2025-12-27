@@ -4,7 +4,7 @@ import html2canvas from "html2canvas";
 import "./CertificatePage.css";
 
 // Logos import
-import appLogo from "../../assets/app-logo.png";
+import appLogo from "../../assets/app-logo2.png";
 import rmkLogo from "../../assets/rmk.gif";
 import tnLogo from "../../assets/tamil-nadu-logo.png";
 
@@ -65,7 +65,7 @@ const CertificateCard = ({ user }) => {
         {/* LOGO ROW */}
         <div className="certificate-logos">
           <img src={tnLogo} alt="Tamil Nadu Logo" className="logo-left" />
-          <img src={appLogo} alt="App Logo" className="logo-center" />
+         {/* <img src={appLogo} alt="App Logo" className="logo-center" /> */}
           <img src={rmkLogo} alt="RMK Logo" className="logo-right" />
         </div>
 

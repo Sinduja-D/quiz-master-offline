@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React from "react";
 import './Navbar.css';
-import logo from "../assets/app-logo.png";
+import logo from "../assets/app-logo2.png";
 
 const Navbar = ({ language, activePage, setActivePage, toggleLanguage, user, onLogout }) => {
   const navItems = ["home", "about", "contact", "help", "leaderboard"];
