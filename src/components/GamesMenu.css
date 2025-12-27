@@ -1,11 +1,11 @@
 /* ===============================
-   GAMES MENU – TALL CARD SWIPE
+   GAMES MENU – FULLSCREEN & CENTERED
 ================================ */
 
 .games-menu {
   position: fixed;
-  top: 65px;     /* navbar height */
-  bottom: 55px;  /* footer height */
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
 
@@ -15,17 +15,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* vertical center */
 
-  padding: 14px 18px;
+  padding: 20px; /* space around content */
   overflow: hidden;
+  z-index: 9999;
 }
-
-/* ---------- TITLE ---------- */
 
 .games-menu h1 {
   font-size: 2rem;
-  margin-bottom: 16px;
   color: #1e293b;
+  text-align: center;
+  margin-bottom: 30px; /* space above cards */
 }
 
 /* ===============================
@@ -38,7 +39,7 @@
 
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 33.33%;
+  grid-auto-columns: 33.33%; /* 3 cards per view */
   gap: 24px;
 
   overflow-x: auto;
@@ -48,6 +49,8 @@
   -webkit-overflow-scrolling: touch;
 
   padding-bottom: 10px;
+
+  justify-content: center; /* center all cards horizontally */
 }
 
 /* Hide scrollbar */
@@ -129,7 +132,7 @@
 ================================ */
 
 .back-btn {
-  margin-top: 16px;
+  margin-top: 20px;
   padding: 12px 42px;
   font-size: 1.05rem;
 
@@ -165,6 +168,12 @@
   cursor: pointer;
   z-index: 50;
   user-select: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.1);
+  background: #6366f1;
 }
 
 .arrow-left {
@@ -194,27 +203,16 @@
    RESPONSIVE
 ================================ */
 
-@media (max-width: 900px) {
-  .games-grid {
-    grid-auto-columns: 50%;
-  }
-
+@media (max-width: 1200px) {
   .game-card {
+    flex: 0 0 calc(50% - 12px); /* 2 cards per view */
     height: 400px;
   }
 }
 
-@media (max-width: 600px) {
-  .games-menu {
-    top: 60px;
-    bottom: 55px;
-  }
-
-  .games-grid {
-    grid-auto-columns: 85%;
-  }
-
+@media (max-width: 900px) {
   .game-card {
+    flex: 0 0 calc(100% - 12px); /* 1 card per view */
     height: 380px;
   }
 }

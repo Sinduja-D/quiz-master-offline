@@ -47,7 +47,7 @@ const RiddleQuiz = ({ language, setActivePage }) => {
         className="back-btn-games-fixed"
         onClick={() => setActivePage("games")}
       >
-        ← Games
+        🎮Games
       </button>
 
       <div className="riddle-box">

@@ -37,7 +37,7 @@ const FunFacts = ({ language,setActivePage }) => {
         className="back-btn-games-fixed"
         onClick={() => setActivePage("games")}
       >
-        ← Games
+        🎮Games
       </button>
       <h1 className="funfacts-title">
         {language === "English"

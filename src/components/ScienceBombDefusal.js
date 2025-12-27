@@ -4,7 +4,6 @@ import bombQuestions from "../data/bombDefusalQuestions.json";
 import "./ScienceBombDefusal.css";
 
 const TIME_LIMIT = 15;
-const CONFETTI_DURATION = 3000;
 
 const bombText = {
   English: {
@@ -60,7 +59,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
   const [confettiParams, setConfettiParams] = useState({});
   const [showInstructions, setShowInstructions] = useState(true);
 
-  // Audio refs
   const blastAudio = useRef(new Audio(require("../assets/sounds/blast.mp3")));
   const successAudio = useRef(new Audio(require("../assets/sounds/success.mp3")));
   const tickingAudio = useRef(new Audio(require("../assets/sounds/ticking.mp3")));
@@ -69,11 +67,10 @@ export default function ScienceBombDefusal({ language, onBack }) {
     tickingAudio.current.loop = true;
   }, []);
 
-  // Load current question
   useEffect(() => {
     const q = bombQuestions[qIndex];
     if (!q) {
-      onBack(); // No more questions, go back to menu
+      onBack();
       return;
     }
     setQuestion({ ...q, options: q.statements[language] });
@@ -83,7 +80,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
     setStatus(showInstructions ? "instructions" : "playing");
   }, [qIndex, language, onBack, showInstructions]);
 
-  // Timer
   useEffect(() => {
     if (!timerActive) {
       tickingAudio.current.pause();
@@ -132,7 +128,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
       setShowConfetti(true);
       setStreak(s => s + 1);
 
-      // Wait for 5 seconds (success sound duration) before loading next question
       setTimeout(() => {
         setShowConfetti(false);
         setStatus("playing");
@@ -154,24 +149,20 @@ export default function ScienceBombDefusal({ language, onBack }) {
     });
     setShowConfetti(true);
 
-    // Wait for 2 seconds (blast sound duration) before showing retry button
-    setTimeout(() => {
-      setShowConfetti(false);
-    }, 2000);
-  };
-
-  const retryGame = () => {
-    onBack(); // Go back to main menu
+    setTimeout(() => setShowConfetti(false), 2000);
   };
 
   if (!question) return null;
 
   return (
     <div className="bomb-overlay">
-      {showConfetti && <Confetti {...confettiParams} recycle={false} />}
-      <button className="back-btn" onClick={onBack}>
-        {bombText[language].back}
+
+      {/* 🎮 Games Pill Button */}
+      <button className="games-btn-pill" onClick={onBack}>
+        🎮 Games
       </button>
+
+      {showConfetti && <Confetti {...confettiParams} recycle={false} />}
       <div className="hud-right">🔥 {streak}</div>
 
       <div className="game-area-horizontal">
@@ -180,7 +171,9 @@ export default function ScienceBombDefusal({ language, onBack }) {
             <div className="statement-modal">
               <h2>{bombText[language].title}</h2>
               <ul>
-                {bombText[language].instructions.map((t,i) => <li key={i}>💡 {t}</li>)}
+                {bombText[language].instructions.map((t, i) => (
+                  <li key={i}>💡 {t}</li>
+                ))}
               </ul>
               <button onClick={() => { setStatus("playing"); setShowInstructions(false); }}>
                 {bombText[language].start}
@@ -193,7 +186,9 @@ export default function ScienceBombDefusal({ language, onBack }) {
           <div className="wires-container">
             {question.options.map((text, i) => (
               <div className="wire-block" key={i}>
-                <div className="statement-box">{clicked[i] ? text : bombText[language].read}</div>
+                <div className="statement-box">
+                  {clicked[i] ? text : bombText[language].read}
+                </div>
                 <div className={`wire wire-${i}`} onClick={() => onWireClick(i)} />
               </div>
             ))}
@@ -232,7 +227,7 @@ export default function ScienceBombDefusal({ language, onBack }) {
             <div className="retry-card">
               <h2>{bombText[language].retryTitle}</h2>
               <p>{bombText[language].retryMsg}</p>
-              <button onClick={retryGame}>{bombText[language].retryBtn}</button>
+              <button onClick={onBack}>{bombText[language].retryBtn}</button>
             </div>
           </div>
         </>

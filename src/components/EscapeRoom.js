@@ -181,9 +181,9 @@ const EscapeRoom = ({ language, storyId, onBack, onComplete, setActivePage }) =>
         className="back-btn-games-fixed"
         onClick={() => setActivePage && setActivePage("games")}
       >
-        <span className="back-icon">←</span>
+        <span className="back-icon"></span>
         <span className="back-text">
-          {language === "English" ? "Games" : "விளையாட்டுகள்"}
+          {language === "English" ? "🎮Games" : "🎮விளையாட்டுகள்"}
         </span>
       </button>
 

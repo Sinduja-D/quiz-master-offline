@@ -139,7 +139,7 @@ html, body {
 /* BACK BUTTON */
 .back-btn-games-fixed {
   position: fixed;
-  top: 18px;
+  top: 10px;
   right: 20px;
   padding: 8px 16px;
   border-radius: 20px;
