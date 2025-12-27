@@ -3,7 +3,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./QuizSetup.css";
 
 const t = (language, eng, tam) => (language === "English" ? eng : tam);
-// Local metadata so this component works standalone
+
+// Local metadata
 const LEVELS_META = {
   beginner: {
     id: "beginner",
@@ -21,7 +22,6 @@ const LEVELS_META = {
     gradeText: { English: "Grades 8–10", Tamil: "8–10 ஆம் வகுப்பு" },
     grades: [8, 9, 10],
   },
-  // NOTE: DB uses "advance" (not "advanced")
   advance: {
     id: "advance",
     icon: "🧑🏼‍🎓",
@@ -60,48 +60,33 @@ const SUBJECTS = {
   },
 };
 
-export default function QuizSetup({
-  language = "English",
-  level, // optional: full level object (with .id, .icon, .color, etc.)
-  startQuiz, // function(numberOfQuestions, subject, grade, difficulty)
-  onBack, // function()
-}) {
-  // resolve difficulty from props or sessionStorage
+export default function QuizSetup({ language = "English", level, startQuiz, onBack }) {
+  // State
   const [difficultyId, setDifficultyId] = useState(
     level?.id || sessionStorage.getItem("selectedDifficulty") || ""
   );
-  // derived meta for the current difficulty
-  const meta = useMemo(
-    () => (difficultyId ? LEVELS_META[difficultyId] : null),
-    [difficultyId]
-  );
-  // local UI state
   const [selectedGrade, setSelectedGrade] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
   const [numberOfQuestions, setNumberOfQuestions] = useState(10);
   const [isStarting, setIsStarting] = useState(false);
-  
-  // When level prop changes, sync difficultyId
+
+  const meta = useMemo(() => (difficultyId ? LEVELS_META[difficultyId] : null), [difficultyId]);
+
+  const availableSubjects = useMemo(() => {
+    if (!difficultyId) return [];
+    return Object.keys(SUBJECTS).filter((s) => SUBJECTS[s].levels.includes(difficultyId));
+  }, [difficultyId]);
+
+  // Effects
   useEffect(() => {
-    if (level?.id && level.id !== difficultyId) {
-      setDifficultyId(level.id);
-    }
+    if (level?.id && level.id !== difficultyId) setDifficultyId(level.id);
   }, [level, difficultyId]);
-  
-  // If difficulty changes, reset subject/grade
+
   useEffect(() => {
     setSelectedGrade("");
     setSelectedSubject("");
   }, [difficultyId]);
-  
-  // Available subjects for the chosen difficulty
-  const availableSubjects = useMemo(() => {
-    if (!difficultyId) return [];
-    return Object.keys(SUBJECTS).filter((s) =>
-      SUBJECTS[s].levels.includes(difficultyId)
-    );
-  }, [difficultyId]);
-  
+
   const handleStart = async () => {
     if (!difficultyId) {
       alert(
@@ -123,41 +108,27 @@ export default function QuizSetup({
       );
       return;
     }
+
     setIsStarting(true);
     try {
-      // Call parent's startQuiz handler
-      await startQuiz(
-        numberOfQuestions,
-        selectedSubject, // subject (must match DB names exactly)
-        selectedGrade, // grade (number/string okay)
-        difficultyId // difficulty: beginner | intermediate | advance
-      );
+      await startQuiz(numberOfQuestions, selectedSubject, selectedGrade, difficultyId);
     } catch (e) {
       console.error("Failed to start quiz:", e);
       alert(
-        t(
-          language,
-          "Failed to start quiz. Please try again.",
-          "வினாவைத் தொடங்க முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்."
-        )
+        t(language, "Failed to start quiz. Please try again.", "வினாவைத் தொடங்க முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்.")
       );
     } finally {
       setIsStarting(false);
     }
   };
-  
-  // If difficulty is missing, gently guide user back
+
   if (!difficultyId || !meta) {
     return (
       <div className="quiz-setup-container">
         <div className="quiz-setup-card">
-          {/* Header with back button on top */}
           <div className="setup-header">
-            <div className="header-top">
-            </div>
             <h2>{t(language, "Quiz Setup", "வினா அமைப்பு")}</h2>
           </div>
-          
           <div className="error-message">
             {t(
               language,
@@ -165,131 +136,94 @@ export default function QuizSetup({
               "சிரம நிலை தேர்ந்தெடுக்கப்படவில்லை. தயவுசெய்து திரும்பி ஒரு நிலையைத் தேர்ந்தெடுக்கவும்."
             )}
           </div>
-          
-          <div className="start-button-container">
-          </div>
         </div>
       </div>
     );
   }
-  
+
   return (
     <div className="quiz-setup-container">
       <div className="quiz-setup-card">
-        {/* Header with back button on top */}
+        {/* Header */}
         <div className="setup-header">
           <h2>{t(language, "Quiz Setup", "வினா அமைப்பு")}</h2>
         </div>
-        
-        {/* Content */}
-        <div className="setup-content">
-          {/* Difficulty Info */}
-          <div className="setup-info">
-            <div className="info-item">
-              <span className="info-label">
-                {t(language, "Difficulty Level:", "சிரம நிலை:")}
-              </span>
-              <div
-                className="difficulty-badge"
-                style={{ backgroundColor: meta.color }}
+
+        {/* Difficulty Info 
+        <div className="setup-info">
+          <div className="info-item">
+            <span className="info-label">{t(language, "Difficulty Level:", "சிரம நிலை:")}</span>
+            <div className="difficulty-badge" style={{ backgroundColor: meta.color }}>
+              <span className="level-icon">{meta.icon}</span>
+              <span className="level-name">{t(language, meta.name.English, meta.name.Tamil)}</span>
+            </div>
+          </div>
+          <div className="info-item">
+            <span className="info-label">{t(language, "Grades:", "வகுப்புகள்:")}</span>
+            <span>{t(language, meta.gradeText.English, meta.gradeText.Tamil)}</span>
+          </div>
+        </div>*/}
+
+        {/* Subject Selector */}
+        <div className="subject-selector">
+          <label>{t(language, "Select Subject:", "பாடத்தைத் தேர்ந்தெடுக்கவும்:")}</label>
+          <div className="subject-options">
+            {availableSubjects.map((subj) => (
+              <button
+                key={subj}
+                type="button"
+                className={`subject-option ${selectedSubject === subj ? "active" : ""}`}
+                onClick={() => setSelectedSubject(subj)}
               >
-                <span className="level-icon">{meta.icon}</span>
-                <span className="level-name">
-                  {t(language, meta.name.English, meta.name.Tamil)}
-                </span>
-              </div>
-            </div>
-            <div className="info-item">
-              <span className="info-label">
-                {t(language, "Grades:", "வகுப்புகள்:")}
-              </span>
-              <span>
-                {t(language, meta.gradeText.English, meta.gradeText.Tamil)}
-              </span>
-            </div>
+                <span className="subject-icon">{SUBJECTS[subj].icon}</span>
+                <span className="subject-name">{t(language, SUBJECTS[subj].name.English, SUBJECTS[subj].name.Tamil)}</span>
+              </button>
+            ))}
           </div>
-          
-          {/* Subject Selector */}
-          <div className="subject-selector">
-            <label>
-              {t(language, "Select Subject:", "பாடத்தைத் தேர்ந்தெடுக்கவும்:")}
-            </label>
-            <div className="subject-options">
-              {availableSubjects.map((subj) => (
-                <button
-                  key={subj}
-                  className={`subject-option ${
-                    selectedSubject === subj ? "active" : ""
-                  }`}
-                  onClick={() => setSelectedSubject(subj)}
-                  type="button"
-                >
-                  <span className="subject-icon">{SUBJECTS[subj].icon}</span>
-                  <span className="subject-name">
-                    {t(
-                      language,
-                      SUBJECTS[subj].name.English,
-                      SUBJECTS[subj].name.Tamil
-                    )}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          {/* Grade Selector */}
-          <div className="grade-selector">
-            <label htmlFor="grade-select">
-              {t(language, "Select Grade:", "வகுப்பைத் தேர்ந்தெடுக்கவும்:")}
-            </label>
-            <select
-              id="grade-select"
-              value={selectedGrade}
-              onChange={(e) => setSelectedGrade(e.target.value)}
-              className="grade-select"
-            >
-              <option value="">
-                {t(language, "-- Select Grade --", "-- வகுப்பைத் தேர்ந்தெடுக்கவும் --")}
-              </option>
-              {meta.grades.map((g) => (
-                <option key={g} value={g}>
-                  {t(language, `Grade ${g}`, `${g}ஆம் வகுப்பு`)}
-                </option>
-              ))}
-            </select>
-          </div>
-          
-          {/* Number of Questions */}
-          <div className="question-selector">
-            <label htmlFor="question-range">
-              {t(language, "Number of Questions:", "கேள்விகளின் எண்ணிக்கை:")}
-            </label>
-            <input
-              id="question-range"
-              type="range"
-              min="1"
-              max="30"
-              step="1"
-              value={numberOfQuestions}
-              onChange={(e) => setNumberOfQuestions(parseInt(e.target.value, 10))}
-              className="question-slider"
-            />
-            <div className="question-count-display">{numberOfQuestions}</div>
-          </div>
-          
-          {/* Start Button */}
-          <div className="start-button-container">
-            <button
-              className="start-quiz-button"
-              onClick={handleStart}
-              disabled={!selectedGrade || !selectedSubject || isStarting}
-              type="button"
-            >
-              {isStarting
-                ? t(language, "Starting...", "தொடங்குகிறது...")
-                : t(language, "Start Quiz", "வினாத்திட்டத்தைத் தொடங்கு")}
-            </button>
-          </div>
+        </div>
+
+        {/* Grade Selector */}
+        <div className="grade-selector">
+          <label htmlFor="grade-select">{t(language, "Select Grade:", "வகுப்பைத் தேர்ந்தெடுக்கவும்:")}</label>
+          <select
+            id="grade-select"
+            className="grade-select"
+            value={selectedGrade}
+            onChange={(e) => setSelectedGrade(e.target.value)}
+          >
+            <option value="">{t(language, "-- Select Grade --", "-- வகுப்பைத் தேர்ந்தெடுக்கவும் --")}</option>
+            {meta.grades.map((g) => (
+              <option key={g} value={g}>{t(language, `Grade ${g}`, `${g}ஆம் வகுப்பு`)}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Number of Questions */}
+        <div className="question-selector">
+          <label htmlFor="question-range">{t(language, "Number of Questions:", "கேள்விகளின் எண்ணிக்கை:")}</label>
+          <input
+            id="question-range"
+            type="range"
+            min="1"
+            max="30"
+            step="1"
+            value={numberOfQuestions}
+            onChange={(e) => setNumberOfQuestions(parseInt(e.target.value, 10))}
+            className="question-slider"
+          />
+          <div className="question-count-display">{numberOfQuestions}</div>
+        </div>
+
+        {/* Start Button */}
+        <div className="start-button-container">
+          <button
+            type="button"
+            className="start-quiz-button"
+            onClick={handleStart}
+            disabled={!selectedGrade || !selectedSubject || isStarting}
+          >
+            {isStarting ? t(language, "Starting...", "தொடங்குகிறது...") : t(language, "Start Quiz", "வினாத்திட்டத்தைத் தொடங்கு")}
+          </button>
         </div>
       </div>
     </div>
