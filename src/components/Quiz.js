@@ -360,7 +360,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         optionC: currentQuestion.tamOpt3,
         optionD: currentQuestion.tamOpt4,
         hint: currentQuestion.tamilHint,
-        concept: currentQuestion.tamilConcept
+      //  concept: currentQuestion.tamilConcept
       };
     } else {
       return {
@@ -370,7 +370,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         optionC: currentQuestion.engOpt3,
         optionD: currentQuestion.engOpt4,
         hint: currentQuestion.englishHint,
-        concept: currentQuestion.englishConcept
+     //   concept: currentQuestion.englishConcept
       };
     }
   };
@@ -513,8 +513,8 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             );
           })}
         </div>
-        
-        {showFeedback && questionContent?.concept && (
+     {/*}   
+      <div> {showFeedback && questionContent?.concept && (
           <div className="concept-card">
             <div className="concept-header" onClick={() => setShowConcept(!showConcept)}>
               <span className="concept-icon">📚</span>
@@ -528,7 +528,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             )}
           </div>
         )}
-        
+        </div> */}
         {showCongrats && (
           <div className="congrats-container">
             {[...Array(50)].map((_, i) => (

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './Login.css';
 import tamilNaduLogo from '../assets/tamil-nadu-logo.png'; 
 import rmkLogo from '../assets/rmk.gif';
-import appLogo from '../assets/app-logo.png';
+import appLogo from '../assets/app-logo2.png';
 
 const Login = ({ onLogin, language, toggleLanguage }) => {
   const [username, setUsername] = useState('');
@@ -95,8 +95,8 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="tamilnadu-logo" />
             <h1 className="hero-title">
               {language === "English"
-                ? "SCIENCE PARK - TIRUVALLUR DISTRICT"
-                : "அறிவியல் பூங்கா - திருவள்ளூர் மாவட்டம்"}
+                ? "Government of Tamil Nadu"
+                : "தமிழ்நாடு அரசு"}
             </h1>
             <img src={rmkLogo} alt="R.M.K. Engineering College Logo" className="rmk-logo" />
           </div>
