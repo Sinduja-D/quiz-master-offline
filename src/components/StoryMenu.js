@@ -6,7 +6,11 @@ const StoryMenu = ({ language, onStorySelect, completedStories }) => {
   return (
     <div className="story-menu-container">
       
-
+    <h2>
+        {language === "English"
+          ? "Choose Your Escape Room"
+          : "உங்கள் தப்பித்தல் அறையைத் தேர்ந்தெடுக்கவும்"}
+      </h2>
       <div className="stories-grid">
         {storiesIndex.map((story) => {
           // Determine completion state: "completed", "partial", or "incomplete"
