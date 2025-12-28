@@ -77,8 +77,7 @@ export default function MemoryMatch({ onBack }) {
   const timerRef = useRef(null);
   const startRef = useRef(Date.now());
 
-  const pickPairs = () =>
-    shuffle(ELEMENTS).slice(0, pairCount);
+  const pickPairs = () => shuffle(ELEMENTS).slice(0, pairCount);
 
   const buildCards = (pairs) =>
     shuffle(
@@ -163,6 +162,11 @@ export default function MemoryMatch({ onBack }) {
     <div className="mm-wrapper">
       {showConfetti && <Confetti />}
 
+      {/* 🎮 FIXED GAMES BUTTON */}
+      <button className="mm-games-btn" onClick={onBack}>
+        🎮 Games
+      </button>
+
       <div className="mm-card">
         <header className="mm-header">
           <div>
@@ -174,7 +178,6 @@ export default function MemoryMatch({ onBack }) {
           </button>
         </header>
 
-        {/* LEVEL BUTTONS */}
         <div className="mm-level-buttons">
           <button className="mm-btn" onClick={() => resetGame(4, 4)}>Easy</button>
           <button className="mm-btn" onClick={() => resetGame(6, 6)}>Medium</button>
@@ -202,33 +205,15 @@ export default function MemoryMatch({ onBack }) {
                 onClick={() => flipCard(i)}
               >
                 <div className="mm-front">
-                  {card.type === "symbol" ? (
-                    <div className="mm-symbol">{card.label}</div>
-                  ) : (
-                    <div className="mm-name">{card.label}</div>
-                  )}
+                  {card.type === "symbol"
+                    ? <div className="mm-symbol">{card.label}</div>
+                    : <div className="mm-name">{card.label}</div>}
                 </div>
                 <div className="mm-back">?</div>
               </button>
             );
           })}
         </div>
-
-        {/* RESULT */}
-        {matched.size === pairCount && (
-          <div className="mm-result">
-            <div className="mm-result-card">
-              <h2>🎉 You Win!</h2>
-              <p>🎯 Moves: <strong>{moves}</strong></p>
-              <button className="mm-btn" onClick={() => resetGame()}>
-                Play Again
-              </button>
-              <button className="mm-btn ghost" onClick={onBack}>
-                Back
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
