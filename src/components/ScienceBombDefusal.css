@@ -1,13 +1,15 @@
-/* =========================
+/* =========================================================
    GLOBAL RESET
-========================= */
+========================================================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ---------------- Overlay ---------------- */
+/* =========================================================
+   MAIN OVERLAY / ROOT
+========================================================= */
 .bomb-overlay {
   position: fixed;
   inset: 0;
@@ -20,7 +22,9 @@
   justify-content: flex-start;
 }
 
-/* ---------------- HUD ---------------- */
+/* =========================================================
+   HUD
+========================================================= */
 .hud-left,
 .hud-right {
   position: fixed;
@@ -35,7 +39,38 @@
 .hud-left { left: 20px; }
 .hud-right { right: 20px; }
 
-/* ---------------- Horizontal game area ---------------- */
+/* =========================================================
+   TOP ACTION BUTTONS
+========================================================= */
+.games-btn-pill {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1a2a6c;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid #1a2a6c;
+  cursor: pointer;
+  z-index: 10001;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
+}
+
+.games-btn-pill:hover {
+  background: #1a2a6c;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   GAME AREA STRUCTURE
+========================================================= */
 .game-area-horizontal {
   display: flex;
   justify-content: center;
@@ -45,14 +80,12 @@
   position: relative;
 }
 
-/* ---------------- Wire container ---------------- */
 .wires-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* ---------------- Wire block ---------------- */
 .wire-block {
   position: fixed;
   top: 40px;
@@ -63,7 +96,9 @@
   z-index: 1;
 }
 
-/* ---------------- Statement boxes ---------------- */
+/* =========================================================
+   STATEMENT BOXES
+========================================================= */
 .statement-box {
   position: fixed;
   width: 180px;
@@ -77,22 +112,20 @@
   font-weight: 500;
 }
 
-/* =========================
+/* =========================================================
    BOMB (LOCKED POSITION)
-========================= */
-
+========================================================= */
 .bomb {
   width: 250px;
   height: 250px;
   position: absolute;
   top: 450px;
   left: 50%;
-  transform: translateX(-50%); /* 🔒 NEVER ANIMATED */
+  transform: translateX(-50%);
   border-radius: 50%;
   z-index: 2;
 }
 
-/* Inner bomb does ALL visuals & shaking */
 .bomb-inner {
   width: 100%;
   height: 100%;
@@ -106,7 +139,6 @@
     inset -5px -5px 15px rgba(255,255,255,0.1);
 }
 
-/* 🔥 SHAKE WITHOUT MOVING POSITION */
 .bomb.danger .bomb-inner {
   animation: violentShake 0.12s infinite;
   box-shadow:
@@ -140,23 +172,21 @@
   animation: fuseSpark 0.3s infinite alternate;
 }
 
-/* Timer */
 .bomb-timer {
   font-size: 42px;
   font-weight: 700;
   color: #ffeb3b;
   text-shadow: 0 0 8px #fff, 0 0 12px #f44336;
 }
-/* =========================
-   WIRES (REALISTIC + COLORED)
-========================= */
 
+/* =========================================================
+   WIRES (BASE)
+========================================================= */
 .wire {
   width: 12px;
   height: 350px;
   position: fixed;
 
-  /* Default color (overridden per wire) */
   --wire-main: #2b2b2b;
   --wire-dark: #0f0f0f;
   --wire-highlight: rgba(255,255,255,0.18);
@@ -200,14 +230,12 @@
   border-radius: 6px;
 }
 
-/* ---------------- Wire positions ---------------- */
+/* Wire positions */
 .wire-0 {
   top: 200px;
   left: 600px;
   transform: rotate(-35deg);
   --r: -35deg;
-
-  /* RED */
   --wire-main: #c62828;
   --wire-dark: #7f1d1d;
   --wire-highlight: rgba(255,180,180,0.35);
@@ -218,8 +246,6 @@
   left: 850px;
   transform: rotate(3deg);
   --r: 3deg;
-
-  /* BLUE */
   --wire-main: #1565c0;
   --wire-dark: #0d47a1;
   --wire-highlight: rgba(180,210,255,0.35);
@@ -230,18 +256,9 @@
   left: 1100px;
   transform: rotate(35deg);
   --r: 35deg;
-
-  /* GREEN */
   --wire-main: #2e7d32;
   --wire-dark: #1b5e20;
   --wire-highlight: rgba(190,255,190,0.35);
-}
-
-/* ---------------- Wire interactions ---------------- */
-@keyframes wireBreath {
-  0% { transform: translateY(0) rotate(var(--r)); }
-  50% { transform: translateY(2px) rotate(calc(var(--r) + 0.5deg)); }
-  100% { transform: translateY(0) rotate(var(--r)); }
 }
 
 .wire:hover {
@@ -253,30 +270,9 @@
   transform: rotate(calc(var(--r) + 10deg)) translateY(6px);
 }
 
-
-/* ---------------- Explosion ---------------- */
-.explosion-flash {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle, rgba(255,255,200,1), rgba(255,100,0,0.8), transparent 70%);
-  animation: blastFlash 0.6s ease forwards;
-  z-index: 9998;
-}
-
-.explosion-debris {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 6px;
-  height: 6px;
-  background: orange;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: debrisFly 0.8s ease-out forwards;
-  z-index: 9996;
-}
-
-/* ---------------- Instructions Overlay ---------------- */
+/* =========================================================
+   OVERLAYS & CARDS
+========================================================= */
 .overlay {
   position: fixed;
   inset: 0;
@@ -288,6 +284,7 @@
   z-index: 10000;
 }
 
+/* Instructions */
 .statement-modal {
   background: #ffffff;
   border-radius: 20px;
@@ -333,7 +330,7 @@
   transform: translateY(-2px);
 }
 
-/* ---------------- Retry Card ---------------- */
+/* Retry */
 .retry-card {
   background: #fff;
   border-radius: 20px;
@@ -355,7 +352,7 @@
   cursor: pointer;
 }
 
-/* ---------------- Success Card ---------------- */
+/* Success */
 .success-card {
   background: #e8f5e9;
   border-radius: 20px;
@@ -374,9 +371,41 @@
   margin-top: 15px;
 }
 
-/* ---------------- Animations ---------------- */
+/* =========================================================
+   EXPLOSION EFFECTS
+========================================================= */
+.explosion-flash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,200,1), rgba(255,100,0,0.8), transparent 70%);
+  animation: blastFlash 0.6s ease forwards;
+  z-index: 9998;
+}
+
+.explosion-debris {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: orange;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: debrisFly 0.8s ease-out forwards;
+  z-index: 9996;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 @keyframes pulse {
   50% { transform: scale(1.04); }
+}
+
+@keyframes wireBreath {
+  0% { transform: translateY(0) rotate(var(--r)); }
+  50% { transform: translateY(2px) rotate(calc(var(--r) + 0.5deg)); }
+  100% { transform: translateY(0) rotate(var(--r)); }
 }
 
 @keyframes violentShake {
@@ -407,31 +436,4 @@
 @keyframes popIn {
   from { transform: scale(0.85); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
-}
-
-/* ---------------- Games Button ---------------- */
-.games-btn-pill {
-  position: fixed;
-  top: 18px;
-  right: 22px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #1a2a6c;
-  font-size: 18px;
-  font-weight: 600;
-  border: 2px solid #1a2a6c;
-  cursor: pointer;
-  z-index: 10001;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  transition: all 0.25s ease;
-}
-
-.games-btn-pill:hover {
-  background: #1a2a6c;
-  color: white;
-  transform: translateY(-1px);
 }
