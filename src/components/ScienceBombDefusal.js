@@ -162,6 +162,23 @@ export default function ScienceBombDefusal({ language, onBack }) {
     }, 1500);
   };
 
+  const resetGame = () => {
+  setQIndex(0);
+  setQuestion(null);
+  setClicked([false, false, false]);
+  setActiveStatement(null);
+  setStatus("instructions");
+  setTimer(TIME_LIMIT);
+  setTimerActive(false);
+  setStreak(0);
+  setShowConfetti(false);
+  setExplosionParticles([]);
+  setShowInstructions(true);
+
+  tickingAudio.current.pause();
+  tickingAudio.current.currentTime = 0;
+};
+
   if (!question) return null;
 
   return (
@@ -213,9 +230,10 @@ export default function ScienceBombDefusal({ language, onBack }) {
 
             {/* Bomb anchored by wires */}
             <div className={`bomb ${timer <= 5 && timerActive ? "danger" : ""}`}>
-              <div className="bomb-timer">{timerActive ? timer : "--"}</div>
+              <div className="bomb-inner">
+                <div className="bomb-timer">{timerActive ? timer : "--"}</div>
+              </div>
             </div>
-
           </div>
         )}
       </div>
@@ -252,7 +270,8 @@ export default function ScienceBombDefusal({ language, onBack }) {
             <div className="retry-card">
               <h2>{bombText[language].retryTitle}</h2>
               <p>{bombText[language].retryMsg}</p>
-              <button onClick={onBack}>{bombText[language].retryBtn}</button>
+              <button onClick={resetGame}>{bombText[language].retryBtn}</button>
+
             </div>
           </div>
         </>

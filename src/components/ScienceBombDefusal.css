@@ -77,29 +77,50 @@
   font-weight: 500;
 }
 
-/* ---------------- Bomb ---------------- */
+/* =========================
+   BOMB (LOCKED POSITION)
+========================= */
+
 .bomb {
   width: 250px;
   height: 250px;
-  border-radius: 50%;
-  background: radial-gradient(circle at top left, #222, #000);
   position: absolute;
   top: 450px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* 🔒 NEVER ANIMATED */
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Inner bomb does ALL visuals & shaking */
+.bomb-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left, #222, #000);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow:
     0 10px 25px rgba(0,0,0,0.5),
     inset -5px -5px 15px rgba(255,255,255,0.1);
-  z-index: 2;
 }
 
+/* 🔥 SHAKE WITHOUT MOVING POSITION */
+.bomb.danger .bomb-inner {
+  animation: violentShake 0.12s infinite;
+  box-shadow:
+    0 0 50px red,
+    0 0 100px orange,
+    inset -5px -5px 20px #fff;
+}
+
+/* Fuse */
 .bomb::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: -30px;
+  left: 50%;
   width: 6px;
   height: 30px;
   background: linear-gradient(to top, #663300, #000);
@@ -119,25 +140,20 @@
   animation: fuseSpark 0.3s infinite alternate;
 }
 
-.bomb.danger {
-  animation: violentShake 0.15s infinite;
-  box-shadow: 0 0 50px red, 0 0 100px orange;
-}
-
+/* Timer */
 .bomb-timer {
   font-size: 42px;
   font-weight: 700;
   color: #ffeb3b;
   text-shadow: 0 0 8px #fff, 0 0 12px #f44336;
 }
-
 /* =========================
    WIRES (REALISTIC + COLORED)
 ========================= */
 
 .wire {
   width: 12px;
-  height: 250px;
+  height: 350px;
   position: fixed;
 
   /* Default color (overridden per wire) */
@@ -187,9 +203,9 @@
 /* ---------------- Wire positions ---------------- */
 .wire-0 {
   top: 200px;
-  left: calc(50% - 200px);
-  transform: rotate(-25deg);
-  --r: -25deg;
+  left: 600px;
+  transform: rotate(-35deg);
+  --r: -35deg;
 
   /* RED */
   --wire-main: #c62828;
@@ -199,9 +215,9 @@
 
 .wire-1 {
   top: 180px;
-  left: 50%;
-  transform: rotate(0deg);
-  --r: 0deg;
+  left: 850px;
+  transform: rotate(3deg);
+  --r: 3deg;
 
   /* BLUE */
   --wire-main: #1565c0;
@@ -211,9 +227,9 @@
 
 .wire-2 {
   top: 200px;
-  left: calc(50% + 200px);
-  transform: rotate(25deg);
-  --r: 25deg;
+  left: 1100px;
+  transform: rotate(35deg);
+  --r: 35deg;
 
   /* GREEN */
   --wire-main: #2e7d32;
@@ -237,57 +253,6 @@
   transform: rotate(calc(var(--r) + 10deg)) translateY(6px);
 }
 
-/* ---------------- Animations ---------------- */
-@keyframes violentShake {
-  0% { transform: translate(0); }
-  25% { transform: translate(-6px, 6px); }
-  50% { transform: translate(6px, -6px); }
-  75% { transform: translate(-6px, -6px); }
-  100% { transform: translate(0); }
-}
-
-@keyframes fuseSpark {
-  0% { transform: translateX(-50%) scale(0.6); opacity: 1; }
-  100% { transform: translateX(-50%) scale(1.2); opacity: 0.5; }
-}
-
-
-.bomb::before {
-  content: "";
-  position: absolute;
-  top: -30px;
-  width: 6px;
-  height: 30px;
-  background: linear-gradient(to top, #663300, #000);
-  border-radius: 3px;
-  z-index: 2;
-}
-
-.bomb::after {
-  content: "";
-  position: absolute;
-  top: -36px;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle, #ff0, #f80);
-  border-radius: 50%;
-  transform: translateX(-50%);
-  animation: fuseSpark 0.3s infinite alternate;
-}
-
-.bomb.danger {
-  animation: violentShake 0.15s infinite;
-  box-shadow: 0 0 50px red, 0 0 100px orange, 0 0 150px yellow,
-              inset -5px -5px 20px #fff;
-}
-
-.bomb-timer {
-  font-size: 42px;
-  font-weight: 700;
-  color: #ffeb3b;
-  text-shadow: 0 0 8px #fff, 0 0 12px #f44336;
-}
 
 /* ---------------- Explosion ---------------- */
 .explosion-flash {
