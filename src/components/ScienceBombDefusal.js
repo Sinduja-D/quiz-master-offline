@@ -58,6 +58,7 @@ export default function ScienceBombDefusal({ language, onBack }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [confettiParams, setConfettiParams] = useState({});
   const [showInstructions, setShowInstructions] = useState(true);
+  const [explosionParticles, setExplosionParticles] = useState([]);
 
   const blastAudio = useRef(new Audio(require("../assets/sounds/blast.mp3")));
   const successAudio = useRef(new Audio(require("../assets/sounds/success.mp3")));
@@ -149,7 +150,16 @@ export default function ScienceBombDefusal({ language, onBack }) {
     });
     setShowConfetti(true);
 
-    setTimeout(() => setShowConfetti(false), 2000);
+    const particles = Array.from({ length: 25 }, () => ({
+      x: Math.random() * 2 - 1,
+      y: Math.random() * 2 - 1,
+    }));
+    setExplosionParticles(particles);
+
+    setTimeout(() => {
+      setExplosionParticles([]);
+      setShowConfetti(false);
+    }, 1500);
   };
 
   if (!question) return null;
@@ -157,7 +167,6 @@ export default function ScienceBombDefusal({ language, onBack }) {
   return (
     <div className="bomb-overlay">
 
-      {/* 🎮 Games Pill Button */}
       <button className="games-btn-pill" onClick={onBack}>
         🎮 Games
       </button>
@@ -166,6 +175,7 @@ export default function ScienceBombDefusal({ language, onBack }) {
       <div className="hud-right">🔥 {streak}</div>
 
       <div className="game-area-horizontal">
+
         {status === "instructions" && showInstructions && (
           <div className="overlay">
             <div className="statement-modal">
@@ -184,20 +194,28 @@ export default function ScienceBombDefusal({ language, onBack }) {
 
         {(status === "playing" || status === "success") && (
           <div className="wires-container">
-            {question.options.map((text, i) => (
-              <div className="wire-block" key={i}>
-                <div className="statement-box">
-                  {clicked[i] ? text : bombText[language].read}
-                </div>
-                <div className={`wire wire-${i}`} onClick={() => onWireClick(i)} />
-              </div>
-            ))}
 
+            {/* Wire blocks with physical positions */}
+            <div className="wire-block" style={{ top: "70px", left: "-250px" }}>
+              <div className="statement-box">{clicked[0] ? question.options[0] : bombText[language].read}</div>
+              <div className="wire wire-0" onClick={() => onWireClick(0)} />
+            </div>
+
+            <div className="wire-block" style={{ top: "70px", left: "0px" }}>
+              <div className="statement-box">{clicked[1] ? question.options[1] : bombText[language].read}</div>
+              <div className="wire wire-1" onClick={() => onWireClick(1)} />
+            </div>
+
+            <div className="wire-block" style={{ top: "70px", left: "+250px" }}>
+              <div className="statement-box">{clicked[2] ? question.options[2] : bombText[language].read}</div>
+              <div className="wire wire-2" onClick={() => onWireClick(2)} />
+            </div>
+
+            {/* Bomb anchored by wires */}
             <div className={`bomb ${timer <= 5 && timerActive ? "danger" : ""}`}>
               <div className="bomb-timer">{timerActive ? timer : "--"}</div>
             </div>
 
-            <div className="main-wire" />
           </div>
         )}
       </div>
@@ -223,6 +241,13 @@ export default function ScienceBombDefusal({ language, onBack }) {
       {status === "boom" && (
         <>
           <div className="explosion-flash" />
+          {explosionParticles.map((p, idx) => (
+            <div
+              key={idx}
+              className="explosion-debris"
+              style={{ "--x": p.x, "--y": p.y }}
+            />
+          ))}
           <div className="overlay retry">
             <div className="retry-card">
               <h2>{bombText[language].retryTitle}</h2>
