@@ -16,6 +16,8 @@ const games = [
   { key: "funFacts", title: { English: "Fun Facts", Tamil: "சுவாரசிய தகவல்கள்" }, desc: { English: "Science facts", Tamil: "அறிவியல் தகவல்கள்" }, image: funfactsImg },
   { key: "bombDefusal", title: { English: "Bomb Defusal", Tamil: "குண்டு செயலிழப்பு" }, desc: { English: "Defuse with logic", Tamil: "அறிவியலைப் பயன்படுத்து" }, image: boomImg },
   { key: "detective", title: { English: "Science Detective", Tamil: "அறிவியல் விசாரணையாளர்" }, desc: { English: "Solve mysteries", Tamil: "மர்மங்களை தீர்க்கவும்" }, image: detectiveImg },
+  { key: "scienceSliderPuzzle", title: { English: "Slider Puzzle", Tamil: "ஸ்லைடர் புதிர்" }, desc: { English: "Arrange tiles to complete the science image", Tamil: "அறிவியல் படத்தை முடிக்க டைல்களை ஒழுங்குபடுத்து" }, image: detectiveImg },
+  { key: "elementMatch", title: { English: "Element Match", Tamil: "தत्वம் ஜோடி" }, desc: { English: "Match element names with symbols", Tamil: "தத்தவின் பெயர் மற்றும் சின்னத்தை பொருத்தவும்" }, image: detectiveImg },
 ];
 
 const GamesMenu = ({ language, setActivePage }) => {
