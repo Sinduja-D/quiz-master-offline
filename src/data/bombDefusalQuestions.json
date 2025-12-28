@@ -4,13 +4,13 @@
     "statements": {
       "English": [
         "Cut the wire labeled 'H₂O freezes at 0°C'",
-        "Cut the wire labeled 'The Sun is a planet'",
-        "Cut the wire labeled 'Electrons have a negative charge'"
+        "Cut the wire labeled 'Electrons have a positive charge'",
+        "Cut the wire labeled 'The Sun is a planet'"
       ],
       "Tamil": [
         "0°C-ல் H₂O உறைகிறது என்ற கம்பியை வெட்டு",
-        "சூரியன் ஒரு கிரகம் ஆகும் என்ற கம்பியை வெட்டு",
-        "எலெக்ட்ரான்கள் எதிர்மறை சார்ஜ் கொண்டவை என்ற கம்பியை வெட்டு"
+        "எலெக்ட்ரான்கள் நேர்மறை சார்ஜ் கொண்டவை என்ற கம்பியை வெட்டு",
+        "சூரியன் ஒரு கிரகம் ஆகும் என்ற கம்பியை வெட்டு"
       ]
     },
     "correctIndex": 0
@@ -19,65 +19,65 @@
     "id": 2,
     "statements": {
       "English": [
-        "Cut the wire labeled 'Newton discovered gravity'",
         "Cut the wire labeled 'Water boils at -100°C'",
-        "Cut the wire labeled 'Sound travels faster than light'"
+        "Cut the wire labeled 'Sound travels faster than light'",
+        "Cut the wire labeled 'Newton discovered gravity'"
       ],
       "Tamil": [
-        "நியூட்டன் ஈர்ப்பு விசையை கண்டுபிடித்தார் என்ற கம்பியை வெட்டு",
         "நீர் -100°C-ல் கொதிக்கும் என்ற கம்பியை வெட்டு",
-        "ஒலி ஒளியைவிட வேகமாக பயணிக்கும் என்ற கம்பியை வெட்டு"
+        "ஒலி ஒளியைவிட வேகமாக பயணிக்கும் என்ற கம்பியை வெட்டு",
+        "நியூட்டன் ஈர்ப்பு விசையை கண்டுபிடித்தார் என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 2
   },
   {
     "id": 3,
     "statements": {
       "English": [
-        "Cut the wire labeled 'The Earth orbits the Sun'",
         "Cut the wire labeled 'Helium is highly reactive'",
+        "Cut the wire labeled 'The Earth orbits the Sun'",
         "Cut the wire labeled 'Plants do not need sunlight'"
       ],
       "Tamil": [
-        "பூமி சூரியனைச் சுற்றுகிறது என்ற கம்பியை வெட்டு",
         "ஹீலியம் மிகவும் எதிர்வினை செய்கிறது என்ற கம்பியை வெட்டு",
+        "பூமி சூரியனைச் சுற்றுகிறது என்ற கம்பியை வெட்டு",
         "செடிகளுக்கு சூரிய ஒளி தேவையில்லை என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 1
   },
   {
     "id": 4,
     "statements": {
       "English": [
-        "Cut the wire labeled 'Water is made of hydrogen and oxygen'",
         "Cut the wire labeled 'Nitrogen is a metal'",
-        "Cut the wire labeled 'The Moon produces its own light'"
+        "Cut the wire labeled 'The Moon produces its own light'",
+        "Cut the wire labeled 'Water is made of hydrogen and oxygen'"
       ],
       "Tamil": [
-        "நீர் ஹைட்ரஜன் மற்றும் ஆக்சிஜனால் ஆனது என்ற கம்பியை வெட்டு",
         "நைட்ரஜன் ஒரு உலோகம் ஆகும் என்ற கம்பியை வெட்டு",
-        "சந்திரன் தனக்கே ஒளி உமிழ்கிறது என்ற கம்பியை வெட்டு"
+        "சந்திரன் தனக்கே ஒளி உமிழ்கிறது என்ற கம்பியை வெட்டு",
+        "நீர் ஹைட்ரஜன் மற்றும் ஆக்சிஜனால் ஆனது என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 2
   },
   {
     "id": 5,
     "statements": {
       "English": [
-        "Cut the wire labeled 'Photosynthesis requires sunlight'",
         "Cut the wire labeled 'Mammals lay eggs'",
+        "Cut the wire labeled 'Photosynthesis requires sunlight'",
         "Cut the wire labeled 'Sodium symbol is S'"
       ],
       "Tamil": [
-        "ஒளிச்சேர்க்கைக்கு சூரிய ஒளி தேவை என்ற கம்பியை வெட்டு",
         "பாலூட்டிகள் முட்டைகள் இடுகின்றன என்ற கம்பியை வெட்டு",
+        "ஒளிச்சேர்க்கைக்கு சூரிய ஒளி தேவை என்ற கம்பியை வெட்டு",
         "சோடியத்தின் குறியீடு S என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 1
   },
   {
     "id": 6,
@@ -99,30 +99,30 @@
     "id": 7,
     "statements": {
       "English": [
+        "Cut the wire labeled 'Oxygen is heavier than gold'",
         "Cut the wire labeled 'Mercury is liquid at room temperature'",
-        "Cut the wire labeled 'Iron melts at 30°C'",
-        "Cut the wire labeled 'Oxygen is heavier than gold'"
+        "Cut the wire labeled 'Iron melts at 30°C'"
       ],
       "Tamil": [
+        "ஆக்சிஜன் தங்கத்தைவிட கனமானது என்ற கம்பியை வெட்டு",
         "மெர்குரி அறை வெப்பநிலையில் திரவமாக உள்ளது என்ற கம்பியை வெட்டு",
-        "இரும்பு 30°C-ல் உருகும் என்ற கம்பியை வெட்டு",
-        "ஆக்சிஜன் தங்கத்தைவிட கனமானது என்ற கம்பியை வெட்டு"
+        "இரும்பு 30°C-ல் உருகும் என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 1
   },
   {
     "id": 8,
     "statements": {
       "English": [
         "Cut the wire labeled 'Lightning is an electric discharge'",
-        "Cut the wire labeled 'Rain forms from hydrogen clouds'",
-        "Cut the wire labeled 'Electricity flows faster than light'"
+        "Cut the wire labeled 'Electricity flows faster than light'",
+        "Cut the wire labeled 'Rain forms from hydrogen clouds'"
       ],
       "Tamil": [
         "மின்னல் மின்சார வெளியீடு ஆகும் என்ற கம்பியை வெட்டு",
-        "மழை ஹைட்ரஜன் மேகங்களில் இருந்து உருவாகிறது என்ற கம்பியை வெட்டு",
-        "மின்சாரம் ஒளியைவிட வேகமாக ஓடும் என்ற கம்பியை வெட்டு"
+        "மின்சாரம் ஒளியைவிட வேகமாக ஓடும் என்ற கம்பியை வெட்டு",
+        "மழை ஹைட்ரஜன் மேகங்களில் இருந்து உருவாகிறது என்ற கம்பியை வெட்டு"
       ]
     },
     "correctIndex": 0
@@ -131,62 +131,670 @@
     "id": 9,
     "statements": {
       "English": [
+        "Cut the wire labeled 'Bones are made of rubber'",
         "Cut the wire labeled 'Humans have 206 bones'",
-        "Cut the wire labeled 'Humans have 500 bones'",
-        "Cut the wire labeled 'Bones are made of rubber'"
+        "Cut the wire labeled 'Humans have 500 bones'"
       ],
       "Tamil": [
+        "எலும்புகள் ரப்பரில் உருவாகியவை என்ற கம்பியை வெட்டு",
         "மனிதர்களுக்கு 206 எலும்புகள் உள்ளன என்ற கம்பியை வெட்டு",
-        "மனிதர்களுக்கு 500 எலும்புகள் உள்ளன என்ற கம்பியை வெட்டு",
-        "எலும்புகள் ரப்பரில் உருவாகியவை என்ற கம்பியை வெட்டு"
+        "மனிதர்களுக்கு 500 எலும்புகள் உள்ளன என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 1
   },
   {
     "id": 10,
     "statements": {
       "English": [
-        "Cut the wire labeled 'The boiling point of water is 100°C'",
         "Cut the wire labeled 'Water boils at 10°C'",
+        "Cut the wire labeled 'The boiling point of water is 100°C'",
         "Cut the wire labeled 'Water never boils'"
       ],
       "Tamil": [
-        "நீர் 100°C-ல் கொதிக்கும் என்ற கம்பியை வெட்டு",
         "நீர் 10°C-ல் கொதிக்கும் என்ற கம்பியை வெட்டு",
+        "நீர் 100°C-ல் கொதிக்கும் என்ற கம்பியை வெட்டு",
         "நீர் ஒருபோதும் கொதிக்காது என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 1
   },
   {
     "id": 11,
     "statements": {
       "English": [
-        "Cut the wire labeled 'The heart pumps blood'",
         "Cut the wire labeled 'The lungs pump blood'",
-        "Cut the wire labeled 'The brain pumps blood'"
+        "Cut the wire labeled 'The brain pumps blood'",
+        "Cut the wire labeled 'The heart pumps blood'"
       ],
       "Tamil": [
-        "இதயம் இரத்தத்தை பம்ப் செய்கிறது என்ற கம்பியை வெட்டு",
         "நுரையீரல் இரத்தத்தை பம்ப் செய்கிறது என்ற கம்பியை வெட்டு",
-        "மூளை இரத்தத்தை பம்ப் செய்கிறது என்ற கம்பியை வெட்டு"
+        "மூளை இரத்தத்தை பம்ப் செய்கிறது என்ற கம்பியை வெட்டு",
+        "இதயம் இரத்தத்தை பம்ப் செய்கிறது என்ற கம்பியை வெட்டு"
       ]
     },
-    "correctIndex": 0
+    "correctIndex": 2
   },
   {
     "id": 12,
     "statements": {
       "English": [
-        "Cut the wire labeled 'Earth has one natural satellite'",
+        "Cut the wire labeled 'Earth has no moon'",
         "Cut the wire labeled 'Earth has five moons'",
-        "Cut the wire labeled 'Earth has no moon'"
+        "Cut the wire labeled 'Earth has one natural satellite'"
       ],
       "Tamil": [
-        "பூமிக்கு ஒரு இயற்கை துணைக்கோள் உள்ளது என்ற கம்பியை வெட்டு",
+        "பூமிக்கு சந்திரன் இல்லை என்ற கம்பியை வெட்டு",
         "பூமிக்கு ஐந்து சந்திரர்கள் உள்ளன என்ற கம்பியை வெட்டு",
-        "பூமிக்கு சந்திரன் இல்லை என்ற கம்பியை வெட்டு"
+        "பூமிக்கு ஒரு இயற்கை துணைக்கோள் உள்ளது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 2
+  },
+  {
+    "id": 13,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Mount Everest is the smallest mountain'",
+        "Cut the wire labeled 'The Pacific Ocean is the largest ocean'",
+        "Cut the wire labeled 'The Sahara is the smallest desert'"
+      ],
+      "Tamil": [
+        "எவரெஸ்ட் சிறிய மலை ஆகும் என்ற கம்பியை வெட்டு",
+        "பசிபிக் மஹாசாகரம் பெரிய மஹாசாகரம் ஆகும் என்ற கம்பியை வெட்டு",
+        "சஹாரா சிறிய பாலைவனமாகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 14,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Gold is heavier than silver'",
+        "Cut the wire labeled 'Iron floats on water'",
+        "Cut the wire labeled 'Copper is lighter than air'"
+      ],
+      "Tamil": [
+        "தங்கம் வெள்ளிக்கூடியைவிட கனமானது என்ற கம்பியை வெட்டு",
+        "இரும்பு நீரில் மிதக்கிறது என்ற கம்பியை வெட்டு",
+        "தாமிரம் காற்றைவிட லேசானது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 15,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Sharks are mammals'",
+        "Cut the wire labeled 'Sharks are birds'",
+        "Cut the wire labeled 'Sharks are fish'"
+      ],
+      "Tamil": [
+        "சுறாக்கள் பாலூட்டிகள் ஆகும் என்ற கம்பியை வெட்டு",
+        "சுறாக்கள் பறவைகள் ஆகும் என்ற கம்பியை வெட்டு",
+        "சுறாக்கள் மீன்கள் ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 2
+  },
+  {
+    "id": 16,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Venus is the hottest planet'",
+        "Cut the wire labeled 'Mercury is the coldest planet'",
+        "Cut the wire labeled 'Mars is the hottest planet'"
+      ],
+      "Tamil": [
+        "வீனஸ் மிகவும் சூடான கிரகம் ஆகும் என்ற கம்பியை வெட்டு",
+        "பெர்குரி மிகவும் குளிரான கிரகம் ஆகும் என்ற கம்பியை வெட்டு",
+        "மார்ஸ் மிகவும் சூடான கிரகம் ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 17,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The speed of gravity is 0 km/s'",
+        "Cut the wire labeled 'The speed of light is 300,000 km/s'",
+        "Cut the wire labeled 'The speed of sound is 300,000 km/s'"
+      ],
+      "Tamil": [
+        "இருக்கும் வேகம் 0 கிமீ/விநா ஆகும் என்ற கம்பியை வெட்டு",
+        "ஒளியின் வேகம் 300,000 கிமீ/விநா ஆகும் என்ற கம்பியை வெட்டு",
+        "ஒலி வேகம் 300,000 கிமீ/விநா ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 18,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Plants produce nitrogen'",
+        "Cut the wire labeled 'Plants produce oxygen'",
+        "Cut the wire labeled 'Plants produce gold'"
+      ],
+      "Tamil": [
+        "செடிகள் நைட்ரஜன் உற்பத்தி செய்கின்றன என்ற கம்பியை வெட்டு",
+        "செடிகள் ஆக்ஸிஜன் உற்பத்தி செய்கின்றன என்ற கம்பியை வெட்டு",
+        "செடிகள் தங்கம் உற்பத்தி செய்கின்றன என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 19,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Water tastes like sugar'",
+        "Cut the wire labeled 'Water tastes like salt'",
+        "Cut the wire labeled 'Water is tasteless'"
+      ],
+      "Tamil": [
+        "நீர் சர்க்கரை போன்றது என்ற கம்பியை வெட்டு",
+        "நீர் உப்பு போன்றது என்ற கம்பியை வெட்டு",
+        "நீர் ருசியற்றது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 2
+  },
+  {
+    "id": 20,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The human heart has six chambers'",
+        "Cut the wire labeled 'The human heart has four chambers'",
+        "Cut the wire labeled 'The human heart has two chambers'"
+      ],
+      "Tamil": [
+        "மனித இதயத்தில் ஆறு அறைகள் உள்ளன என்ற கம்பியை வெட்டு",
+        "மனித இதயத்தில் நான்கு அறைகள் உள்ளன என்ற கம்பியை வெட்டு",
+        "மனித இதயத்தில் இரண்டு அறைகள் உள்ளன என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 21,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Lightning travels at the speed of sound'",
+        "Cut the wire labeled 'Lightning is slower than sound'",
+        "Cut the wire labeled 'Lightning is faster than sound'"
+      ],
+      "Tamil": [
+        "மின்னல் ஒலியின் வேகத்தில் செல்லும் என்ற கம்பியை வெட்டு",
+        "மின்னல் ஒலியைவிட மெதுவாக செல்லும் என்ற கம்பியை வெட்டு",
+        "மின்னல் ஒலியைவிட வேகமாக செல்லும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 2
+  },
+  {
+    "id": 22,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The human brain digests food'",
+        "Cut the wire labeled 'The human brain controls the body'",
+        "Cut the wire labeled 'The human brain pumps blood'"
+      ],
+      "Tamil": [
+        "மனித மூளை உணவை செரிமானம் செய்கிறது என்ற கம்பியை வெட்டு",
+        "மனித மூளை உடலை கட்டுப்படுத்துகிறது என்ற கம்பியை வெட்டு",
+        "மனித மூளை இரத்தத்தை பம்ப் செய்கிறது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 23,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Mercury is a gas at room temperature'",
+        "Cut the wire labeled 'Mercury is a solid at room temperature'",
+        "Cut the wire labeled 'Mercury is a liquid at room temperature'"
+      ],
+      "Tamil": [
+        "மெர்குரி அறை வெப்பநிலையில் வாயு ஆகும் என்ற கம்பியை வெட்டு",
+        "மெர்குரி அறை வெப்பநிலையில் உறைவு ஆகும் என்ற கம்பியை வெட்டு",
+        "மெர்குரி அறை வெப்பநிலையில் திரவமாக உள்ளது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 2
+  },
+  {
+    "id": 24,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The Moon orbits Mars'",
+        "Cut the wire labeled 'The Moon orbits the Sun'",
+        "Cut the wire labeled 'The Moon orbits the Earth'"
+      ],
+      "Tamil": [
+        "சந்திரன் மார்ஸைச் சுற்றுகிறது என்ற கம்பியை வெட்டு",
+        "சந்திரன் சூரியனைச் சுற்றுகிறது என்ற கம்பியை வெட்டு",
+        "சந்திரன் பூமியைச் சுற்றுகிறது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 2
+  },
+  {
+    "id": 25,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Venus has one moon'",
+        "Cut the wire labeled 'Venus has no moons'",
+        "Cut the wire labeled 'Venus has 10 moons'"
+      ],
+      "Tamil": [
+        "வீனஸ் ஒரு சந்திரன் உள்ளது என்ற கம்பியை வெட்டு",
+        "வீனஸ் எந்த சந்திரன்களும் இல்லை என்ற கம்பியை வெட்டு",
+        "வீனஸ் 10 சந்திரர்கள் உள்ளன என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 26,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Sound travels faster in vacuum than air'",
+        "Cut the wire labeled 'Sound cannot travel in vacuum'",
+        "Cut the wire labeled 'Sound travels in vacuum'"
+      ],
+      "Tamil": [
+        "ஒலி காற்றைவிட வெற்றிடத்தில் வேகமாக பயணிக்கும் என்ற கம்பியை வெட்டு",
+        "ஒலி வெற்றிடத்தில் பயணிக்க முடியாது என்ற கம்பியை வெட்டு",
+        "ஒலி வெற்றிடத்தில் பயணிக்கிறது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 27,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Ice is solid water'",
+        "Cut the wire labeled 'Ice is liquid water'",
+        "Cut the wire labeled 'Ice is gaseous water'"
+      ],
+      "Tamil": [
+        "பனி உறைந்த நீர் ஆகும் என்ற கம்பியை வெட்டு",
+        "பனி திரவ நீர் ஆகும் என்ற கம்பியை வெட்டு",
+        "பனி வாயு நீர் ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 28,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Jupiter is a star'",
+        "Cut the wire labeled 'Jupiter is the largest planet'",
+        "Cut the wire labeled 'Jupiter is the smallest planet'"
+      ],
+      "Tamil": [
+        "ஜுபிடர் ஒரு நட்சத்திரம் ஆகும் என்ற கம்பியை வெட்டு",
+        "ஜுபிடர் மிகப்பெரிய கிரகம் ஆகும் என்ற கம்பியை வெட்டு",
+        "ஜுபிடர் மிகச்சிறிய கிரகம் ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 29,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Humans have 100 bones'",
+        "Cut the wire labeled 'Humans have 206 bones'",
+        "Cut the wire labeled 'Humans have 500 bones'"
+      ],
+      "Tamil": [
+        "மனிதர்களுக்கு 100 எலும்புகள் உள்ளன என்ற கம்பியை வெட்டு",
+        "மனிதர்களுக்கு 206 எலும்புகள் உள்ளன என்ற கம்பியை வெட்டு",
+        "மனிதர்களுக்கு 500 எலும்புகள் உள்ளன என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 30,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The Sun is a star'",
+        "Cut the wire labeled 'The Sun is a moon'",
+        "Cut the wire labeled 'The Sun is a planet'"
+      ],
+      "Tamil": [
+        "சூரியன் ஒரு நட்சத்திரம் ஆகும் என்ற கம்பியை வெட்டு",
+        "சூரியன் ஒரு சந்திரன் ஆகும் என்ற கம்பியை வெட்டு",
+        "சூரியன் ஒரு கிரகம் ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 31,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Saturn has rings'",
+        "Cut the wire labeled 'Saturn is a moon'",
+        "Cut the wire labeled 'Saturn has no rings'"
+      ],
+      "Tamil": [
+        "சேட்டுர்ன் வளையங்கள் கொண்டது என்ற கம்பியை வெட்டு",
+        "சேட்டுர்ன் ஒரு சந்திரன் ஆகும் என்ற கம்பியை வெட்டு",
+        "சேட்டுர்ன் எந்த வளையங்களும் இல்லை என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 32,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The human eye has a retina'",
+        "Cut the wire labeled 'The human eye has lungs'",
+        "Cut the wire labeled 'The human eye has a heart'"
+      ],
+      "Tamil": [
+        "மனித கண் ரெட்டினா கொண்டது என்ற கம்பியை வெட்டு",
+        "மனித கண் நுரையீரல் கொண்டது என்ற கம்பியை வெட்டு",
+        "மனித கண் இதயம் கொண்டது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 33,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Venus rotates clockwise'",
+        "Cut the wire labeled 'Venus rotates counter-clockwise'",
+        "Cut the wire labeled 'Venus does not rotate'"
+      ],
+      "Tamil": [
+        "வீனஸ் நேர்மறைச் சுற்றல் செய்கிறது என்ற கம்பியை வெட்டு",
+        "வீனஸ் எதிர்மறைச் சுற்றல் செய்கிறது என்ற கம்பியை வெட்டு",
+        "வீனஸ் சுற்றவில்லை என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 1
+  },
+  {
+    "id": 34,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Mercury is the closest planet to the Sun'",
+        "Cut the wire labeled 'Mercury is the farthest planet from the Sun'",
+        "Cut the wire labeled 'Mercury is the largest planet'"
+      ],
+      "Tamil": [
+        "மெர்குரி சூரியனுக்கு அருகேயுள்ள கிரகம் ஆகும் என்ற கம்பியை வெட்டு",
+        "மெர்குரி சூரியனுக்கு மிகவும் தூரமுள்ள கிரகம் ஆகும் என்ற கம்பியை வெட்டு",
+        "மெர்குரி மிகப்பெரிய கிரகம் ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 35,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Oceans cover about 71% of Earth's surface'",
+        "Cut the wire labeled 'Oceans cover 10% of Earth's surface'",
+        "Cut the wire labeled 'Oceans cover 100% of Earth's surface'"
+      ],
+      "Tamil": [
+        "பூமியின் மேற்பரப்பின் சுமார் 71% கடல்கள் மூடியுள்ளன என்ற கம்பியை வெட்டு",
+        "பூமியின் மேற்பரப்பின் 10% கடல்கள் மூடியுள்ளன என்ற கம்பியை வெட்டு",
+        "பூமியின் மேற்பரப்பின் 100% கடல்கள் மூடியுள்ளன என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 36,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Humans have 5 senses'",
+        "Cut the wire labeled 'Humans have 2 senses'",
+        "Cut the wire labeled 'Humans have 10 senses'"
+      ],
+      "Tamil": [
+        "மனிதர்களுக்கு 5 உணர்வுகள் உள்ளன என்ற கம்பியை வெட்டு",
+        "மனிதர்களுக்கு 2 உணர்வுகள் உள்ளன என்ற கம்பியை வெட்டு",
+        "மனிதர்களுக்கு 10 உணர்வுகள் உள்ளன என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 37,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Jupiter has a Great Red Spot'",
+        "Cut the wire labeled 'Jupiter has a blue spot'",
+        "Cut the wire labeled 'Jupiter has no spots'"
+      ],
+      "Tamil": [
+        "ஜுபிடர் ஒரு பெரிய சிவப்பு இடம் கொண்டது என்ற கம்பியை வெட்டு",
+        "ஜுபிடர் ஒரு நீல இடம் கொண்டது என்ற கம்பியை வெட்டு",
+        "ஜுபிடர் எந்த இடங்களும் இல்லை என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 38,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Water freezes at 0°C'",
+        "Cut the wire labeled 'Water freezes at 100°C'",
+        "Cut the wire labeled 'Water freezes at -50°C'"
+      ],
+      "Tamil": [
+        "நீர் 0°C-ல் உறைகிறது என்ற கம்பியை வெட்டு",
+        "நீர் 100°C-ல் உறைகிறது என்ற கம்பியை வெட்டு",
+        "நீர் -50°C-ல் உறைகிறது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 39,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Light travels faster than sound'",
+        "Cut the wire labeled 'Sound travels faster than light'",
+        "Cut the wire labeled 'Light and sound travel at the same speed'"
+      ],
+      "Tamil": [
+        "ஒளி ஒலியைவிட வேகமாக பயணிக்கும் என்ற கம்பியை வெட்டு",
+        "ஒலி ஒளியைவிட வேகமாக பயணிக்கும் என்ற கம்பியை வெட்டு",
+        "ஒளியும் ஒலியும் ஒரே வேகத்தில் பயணிக்கும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 40,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Earth revolves around the Sun'",
+        "Cut the wire labeled 'Earth revolves around the Moon'",
+        "Cut the wire labeled 'Earth revolves around Jupiter'"
+      ],
+      "Tamil": [
+        "பூமி சூரியனைச் சுற்றுகிறது என்ற கம்பியை வெட்டு",
+        "பூமி சந்திரனைச் சுற்றுகிறது என்ற கம்பியை வெட்டு",
+        "பூமி ஜுபிடரைச் சுற்றுகிறது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 41,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Oxygen is essential for breathing'",
+        "Cut the wire labeled 'Oxygen is poisonous for humans'",
+        "Cut the wire labeled 'Oxygen is heavier than iron'"
+      ],
+      "Tamil": [
+        "ஆக்சிஜன் சுவாசத்திற்கு அவசியம் ஆகும் என்ற கம்பியை வெட்டு",
+        "ஆக்சிஜன் மனிதர்களுக்கு நச்சு ஆகும் என்ற கம்பியை வெட்டு",
+        "ஆக்சிஜன் இரும்பைவிட கனமாக உள்ளது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 42,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The Moon has no atmosphere'",
+        "Cut the wire labeled 'The Moon has a thick atmosphere'",
+        "Cut the wire labeled 'The Moon has oceans'"
+      ],
+      "Tamil": [
+        "சந்திரனுக்கு எந்த வானிலை இல்லாது உள்ளது என்ற கம்பியை வெட்டு",
+        "சந்திரனுக்கு ஒரு தடித்த வானிலை உள்ளது என்ற கம்பியை வெட்டு",
+        "சந்திரனுக்கு கடல்கள் உள்ளன என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 43,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Sound is a mechanical wave'",
+        "Cut the wire labeled 'Sound is an electromagnetic wave'",
+        "Cut the wire labeled 'Sound is a light wave'"
+      ],
+      "Tamil": [
+        "ஒலி இயந்திர அலை ஆகும் என்ற கம்பியை வெட்டு",
+        "ஒலி மின்னணு அலை ஆகும் என்ற கம்பியை வெட்டு",
+        "ஒலி ஒளி அலை ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 44,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Helium is inert'",
+        "Cut the wire labeled 'Helium is highly reactive'",
+        "Cut the wire labeled 'Helium is toxic'"
+      ],
+      "Tamil": [
+        "ஹீலியம் உலைக்க முடியாதது என்ற கம்பியை வெட்டு",
+        "ஹீலியம் மிகவும் எதிர்வினை செய்கிறது என்ற கம்பியை வெட்டு",
+        "ஹீலியம் நச்சுத்தன்மை கொண்டது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 45,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The Sun is a star'",
+        "Cut the wire labeled 'The Sun is a planet'",
+        "Cut the wire labeled 'The Sun is a moon'"
+      ],
+      "Tamil": [
+        "சூரியன் ஒரு நட்சத்திரம் ஆகும் என்ற கம்பியை வெட்டு",
+        "சூரியன் ஒரு கிரகம் ஆகும் என்ற கம்பியை வெட்டு",
+        "சூரியன் ஒரு சந்திரன் ஆகும் என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 46,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Neptune is blue in color'",
+        "Cut the wire labeled 'Neptune is red in color'",
+        "Cut the wire labeled 'Neptune is green in color'"
+      ],
+      "Tamil": [
+        "நெப்சுன் நீல நிறம் கொண்டது என்ற கம்பியை வெட்டு",
+        "நெப்சுன் சிவப்பு நிறம் கொண்டது என்ற கம்பியை வெட்டு",
+        "நெப்சுன் பச்சை நிறம் கொண்டது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 47,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Mars is known as the Red Planet'",
+        "Cut the wire labeled 'Mars is known as the Blue Planet'",
+        "Cut the wire labeled 'Mars is known as the Green Planet'"
+      ],
+      "Tamil": [
+        "மார்ஸ் சிவப்பு கிரகமாக அறியப்படுகிறது என்ற கம்பியை வெட்டு",
+        "மார்ஸ் நீல கிரகமாக அறியப்படுகிறது என்ற கம்பியை வெட்டு",
+        "மார்ஸ் பச்சை கிரகமாக அறியப்படுகிறது என்ற கம்பியை வெட்டு"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 48,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Photosynthesis requires sunlight'",
+        "Cut the wire labeled 'Photosynthesis requires moonlight'",
+        "Cut the wire labeled 'Photosynthesis requires sound'"
+      ],
+      "Tamil": [
+        "ஒளிச்சேர்க்கைக்கு சூரிய ஒளி தேவை",
+        "ஒளிச்சேர்க்கைக்கு சந்திர ஒளி தேவை",
+        "ஒளிச்சேர்க்கைக்கு ஒலி தேவை"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 49,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'Iron rusts when exposed to water and air'",
+        "Cut the wire labeled 'Iron never rusts'",
+        "Cut the wire labeled 'Iron turns into gold naturally'"
+      ],
+      "Tamil": [
+        "இரும்பு நீர் மற்றும் காற்றிற்கு அடையும்போது செம்மையாகிறது",
+        "இரும்பு ஒருபோதும் செம்மையாகாது",
+        "இரும்பு இயற்கையாக தங்கமாக மாறும்"
+      ]
+    },
+    "correctIndex": 0
+  },
+  {
+    "id": 50,
+    "statements": {
+      "English": [
+        "Cut the wire labeled 'The human skeleton supports the body'",
+        "Cut the wire labeled 'The human skeleton pumps blood'",
+        "Cut the wire labeled 'The human skeleton digests food'"
+      ],
+      "Tamil": [
+        "மனித எலும்புக் கட்டமைப்பு உடலை ஆதரிக்கிறது",
+        "மனித எலும்புக் கட்டமைப்பு இரத்தத்தை பம்ப் செய்கிறது",
+        "மனித எலும்புக் கட்டமைப்பு உணவை செரிமானம் செய்கிறது"
       ]
     },
     "correctIndex": 0

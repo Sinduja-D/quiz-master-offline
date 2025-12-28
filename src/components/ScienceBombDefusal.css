@@ -1,41 +1,76 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   MAIN OVERLAY / ROOT
+========================================================= */
 .bomb-overlay {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, #f0f4ff, #dce7ff);
+  background: radial-gradient(circle at top left, #f0f4ff, #dce7ff);
   z-index: 9999;
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-/* HUD */
+/* =========================================================
+   HUD
+========================================================= */
+.hud-left,
 .hud-right {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 22px;
-  font-weight: 700;
+  top: 10px;
+  left: 0px;
+  font-size: 30px;
+  font-weight: 1000;
+  color: #e53935;
   z-index: 10000;
 }
 
-/* BACK */
-.back-btn {
+.hud-left { left: 20px; }
+.hud-right { right: 20px; }
+
+/* =========================================================
+   TOP ACTION BUTTONS
+========================================================= */
+.games-btn-pill {
   position: fixed;
-  bottom: 30px;
-  left: 30px;
-  padding: 12px 28px;
-  border-radius: 16px;
-  border: none;
-  background: linear-gradient(135deg, #1a2a6c, #4facfe);
-  color: white;
-  font-weight: 700;
+  top: 18px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1a2a6c;
+  font-size: 18px;
+  font-weight: 600;
+  border: 2px solid #1a2a6c;
   cursor: pointer;
-  z-index: 10000;
+  z-index: 10001;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
 }
 
-/* Horizontal game area */
+.games-btn-pill:hover {
+
+  color: rgb(48, 17, 150);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   GAME AREA STRUCTURE
+========================================================= */
 .game-area-horizontal {
   display: flex;
   justify-content: center;
@@ -45,26 +80,27 @@
   position: relative;
 }
 
-/* Wires container */
 .wires-container {
-  display: flex;
-  align-items: center;
-  gap: 60px;
   position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.wire-block {
+  position: fixed;
+  top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 200px;
   z-index: 1;
 }
 
-/* Wire block */
-.wire-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-}
-
-/* Statement box */
+/* =========================================================
+   STATEMENT BOXES
+========================================================= */
 .statement-box {
+  position: fixed;
   width: 180px;
   min-height: 60px;
   background: white;
@@ -74,67 +110,169 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   font-size: 16px;
   font-weight: 500;
-  cursor: default;
 }
 
-/* Individual wire */
-.wire {
-  width: 8px;
-  height: 160px;
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-  animation: pulseWire 1.5s infinite alternate;
-}
-.wire-0 { background: #e53935; box-shadow: 0 0 10px #e53935; }
-.wire-1 { background: #1e88e5; box-shadow: 0 0 10px #1e88e5; }
-.wire-2 { background: #43a047; box-shadow: 0 0 10px #43a047; }
-
-@keyframes pulseWire {
-  0% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-  50% { box-shadow: 0 0 20px rgba(255,255,255,0.5); }
-  100% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-}
-
-/* Main horizontal wire stretches across all */
-.main-wire {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background: #555;
-  border-radius: 4px;
-  z-index: 0;
-}
-
-/* Bomb */
+/* =========================================================
+   BOMB (LOCKED POSITION)
+========================================================= */
 .bomb {
-  width: 220px;
-  height: 220px;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 450px;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle at top, #ffd180, #ff9800);
+  z-index: 2;
+}
+
+.bomb-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at top left, #222, #000);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: pulse 2s infinite;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  z-index: 1;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.5),
+    inset -5px -5px 15px rgba(255,255,255,0.1);
 }
 
-.bomb.danger {
-  animation: violentShake 0.15s infinite;
-  box-shadow: 0 0 50px red;
+.bomb.danger .bomb-inner {
+  animation: violentShake 0.12s infinite;
+  box-shadow:
+    0 0 50px red,
+    0 0 100px orange,
+    inset -5px -5px 20px #fff;
+}
+
+/* Fuse */
+.bomb::before {
+  content: "";
+  position: fixed;
+  top: -30px;
+  left: 50%;
+  width: 6px;
+  height: 30px;
+  background: linear-gradient(to top, #663300, #000);
+  border-radius: 3px;
+}
+
+.bomb::after {
+  content: "";
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #ff0, #f80);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: fuseSpark 0.3s infinite alternate;
 }
 
 .bomb-timer {
   font-size: 42px;
   font-weight: 700;
-  color: #1a2a6c;
+  color: #ffeb3b;
+  text-shadow: 0 0 8px #fff, 0 0 12px #f44336;
 }
 
-/* Overlay & Modals */
+/* =========================================================
+   WIRES (BASE)
+========================================================= */
+.wire {
+  width: 12px;
+  height: 350px;
+  position: fixed;
+
+  --wire-main: #2b2b2b;
+  --wire-dark: #0f0f0f;
+  --wire-highlight: rgba(255,255,255,0.18);
+
+  background: linear-gradient(145deg, var(--wire-main), var(--wire-dark));
+  border-radius: 50px;
+  box-shadow:
+    inset -1px 0 2px rgba(0,0,0,0.9),
+    inset 1px 0 2px rgba(255,255,255,0.15),
+    0 6px 10px rgba(0,0,0,0.35);
+
+  cursor: pointer;
+  transform-origin: top center;
+  animation: wireBreath 5s ease-in-out infinite;
+}
+
+.wire::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 1px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--wire-highlight),
+    rgba(255,255,255,0.02)
+  );
+  border-radius: 80px;
+}
+
+.wire::after {
+  content: "";
+  position: fixed;
+  bottom: -6px;
+  left: 50%;
+  width: 14px;
+  height: 8px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, #1a1a1a 0%, #000 70%);
+  border-radius: 6px;
+}
+
+/* Wire positions */
+.wire-0 {
+  top: 200px;
+  left: 600px;
+  transform: rotate(-35deg);
+  --r: -35deg;
+  --wire-main: #c62828;
+  --wire-dark: #7f1d1d;
+  --wire-highlight: rgba(255,180,180,0.35);
+}
+
+.wire-1 {
+  top: 180px;
+  left: 850px;
+  transform: rotate(3deg);
+  --r: 3deg;
+  --wire-main: #1565c0;
+  --wire-dark: #0d47a1;
+  --wire-highlight: rgba(180,210,255,0.35);
+}
+
+.wire-2 {
+  top: 200px;
+  left: 1100px;
+  transform: rotate(35deg);
+  --r: 35deg;
+  --wire-main: #2e7d32;
+  --wire-dark: #1b5e20;
+  --wire-highlight: rgba(190,255,190,0.35);
+}
+
+.wire:hover {
+  transform: translateY(-2px) rotate(calc(var(--r) * 0.45));
+}
+
+.wire.cut {
+  filter: grayscale(0.8) brightness(0.55);
+  transform: rotate(calc(var(--r) + 10deg)) translateY(6px);
+}
+
+/* =========================================================
+   OVERLAYS & CARDS
+========================================================= */
 .overlay {
   position: fixed;
   inset: 0;
@@ -146,128 +284,156 @@
   z-index: 10000;
 }
 
-.statement-modal,
-.result-card,
-.retry-card {
-  pointer-events: auto;
-  animation: popIn 0.3s ease;
-  text-align: center;
-  padding: 30px 40px;
+/* Instructions */
+.statement-modal {
+  background: #ffffff;
   border-radius: 20px;
-  background: white;
-  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  padding: 40px 50px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  animation: popIn 0.3s ease;
 }
 
-.statement-modal button,
-.result-card button,
-.retry-card button {
-  margin-top: 20px;
-  padding: 12px 28px;
-  border-radius: 14px;
+.statement-modal h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1a2a6c;
+}
+
+.statement-modal ul {
+  text-align: left;
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.statement-modal ul li {
+  margin-bottom: 12px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.statement-modal button {
+  margin-top: 25px;
+  padding: 14px 30px;
+  border-radius: 18px;
   border: none;
   background: linear-gradient(135deg, #1a2a6c, #4facfe);
   color: white;
   font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.statement-modal button:hover {
+  transform: translateY(-2px);
+}
+
+/* Retry */
+.retry-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 35px 50px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  animation: popIn 0.3s ease;
+}
+
+.retry-card button {
+  margin-top: 20px;
+  padding: 14px 30px;
+  border-radius: 18px;
+  border: none;
+  background: linear-gradient(135deg, #1a2a6c, #4facfe);
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
   cursor: pointer;
 }
 
-/* Result cards */
-.success-card h1 { color: #2e7d32; }
-.boom-card h1 { color: #d32f2f; }
+/* Success */
+.success-card {
+  background: #e8f5e9;
+  border-radius: 20px;
+  padding: 35px 50px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
 
-/* Explosion */
+.success-card h1 {
+  color: #2e7d32;
+  font-size: 28px;
+}
+
+.success-card p {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+/* =========================================================
+   EXPLOSION EFFECTS
+========================================================= */
 .explosion-flash {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,0,0,0.8), transparent);
-  animation: blastFlash 0.6s ease;
+  background: radial-gradient(circle, rgba(255,255,200,1), rgba(255,100,0,0.8), transparent 70%);
+  animation: blastFlash 0.6s ease forwards;
   z-index: 9998;
 }
 
-/* Animations */
+.explosion-debris {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: orange;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: debrisFly 0.8s ease-out forwards;
+  z-index: 9996;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 @keyframes pulse {
   50% { transform: scale(1.04); }
 }
 
+@keyframes wireBreath {
+  0% { transform: translateY(0) rotate(var(--r)); }
+  50% { transform: translateY(2px) rotate(calc(var(--r) + 0.5deg)); }
+  100% { transform: translateY(0) rotate(var(--r)); }
+}
+
 @keyframes violentShake {
   0% { transform: translate(0); }
-  25% { transform: translate(-6px, 4px); }
-  50% { transform: translate(6px, -4px); }
-  75% { transform: translate(-4px, -6px); }
+  20% { transform: translate(-10px, 10px); }
+  40% { transform: translate(10px, -10px); }
+  60% { transform: translate(-10px, -10px); }
+  80% { transform: translate(10px, 10px); }
+  100% { transform: translate(0); }
 }
 
 @keyframes blastFlash {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+@keyframes debrisFly {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(calc(-50% + 300px * var(--x)), calc(-50% + 300px * var(--y))) scale(0.5); opacity: 0; }
+}
+
+@keyframes fuseSpark {
+  0% { transform: translateX(-50%) scale(0.6); opacity: 1; }
+  100% { transform: translateX(-50%) scale(1.2); opacity: 0.5; }
 }
 
 @keyframes popIn {
   from { transform: scale(0.85); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
-}
-/* 🎮 GAMES PILL BUTTON – SAME AS RIDDLE PAGE */
-.games-btn-pill {
-  position: fixed;
-  top: 18px;
-  right: 22px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 10px 22px;
-  border-radius: 999px;
-
-  background: #ffffff;
-  color: #1a2a6c;
-
-  font-size: 18px;
-  font-weight: 600;
-
-  border: 2px solid #1a2a6c;
-  cursor: pointer;
-
-  z-index: 10001;
-
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  transition: all 0.25s ease;
-}
-
-.games-btn-pill:hover {
- 
-  color: white;
-  transform: translateY(-1px);
-}
-/* 🎮 Games Pill Button */
-.games-btn-pill {
-  position: fixed;
-  top: 18px;
-  right: 22px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 10px 22px;
-  border-radius: 999px;
-
-  background: #ffffff;
-  color: #1a2a6c;
-
-  font-size: 18px;
-  font-weight: 600;
-
-  border: 2px solid #1a2a6c;
-  cursor: pointer;
-
-  z-index: 10001;
-
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  transition: all 0.25s ease;
-}
-
-.games-btn-pill:hover {
-  background: #1a2a6c;
-  color: white;
-  transform: translateY(-1px);
 }

@@ -35,7 +35,7 @@
   border-radius: 18px;
   padding: 20px;
 
-  max-width: 420px;     /* 🔹 reduced size */
+  max-width: 500px;     /* 🔹 reduced size */
   width: 95%;           /* 🔹 prevents cut */
 
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -54,7 +54,7 @@
    PERFECT SCORE
 ================================ */
 .perfect-score-icon {
-  font-size: 2.8rem;
+  font-size: 1.8rem;
 }
 
 .perfect-score-text {

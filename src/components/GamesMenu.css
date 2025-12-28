@@ -1,3 +1,4 @@
+/* FULL PAGE OVERRIDE */
 .games-menu {
   position: fixed;
   inset: 0;
@@ -10,12 +11,14 @@
   overflow: hidden;
 }
 
+/* TITLE */
 .games-menu h1 {
   font-size: 2rem;
   margin-bottom: 30px;
   color: #1e293b;
 }
 
+/* GRID */
 .games-grid {
   width: 100%;
   max-width: 1200px;
@@ -26,6 +29,7 @@
   overflow-x: hidden;
 }
 
+/* CARD */
 .game-card {
   height: 420px;
   background: linear-gradient(160deg, #ffffff, #eef2ff);
@@ -43,19 +47,30 @@
   object-fit: contain;
 }
 
+/* PLAY BUTTON */
 .play-btn {
   padding: 12px;
   border-radius: 999px;
   border: none;
-  background: linear-gradient(to right, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #283593, #1a237e);
   color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
+/* ✅ BACK BUTTON – FIXED TOP LEFT */
 .back-btn {
-  margin-top: 25px;
-  padding: 12px 42px;
+  margin-top: 30px;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  padding: 6px 14px;
+  font-size: 12px;
   border-radius: 999px;
   border: none;
-  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #283593, #1a237e);
   color: white;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 9999;
 }

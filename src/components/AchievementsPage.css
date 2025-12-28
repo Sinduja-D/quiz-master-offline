@@ -1,153 +1,113 @@
 /* =====================================================
-   ACHIEVEMENTS PAGE – FULL-WIDTH FIXED GRID
+   ACHIEVEMENTS – BADGE TILE SYSTEM
 ===================================================== */
 
 .achievements-page {
   width: 100%;
   height: calc(100vh - 110px);
-  padding: 10px 40px;
+  padding: 10px 10px;
+  background: radial-gradient(circle at top, #f9fafb, #eef2f7);
+  box-sizing: border-box;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: #ffffff;
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* =====================================================
-   TITLE & INTRO
-===================================================== */
-
-.achievements-page h2 {
-  font-size: 2rem;
-  margin-bottom: 12px;
-  text-align: center;
-  font-weight: 800;
-  color: #14532d;
-}
-
-.achievements-intro p {
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #444;
-  line-height: 1.4;
-  max-width: 900px;
-}
-
-/* =====================================================
-   GRID
+   GRID – FIXED 6 × 3
 ===================================================== */
 
 .achievements-grid {
+  flex: 1;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
-  width: 100%;
-  max-height: calc(100% - 80px);
-  justify-items: center;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
 }
 
 /* =====================================================
-   ACHIEVEMENT CARD – BASE
+   BADGE TILE – BASE
 ===================================================== */
 
 .achievement-card {
-  width: 100%;
-  max-width: 220px;
-  background: #ffffff;
-  border-radius: 16px;
-  border: 2px solid #e5e5e5;
+  position: relative;
+  height: 100%;
+  border-radius: 22px;
+  padding: 10px 10px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
   text-align: center;
-  position: relative;
-  box-sizing: border-box;
+
+  background: #ffffff;
+  box-shadow:
+    0 6px 14px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 26px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 /* =====================================================
-   UNLOCKED – GREEN
-===================================================== */
-
-.achievement-card.unlocked {
-  border-color: #16a34a;
-}
-
-.achievement-card.unlocked .achievement-title {
-  color: #166534;
-}
-
-.achievement-card.unlocked .achievement-description {
-  color: #14532d;
-}
-
-/* =====================================================
-   LOCKED – RED + WHITE OVERLAY
-===================================================== */
-
-.achievement-card.locked {
-  border-color: #dc2626;
-}
-
-/* White overlay layer */
-.achievement-card.locked::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.75); /* white disabled layer */
-  border-radius: 14px;
-  z-index: 2;
-}
-
-/* Keep content visible but muted */
-.achievement-card.locked * {
-  position: relative;
-  z-index: 1;
-  color: #991b1b;
-}
-
-/* =====================================================
-   NEWLY UNLOCKED
-===================================================== */
-
-.achievement-card.newly-unlocked {
-  border-color: #22c55e;
-}
-
-.achievement-card.newly-unlocked::after {
-  content: "NEW";
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 10px;
-  font-weight: 700;
-  color: #ffffff;
-  background: #16a34a;
-  padding: 3px 6px;
-  border-radius: 10px;
-  z-index: 3;
-}
-
-/* =====================================================
-   CONTENT
+   ICON
 ===================================================== */
 
 .achievement-icon {
-  font-size: 36px;
-  margin-bottom: 8px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  font-size: 28px;
+  margin-bottom: 6px;
+
+  background: #f3f4f6;
 }
 
+/* =====================================================
+   TEXT
+===================================================== */
+
 .achievement-title {
-  font-weight: 700;
-  font-size: 1rem;
-  margin-bottom: 6px;
+  font-size: 0.90rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 4px;
+  max-height: 2.6em;
+  overflow: hidden;
+  color: #1f2937;
 }
 
 .achievement-description {
-  font-size: 0.8rem;
-  line-height: 1.2;
-  margin-bottom: 8px;
+  font-size: 0.75rem;
+  line-height: 1;
+  max-height: 2.6em;
+  overflow: hidden;
+  margin-bottom: 5px;
+  color: #4b5563;
+}
+
+/* =====================================================
+   TAMIL-ONLY BALANCING
+===================================================== */
+
+.achievement-title:lang(ta) {
+  font-size: 0.78rem;
+  line-height: 1.15;
+}
+
+.achievement-description:lang(ta) {
+  font-size: 0.65rem;
+  line-height: 1.15;
 }
 
 /* =====================================================
@@ -155,65 +115,150 @@
 ===================================================== */
 
 .achievement-status {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: auto;
   font-size: 11px;
 }
 
-/* Chips */
+/* =====================================================
+   UNLOCKED – OLD GREEN STYLE
+===================================================== */
+
+.achievement-card.unlocked {
+  border: 2px solid #3498db; /* old blue/green effect */
+}
+
+.achievement-card.unlocked .achievement-icon {
+  background: #f3f4f6;
+}
+
 .unlocked-text {
-  padding: 4px 10px;
-  border-radius: 16px;
+  background: #d4edda;
+  color: #155724;
+  padding: 5px 10px;
+  border-radius: 20px;
   font-weight: 600;
-  background: #16a34a;
-  color: #ffffff;
-}
-
-.locked-text {
-  padding: 4px 10px;
-  border-radius: 16px;
-  font-weight: 600;
-  background: #dc2626;
-  color: #ffffff;
-}
-
-.unlock-date {
-  font-size: 10px;
-  margin-top: 2px;
-  color: #444;
+  margin-bottom: 5px;
 }
 
 /* =====================================================
-   RESPONSIVE
+   LOCKED – OLD RED/Pink Style
 ===================================================== */
 
-@media (min-width: 1600px) {
-  .achievement-card { max-width: 240px; }
+.achievement-card.locked {
+  opacity: 0.7;
+  border: 2px solid #ecf0f1;
 }
 
-@media (max-width: 1599px) and (min-width: 1280px) {
-  .achievement-card { max-width: 200px; }
+.achievement-card.locked::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(2px);
+  z-index: 1;
 }
 
-@media (max-width: 1279px) {
+.achievement-card.locked * {
+  position: relative;
+  z-index: 2;
+  color: #6b7280;
+}
+
+.achievement-card.locked .achievement-icon {
+  background: #f9eeee;
+}
+
+.locked-text {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   NEWLY UNLOCKED – SOFT HALO
+===================================================== */
+
+.achievement-card.newly-unlocked {
+  animation: halo 1.8s ease-in-out infinite;
+}
+
+@keyframes halo {
+  0% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50% { box-shadow: 0 0 18px rgba(0,0,0,0.15); }
+  100% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+}
+
+/* =====================================================
+   DATE
+===================================================== */
+
+.unlock-date {
+  display: block;
+  font-size: 10px;
+  padding-top: 0.1rem;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS
+===================================================== */
+
+@media (max-width: 1200px) {
+  .achievements-grid {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .achievements-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
   .achievements-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 15px;
+  }
+
+  .achievement-card {
+    padding: 12px 10px;
+  }
+
+  .achievement-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .achievement-title {
+    font-size: 0.85rem;
+  }
+
+  .achievement-description {
+    font-size: 0.7rem;
+    margin-bottom: 8px;
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 576px) {
   .achievements-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-rows: auto;
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 480px) {
   .achievements-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-rows: auto;
   }
-  .achievement-card { max-width: 100%; }
 }

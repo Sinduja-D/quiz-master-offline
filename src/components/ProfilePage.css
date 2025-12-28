@@ -1,120 +1,188 @@
-/* SCROLL */
-.profile-scroll {
-  height: calc(100vh - 140px);
-  overflow-y: auto;
-  padding: 20px;
+/* ===== PAGE ===== */
+.page-content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f4f8; /* soft background */
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
 }
 
-/* MAIN */
+/* ===== PROFILE CONTAINER ===== */
 .profile-container {
-  max-width: 900px;
-  margin: auto;
+  width: 100%;
+  max-width: 800px;
+  height: 95%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  justify-content: flex-start;
+  gap: 8px; /* compact spacing */
+  padding: 8px 0;
+  font-size: 14px; /* uniform font size */
+  color: #2c3e50; /* consistent text color */
+  line-height: 1.4;
 }
 
-/* CARD */
-.profile-id-card {
-  display: grid;
-  grid-template-columns: 90px 1fr 90px;
-  align-items: center;
-  gap: 20px;
-  padding: 25px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #00796b, #26a69a);
-  color: white;
+/* ===== TOP CARDS ===== */
+.top-cards {
+  display: flex;
+  gap: 10px; /* smaller gap */
+  flex-shrink: 0;
 }
 
-/* ✅ EMOJI AVATAR */
-.id-avatar {
-  width: 90px;
-  height: 90px;
+/* ===== INFO CARD ===== */
+.info-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e1e5ea;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: white;
-  font-size: 42px;
+  background: #c5d2e0;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 26px;
+  margin: 0 auto 6px;
+  color: #2c3e50;
 }
 
-/* INFO */
-.id-info p {
-  font-size: 14px;
+.info-card h2 {
+  font-size: 16px; /* uniform heading size */
+  font-weight: 600;
+  margin: 4px 0 4px;
+  color: #2c3e50;
 }
 
-/* RANK */
-.id-rank {
-  border-radius: 14px;
-  padding: 12px;
-  text-align: center;
+.info-card p {
+  font-size: 14px; /* uniform text */
+  margin: 2px 0;
+  color: #2c3e50;
+}
+
+/* ===== STATS CARD ===== */
+.stats-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e1e5ea;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stats-header h3 {
+  font-size: 16px; /* uniform heading size */
+  font-weight: 600;
+  margin: 0;
+  color: #2c3e50;
+}
+
+.rank {
+  background: #ffb400;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 14px; /* uniform with other text */
+  font-weight: bold;
+  color: #fff;
+}
+
+/* STAT ITEMS */
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 14px; /* uniform text */
+  color: #2c3e50;
+}
+
+.stat-item strong {
+  font-size: 14px; /* uniform text */
   font-weight: bold;
 }
 
-/* TOP 3 COLORS */
-.rank-1 { background: gold; color: #333; }
-.rank-2 { background: silver; color: #333; }
-.rank-3 { background: #cd7f32; color: white; }
-
-/* STATS */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 15px;
-}
-
-.stat-box {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-}
-
-/* BUTTON */
+/* ===== BUTTON ===== */
 .primary-btn {
-  padding: 14px 32px;
-  border-radius: 30px;
+  padding: 8px 18px;
+  border-radius: 18px;
   border: none;
-  background: #00796b;
+  background: #1f6f8b;
   color: white;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 14px; /* uniform text */
   cursor: pointer;
-  margin-left: 310px;
+  display: block;
+  margin: 0 auto 6px;
+  transition: background 0.3s;
 }
 
-/* HISTORY */
-.profile-card {
-  background: white;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+.primary-btn:hover {
+  background: #145b6b;
+}
+
+/* ===== QUIZ HISTORY ===== */
+.history-card-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 8px 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #e1e5ea;
+}
+
+.history-card-container h3 {
+  font-size: 16px; /* uniform heading size */
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: #2c3e50;
 }
 
 .history-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 5px 8px;
+  background: #f1f4f8;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  font-size: 14px; /* uniform text */
+  min-height: 30px;
+}
+
+.history-card span.emoji {
+  font-size: 14px; /* same as text */
+  margin-right: 6px;
 }
 
 .score {
-  font-size: 22px;
   font-weight: bold;
-  color: #00796b;
+  color: #1f6f8b;
 }
 
 .empty {
   text-align: center;
-  color: #777;
+  color: #999;
+  font-size: 14px; /* uniform text */
+  padding: 4px 0;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media (max-width: 600px) {
-  .profile-id-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .id-avatar {
-    margin: auto;
+  .top-cards {
+    flex-direction: column;
   }
 }
