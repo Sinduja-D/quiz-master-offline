@@ -63,8 +63,8 @@
 }
 
 .games-btn-pill:hover {
-  background: #1a2a6c;
-  color: white;
+
+  color: rgb(48, 17, 150);
   transform: translateY(-1px);
 }
 
