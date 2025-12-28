@@ -1,0 +1,108 @@
+.puzzle-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf4ff;
+  font-family: Poppins, sans-serif;
+}
+
+.puzzle-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  width: 600px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.how {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+/* BIG TILE */
+.tile {
+  height: 120px;          /* ⬅️ BIG */
+  border-radius: 14px;
+  background: #f1f7ff;
+  border: 3px solid #c7dcff;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CONTENT CENTER */
+.tile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BIG NUMBER */
+.num {
+  font-size: 28px;        /* ⬅️ BIG */
+  font-weight: 800;
+  color: #1e3a8a;
+}
+
+/* WORD ALWAYS VISIBLE */
+.word {
+  font-size: 16px;        /* ⬅️ BIG */
+  font-weight: 600;
+  margin-top: 4px;
+  color: #334155;
+  text-align: center;
+}
+
+/* EMPTY TILE */
+.empty {
+  background: #e5e7eb;
+  border-style: dashed;
+  cursor: default;
+}
+
+
+.num {
+  font-size: 18px;
+}
+
+.word {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.win {
+  margin: 10px 0;
+  font-weight: bold;
+  color: green;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+button.ghost {
+  background: #e5e7eb;
+  color: #111;
+}

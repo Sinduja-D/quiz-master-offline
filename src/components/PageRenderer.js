@@ -17,11 +17,11 @@ import DailySciencePage from "./DailySciencePage";
 import SpinWheel from "./SpinWheel";
 import StoryMenu from "./StoryMenu";
 import EscapeRoom from "./EscapeRoom";
-import DetectiveMenu from "./detective/DetectiveMenu";
-import DetectiveGame from "./detective/DetectiveGame";
+import ScienceSliderPuzzle from "./ScienceSliderPuzzle";
 import CertificatePage from "./certificate/CertificatePage";
 import GamesMenu from "./GamesMenu";
 import ScienceBombDefusal from "./ScienceBombDefusal";
+import MemoryMatch from "./MemoryMatch";
 
 /* Hook */
 import { useQuizApp } from "../hooks/useQuizApp";
@@ -251,23 +251,19 @@ const PageRenderer = ({
         />
       );
 
-    case "detective":
-      return selectedCase ? (
-        <DetectiveGame 
-          caseData={selectedCase} 
-          onExit={() => setSelectedCase(null)}
-          setActivePage={setActivePage}
-        />
-      ) : (
-        <DetectiveMenu 
-          onSelect={setSelectedCase}
-          setActivePage={setActivePage}
-        />
-      );
-      
     case "bombDefusal":
       return <ScienceBombDefusal language={language} setActivePage={setActivePage} onBack={() => setActivePage("games") }/>;
 
+      case "scienceSliderPuzzle":
+      return (
+        <ScienceSliderPuzzle
+          language={language}
+          setActivePage={setActivePage}
+        />
+      );
+
+      case "elementMatch":
+      return <MemoryMatch language={language} onBack={() => setActivePage("games")} setActivePage={setActivePage} />;
     // Games page
     case "games":
       return (
@@ -276,6 +272,7 @@ const PageRenderer = ({
           setActivePage={setActivePage}
         />
       );
+
 
     case "quizsetup":
       return (
@@ -319,6 +316,8 @@ const PageRenderer = ({
 
     case "certificate":
       return <CertificatePage user={user} language={language} setActivePage={setActivePage} />;
+
+    
 
     default:
       return <HomePage language={language} setActivePage={setActivePage} />;

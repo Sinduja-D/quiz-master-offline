@@ -8,13 +8,13 @@ import funfactsImg from "../assets/images/funfacts.png";
 import boomImg from "../assets/images/boom.png";
 import detectiveImg from "../assets/images/detective.png";
 
+
 const games = [
   { key: "riddles", title: { English: "Riddle Quiz", Tamil: "மறுமொழி வினாடி" }, desc: { English: "Solve science riddles from the periodic table", Tamil: "ஆவர்த்தன அட்டவணை அடிப்படையிலான மறுமொழிகள்" }, image: riddleImg },
   { key: "dailyScience", title: { English: "Spin Wheel", Tamil: "சுழற்சி சக்கரம்" }, desc: { English: "Scientists and their inventions", Tamil: "அறிஞர்கள் மற்றும் அவர்களின் கண்டுபிடிப்புகள்" }, image: spinwheelImg },
   { key: "storyMenu", title: { English: "Escape Room", Tamil: "வரிசை அறை" }, desc: { English: "Solve questions to escape rooms", Tamil: "வினாக்களைத் தீர்த்து அறையிலிருந்து வெளியேறு" }, image: escaperoomImg },
   { key: "funFacts", title: { English: "Fun Facts", Tamil: "சுவாரசிய தகவல்கள்" }, desc: { English: "Flip cards to reveal science facts", Tamil: "அறிவியல் தகவல்களை அறிந்து கொள்ளுங்கள்" }, image: funfactsImg },
   { key: "bombDefusal", title: { English: "Bomb Defusal", Tamil: "குண்டு செயலிழப்பு" }, desc: { English: "Defuse bomb using science knowledge", Tamil: "அறிவியலைப் பயன்படுத்தி குண்டை நிறுத்து" }, image: boomImg },
-  { key: "detective", title: { English: "Science Detective", Tamil: "அறிவியல் விசாரணையாளர்" }, desc: { English: "Solve science mysteries like a detective", Tamil: "விசாரணையாளர் போல அறிவியல் மர்மங்களை தீர்க்கவும்" }, image: detectiveImg },
 ];
 
 const GamesMenu = ({ language, setActivePage }) => {
@@ -41,7 +41,7 @@ const GamesMenu = ({ language, setActivePage }) => {
           position = 0;
         }, 450);
       }
-    }, 1000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);

@@ -1,23 +1,100 @@
-
-
 /* src/components/Quiz.css */
 .quiz-container {
+  /* full-screen backdrop kept, but content will be a centered card */
   position: fixed !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100vh !important;
   margin: 0 !important;
-  padding: 20px 18px !important;
+  padding: 18px !important;
   display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
+  align-items: center !important;        /* center vertically */
+  justify-content: center !important;    /* center horizontally */
   box-sizing: border-box !important;
   background: #f6f8fb;
-  overflow: hidden !important;         /* ensure no page scrolling inside quiz */
+  margin-top: 10px;
+  overflow: hidden !important;           /* prevent page scroll, only inner scroll */
   z-index: 999;
 }
 
+/* Centered card that contains header, content and footer.
+   Card has max-height so it always fits viewport; internal area scrolls. */
+.quiz-card {
+  width: min(980px, 96%);
+  max-width: 980px;
+  background: rgba(255,255,255,0.98);
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(2,6,23,0.10);
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: calc(100vh - 36px);
+  overflow: hidden; /* internal scroll controlled by .card-scroll */
+}
+
+/* scroll area inside card that holds question, options, concept etc.
+   It will scroll if content exceeds available height, while header/footer stay fixed */
+.card-scroll {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 8px; /* room for scrollbar */
+  box-sizing: border-box;
+  flex: 1 1 auto;
+}
+
+/* header and footer remain visible and sized naturally */
+.quiz-header {
+  flex: 0 0 auto;
+}
+.quiz-footer {
+  flex: 0 0 auto;
+}
+
+/* question area placed inside .card-scroll — limit its height and allow internal scroll */
+.question-container {
+  width: 90%;
+  background: transparent;
+  border-radius: 10px;
+  padding: 8px 8px;
+  box-shadow: none;
+  display: block;
+  box-sizing: border-box;
+  max-height: none; /* removal of global calc to rely on .card-scroll */
+  overflow: visible;
+}
+
+/* options grid stays inside the scroll area and will show scrollbar when needed */
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  grid-auto-rows: minmax(64px, 1fr);
+  box-sizing: border-box;
+}
+
+/* keep hint area sized to not push header; hint toggling logic should add .hint-open on .quiz-card */
+.quiz-card.hint-open .card-scroll {
+  padding-top: 86px; /* reserve space at top of scroll area when hint shown (adjust if needed) */
+}
+
+/* responsive adjustments: smaller card and comfortable scroll region on narrow screens */
+@media (max-width: 880px) {
+  .quiz-card { width: 96%; padding: 10px; max-height: calc(100vh - 24px); }
+  .card-scroll { padding-right: 4px; }
+  .options-container { gap: 10px; grid-auto-rows: minmax(56px, 1fr); }
+}
+
+/* mobile compact */
+@media (max-width: 520px) {
+  .quiz-card { padding: 8px; border-radius: 10px; }
+  .options-container { grid-auto-rows: 120px; gap: 8px; }
+  .submit-button, .next-button, .previous-button { min-width: 120px; max-width: 220px; }
+}
+
+/* ...existing code... */
 .quiz-loading {
   display: flex;
   justify-content: center;
@@ -54,7 +131,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
+  padding: 10px 15px;
   margin-bottom: 12px;
   background: rgba(255,255,255,0.95);
   border-radius: 10px;
@@ -78,7 +155,7 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 40px;
   flex: 0 0 auto;
   justify-content: space-evenly; 
   
@@ -125,20 +202,14 @@
 
 .question-container {
   width: 100%;
-  max-width: 980px;
-  background: rgba(255,255,255,0.98);
-  border-radius: 14px;
-  padding: 14px 18px;               /* reduced so more fits vertically */
-  box-shadow: 0 8px 26px rgba(12, 25, 60, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
+  background: transparent;
+  border-radius: 10px;
+  padding: 12px 8px;
+  box-shadow: none;
+  display: block;
   box-sizing: border-box;
-  max-height: calc(100vh - 140px);  /* leave space for header/footer */
-  overflow: visible;                /* allow concept card to be fully visible */
-  position: relative;
+  max-height: none; /* removal of global calc to rely on .card-scroll */
+  overflow: visible;
 }
 
 /* Options grid — equal-size boxes */
