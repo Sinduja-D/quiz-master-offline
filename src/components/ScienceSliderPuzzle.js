@@ -11,7 +11,7 @@ const words = [
   "Ecosystem",
 ];
 
-export default function SciencePuzzle({ size = 3, onBack }) {
+export default function SciencePuzzle({ size = 3, onBack, setActivePage }) {
   const total = size * size;
 
   function createBoard() {
@@ -54,13 +54,28 @@ export default function SciencePuzzle({ size = 3, onBack }) {
     (v, i) => v === (i + 1 === total ? null : i + 1)
   );
 
+  // safe back handler: prefer setActivePage('games'), then onBack prop, then fallback
+  function handleBack() {
+    if (typeof setActivePage === "function") {
+      setActivePage("games");
+      return;
+    }
+    if (typeof onBack === "function") {
+      onBack();
+      return;
+    }
+    // fallback: app-level navigation event + history back
+    window.dispatchEvent(new CustomEvent("navigate", { detail: { page: "games" } }));
+    if (window.history.length > 1) window.history.back();
+  }
+
   return (
     <div className="puzzle-wrapper">
       <div className="puzzle-card">
         <h2>🧪 Science Puzzle</h2>
 
         <p className="how">
-          Arrange the tiles in correct order (1 → 8).  
+          Arrange the tiles in correct order (1 → {total - 1}).  
           Click a tile next to the empty box.
         </p>
 
@@ -89,7 +104,7 @@ export default function SciencePuzzle({ size = 3, onBack }) {
 
         <div className="actions">
           <button onClick={() => setBoard(createBoard())}>Restart</button>
-          <button className="ghost" onClick={onBack}>Back</button>
+          <button className="ghost" onClick={handleBack}>Back</button>
         </div>
       </div>
     </div>

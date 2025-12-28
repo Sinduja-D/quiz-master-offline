@@ -71,7 +71,7 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
 
       {/* HERO SECTION */}
       <div className="hero-bar">
-        <div className="hero-block">
+        <div className="hero-block hero-center">
           <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="hero-logo" />
           <h4>
             {language === "English"
