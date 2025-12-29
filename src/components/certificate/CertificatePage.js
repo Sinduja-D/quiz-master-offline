@@ -66,7 +66,9 @@ const CertificateCard = ({ user }) => {
         <div className="certificate-logos">
           <img src={tnLogo} alt="Tamil Nadu Logo" className="logo-left" />
          {/* <img src={appLogo} alt="App Logo" className="logo-center" /> */}
+            <div className="title-center"><h1>VigyaanXpo</h1></div>
           <img src={rmkLogo} alt="RMK Logo" className="logo-right" />
+        
         </div>
 
         {/* HEADER */}

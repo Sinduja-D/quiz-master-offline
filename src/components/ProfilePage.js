@@ -29,6 +29,9 @@ const ProfilePage = ({ language, user, setActivePage }) => {
 
   const emojis = ["😎", "🙂", "👩‍🎓", "👨‍🎓", "🚀", "🧠"];
   const avatarEmoji = emojis[user.username.length % emojis.length];
+  const hasTakenQuiz =
+  (user.totalQuizzes && user.totalQuizzes > 0) ||
+  (user.quizHistory && user.quizHistory.length > 0);
 
   return (
     <div className="page-content">
@@ -72,12 +75,28 @@ const ProfilePage = ({ language, user, setActivePage }) => {
             </div>
 
             {/* CERTIFICATE BUTTON INSIDE STATS CARD */}
-            <button
-              className="primary-btn"
-              onClick={() => setActivePage("certificate")}
-            >
-              {language === "English" ? "Generate Certificate" : "சான்றிதழ் உருவாக்கவும்"}
-            </button>
+           <button
+  className="primary-btn"
+  disabled={!hasTakenQuiz}
+  onClick={() => {
+    if (hasTakenQuiz) {
+      setActivePage("certificate");
+    }
+  }}
+>
+  {language === "English"
+    ? "Generate Certificate"
+    : "சான்றிதழ் உருவாக்கவும்"}
+</button>
+{!hasTakenQuiz && (
+  <p className="warning-text">
+    {language === "English"
+      ? "Take at least one quiz to generate your certificate."
+      : "சான்றிதழ் பெற குறைந்தது ஒரு வினாவையாவது எடுத்துக்கொள்ள வேண்டும்."}
+  </p>
+)}
+
+
           </div>
 
         </div>

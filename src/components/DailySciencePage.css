@@ -107,12 +107,12 @@
 }
 
 .option-button.correct {
-  border-color: #10b981;
+  border-color: #9ce2ab;
   background: linear-gradient(135deg, #d1fae5, #a7f3d0);
 }
 
 .option-button.incorrect {
-  border-color: #ef4444;
+  border-color: #f5a9a9;
   background: linear-gradient(135deg, #fee2e2, #fecaca);
 }
 

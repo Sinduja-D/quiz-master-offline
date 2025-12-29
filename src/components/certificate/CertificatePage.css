@@ -52,7 +52,7 @@
   font-size: 24px;
   letter-spacing: 1.5px;
   margin-bottom: 2px;
-  color: #1e3a8a;
+  color: #f7b645;
 }
 
 .subtitle {
@@ -136,4 +136,7 @@
 .qr-text {
   margin-top: 4px;
   color: #1e40af;
+}
+.title-center{
+  color:#1e3a8a
 }

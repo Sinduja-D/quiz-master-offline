@@ -2,7 +2,16 @@ import React from "react";
 import storiesIndex from "../data/index.json";
 import "./StoryMenu.css";
 
-const StoryMenu = ({ language, onStorySelect, completedStories }) => {
+const StoryMenu = ({ language, onStorySelect, completedStories, setActivePage}) => {
+  function goToGames() {
+    if (typeof setActivePage === "function") {
+      setActivePage("games");
+      return;
+    }
+    // dispatch an app-level event for other parts to handle
+    window.dispatchEvent(new CustomEvent("navigate", { detail: { page: "games" } }));
+    if (window.history.length > 1) window.history.back();
+  }
   return (
     <div className="story-menu-container">
       
@@ -11,6 +20,15 @@ const StoryMenu = ({ language, onStorySelect, completedStories }) => {
           ? "Choose Your Escape Room"
           : "உங்கள் தப்பித்தல் அறையைத் தேர்ந்தெடுக்கவும்"}
       </h2>
+      <button
+        className="back-btn-games-fixed"
+        onClick={() => setActivePage && setActivePage("games")}
+      >
+        <span className="back-icon"></span>
+        <span className="back-text">
+          {language === "English" ? "🎮Games" : "🎮விளையாட்டுகள்"}
+        </span>
+      </button>
       <div className="stories-grid">
         {storiesIndex.map((story) => {
           // Determine completion state: "completed", "partial", or "incomplete"
@@ -32,7 +50,7 @@ const StoryMenu = ({ language, onStorySelect, completedStories }) => {
                   {language === "English" ? "✓ Completed" : "✓ முடிந்தது"}
                 </div>
               )}
-
+ 
               {completionState === "partial" && (
                 <div className="partial-badge">
                   {language === "English" ? "⚠ Partial" : "⚠ பகுதி முடிந்தது"}
