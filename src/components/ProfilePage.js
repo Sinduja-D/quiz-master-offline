@@ -1,3 +1,5 @@
+// src/components/ProfilePage.js
+
 import React, { useEffect, useState } from "react";
 import "./ProfilePage.css";
 
@@ -8,14 +10,21 @@ const ProfilePage = ({ language, user, setActivePage }) => {
     const users = JSON.parse(localStorage.getItem("quizAppUsers") || "[]");
     const sorted = [...users].sort((a, b) => b.totalPoints - a.totalPoints);
     const index = sorted.findIndex((u) => u.id === user.id);
-    if (index !== -1) setUserRank(index + 1);
+
+    if (index !== -1 && index < 3) {
+      setUserRank(index + 1);
+    } else {
+      setUserRank(null);
+    }
   }, [user.id]);
 
   const text = {
     title: language === "English" ? "My Profile" : "என் சுயவிவரம்",
     stats: language === "English" ? "Statistics" : "புள்ளிவிவரங்கள்",
     history: language === "English" ? "Recent Quiz History" : "சமீபத்திய வினா வரலாறு",
-    noQuiz: language === "English" ? "No quizzes attempted yet." : "இன்னும் எந்த வினாவும் எடுத்துக்கொள்ளவில்லை",
+    noQuiz: language === "English"
+      ? "No tests taken yet. Give your first quiz a try! 🚀"
+      : "இன்னும் எந்த வினாவும் எடுத்துக்கொள்ளவில்லை. முதலில் ஒரு வினாவை முயற்சிக்கவும்! 🚀",
   };
 
   const emojis = ["😎", "🙂", "👩‍🎓", "👨‍🎓", "🚀", "🧠"];
@@ -42,7 +51,7 @@ const ProfilePage = ({ language, user, setActivePage }) => {
             <div className="stats-header">
               <h3>{text.stats}</h3>
               {userRank && (
-                <div className="rank">Rank {userRank}</div>
+                <div className={`rank rank-${userRank}`}>Rank {userRank}</div>
               )}
             </div>
             <div className="stat-item">
@@ -61,20 +70,25 @@ const ProfilePage = ({ language, user, setActivePage }) => {
               <span>Badges</span>
               <strong>{user.achievements?.length || 0}</strong>
             </div>
+
+            {/* CERTIFICATE BUTTON INSIDE STATS CARD */}
+            <button
+              className="primary-btn"
+              onClick={() => setActivePage("certificate")}
+            >
+              {language === "English" ? "Generate Certificate" : "சான்றிதழ் உருவாக்கவும்"}
+            </button>
           </div>
 
         </div>
 
-        {/* CERTIFICATE BUTTON */}
-        <button
-          className="primary-btn"
-          onClick={() => setActivePage("certificate")}
-        >
-          {language === "English" ? "Generate Certificate" : "சான்றிதழ் உருவாக்கவும்"}
-        </button>
+        {/* EMPTY QUIZ MESSAGE CENTERED */}
+        {(!user.quizHistory || user.quizHistory.length === 0) && (
+          <div className="empty-centered">{text.noQuiz}</div>
+        )}
 
-        {/* QUIZ HISTORY */}
-        {user.quizHistory && user.quizHistory.length > 0 ? (
+        {/* QUIZ HISTORY (ONLY IF QUIZZES EXIST) */}
+        {user.quizHistory && user.quizHistory.length > 0 && (
           <div className="history-card-container">
             {user.quizHistory.slice(-3).map((q, i) => (
               <div key={i} className="history-card">
@@ -86,8 +100,6 @@ const ProfilePage = ({ language, user, setActivePage }) => {
               </div>
             ))}
           </div>
-        ) : (
-          <div className="history-card empty">{text.noQuiz}</div>
         )}
 
       </div>
