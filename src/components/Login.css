@@ -267,7 +267,7 @@
 }
 
 .language-button {
-  background: rgba(78, 84, 200, 0.1);
+  background: #1a2a6c;
   border:1px solid rgba(78, 84, 200, 0.3);
   padding: 6px 14px;
   border-radius: 8px;
@@ -275,9 +275,6 @@
   cursor:pointer;
   margin-top:5px;
   transition: all 0.2s ease;
-}
-.language-button:hover {
-  background: rgba(78, 84, 200, 0.2);
 }
 
 /* Error message */

@@ -47,26 +47,45 @@ const shuffle = (arr) => {
   return a;
 };
 
-/* ================= CONFETTI ================= */
-function Confetti({ pieces = 60 }) {
-  const colors = ["#22c55e", "#6366f1", "#facc15", "#ec4899"];
-  return (
-    <div className="confetti-container">
-      {Array.from({ length: pieces }).map((_, i) => (
-        <div
-          key={i}
-          className="confetti-piece"
-          style={{
-            left: Math.random() * 100 + "%",
-            background: colors[Math.floor(Math.random() * colors.length)],
-            width: 8 + Math.random() * 10,
-            height: 10 + Math.random() * 12,
-            animationDelay: Math.random() * 800 + "ms",
-          }}
-        />
-      ))}
-    </div>
-  );
+/* ================= SOUND (win) ================= */
+function playWinSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const now = ctx.currentTime;
+
+    const playTone = (freq, t, dur = 0.18) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.value = freq;
+      g.gain.value = 0;
+      g.gain.setValueAtTime(0, now + t);
+      g.gain.linearRampToValueAtTime(0.18, now + t + 0.01);
+      g.gain.linearRampToValueAtTime(0.001, now + t + dur);
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start(now + t);
+      o.stop(now + t + dur + 0.02);
+    };
+
+    // simple celebratory arpeggio (three quick notes + small flourish)
+    playTone(880, 0.00, 0.14);
+    playTone(1100, 0.12, 0.14);
+    playTone(1320, 0.26, 0.20);
+    // little descending finish
+    playTone(1046, 0.52, 0.18);
+    playTone(880, 0.72, 0.18);
+
+    // optional vibration for supported devices
+    if (navigator.vibrate) navigator.vibrate([60, 30, 60]);
+  } catch (e) {
+    // audio may be blocked by browser without user gesture — fallback to short beep via Audio tag
+    try {
+      const s = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAA=";
+      const a = new Audio(s);
+      a.play().catch(() => {});
+    } catch (er) {}
+  }
 }
 
 /* ================= MAIN ================= */
@@ -109,8 +128,7 @@ export default function MemoryMatch({ onBack }) {
   useEffect(() => {
     if (matched.size === pairCount) {
       clearInterval(timerRef.current);
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 3000);
+      playWinSound();
     }
   }, [matched, pairCount]);
 
@@ -158,12 +176,59 @@ export default function MemoryMatch({ onBack }) {
     grid.rows === 6 && grid.cols === 6 ? "Medium" :
     "Advanced";
 
+  const allMatched = matched.size === pairCount;
+
+  function doneToGames() {
+    if (typeof onBack === "function") {
+      onBack();
+      return;
+    }
+    window.dispatchEvent(new CustomEvent("navigate", { detail: { page: "games" } }));
+    if (window.history.length > 1) window.history.back();
+  }
+
+  /* Result overlay content */
+  function ResultOverlay() {
+    // simple performance rating
+    const accuracy = Math.round((pairCount / Math.max(1, moves)) * 100);
+    let stars = 1;
+    if (moves <= pairCount * 1.6) stars = 3;
+    else if (moves <= pairCount * 2.4) stars = 2;
+
+    return (
+      <div className="mm-result" role="dialog" aria-modal="true" aria-label="Result">
+        <div className="mm-result-card">
+          <h2>🎉 Congratulations!</h2>
+          <p style={{ marginTop: 6, fontWeight: 700 }}>You completed {level} level</p>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 12 }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 20, fontWeight: 900 }}>{time}s</div>
+              <div className="small">Time</div>
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 20, fontWeight: 900 }}>{moves}</div>
+              <div className="small">Moves</div>
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 20, fontWeight: 900 }}>{stars}★</div>
+              <div className="small">Rating</div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: 14, display: "flex", gap: 10, justifyContent: "center" }}>
+            <button className="mm-btn" onClick={() => resetGame(grid.rows, grid.cols)}>Play Again</button>
+            <button className="mm-btn ghost" onClick={doneToGames}>Done</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mm-wrapper">
-      {showConfetti && <Confetti />}
-
+      {/* NOTE: Confetti UI removed; sound plays on win */}
       {/* 🎮 FIXED GAMES BUTTON */}
-      <button className="mm-games-btn" onClick={onBack}>
+      <button className="mm-games-btn" onClick={doneToGames}>
         🎮 Games
       </button>
 
@@ -215,6 +280,8 @@ export default function MemoryMatch({ onBack }) {
           })}
         </div>
       </div>
+
+      {allMatched && <ResultOverlay />}
     </div>
   );
 }
