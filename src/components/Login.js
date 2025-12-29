@@ -95,7 +95,7 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
             <img src={tamilNaduLogo} alt="Tamil Nadu Logo" className="tamilnadu-logo" />
             <h1 className="hero-title">
               {language === "English"
-                ? "Government of Tamil Nadu"
+                ? <>Government of Tamil Nadu</>
                 : "தமிழ்நாடு அரசு"}
             </h1>
             <img src={rmkLogo} alt="R.M.K. Engineering College Logo" className="rmk-logo" />
@@ -136,6 +136,11 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
                   ? "Department of Information Technology Batch [2023-2027]"
                   : "தகவல் தொழில்நுட்பத் துறை தொகுப்பு [2023-2027]"}
               </h4>
+              <p className="mentor-name">
+                {language === "English"
+                  ? "HOD: Dr. M. Sheerin Banu,Professor"
+                  : "HOD: Dr.ம.சீரினி பானு, பேராசிரியர்"}
+              </p>
               <p className="mentor-name">
                 {language === "English"
                   ? "Mentor: Ms. M. Rekha, M.E(Ph.D), Assistant Professor"
