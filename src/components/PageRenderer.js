@@ -217,6 +217,7 @@ const PageRenderer = ({
           language={language}
           onStorySelect={handleStorySelect}
           completedStories={completedStories}
+          setActivePage={setActivePage}
         />
       );
 
