@@ -233,7 +233,7 @@
 /* Wire positions */
 .wire-0 {
   top: 200px;
-  left: 600px;
+  left: 500px;
   transform: rotate(-35deg);
   --r: -35deg;
   --wire-main: #c62828;
@@ -243,9 +243,9 @@
 
 .wire-1 {
   top: 180px;
-  left: 850px;
-  transform: rotate(3deg);
-  --r: 3deg;
+  left: 750px;
+  transform: rotate(0deg);
+  --r: 0deg;
   --wire-main: #1565c0;
   --wire-dark: #0d47a1;
   --wire-highlight: rgba(180,210,255,0.35);
@@ -253,7 +253,7 @@
 
 .wire-2 {
   top: 200px;
-  left: 1100px;
+  left: 1000px;
   transform: rotate(35deg);
   --r: 35deg;
   --wire-main: #2e7d32;
