@@ -191,11 +191,11 @@ const AchievementsPage = ({ language, user, newlyUnlockedAchievements = [] }) =>
                   ? achievement.title.en 
                   : achievement.title.ta}
               </div>
-              <div className="achievement-description">
+              {/*<div className="achievement-description">
                 {language === 'English' 
                   ? achievement.description.en 
                   : achievement.description.ta}
-              </div>
+              </div>*/}
               <div className="achievement-status">
                 {isUnlocked ? (
                   <>
