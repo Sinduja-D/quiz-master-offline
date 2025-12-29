@@ -6,10 +6,8 @@ import spinwheelImg from "../assets/images/spinwheel.png";
 import escaperoomImg from "../assets/images/escaperoom.png";
 import funfactsImg from "../assets/images/funfacts.png";
 import boomImg from "../assets/images/boom.png";
-import detectiveImg from "../assets/images/detective.png";
 import sliderPuzzleImg from "../assets/images/sliderPuzzle.png";
 import elementMatchImg from "../assets/images/elementMatch.png";
-
 
 const games = [
   { key: "riddles", title: { English: "Riddle Quiz", Tamil: "மறுமொழி வினாடி" }, desc: { English: "Solve science riddles", Tamil: "அறிவியல் மறுமொழிகள்" }, image: riddleImg },
@@ -47,6 +45,18 @@ const GamesMenu = ({ language, setActivePage }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollNext = () => {
+    const grid = gridRef.current;
+    const cardWidth = grid.children[0].offsetWidth + 24;
+    grid.scrollBy({ left: cardWidth, behavior: "smooth" });
+  };
+
+  const scrollPrev = () => {
+    const grid = gridRef.current;
+    const cardWidth = grid.children[0].offsetWidth + 24;
+    grid.scrollBy({ left: -cardWidth, behavior: "smooth" });
+  };
+
   return (
     <div className="games-menu">
       {/* ✅ Back Button – TOP LEFT */}
@@ -55,6 +65,10 @@ const GamesMenu = ({ language, setActivePage }) => {
       </button>
 
       <h1>{language === "English" ? "Games Zone" : "விளையாட்டு பகுதி"}</h1>
+
+      {/* NAVIGATION BUTTONS */}
+      <button className="nav-btn nav-prev" onClick={scrollPrev}>‹</button>
+      <button className="nav-btn nav-next" onClick={scrollNext}>›</button>
 
       <div className="games-grid" ref={gridRef}>
         {loopGames.map((game, i) => (

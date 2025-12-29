@@ -16,6 +16,7 @@
   font-size: 2rem;
   margin-bottom: 30px;
   color: #1e293b;
+  text-align: center;
 }
 
 /* GRID */
@@ -27,6 +28,7 @@
   grid-auto-columns: 33.33%;
   gap: 24px;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* CARD */
@@ -73,4 +75,64 @@
   font-weight: 600;
   cursor: pointer;
   z-index: 9999;
+}
+
+/* NAVIGATION BUTTONS */
+/* NAVIGATION BUTTONS - CIRCLE STYLE */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #283593, #1a237e);
+  border: none;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  width: 50px;       /* circle width */
+  height: 50px;      /* circle height */
+  border-radius: 50%; /* makes it a circle */
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25); /* subtle shadow */
+  transition: background 0.3s, transform 0.2s;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #283593, #1a237e);
+  transform: translateY(-50%) scale(1.1); /* slight zoom on hover */
+}
+
+.nav-prev {
+  left: 10px;
+}
+
+.nav-next {
+  right: 10px;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .games-grid {
+    grid-auto-columns: 70%;
+    gap: 16px;
+  }
+
+  .game-card {
+    height: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .games-grid {
+    grid-auto-columns: 85%;
+    gap: 12px;
+  }
+
+  .game-card {
+    height: 360px;
+  }
 }
