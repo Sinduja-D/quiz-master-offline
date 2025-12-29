@@ -232,8 +232,14 @@ const PageRenderer = ({
       );
 
     case "dailyScience":
-      return <DailySciencePage language={language} user={user} updateUser={updateUser} />;
-
+          return (
+                <DailySciencePage
+                    language={language}
+                    user={user}
+                    updateUser={updateUser}
+                    setActivePage={setActivePage}   // ✅ ADD THIS LINE
+                  />
+                );
     case "funFacts":
       return <FunFactsPage language={language} setActivePage={setActivePage} />;
 

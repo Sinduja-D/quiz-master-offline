@@ -4,7 +4,7 @@ import './DailySciencePage.css';
 import { dailyScienceQuestions } from '../data/dailyScienceQuestions';
 import SpinWheel from './SpinWheel';
 
-const DailySciencePage = ({ language, user, updateUser }) => {
+const DailySciencePage = ({ language, user, updateUser, setActivePage }) => {
   const [question, setQuestion] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showResult, setShowResult] = useState(false);
@@ -13,91 +13,117 @@ const DailySciencePage = ({ language, user, updateUser }) => {
   const [hasAnsweredToday, setHasAnsweredToday] = useState(false);
   const [secondChance, setSecondChance] = useState(false);
   const [loading, setLoading] = useState(true);
-  
-  // Check if user has answered today's question
+
+  /* --------------------------------------------------
+     REDIRECT TO GAMES WHEN DAILY QUIZ IS COMPLETED
+  -------------------------------------------------- */
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+    if (hasAnsweredToday) {
+      const timer = setTimeout(() => {
+        setActivePage("games");
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [hasAnsweredToday, setActivePage]);
+
+  /* --------------------------------------------------
+     CHECK IF USER ALREADY ANSWERED TODAY
+  -------------------------------------------------- */
+  useEffect(() => {
+    const today = new Date().toISOString().split('T')[0];
     const lastAnswered = user?.lastDailyQuestionDate;
-    
+
     if (lastAnswered === today) {
       setHasAnsweredToday(true);
     } else {
-      // Get a unique question for this user for today
       const userSeed = user.id + today;
-      const questionIndex = Math.abs(
-        userSeed.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
-      ) % dailyScienceQuestions.length;
-      
+      const questionIndex =
+        Math.abs(
+          userSeed
+            .split('')
+            .reduce((acc, char) => acc + char.charCodeAt(0), 0)
+        ) % dailyScienceQuestions.length;
+
       setQuestion(dailyScienceQuestions[questionIndex]);
     }
-    
+
     setLoading(false);
   }, [user]);
 
+  /* --------------------------------------------------
+     OPTION SELECTION
+  -------------------------------------------------- */
   const handleOptionSelect = (index) => {
     if (showResult) return;
-    
+
     setSelectedOption(index);
     const correct = index === question.correctAnswer;
     setIsCorrect(correct);
     setShowResult(true);
-    
-    // No automatic navigation anymore - we'll let the user click the button
   };
 
   const handleProceedToSpinWheel = () => {
     setShowSpinWheel(true);
   };
 
+  /* --------------------------------------------------
+     COMPLETE QUIZ (WRONG ANSWER)
+  -------------------------------------------------- */
   const handleCompleteQuiz = () => {
-    // Update user data to show they answered today
     const today = new Date().toISOString().split('T')[0];
+
     const updatedUser = {
       ...user,
       lastDailyQuestionDate: today,
-      lastDailyQuestionId: question.id
+      lastDailyQuestionId: question.id,
     };
+
     updateUser(updatedUser);
     localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+
     setHasAnsweredToday(true);
   };
 
+  /* --------------------------------------------------
+     SPIN WHEEL COMPLETE
+  -------------------------------------------------- */
   const handleSpinComplete = (reward) => {
-    // Update user points based on reward
     const points = reward.points || 0;
-    
-    // If user didn't win points and hasn't used second chance, give them a second chance
+
     if (points === 0 && !secondChance) {
       setSecondChance(true);
       return;
     }
-    
+
     const updatedUser = {
       ...user,
       totalPoints: user.totalPoints + points,
       lastDailyQuestionDate: new Date().toISOString().split('T')[0],
       lastDailyQuestionId: question.id,
       lastSpinWheelDate: new Date().toISOString().split('T')[0],
-      spinWheelSecondChance: false // Reset second chance after spinning
+      spinWheelSecondChance: false,
     };
-    
+
     updateUser(updatedUser);
     localStorage.setItem('currentUser', JSON.stringify(updatedUser));
-    
-    // Update leaderboard
+
     const users = JSON.parse(localStorage.getItem('quizAppUsers') || '[]');
     const userIndex = users.findIndex(u => u.id === user.id);
     if (userIndex !== -1) {
       users[userIndex] = updatedUser;
       localStorage.setItem('quizAppUsers', JSON.stringify(users));
     }
-    
+
     setShowSpinWheel(false);
     setHasAnsweredToday(true);
   };
 
   const t = (eng, tam) => (language === "English" ? eng : tam);
 
+  /* --------------------------------------------------
+     LOADING STATE
+  -------------------------------------------------- */
   if (loading) {
     return (
       <div className="loading-container">
@@ -107,27 +133,34 @@ const DailySciencePage = ({ language, user, updateUser }) => {
     );
   }
 
+  /* --------------------------------------------------
+     ALREADY ANSWERED SCREEN
+  -------------------------------------------------- */
   if (hasAnsweredToday) {
     return (
       <div className="daily-science-container">
         <div className="already-answered">
-          {/*<div><h2>{t('Daily Science Challenge', 'தினசரி அறிவியல் சவால்')}</h2></div>*/}
           <div className="message-box">
-            <p>{t('You have already answered today\'s question. Come back tomorrow for a new challenge!', 
-                 'நீங்கள் இன்றைய கேள்விக்கு ஏற்கனவே பதிலளித்துள்ளீர்கள். புதிய சவாலுக்கு நாளை வாருங்கள்!')}</p>
+            <p>
+              {t(
+                "You have already answered today's question. Come back tomorrow for a new challenge!",
+                "நீங்கள் இன்றைய கேள்விக்கு ஏற்கனவே பதிலளித்துள்ளீர்கள். புதிய சவாலுக்கு நாளை வாருங்கள்!"
+              )}
+            </p>
           </div>
         </div>
       </div>
     );
   }
 
+  /* --------------------------------------------------
+     MAIN QUESTION VIEW
+  -------------------------------------------------- */
   return (
     <div className="daily-science-container">
-      {/*<div><h2>{t('Daily Science Challenge', 'தினசரி அறிவியல் சவால்')}</h2></div>*/}
-          
       {showSpinWheel ? (
-        <SpinWheel 
-          language={language} 
+        <SpinWheel
+          language={language}
           onSpinComplete={handleSpinComplete}
           user={user}
           secondChance={secondChance}
@@ -138,16 +171,16 @@ const DailySciencePage = ({ language, user, updateUser }) => {
             <p className="english">{question.question.english}</p>
             <p className="tamil">{question.question.tamil}</p>
           </div>
-          
+
           <div className="options-container">
             {question.options.map((option, index) => (
               <button
                 key={index}
-                className={`option-button ${selectedOption === index ? 'selected' : ''} ${
-                  showResult && index === question.correctAnswer ? 'correct' : ''
-                } ${
-                  showResult && selectedOption === index && !isCorrect ? 'incorrect' : ''
-                }`}
+                className={`option-button
+                  ${selectedOption === index ? 'selected' : ''}
+                  ${showResult && index === question.correctAnswer ? 'correct' : ''}
+                  ${showResult && selectedOption === index && !isCorrect ? 'incorrect' : ''}
+                `}
                 onClick={() => handleOptionSelect(index)}
                 disabled={showResult}
               >
@@ -156,7 +189,7 @@ const DailySciencePage = ({ language, user, updateUser }) => {
               </button>
             ))}
           </div>
-          
+
           {showResult && (
             <div className={`result-message ${isCorrect ? 'correct' : 'incorrect'}`}>
               {isCorrect ? (
@@ -164,13 +197,19 @@ const DailySciencePage = ({ language, user, updateUser }) => {
               ) : (
                 <p>{t('Incorrect. Better luck tomorrow!', 'தவறு. நாளை நல்ல அதிர்ஷ்டம்!')}</p>
               )}
-              
+
               {isCorrect ? (
-                <button className="action-button proceed-button" onClick={handleProceedToSpinWheel}>
+                <button
+                  className="action-button proceed-button"
+                  onClick={handleProceedToSpinWheel}
+                >
                   {t('Proceed to Spin Wheel', 'சுழலும் சக்கரத்திற்குச் செல்லுங்கள்')}
                 </button>
               ) : (
-                <button className="action-button complete-button" onClick={handleCompleteQuiz}>
+                <button
+                  className="action-button complete-button"
+                  onClick={handleCompleteQuiz}
+                >
                   {t('Complete Daily Science Quiz', 'தினசரி அறிவியல் வினாவை முடிக்கவும்')}
                 </button>
               )}
