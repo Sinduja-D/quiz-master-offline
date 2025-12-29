@@ -69,31 +69,34 @@ html, body {
   font-size: 1rem;
   border-radius: 12px;
   border: 2px solid #dbeafe;
-  background: white;
+  background: #1a2a6c;
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .option-btn:hover {
-  border-color: #3b82f6;
+  border-color: #f0f2f5;
   transform: translateY(-2px);
 }
 
 .option-btn.selected {
-  background: #dbeafe;
+  background:#dbeafe;
   border-color: #1a2a6c;
+  color:black;
   box-shadow: 0 0 0 2px rgba(26,42,108,0.15);
 }
 
 /* RESULT */
 .result-box {
-  margin-top: 10px;
+  margin: 10px auto;   /* 👈 THIS centers the box */
   padding: 10px;
   border-radius: 10px;
   font-size: 1rem;
   text-align: center;
+  width: fit-content; /* optional, keeps box tight */
 }
+
 
 .result-box.correct {
   background: #e8f5e9;

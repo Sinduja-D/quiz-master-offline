@@ -294,3 +294,10 @@
   transform: translateY(-2px);
   box-shadow: 0 16px 36px rgba(0,0,0,0.35);
 }
+.mm-level-buttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 20px;
+
+}
