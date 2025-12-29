@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Popup from './Popup';
 import confetti from 'canvas-confetti';
 import './Quiz.css';
@@ -49,6 +49,10 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   const [hintsRequested, setHintsRequested] = useState({});
   // Track current display language (can be different from the initial language)
   const [displayLanguage, setDisplayLanguage] = useState(language);
+  // Ref to track the container element
+  const containerRef = useRef(null);
+  // State to track if container should be expanded
+  const [shouldExpand, setShouldExpand] = useState(false);
   
   // Map correct option from database (1,2,3,4) to frontend keys (optionA, optionB, etc.)
   const mapCorrectOption = (correctOption) => {
@@ -206,6 +210,31 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     setShowHint(false);
   }, [language]);
   
+  // Check if container should expand based on content
+  useEffect(() => {
+    const checkContentHeight = () => {
+      if (containerRef.current) {
+        const container = containerRef.current;
+        const contentHeight = container.scrollHeight;
+        const viewportHeight = window.innerHeight * 0.75; // 75vh
+        
+        // If content is taller than 75vh, expand the container
+        if (contentHeight > viewportHeight) {
+          setShouldExpand(true);
+        } else {
+          setShouldExpand(false);
+        }
+      }
+    };
+    
+    // Check after component mounts and when content changes
+    if (!showStartPopup && quizQuestions.length > 0) {
+      // Use a timeout to ensure DOM is updated
+      const timeoutId = setTimeout(checkContentHeight, 100);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [currentQuestionIndex, showHint, showStartPopup, quizQuestions.length, displayLanguage]);
+  
   const handleOptionSelect = (option) => {
     if (!showFeedback) {
       setSelectedOption(option);
@@ -254,9 +283,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
     };
     setResults(updatedResults);
     
-
-    //Altered to always show concept after answer submission
-    //if (!correct && currentQuestion.concept) 
+    // Always show concept after answer submission
     setShowConcept(true);
     
     if (correct) {
@@ -415,7 +442,11 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
   }
   
   return (
-    <div className="quiz-container">
+    <div className="quiz-wrapper"> 
+    <div 
+      ref={containerRef}
+      className={`quiz-container ${showHint ? 'hint-visible' : ''} ${shouldExpand ? 'expanded' : ''}`}
+    >
       {showStartPopup && <Popup
         message={displayLanguage === 'English' ? 'The Test is going to start in' : 'தேர்வு தொடங்குவதற்கு'}
         timer={timeLeft}
@@ -486,7 +517,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
         <h2 className="question-text">{questionContent?.question}</h2>
         
         {showHint && questionContent?.hint && (
-          <div className="hint-card">
+          <div className="hint-card visible">
             <div className="hint-header">
               <span className="hint-icon">💡</span>
               <span className="hint-title">{displayLanguage === 'English' ? 'Hint' : 'குறிப்பு'}</span>
@@ -513,22 +544,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
             );
           })}
         </div>
-     {/*}   
-      <div> {showFeedback && questionContent?.concept && (
-          <div className="concept-card">
-            <div className="concept-header" onClick={() => setShowConcept(!showConcept)}>
-              <span className="concept-icon">📚</span>
-              <span className="concept-title">{displayLanguage === 'English' ? 'Source Topic of the Question' : 'கேள்வி சார்ந்த தலைப்பு'}</span>
-              <span className="concept-toggle">{showConcept ? '▲' : '▼'}</span>
-            </div>
-            {showConcept && (
-              <div className="concept-content">
-                {questionContent.concept}
-              </div>
-            )}
-          </div>
-        )}
-        </div> */}
+        
         {showCongrats && (
           <div className="congrats-container">
             {[...Array(50)].map((_, i) => (
@@ -583,6 +599,7 @@ const Quiz = ({ language, level, numberOfQuestions, subject, grade, onQuizComple
           🔥 {displayLanguage === 'English' ? 'Streak' : 'வரிசை'}: {consecutiveCorrect}
         </div>
       </div>
+    </div>
     </div>
   );
 };
