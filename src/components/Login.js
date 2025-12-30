@@ -138,13 +138,13 @@ const Login = ({ onLogin, language, toggleLanguage }) => {
               </h4>
               <p className="mentor-name">
                 {language === "English"
-                  ? "HOD: Dr. M. Sheerin Banu,Professor"
-                  : "HOD: Dr.ம.சீரினி பானு, பேராசிரியர்"}
+                  ? "HoD: Dr. M. Sheerin Banu, Professor"
+                  : "துறைத் தலைவர்: Dr.மு.ஷீரின் பானு, பேராசிரியர்"}
               </p>
               <p className="mentor-name">
                 {language === "English"
-                  ? "Mentor: Ms. M. Rekha, M.E(Ph.D), Assistant Professor"
-                  : "வழிகாட்டி: திருமதி.ம.ரேகா, M.E(Ph.D), உதவிப் பேராசிரியர்"}
+                  ? "Mentor: Ms. M. Rekha, Assistant Professor"
+                  : "வழிகாட்டி: திருமதி.ம.ரேகா, உதவிப் பேராசிரியர்"}
               </p>
             </div>
           </div>

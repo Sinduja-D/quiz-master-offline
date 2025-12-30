@@ -108,9 +108,11 @@ const HomePage = ({ language, setActivePage, onLevelSelect, user }) => {
               ? "Department of Information Technology (2023–2027)"
               : "தகவல் தொழில்நுட்பத் துறை (2023–2027)"}
           </p>
+          
           <p>
             {language === "English" ? "Mentor: Ms. M. Rekha, M.E.(Ph.D)" : "வழிகாட்டி: திருமதி எம். ரேகா, M.E.(Ph.D)"}
           </p>
+          
         </div>
       </div>
 
